@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 levcard" ng-repeat="leave in leaves">
 
-                <button type="button" class="btn btn-xs crs" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-xs crs" ng-click="showCancel(leave)">
                     <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                 </button>
 
@@ -70,12 +70,15 @@
 
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete leave fom employee profile? Leave will not be considered in annual tally as well.</p>
+                    <p ng-show="updateLeaveResponse == null">Are you sure you want to delete leave fom employee profile? Leave will not be considered in annual tally as well.</p>
+                    <p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>
                 </div>
                 <div class="modal-footer" style="border:none">
                     <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
 
-                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Delete leave</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="cancelLeave()" ng-show="updateLeaveResponse == null">Delete leave</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-show="updateLeaveResponse != null ">OK</button>
+                    
                 </div>
             </div>
 

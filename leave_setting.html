@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+
+<body>
+
+
+
+    <div class="container">
+
+        <div class="row tpband">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Leave settings</h2>
+            </div>
+        </div>
+        
+        <div class="row" ng-cloak>
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <div class="alert alert-danger" ng-show="response.status != 200 && response.responseText.length > 0">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Oops!</strong> {{response.responseText}}
+                </div>
+                <div class="alert alert-success" ng-show="response.status == 200 && response.responseText.length > 0">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Great!</strong> {{response.responseText}}
+                </div>
+                <div class="alert alert-success" ng-show="showProgress">
+                    Processing .. Please wait ..
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <br>
+                <div class=" form-group" ng-repeat="policy in leaveTypes">
+                    <label for="pwd">Maximum {{policy.name}} leaves per year</label>
+                    <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
+                </div>
+                <!--<div class=" form-group">
+                    <label for="usr">Maximum Sick leaves per year</label>
+                    <input type="number" class="form-control">
+                </div>
+                <div class=" form-group">
+                    <label for="usr">Receive update frequency</label>
+                    <input type="drop-down" class="form-control">
+                </div>-->
+
+
+                <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="addLeavePolicy()">Save</button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog ">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <p>Changes saved successfully</p>
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                    <!--<button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Delete leave</button>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

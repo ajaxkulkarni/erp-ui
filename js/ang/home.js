@@ -5,7 +5,7 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
     $scope.showProgress = false;
 
     if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
-        window.location.href = "ERP.html";
+        window.location.href = "index.html";
     }
     $scope.user = JSON.parse(localStorage.erpUser);
 

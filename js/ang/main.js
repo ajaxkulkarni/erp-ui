@@ -228,6 +228,26 @@ app.service('userService', function ($http, $q) {
         return $q.when(response);
     }
     
+    
+    this.callService = function ($scope, method) {
+        var defer = $q.defer();
+        var res = $http.post(root + method, $scope.dataObj);
+        res.success(function (data, status, headers, config) {
+            response = data;
+            defer.resolve(response);
+            //console.log("R:" + response.user.company.employees);
+           
+        });
+        res.error(function (data, status, headers, config) {
+            response = data;
+            defer.resolve(response);
+            
+        });
+
+        response = defer.promise;
+        return $q.when(response);
+    }
+    
     this.logout = function () {
         
     }
@@ -323,6 +343,10 @@ app.config(function($routeProvider) {
     .when("/leaveDetails", {
         templateUrl : "employee_leaves.html",
         controller : "leaveDetails"
+    })
+    .when("/leavePolicy", {
+        templateUrl : "leave_setting.html",
+        controller : "leavePolicy"
     })
 });
 
