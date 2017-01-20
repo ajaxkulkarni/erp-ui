@@ -1,0 +1,15 @@
+<div class="row" ng-cloak>
+    <div class="col-sm-6 col-sm-offset-3 ">
+        <div class="alert alert-danger" ng-show="response.status != 200 && response.responseText.length > 0">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Oops!</strong> {{response.responseText}}
+        </div>
+        <div class="alert alert-success" ng-show="response.status == 200 && response.responseText.length > 0">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Great!</strong> {{response.responseText}}
+        </div>
+        <div class="alert alert-success" ng-show="showProgress">
+            Processing .. Please wait ..
+        </div>
+    </div>
+</div>

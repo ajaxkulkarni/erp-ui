@@ -110,28 +110,13 @@
             </div>
         </div>
 
-        <div class="row" ng-cloak>
-            <div class="col-sm-6 col-sm-offset-3 ">
-                <div class="alert alert-danger" ng-show="response.responseText != 'OK' && response.responseText != null">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>Oops!</strong> {{response.responseText}}
-                </div>
-                <div class="alert alert-success" ng-show="response.responseText == 'OK'">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>Great!</strong> Our associates will contact you shortly for further process. Thank You!
-                </div>
-                <div class="alert alert-success" ng-show="showProgress">
-                    Processing .. Please wait ..
-                </div>
-            </div>
-        </div>
-    
+        <div ng-include="'response.html'"></div>
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                 <ng-form name="subscribeForm">
                 <div class="form-group fcont">
-                    <label for="usr">Company name</label>
+                    <label for="usr">Name</label>
                     <input type="text" class="form-control" name="user" id="usr" ng-model="user.name" ng-required="true">
                     <p ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</p>
                 </div>

@@ -16,15 +16,13 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
     $scope.getAllEmployees = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.getAllEmployees($scope).then(function (response) {
+        userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
+            $scope.response = response;
+            userService.showResponse($scope, "");
             $scope.employees = response.user.company.employees;
-            //console.log(response.user.company);
+            console.log("Company:" + JSON.stringify(response.user.company));
 
         });
     }
@@ -32,13 +30,11 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
     $scope.getAllLeaveTypes = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.getAllLeaveTypes($scope).then(function (response) {
+        userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
+            $scope.response = response;
+            userService.showResponse($scope, "");
             $scope.leaveTypes = response.company.leaveTypes;
             //console.log(response.user.company);
 
@@ -58,19 +54,12 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         $scope.showProgress = true;
         $scope.leave.appliedBy = $scope.user;
         $scope.dataObj.leave = $scope.leave;
-        userService.applyLeave($scope).then(function (response) {
+        userService.callService($scope, "/applyLeave").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
-
-            if (response.status != 200) {
-                $scope.response.responseText = response.responseText;
-                return;
-            }
-            $("#myModal").modal('show');
+            $scope.response = response;
+            userService.showResponse($scope, "Leave applied successfully!");
+            //$("#myModal").modal('show');
             //console.log(response.user.company);
 
         });
@@ -101,13 +90,11 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
     $scope.getAllEmployeeLeaves = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.getAllEmployeeLeaves($scope).then(function (response) {
+        userService.callService($scope, "/getAllLeaves").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
+            $scope.response = response;
+            userService.showResponse($scope,"");
             $scope.employees = response.company.employees;
             $scope.leaveTypes = response.company.leaveTypes;
 
@@ -152,13 +139,11 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
     $scope.getEmployeeLeaves = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.employee;
-        userService.getEmployeeLeaves($scope).then(function (response) {
+        userService.callService($scope,"/getEmployeeLeaves").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
+            $scope.response = response;
+            userService.showResponse($scope,"");
             $scope.leaves = response.user.leaves;
 
         });
@@ -171,17 +156,8 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
         userService.callService($scope, '/updateLeave').then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.updateLeaveResponse = "Error connecting server ..";
-                return;
-            }
-            if(response.status != 200) {
-                $scope.updateLeaveResponse = response.responseText;
-                return;
-            } else {
-                $scope.updateLeaveResponse = "Leave updated successfully!";
-            }
-            
+            $scope.response = response;
+            userService.showResponse($scope, "Leave updated successfully!");
             $scope.getEmployeeLeaves();
         });
     }
@@ -190,7 +166,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
 
 });
 
-angular.module("app").controller('leaves', function ($scope, userService, $location) {
+angular.module("app").controller('editLeave', function ($scope, userService, $location) {
 
     $scope.response = {};
     console.log("Leaves loaded ..");
@@ -209,13 +185,11 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
     $scope.getAllLeaveTypes = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.getAllLeaveTypes($scope).then(function (response) {
+        userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
+            $scope.response = response;
+            userService.showResponse($scope, "");
             $scope.leaveTypes = response.company.leaveTypes;
             //console.log(response.user.company);
 
@@ -235,25 +209,20 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         $scope.showProgress = true;
         $scope.leave.appliedBy = $scope.user;
         $scope.dataObj.leave = $scope.leave;
-        userService.applyLeave($scope).then(function (response) {
+        userService.callService($scope, "/applyLeave").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
-
-            if (response.status != 200) {
-                $scope.response.responseText = response.responseText;
-                return;
-            }
-            $("#myModal").modal('show');
+            $scope.response = response;
+            userService.showResponse($scope, "Leave applied successfully!");
+            //$("#myModal").modal('show');
             //console.log(response.user.company);
 
         });
     }
 
     $scope.getAllLeaveTypes();
+    
+    //console.log("Leaves all loaded ..");
 
 
 });
@@ -277,19 +246,11 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
     $scope.getAllLeaveTypes = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.getAllLeaveTypes($scope).then(function (response) {
+        userService.callService($scope, '/getAllLeaveTypes').then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
-            $scope.response.status = response.status;
-            if($scope.response.status == 200) {
-                $scope.response.responseText = "";
-            } else {
-                $scope.response.responseText = response.responseText;
-            }
+            $scope.response = response;
+            userService.showResponse($scope,"");
             $scope.leaveTypes = response.company.leaveTypes;
             //console.log(response.user.company);
 
@@ -297,24 +258,16 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
     }
 
     $scope.addLeavePolicy = function () {
-        console.log("Scope :" + $scope.user.company + " actual " + JSON.stringify($scope.leaveTypes));
+        //console.log("Scope :" + $scope.user.company + " actual " + JSON.stringify($scope.leaveTypes));
         //$scope.user.company.leavePolicy = $scope.company.leavePolicy;
-        $scope.user.company.leaveTypes = $scope.leaveTypes
+        $scope.showProgress = true;
+        $scope.user.company.leaveTypes = $scope.leaveTypes;
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, '/addLeavePolicy').then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.status = -111;
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
-            $scope.response.status = response.status;
-            if($scope.response.status == 200) {
-                $scope.response.responseText = "Leave policy updated!";
-            } else {
-                $scope.response.responseText = response.responseText;
-            }
+            $scope.response = response;
+            userService.showResponse($scope, "Leave policy updated!");
         });
     }
 

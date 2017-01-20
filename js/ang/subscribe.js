@@ -2,8 +2,7 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
 
     console.log("Loaded init ..");
     $scope.response = {};
-   
-    $scope.loggedIn = null;
+    $scope.dataObj = {};
     $scope.showProgress = false;
 
     /*$.skylo({
@@ -29,15 +28,12 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
         $.skylo('inch', 5);*/
         
         $scope.showProgress = true;
-        
-        userService.subscribe($scope).then(function (response) {
-            $.skylo('end');
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/subscribeUser").then(function (response) {
+            //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-            }
             $scope.response = response;
-           
+            userService.showResponse($scope, "Your application is submitted successfully. Our team will soon contact you for further process.")
         });
 
     };

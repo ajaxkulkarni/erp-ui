@@ -1,7 +1,7 @@
 angular.module("app").controller('admin', function ($scope, adminService, $location) {
 
     $scope.response = {};
-   
+    console.log("Admin loaded ..");
     $scope.showProgress = false;
 
     /*$.skylo({

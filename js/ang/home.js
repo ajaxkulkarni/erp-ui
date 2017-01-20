@@ -1,6 +1,7 @@
 angular.module("app").controller('home', function ($scope, userService, $location) {
 
     $scope.response = {};
+    $scope.dataObj = {};
     console.log("Home loaded ..");
     $scope.showProgress = false;
 
@@ -18,12 +19,13 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
 
     $scope.getUser = function () {
         $scope.showProgress = true;
-
-        userService.getUser($scope).then(function (response) {
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/getUser").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null || response.user == null) {
-                $scope.response.responseText = "Error connecting server ..";
+            $scope.response = response;
+            userService.showResponse($scope, "");
+            if($scope.response == null || $scope.response.status != 200) {
                 return;
             }
             $scope.user = response.user;
@@ -71,18 +73,12 @@ angular.module("app").controller('company', function ($scope, userService, $loca
         // $scope.user.company.user = $scope.user;
         $scope.dataObj.user = $scope.user;
 
-        userService.addCompany($scope).then(function (response) {
+        userService.callService($scope,"/addCompany").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
-            if (response.status != 200) {
-                $scope.response.responseText = response.responseText;
-                return;
-            }
-            window.location.href = "#home";
+            $scope.response = response;
+            userService.showResponse($scope, "Company details updated successfully!");
+            //window.location.href = "#home";
 
         });
     }
@@ -131,18 +127,11 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         $scope.user = JSON.parse(localStorage.erpUser);
         $scope.dataObj.user.company = $scope.user.company;
 
-        userService.addEmployee($scope).then(function (response) {
+        userService.callService($scope,"/addEmployee").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
-            if (response.status != 200) {
-                $scope.response.responseText = response.responseText;
-                return;
-            }
-            window.location.href = "#home";
+            $scope.response = response;
+            userService.showResponse($scope, "Employee details updated successfully!");
 
         });
     }
@@ -169,15 +158,11 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
     $scope.getAllEmployees = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.getAllEmployees($scope).then(function (response) {
+        userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
-            if (response == null) {
-                $scope.response.responseText = "Error connecting server ..";
-                return;
-            }
             $scope.response = response;
-            console.log(response.user.company);
+            userService.showResponse($scope, "");
 
         });
     }

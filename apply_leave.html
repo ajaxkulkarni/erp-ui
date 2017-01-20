@@ -19,18 +19,7 @@
             </div>
         </div>
         
-        <div class="row" ng-cloak>
-            <div class="col-sm-6 col-sm-offset-3 ">
-                <div class="alert alert-danger" ng-show="response.responseText != 'OK' && response.responseText != null">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>Oops!</strong> {{response.responseText}}
-                </div>
-               
-                <div class="alert alert-success" ng-show="showProgress">
-                    Processing .. Please wait ..
-                </div>
-            </div>
-        </div>
+        <div ng-include="'response.html'"></div>
 
 
         <div class="row">
