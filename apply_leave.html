@@ -29,7 +29,7 @@
                 <div class=" form-group">
                     <label for="pwd">Name</label>
                     <!--<input type="emil id" class="form-control" >-->
-                    <select name="employee" ng-model="leave.user.id" ng-required="true">
+                    <select name="employee" ng-model="leave.user.id" ng-required="true" class="form-control">
                         <option value="">Select Employee</option>
                         <option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>
                     </select>
