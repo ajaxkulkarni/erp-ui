@@ -317,3 +317,15 @@ dropdown-menu:hover{
 }
 
 
+
+.acceptmodal {
+    color: rgb(0,200,0)
+}
+
+.failmodal {
+    color: red
+}
+
+.accptmodal {
+    color: rgb(0,200,0)
+}
