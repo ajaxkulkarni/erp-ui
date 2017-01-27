@@ -12,6 +12,8 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         initialBurst: 30,
         flat: false
     });*/
+    
+    
 
     $scope.getAllEmployees = function () {
         $scope.showProgress = true;
@@ -40,6 +42,13 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
 
         });
     }
+    
+    $scope.calculateDays = function () {
+        $scope.leave.noOfDays = 1 + ($scope.leave.to - $scope.leave.from)/(3600*24*1000)
+        if($scope.leave.noOfDays < 0) {
+            $scope.leave.noOfDays = 0;
+        }
+    }
 
     $scope.applyLeave = function (valid) {
         if (!valid) {
@@ -51,6 +60,24 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
             console.log("Incorrect days!");
             return;
         }
+        if ($scope.leave.from > $scope.leave.to) {
+            $scope.incorrectDate = true;
+            console.log("Incorrect date!");
+            return;
+        }
+        if($scope.leave.user.leaveCount != null && $scope.leave.user.leaveCount.length > 0 && !$scope.modalShown) {
+            for(var i = 0; i < $scope.leave.user.leaveCount.length; i++ ) {
+                if($scope.leave.type.id == $scope.leave.user.leaveCount[i].id) {
+                    if($scope.leave.noOfDays > $scope.leave.user.leaveCount[i].available) {
+                        console.log("Exceeded limit!");
+                        $("#warningModal").modal('show');
+                        $scope.modalShown = true;
+                        return;
+                    }
+                }
+            }
+        }
+        //if($scope.user.)
         $scope.showProgress = true;
         $scope.leave.appliedBy = $scope.user;
         $scope.dataObj.leave = $scope.leave;
@@ -246,6 +273,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
     $scope.getAllLeaveTypes = function () {
         $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
+        $scope.dataObj.requestType = "ALL";
         userService.callService($scope, '/getAllLeaveTypes').then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;

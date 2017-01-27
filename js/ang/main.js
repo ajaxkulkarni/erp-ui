@@ -1,6 +1,7 @@
-var app = angular.module("app", ["ngRoute"]);
+var app = angular.module("app", ["ngRoute","720kb.datepicker"]);
 
 var host = "http://localhost:8080/erp-service";
+//var host = "http://demo9074765.mockable.io/erp-service";
 //var host = "https://115.124.124.220:8080/jobz";
 var root = host + "/service";
 var rootAdmin = host + "/adminService";
@@ -14,17 +15,27 @@ app.service('userService', function ($http, $q) {
 
     this.showResponse = function ($scope,successMsg) {
         if ($scope.response == null) {
+            $scope.response = {};
             $scope.response.status = -111;
             $scope.response.responseText = "Error connecting server ..";
+            $("#errorModal").modal('show');
             return;
         }
         console.log("Response :" + $scope.response.status + " msg:" + successMsg);
         //$scope.response.status = response.status;
         if ($scope.response.status == 200) {
+            if(successMsg == "") {
+                return;
+            }
+            localStorage.erpEmployee = null;
             $scope.response.responseText = successMsg;
+            $("#successModal").show();
+            $("#successModal").modal('show');
             //console.log("Response :" + $scope.response.reseponseText);
-        } 
-        console.log("Response :" + $scope.response.reseponseText);
+        }  else {
+            $("#errorModal").modal('show');
+        }
+        //console.log("Response :" + $scope.response.reseponseText);
     }
 
     this.callService = function ($scope, method) {
@@ -33,13 +44,14 @@ app.service('userService', function ($http, $q) {
         res.success(function (data, status, headers, config) {
             response = data;
             defer.resolve(response);
-            //console.log("R:" + response.user.company.employees);
+            console.log("Result :" + JSON.stringify(data) + ":" + JSON.stringify(headers))
+           
 
         });
         res.error(function (data, status, headers, config) {
             response = data;
             defer.resolve(response);
-
+            console.log("Error :" + status + ":" + JSON.stringify(data) + ":" + JSON.stringify(headers))
         });
 
         response = defer.promise;
@@ -105,7 +117,11 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when("/", {
             controller: "home",
-            template: " "
+            templateUrl: "response.html"
+        })
+        .when("/main", {
+            controller: "home",
+            templateUrl: "response.html"
         })
         .when("/home", {
             templateUrl: "dashboard.html"
@@ -120,6 +136,10 @@ app.config(function ($routeProvider) {
         })
         .when("/addEmployee", {
             templateUrl: "add_employee.html",
+            controller: "employee"
+        })
+        .when("/viewEmployee", {
+            templateUrl: "view_employee_data.html",
             controller: "employee"
         })
         .when("/viewEmployees", {
@@ -146,6 +166,10 @@ app.config(function ($routeProvider) {
             templateUrl: "leave_setting.html",
             controller: "leavePolicy"
         })
+        .when("/changePassword", {
+            templateUrl: "password_reset.html",
+            controller: "profile"
+        })
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {
@@ -163,3 +187,23 @@ app.directive('fileModel', ['$parse', function ($parse) {
         }
     };
 }]);
+
+/*app.directive('form1', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, elem) {
+
+            // set up event handler on the form element
+            elem.on('submit', function () {
+
+                // find the first invalid element
+                var firstInvalid = elem[0].querySelector('.ng-invalid');
+
+                // if we find one, set focus
+                if (firstInvalid) {
+                    firstInvalid.focus();
+                }
+            });
+        }
+    };
+});*/

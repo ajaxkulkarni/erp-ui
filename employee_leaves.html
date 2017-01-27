@@ -7,13 +7,11 @@
 
 
     <div class="container">
-        
-        
 
-        <div class="row tpband">
+
+       <div class="row tpband">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
-
+                <a href="#viewLeaves"><img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick"></a>
             </div>
         </div>
 
@@ -22,9 +20,9 @@
                 <h2 class="pghdgs">View leaves</h2>
             </div>
         </div>
-        
+
         <div ng-include="'response.html'"></div>
-        
+
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 levcard" ng-repeat="leave in leaves">
 
@@ -67,7 +65,7 @@
 
                     <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="cancelLeave()" ng-show="updateLeaveResponse == null">Delete leave</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-show="updateLeaveResponse != null ">OK</button>
-                    
+
                 </div>
             </div>
 

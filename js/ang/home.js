@@ -4,10 +4,18 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
     $scope.dataObj = {};
     console.log("Home loaded ..");
     $scope.showProgress = false;
+    //alert("Before close!");
+    $("#successModal").hide();
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
+    
 
     if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
         window.location.href = "index.html";
     }
+    
+    localStorage.erpEmployee = null;
+    
     $scope.user = JSON.parse(localStorage.erpUser);
 
     /*$.skylo({
@@ -19,18 +27,21 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
 
     $scope.getUser = function () {
         $scope.showProgress = true;
+        console.log("Prog:" + $scope.showProgress);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getUser").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
             $scope.response = response;
             userService.showResponse($scope, "");
-            if($scope.response == null || $scope.response.status != 200) {
+            if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
             $scope.user = response.user;
             localStorage.erpUser = JSON.stringify($scope.user);
-            if ($scope.user.company == null) {
+            if($scope.user.status == 'P') {
+                window.location.href = "#changePassword";
+            } else if ($scope.user.company == null) {
                 window.location.href = "#companyDetails";
             } else {
                 window.location.href = "#home";
@@ -73,7 +84,7 @@ angular.module("app").controller('company', function ($scope, userService, $loca
         // $scope.user.company.user = $scope.user;
         $scope.dataObj.user = $scope.user;
 
-        userService.callService($scope,"/addCompany").then(function (response) {
+        userService.callService($scope, "/addCompany").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
             $scope.response = response;
@@ -86,88 +97,47 @@ angular.module("app").controller('company', function ($scope, userService, $loca
 
 });
 
-angular.module("app").controller('employee', function ($scope, userService, $location) {
+angular.module("app").controller('profile', function ($scope, userService, $location) {
 
     $scope.response = {};
     $scope.dataObj = {
         user: {}
     };
     $scope.user = JSON.parse(localStorage.erpUser);
-    console.log("Employee loaded .." + $scope.user.company);
+    console.log("Profile loaded .." + $scope.user.email);
     $scope.showProgress = false;
-    $("#page1").show();
-    $("#page2").hide();
+
     /*$.skylo({
         state: 'success',
         inchSpeed: 200,
         initialBurst: 30,
         flat: false
     });*/
-    
-    $scope.showPage2 = function (formValid) {
+
+    $scope.changePassword = function (formValid) {
         if (!formValid) {
-            $scope.form1ShowErrors = true;
+            $scope.passwordErrors = true;
             return;
         }
-        $("#page1").hide();
-        $("#page2").show();
-    }
-
-    $scope.saveEmployee = function (formValid) {
-
-        if (!formValid) {
-            $scope.form2ShowErrors = true;
+        if($scope.user.newPassword != $scope.confirmPassword) {
+            console.log($scope.user.newPassword + " !=: " + $scope.confirmPassword);
+            $scope.passwordMatchErrors = true;
             return;
         }
-
         $scope.showProgress = true;
 
         // $scope.user.company.user = $scope.user;
-        $scope.dataObj.user = $scope.employee;
-        $scope.user = JSON.parse(localStorage.erpUser);
-        $scope.dataObj.user.company = $scope.user.company;
-
-        userService.callService($scope,"/addEmployee").then(function (response) {
-            //$.skylo('end');
-            $scope.showProgress = false;
-            $scope.response = response;
-            userService.showResponse($scope, "Employee details updated successfully!");
-
-        });
-    }
-
-
-});
-
-
-angular.module("app").controller('employees', function ($scope, userService, $location) {
-
-    $scope.response = {};
-    console.log("Employees loaded ..");
-    $scope.showProgress = false;
-    $scope.dataObj = {};
-    $scope.user = JSON.parse(localStorage.erpUser);
-
-    /*$.skylo({
-        state: 'success',
-        inchSpeed: 200,
-        initialBurst: 30,
-        flat: false
-    });*/
-
-    $scope.getAllEmployees = function () {
-        $scope.showProgress = true;
         $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/getAllEmployees").then(function (response) {
+
+        userService.callService($scope, "/changePassword").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
             $scope.response = response;
-            userService.showResponse($scope, "");
+            userService.showResponse($scope, "Password changed successfully!");
+            //window.location.href = "#home";
 
         });
     }
-
-    $scope.getAllEmployees();
 
 
 });

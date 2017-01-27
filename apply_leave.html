@@ -18,7 +18,7 @@
                 <h2 class="pghdgs">Add leaves</h2>
             </div>
         </div>
-        
+
         <div ng-include="'response.html'"></div>
 
 
@@ -26,47 +26,51 @@
             <div class="col-sm-6 col-sm-offset-3 ">
                 <br>
                 <ng-form name="leaveForm">
-                <div class=" form-group">
-                    <label for="pwd">Name</label>
-                    <!--<input type="emil id" class="form-control" >-->
-                    <select name="employee" ng-model="leave.user.id" ng-required="true" class="form-control">
-                        <option value="">Select Employee</option>
-                        <option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>
-                    </select>
-                    <p style="color:red" ng-show="showLeaveErrors && leaveForm.employee.$invalid">Please select an employee</p>
-                </div>
-                <div class=" form-group">
-                    <label for="usr">Leave from</label>
-                    <input type="date" class="form-control" name="from" ng-model="leave.from" ng-required="true">
-                    <p style="color:red" ng-show="showLeaveErrors && leaveForm.from.$invalid">Please select from date</p>
-                </div>
-                <div class=" form-group">
-                    <label for="usr">Leave to</label>
-                    <input type="date" class="form-control" name="to" ng-model="leave.to" ng-required="true">
-                    <p style="color:red" ng-show="showLeaveErrors && leaveForm.to.$invalid">Please select to date</p>
-                </div>
-                <div class=" form-group">
-                    <label for="usr">Number of days</label>
-                    <input type="number" class="form-control" value="{{ leave.noOfDays = ((leave.to - leave.from)/(3600*24000) + 1 > 0 ? (leave.to - leave.from)/(3600*24000) + 1 :0 )}}" ng-model="leave.noOfDays" name="days" ng-required="true">
-                    <p style="color:red" ng-show="showLeaveErrors && leaveForm.days.$invalid">Please select no of days</p>
-                    <p style="color:red" ng-show="incorrectDays">Please select valid no of days</p>
-                </div>
-                <div class=" form-group">
-                    <label for="usr">Type of leave</label>
-                    <!--<input type="text" class="form-control" ng-model="leave.type">-->
-                    <select name="type" ng-model="leave.type.id" ng-required="true">
-                        <option value="">Select Leave Type</option>
-                        <option value="{{type.id}}" ng-repeat="type in leaveTypes">{{type.name}}</option>
-                    </select>
-                    <p style="color:red" ng-show="showLeaveErrors && leaveForm.type.$invalid">Please select leave type</p>
-                </div>
-                <div class=" form-group">
-                    <label for="usr">Comment</label>
-                    <input type="text" class="form-control" ng-model="leave.reason">
-                </div>
+                    <div class=" form-group">
+                        <label for="pwd">Name</label>
+                        <!--<input type="emil id" class="form-control" >-->
+                        <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees">
+                            <option value="">Select Employee</option>
+                            <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
+                        </select>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.employee.$invalid">Please select an employee</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Leave from</label>
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="date" class="form-control" name="from" ng-model="leave.from" ng-required="true" ng-change="calculateDays()">
+                        </datepicker>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.from.$invalid">Please select from date</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Leave to</label>
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="date" class="form-control" name="to" ng-model="leave.to" ng-required="true" ng-change="calculateDays()">
+                        </datepicker>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.to.$invalid">Please select to date</p>
+                        <p style="color:red" ng-show="incorrectDate">To date cannot be less than From date</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Number of days</label>
+                        <input type="number" class="form-control" ng-model="leave.noOfDays" name="days" ng-required="true">
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.days.$invalid">Please select no of days</p>
+                        <p style="color:red" ng-show="incorrectDays">Please select valid no of days</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Type of leave</label>
+                        <!--<input type="text" class="form-control" ng-model="leave.type">-->
+                        <select name="type" ng-model="leave.type" ng-required="true" class="form-control" ng-options="type.name for type in leaveTypes">
+                            <option value="">Select Leave Type</option>
+                        </select>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.type.$invalid">Please select leave type</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Comment</label>
+                        <input type="text" class="form-control" ng-model="leave.reason">
+                    </div>
 
-                <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="applyLeave(leaveForm.$valid)">Submit</button>
-                    
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="applyLeave(leaveForm.$valid)">Submit</button>
+
                 </ng-form>
 
                 <!-- Modal -->
@@ -83,7 +87,7 @@
                                 <p>Leave added successfully</p>
                             </div>
                             <div class="modal-footer" style="border:none">
-                               
+
                             </div>
                         </div>
 
@@ -95,8 +99,37 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+    
+    <div id="warningModal" class="modal fade" role="dialog">
+        <div class="modal-dialog ">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div ng-include="'response.html"></div>
+                <div class="modal-body">
+                    <p>This employee has exceeded the limit for {{leave.type.name}} leave.Do you still want to apply the leave?
+                        
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-click="applyLeave(true)">Apply Leave</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
 
 </body>
+
+
 
 
 </html>

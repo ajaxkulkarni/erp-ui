@@ -1,16 +1,23 @@
 <!doctype html>
 <html ng-controller="company">
 
-    <div class="row">
-        
-        <h2 class="text-center">Company Details</h2>
-        
-        <div ng-include="'response.html'"></div>
-        
-        <br/>
-        <div class="col-sm-6 col-sm-offset-3 ">
+<div class="row tpband">
+    <div class="col-sm-6 col-sm-offset-3 ">
+        <a href="#home"><img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
+        </a>
+    </div>
+</div>
 
-            <ng-form name="companyForm">
+<div class="row">
+
+    <h2 class="text-center">Company Details</h2>
+
+    <div ng-include="'response.html'"></div>
+
+    <br/>
+    <div class="col-sm-6 col-sm-offset-3 ">
+
+        <ng-form name="companyForm">
             <div class=" form-group">
                 <label for="usr">Registered company name</label>
                 <input type="text" class="form-control" name="name" ng-model="user.company.name" ng-required="true">
@@ -25,7 +32,7 @@
 
             <div class=" form-group">
                 <label for="usr">Company address</label>
-                <input type="text" class="form-control" name="address"  ng-model="user.company.address" ng-required="true">
+                <input type="text" class="form-control" name="address" ng-model="user.company.address" ng-required="true">
                 <p style="color:red" ng-show="companyFormShowErros == true && companyForm.address.$invalid">Please enter valid Company Address</p>
             </div>
 
@@ -51,33 +58,33 @@
 
             <!--data-toggle="modal" data-target="#myModal"-->
             <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveCompany(companyForm.$valid)">Save</button>
-            </ng-form>
-                
-            <!-- Modal -->
-            <div id="myModal" class="modal fade" role="dialog">
-                <div class="modal-dialog ">
+        </ng-form>
 
-                    <!-- Modal content-->
-                    <div class="modal-content" style="text-align: center;">
-                        <div class="modal-header" style="border:none">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog ">
 
-                        </div>
-                        <div class="modal-body">
-                            <p>Details sent successfully!</br> You will be contacted soon by company executive </p>
-                        </div>
-                        <div class="modal-footer" style="border:none">
-                            <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+                <!-- Modal content-->
+                <div class="modal-content" style="text-align: center;">
+                    <div class="modal-header" style="border:none">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                            <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Back to main page</button>
-                        </div>
                     </div>
+                    <div class="modal-body">
+                        <p>Details sent successfully!</br> You will be contacted soon by company executive </p>
+                    </div>
+                    <div class="modal-footer" style="border:none">
+                        <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
 
+                        <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Back to main page</button>
+                    </div>
                 </div>
+
             </div>
-
-
         </div>
+
+
+    </div>
     <!--</div>
     </div>-->
 </div>

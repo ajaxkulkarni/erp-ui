@@ -5,11 +5,10 @@
 <body>
 
     <div class="row">
-        
+
         <div class="row tpband">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
-
+                <a href="#employees"><img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick"></a>
             </div>
         </div>
 
@@ -20,7 +19,7 @@
             </div>
 
         </div>
-        
+
         <div ng-include="'response.html'"></div>
 
         <div class="col-sm-8 col-sm-offset-2 ">
@@ -45,15 +44,15 @@
                             <td>{{emp.designation}}</td>
                             <td></td>
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btndet">View</button>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="view(emp)">View</button>
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf">Edit Profile</button>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="edit(emp)">Edit Profile</button>
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" data-toggle="modal" data-target="#myModal">Delete Profile</button>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal">Delete Profile</button>
                             </td>
 
                         </tr>
@@ -65,7 +64,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
+    <div id="deleteModal" class="modal fade" role="dialog">
         <div class="modal-dialog ">
 
             <!-- Modal content-->
@@ -74,8 +73,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 </div>
+                <div ng-include="'response.html"></div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete employee profile?
+                    <p>Are you sure you want to delete the employee profile ({{employee.name}})?
                         <br>All employee data will be erased as well.
                         <br>
                         <br>Its advisable to take a backup by saving profile as pdf first.</p>
@@ -83,7 +83,7 @@
                 <div class="modal-footer" style="border:none">
                     <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
 
-                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Delete profile</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-click="deleteEmployee()">Delete profile</button>
                 </div>
             </div>
 
