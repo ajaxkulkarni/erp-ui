@@ -120,16 +120,7 @@ h3{
     padding-top: 10px;
 }
 
-.form-control{
-    margin-top: -5px;
-    padding: inherit;
-    height: 40px;
-    font-size: 25px;
-    color: rgb(64,64,64);
-    border-color: rgb(64,64,64);
-    border-width: medium;
-    box-shadow: none;
-}
+
 .btn{
     width: 180px;
     font-weight: 600;
@@ -328,4 +319,26 @@ dropdown-menu:hover{
 
 .accptmodal {
     color: rgb(0,200,0)
+}
+
+.form-control-2 {
+    margin-top: -5px;
+    padding: inherit;
+    height: 40px;
+    font-size: 25px;
+    color: rgb(64,64,64);
+    border-color: rgb(64,64,64);
+    border-width: medium;
+    box-shadow: none;
+}
+
+.form-control {
+    margin-top: -5px;
+    padding: inherit;
+    height: 40px;
+    font-size: 25px;
+    color: rgb(64,64,64);
+    border-color: rgb(64,64,64);
+    border-width: medium;
+    box-shadow: none;
 }
