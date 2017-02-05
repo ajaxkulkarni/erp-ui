@@ -98,46 +98,45 @@
         
     <hr size="30">
         
-     <div class=" form-group">
-            <label for="usr">House Rent allowance ( % of base salary)</label>
+         <div class=" form-group">
+            <label for="usr">Allowance - H.R.A. ( % of base salary)</label>
             <input type="number" class="form-control set_sal" >
     </div>
         
-     <div class=" form-group">
-            <label for="usr">Conveyance allowance ( % of base salary)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
+       <div class=" form-group">
+                        <label for="pwd">Add  allowances</label>
+                        <!--<input type="emil id" class="form-control" >-->
+                        <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees">
+                            <option value="">Select allowance</option>
+                            <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
+                        </select>
+                       
+                    </div>
+        <button type="button" class="btn btn-secondary btn-lg btn-block butte">Add allowance</button>
+        <br> 
         
-     <div class=" form-group">
-            <label for="usr">Medical allowance ( % of base salary)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
+    <hr size="30">
         
-        <hr size="30">
-        
-     <div class=" form-group">
-            <label for="usr">Other allowances ( % of base salary)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
-
-        <button type="button" class="btn btn-secondary btn-lg btn-block btnpdf">Add</button>
-        </br>  
-     <hr size="30">
-        
-    <div class=" form-group">
+    
+        <div class=" form-group">
             <label for="usr">Deduction - Provident fund ( % of base salary)</label>
             <input type="number" class="form-control set_sal" >
     </div>
         
-    <div class=" form-group">
-            <label for="usr">Deduction - Professional Tax (Amount)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
+       <div class=" form-group">
+                        <label for="pwd">Add  deductions</label>
+                        <!--<input type="emil id" class="form-control" >-->
+                        <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees">
+                            <option value="">Select deduction</option>
+                            <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
+                        </select>
+                       
+                    </div>
+        <button type="button" class="btn btn-secondary btn-lg btn-block butte">Add deduction</button>
+        <br> 
         
-    <div class=" form-group">
-            <label for="usr">Deduction - Other deductions (Amount)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
+    <hr size="30">
+    
         
         <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Structure </button>
     
@@ -153,7 +152,7 @@
                 
             </div>
             <div class="modal-body" >
-                <p>Are you sure you want to Salary structure? <br>Changes may affect salary break-up of current employees as well</p>
+                <p>Are you sure you want to save Salary structure? <br>Changes may affect salary break-up of current employees as well</p>
             </div>
             <div class="modal-footer" style="border:none" >
                 <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->

@@ -186,6 +186,7 @@ h3{
     text-align: center ;
     display: block;
     width: auto;
+    align-content: center;
     
 }
 
@@ -341,4 +342,15 @@ dropdown-menu:hover{
     border-color: rgb(64,64,64);
     border-width: medium;
     box-shadow: none;
+}
+
+.butte {
+    padding: 0px;
+    margin: -1px;
+    width: 220px;
+    height: 35px;
+    font-size: 18px;
+    background-color: white;
+    border-color: rgb(64,64,64);
+    border-width: medium;
 }
