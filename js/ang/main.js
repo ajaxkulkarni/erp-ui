@@ -169,6 +169,18 @@ app.config(function ($routeProvider) {
             templateUrl: "password_reset.html",
             controller: "profile"
         })
+        .when("/salary", {
+            templateUrl: "dashboard_salary.html",
+            controller: "salary"
+        })
+        .when("/salaryStructure", {
+            templateUrl: "salary_structure_dropdown.html",
+            controller: "salaryStructure"
+        })
+        .when("/employeeSalary", {
+            templateUrl: "employee_salary.html",
+            controller: "employeeSalary"
+        })
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {

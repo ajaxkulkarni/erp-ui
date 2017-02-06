@@ -1,234 +1,118 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   
-    
-    
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="ERPstyle.css">
-    <link href='http://fonts.googleapis.com/css?family=Nato<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">' rel='stylesheet' type='text/css'>
-
-    
-<title>HR made easy</title>
-</head>
-    
 <body>
-    
-<!--- <nav class="navbar navbar-default ">
-  <div class="container-fluid stynav">
-    <div class="navbar-header ">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#"><img id="logo" src="imgs/logosmall.png" alt="logo" style: width="150px"></a>
-    </div>
-    <div class="collapse navbar-collapse navtxt" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right" id="navoptions">
-        <li><a href="#">Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-align-justify "></span></a></li> 
-        
-      </ul>
-     
-    </div>
-  </div>
-</nav> --->
-    
-<nav>
-        
-            
-        
-        <ul class="lis1">
-            <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
-            
-             <div class="dropdown lis2">
-            <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown" ><span><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></span>
-            </button>
-            <ul class="dropdown-menu ">
-                <li><a href="#">Logout</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Get in touch</a></li>
-                <li><a href="#">How it works</a></li>
-                <li><a href="#">About us</a></li>
-            </ul>
+
+
+
+
+    <div class="container">
+
+        <div class="row tpband">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
+
+                <img src="imgs/home-icon.png" alt="back" id="homebtn" width=60px style="float:right">
             </div>
-        
-            <!---<li><a href="#" class="logintx">Login</a></li>--->
-        </ul>
-        <div class="navba">
-            <img id="logo" src="imgs/logosmall.png" alt="logo" style: width="170px">
         </div>
-        
-</nav>    
-    
-    
-<div class="container">
-    
-    <div class="row tpband">
-     <div class="col-sm-6 col-sm-offset-3 ">
-         <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
-         
-         <img src="imgs/home-icon.png" alt="back" id="homebtn" width=60px style="float:right">
-     </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 ">
-            <h2 class="pghdgs">Set salary structure</h2>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Set salary structure</h2>
+            </div>
         </div>
-    </div>
-    
-    
-    <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 ">
-    <br>
-    <div class=" form-group">
-            <label for="usr">Base salary ( % of gross salary)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
-        
-    <hr size="30">
-        
-         <div class=" form-group">
-            <label for="usr">Allowance - H.R.A. ( % of base salary)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
-        
-       <div class=" form-group">
-                        <label for="pwd">Add  allowances</label>
-                        <!--<input type="emil id" class="form-control" >-->
-                        <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees">
-                            <option value="">Select allowance</option>
-                            <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
-                        </select>
-                       
+
+        <div ng-include="'response.html'"></div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <br>
+                <div class=" form-group">
+                    <label for="usr">Base salary ( % of gross salary) </label>
+                    <input id="basic" type="number" class="form-control set_sal" ng-model="user.company.basic.percentage">
+                    <p style="color:red" ng-show="basicError && user.company.basic == null">Please enter a valid value</p>
+                </div>
+
+                <hr size="30">
+
+                <div class=" form-group" ng-repeat="salary in user.company.salaryInfo">
+                    <label for="usr">{{salary.rule}}</label>
+                    <input type="number" class="form-control set_sal" ng-model="salary.percentage">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block butte" ng-click="remove(salary)">Remove</button>
+                </div>
+
+                <div class=" form-group">
+                    <label for="pwd">Add allowances</label>
+                    <!--<input type="emil id" class="form-control" >-->
+                    <select name="allowance" class="form-control" ng-model="allowance">
+                        <option value="">Select allowance</option>
+                        <option value="HRA">H.R.A.</option>
+                        <option value="Conveyance">Conveyance</option>
+                    </select>
+
+                </div>
+                <button type="button" class="btn btn-secondary btn-lg btn-block butte" ng-click="add('add')">Add allowance</button>
+                <br>
+
+                <hr size="30">
+
+
+                <div class=" form-group">
+                    <label for="usr">Deduction - Provident fund ( % of base salary)</label>
+                    <input type="number" class="form-control set_sal">
+                </div>
+
+                <div class=" form-group">
+                    <label for="pwd">Add deductions</label>
+                    <!--<input type="emil id" class="form-control" >-->
+                    <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees">
+                        <option value="">Select deduction</option>
+                        <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
+                    </select>
+
+                </div>
+                <button type="button" class="btn btn-secondary btn-lg btn-block butte">Add deduction</button>
+                <br>
+
+                <hr size="30">
+
+
+                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Structure </button>
+
+
+                <!-- Modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog ">
+
+                        <!-- Modal content-->
+                        <div class="modal-content" style="text-align: center;">
+                            <div class="modal-header" style="border:none">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to save Salary structure?
+                                    <br>Changes may affect salary break-up of current employees as well</p>
+                            </div>
+                            <div class="modal-footer" style="border:none">
+                                <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                                <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-click="save()">Save</button>
+                            </div>
+                        </div>
+
                     </div>
-        <button type="button" class="btn btn-secondary btn-lg btn-block butte">Add allowance</button>
-        <br> 
-        
-    <hr size="30">
-        
-    
-        <div class=" form-group">
-            <label for="usr">Deduction - Provident fund ( % of base salary)</label>
-            <input type="number" class="form-control set_sal" >
-    </div>
-        
-       <div class=" form-group">
-                        <label for="pwd">Add  deductions</label>
-                        <!--<input type="emil id" class="form-control" >-->
-                        <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees">
-                            <option value="">Select deduction</option>
-                            <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
-                        </select>
-                       
-                    </div>
-        <button type="button" class="btn btn-secondary btn-lg btn-block butte">Add deduction</button>
-        <br> 
-        
-    <hr size="30">
-    
-        
-        <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Structure </button>
-    
-        
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog ">
+                </div>
+                <br>
 
-        <!-- Modal content-->
-        <div class="modal-content" style="text-align: center;">
-            <div class="modal-header" style="border:none">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                
-            </div>
-            <div class="modal-body" >
-                <p>Are you sure you want to save Salary structure? <br>Changes may affect salary break-up of current employees as well</p>
-            </div>
-            <div class="modal-footer" style="border:none" >
-                <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
-                
-                <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Save</button>
+
+
             </div>
         </div>
-
-        </div>
-        </div> 
-    <br>
-    
-        
-        
     </div>
-</div>
-</div>                
-            
-    
-
-        
-                
-        
-        
- 
-
-    
- 
-    
-    
-    
-
-<!-- Latest compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
 
 
-<!---<footer>
-<div class="navbar navbar-default foocls">
-  <div class="container">
-    <span class="navbar-text">
-      &#169 talnote corp.
-      </span>
-  </div>          
-            
-    
-
-        
-                
-        
-        
- 
-
-    
- 
-    
-    
-    
-
-<!-- Latest compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
 </body>
 
-<footer>
-<!---<div class="navbar navbar-default foocls">
-  <div class="container">
-    <span class="navbar-text">
-      &#169 talnote corp.
-      </span>
-  </div>
-</div> --->
-    
-<div id="foo"></div>   
-</footer>
-    
+
 </html>
