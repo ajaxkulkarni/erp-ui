@@ -33,14 +33,15 @@
                         <option value="">Select Employee</option>
                         <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
                     </select>
-                    <p style="color:red" ng-show="showLeaveErrors && leaveForm.employee.$invalid">Please select an employee</p>
+                    <p style="color:red" ng-show="salaryError && employee == null">Please select an employee</p>
                 </div>
                 <div class="form-group">
                     <label for="usr">Employee Salary </label>
-                    <input id="basic" type="number" class="form-control set_sal" ng-model="employee.salary">
-                    <p style="color:red" ng-show="salaryError && employee.salary == null">Please enter a valid value</p>
+                    <input id="basic" type="number" class="form-control set_sal" ng-model="salary">
+                    <p style="color:red" ng-show="salaryError && salary == null">Please enter a valid value</p>
                 </div>
-
+                
+                
                 <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="save()">Save</button>
 
                 <br>
@@ -48,17 +49,17 @@
                 
                 <div class="form-group">
                     <label for="usr">Basic</label>
-                    <p ng-show="employee.salary > 0">{{(user.company.basic.percentage/100)*(employee.salary)}}</p>
+                    <p ng-show="salary > 0">{{(user.company.basic.percentage/100)*(salary)}}</p>
                 </div>
                 
-                <div class="form-group" ng-repeat="salary in user.company.salaryInfo">
-                    <label for="usr">{{salary.rule}}</label>
-                    <p ng-show="employee.salary > 0">{{(salary.percentage/100)*(user.company.basic.percentage/100)*(employee.salary)}}</p>
+                <div class="form-group" ng-repeat="salaryInfo in user.company.salaryInfo">
+                    <label for="usr">{{salaryInfo.rule}}</label>
+                    <p ng-show="salary > 0">{{(salaryInfo.percentage/100)*(user.company.basic.percentage/100)*(salary)}}</p>
                 </div>
                 
                 <div class="form-group">
                     <label for="usr">Other allowance</label>
-                    <p ng-show="employee.salary > 0">{{getTotal()}}</p>
+                    <p ng-show="salary > 0">{{getTotal()}}</p>
                 </div>
                 
 
