@@ -365,3 +365,23 @@ dropdown-menu:hover{
     width: 250px;
     
 }
+
+.forpad {
+    width: 90%;
+}
+
+.levcard2 {
+    height: auto;
+    
+    
+    border-color: red;
+    border-width: medium;
+    margin-bottom: 0px;
+    padding: 15px;
+
+}
+
+.crdown {
+     padding-top: 30px;
+    padding-right: 10px
+}
