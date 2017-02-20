@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="row tpband">
+            <div class="col-sm-12 ">
+                <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
+
+                <img src="imgs/home-icon.png" alt="back" id="homebtn" width=60px style="float:right">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <h2 class="pghdgs">Salary Info</h2>
+            </div>
+        </div>
+        
+        <div ng-include="'response.html'"></div>
+        
+        <div class="row">
+            <div class="col-sm-1 moliv ">
+
+                <div class=" form-group ">
+                    <select class="form-control" ng-model="year" ng-options="year for year in years">
+                       
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm-1 moliv  ">
+                <div class=" form-group  ">
+
+                    <select class="form-control" ng-model="month" ng-options="m.name for m in months">
+                        
+                    </select>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table distabl table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Gross salary</th>
+                        <th>Total leaves</th>
+                        <th>Net Paid</th>
+                        <th>Account number</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees">
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.financial.salary}}</td>
+                        <td>{{employee.withoutPayLeaves}}</td>
+                        <td>{{employee.financial.amountPayable}}</td>
+                        <td>{{employee.financial.accountNumber}}</td>
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(employee)">Details</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

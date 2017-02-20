@@ -1,180 +1,151 @@
 <!doctype html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   
-    
-    
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="ERPstyle.css">
-    <link href='http://fonts.googleapis.com/css?family=Nato<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">' rel='stylesheet' type='text/css'>
-
-    
-<title>HR made easy</title>
-</head>
-    
 <body>
-    
-<!--- <nav class="navbar navbar-default ">
-  <div class="container-fluid stynav">
-    <div class="navbar-header ">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
-      </button>
-      <a class="navbar-brand" href="#"><img id="logo" src="imgs/logosmall.png" alt="logo" style: width="150px"></a>
-    </div>
-    <div class="collapse navbar-collapse navtxt" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right" id="navoptions">
-        <li><a href="#">Login</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-align-justify "></span></a></li> 
-        
-      </ul>
-     
-    </div>
-  </div>
-</nav> --->
-    
-<nav>
-        
-            
-        
-        <ul class="lis1">
-            <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
-            
-            
-            <div class="dropdown lis2">
-            <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown" ><span><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></span>
-            </button>
-            <ul class="dropdown-menu ">
-                <li><a href="#">Logout</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Get in touch</a></li>
-                <li><a href="#">How it works</a></li>
-                <li><a href="#">About us</a></li>
-            </ul>
+
+
+    <div class="container">
+
+        <div class="row tpband">
+            <div class="col-sm-8 col-sm-offset-2 ">
+                <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
+
+                <img src="imgs/home-icon.png" alt="back" id="homebtn" width=60px style="float:right">
             </div>
-        
-            <!---<li><a href="#" class="logintx">Login</a></li>--->
-        </ul>
-        <div class="navba">
-            <img id="logo" src="imgs/logosmall.png" alt="logo" style: width="170px">
         </div>
-        
-</nav>    
-    
-    
-<div class="container">
-    
-    <div class="row tpband">
-     <div class="col-sm-12 ">
-         <img src="imgs/left-round-512.png" alt="back" id="backbtn" width=50px style="border:thick">
-         
-         <img src="imgs/home-icon.png" alt="back" id="homebtn" width=60px style="float:right">
-     </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-sm-12 ">
-            <h2 class="pghdgs">View leaves</h2>
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 ">
+                <h2 class="pghdgs">View leaves</h2>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-1 moliv ">
-            
-               <div class=" form-group ">
-            <input type="emil id" class="form-control" >
-    </div>
-            
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 levcard">
+
+
+                <h3><span><strong>{{emp.company.name}}</strong><h4><strong>Salary Slip</strong></h4></span></h3>
+                <h4><span><strong> Month & Year : </strong>{{month.name}} {{year}}</span></h4>
+                <hr size="30">
+
+                <h4><span><strong>Employee number : </strong>{{emp.id}}</span></h4>
+                <h4><span><strong>Name : </strong>{{emp.name}}</span></h4>
+                <h4><span><strong> Designation:  </strong> {{emp.designation}}</span></h4>
+
+                <h4><span><strong>Account number : </strong>{{emp.financial.accountNumber}}</span></h4>
+                <h4><span><strong>PF a/c number : </strong>{{emp.financial.pfNumber}}</span></h4>
+                <h4><span><strong>Mode of Payment : </strong>Bank</span></h4>
+
+                <hr size="30">
+
+                <div class="table-responsive">
+                    <table class="table distabl table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Earnings</th>
+                                <th>Gross </th>
+                                <th>Payable</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Basic Salary</td>
+                                <td>{{emp.financial.basic.amount}}</td>
+                                <td>{{emp.financial.basic.amount}}</td>
+
+                            </tr>
+                            <tr ng-repeat="benefit in emp.financial.benefits">
+                                <td>2</td>
+                                <td>{{benefit.rule}}</td>
+                                <td>{{benefit.amount}}</td>
+                                <td>{{benefit.amount}}</td>
+
+                            </tr>
+
+                            <tr>
+                                <td></td>
+
+                                <td><strong>Total Benefits</strong></td>
+                                <td><strong>{{emp.financial.totalBenefits}}</strong></td>
+                               <!-- <td><strong>210000</strong></td>-->
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr size="30">
+
+                    <table class="table distabl table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Deductions</th>
+                                <th></th>
+                                <th>Amount </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="deduction in emp.financial.deductions">
+                                <td>1</td>
+                                <td>{{deduction.rule}}</td>
+                                <td></td>
+                                <td>{{deduction.amount}}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td></td>
+
+                                <td><strong>Total Deductions</strong></td>
+                                <td><strong>{{emp.financial.totalDeductions}}</strong></td>
+                               <!-- <td><strong>210000</strong></td>-->
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+               <!-- <hr size="30">
+
+                <h4><span><strong>Previous Advance : </strong> -- </span></h4>
+                <h4><span><strong>Current Advance : </strong> -- </span></h4>
+                <h4><span><strong> Advance Balance : </strong> -- </span></h4>-->
+
+                <hr size="30">
+
+                <h4><span><strong>Gross Salary : {{emp.financial.salary}} </strong></span></h4>
+                <h4><span><strong>Payable salary : {{emp.financial.amountPayable}} </strong></span></h4>
+                <br>
+
+            </div>
         </div>
-        <div class="col-sm-1 moliv  ">
-               <div class=" form-group  ">
-            <input type="emil id" class="form-control" >
-    </div>
+
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 ">
+                <a href="{{url}}/download/{{emp.company.id}}/{{emp.id}}/{{year}}/{{month.id}}"><button type="button" class="btn btn-secondary btn-lg btn-block " data-toggle="modal" data-target="#myModal">Print</button></a> 
+            </div>
         </div>
-        
+
+
     </div>
-    
-                                                                                          
-  <div class="table-responsive">          
-  <table class="table distabl table-hover">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Gross salsry</th>
-        <th>Total leaves</th>
-        <th>Net Paid</th>
-        <th>Account number</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Tamraj kilvish</td>
-        <td>350000</td>
-        <td>3</td>
-          <td>320000</td>
-          <td>BSI4854832</td>
-        <td><button type="button" class="btn btn-secondary btn-sm btn-block btndet">Details</button></td>
-      </tr>
-    <tr>
-        <td>2</td>
-        <td>Dr</td>
-        <td>250000</td>
-        <td>3</td>
-        <td>230000</td>
-        <td>SBI7635387</td>
-        <td><button type="button" class="btn btn-secondary btn-sm btn-block btndet">Details</button></td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-</div>
-    
 
-                
-            
-    
 
-        
-        
-        
-        
-        
- 
-
-    
- 
-    
-    
-    
-
-<!-- Latest compiled and minified JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
 </body>
 
-<footer>
-<!---<div class="navbar navbar-default foocls">
-  <div class="container">
-    <span class="navbar-text">
-      &#169 talnote corp.
-      </span>
-  </div>
-</div> --->
-    
-<div id="foo"></div>   
-</footer>
-    
+
+
 </html>

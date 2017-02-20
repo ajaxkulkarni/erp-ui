@@ -1,7 +1,7 @@
 var app = angular.module("app", ["ngRoute","720kb.datepicker"]);
 
-//var host = "http://localhost:8080/erp-service";
-var host = "http://35.167.123.68:8080/erp";
+var host = "http://localhost:8080/erp-service";
+//var host = "http://35.167.123.68:8080/erp";
 var root = host + "/service";
 var rootAdmin = host + "/adminService";
 
@@ -180,6 +180,14 @@ app.config(function ($routeProvider) {
         .when("/employeeSalary", {
             templateUrl: "employee_salary.html",
             controller: "employeeSalary"
+        })
+        .when("/employeeSalarySlips", {
+            templateUrl: "view_employees_salary.html",
+            controller: "employeeSalarySlips"
+        })
+        .when("/employeeSalarySlip", {
+            templateUrl: "view_employee_salary.html",
+            controller: "employeeSalarySlip"
         })
 });
 

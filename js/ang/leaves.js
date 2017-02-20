@@ -65,27 +65,26 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
             console.log("Incorrect date!");
             return;
         }
-        if($scope.leave.user.leaveCount != null && $scope.leave.user.leaveCount.length > 0 && !$scope.modalShown) {
-            for(var i = 0; i < $scope.leave.user.leaveCount.length; i++ ) {
-                if($scope.leave.type.id == $scope.leave.user.leaveCount[i].id) {
-                    if($scope.leave.noOfDays > $scope.leave.user.leaveCount[i].available) {
-                        console.log("Exceeded limit!");
-                        $("#warningModal").modal('show');
-                        $scope.modalShown = true;
-                        return;
-                    }
-                }
-            }
-        }
+       
+        
         //if($scope.user.)
         $scope.showProgress = true;
         $scope.leave.appliedBy = $scope.user;
         $scope.dataObj.leave = $scope.leave;
+         if($scope.modalShown) {
+            $scope.dataObj.leave.approval = 'Y';
+        }
         userService.callService($scope, "/applyLeave").then(function (response) {
             //$.skylo('end');
             $scope.showProgress = false;
             $scope.response = response;
-            userService.showResponse($scope, "Leave applied successfully!");
+            if($scope.response.status == -101) {
+                console.log("Exceeded limit!");
+                $("#warningModal").modal('show');
+                $scope.modalShown = true;
+            } else {
+                userService.showResponse($scope, "Leave applied successfully!");    
+            }
             //$("#myModal").modal('show');
             //console.log(response.user.company);
 

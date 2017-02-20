@@ -1,3 +1,9 @@
+var years= [2016,2017,2018,2019,2020];
+var months= [{ name: "January", id: 0 }, { name: "February", id: 1 }, { name: "March", id: 2 }, { name: "April", id: 3 },
+                    { name: "May", id: 4 }, { name: "June", id: 5 }, { name: "July", id: 6 }, { name: "August", id: 7 },
+                    { name: "September", id: 8 }, { name: "October", id: 9 }, { name: "November", id: 10 }, { name: "December", id: 11 }
+                   ];
+
 angular.module("app").controller('salaryStructure', function ($scope, userService, $location) {
 
     $scope.response = {};
@@ -17,10 +23,16 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
     $scope.add = function (type) {
         var salary = {};
         salary.type = type;
-        salary.rule = $scope.allowance;
+        if(type == 'add') {
+            salary.rule = $scope.allowance;
+            salary.description = $("#allowance").text();
+        } else {
+            salary.rule = $scope.deduction;
+            salary.description = $("#deduction").text();
+        }
         salary.amount = 0;
         salary.percentage = 0;
-        salary.description = $("#allowance").text();
+       
         $scope.user.company.salaryInfo.push(salary);
     }
 
@@ -69,6 +81,58 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
     }
 
     $scope.getSalaryStructure();
+
+});
+
+angular.module("app").controller('employeeSalarySlips', function ($scope, userService, $location) {
+
+    $scope.response = {};
+    $scope.month = {};
+    
+    console.log("Employee Salary Slips structure loaded ..");
+    $scope.showProgress = false;
+    $scope.dataObj = {};
+    $scope.user = JSON.parse(localStorage.erpUser);
+    $scope.user.company.filter = {};
+    $scope.basicError = false;
+    $scope.years = years;
+    $scope.months = months;
+    $scope.month = $scope.months[new Date().getMonth()];
+    $scope.year = new Date().getYear() + 1900;
+    console.log("Month:" + $scope.month.id + " Year:" + $scope.year);
+    
+    /*$.skylo({
+        state: 'success',
+        inchSpeed: 200,
+        initialBurst: 30,
+        flat: false
+    });*/
+
+
+    
+    $scope.getAllEmployeeSalary = function () {
+        $scope.showProgress = true;
+        $scope.user.company.filter.month = $scope.month.id;
+        $scope.user.company.filter.year = $scope.year;
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/getAllEmployeeSalaryInfo").then(function (response) {
+            //$.skylo('end');
+            $scope.showProgress = false;
+            $scope.response = response;
+            userService.showResponse($scope, "");
+            $scope.employees = response.company.employees;
+            //console.log("2 Month:" + $scope.month + " Year:" + $scope.year);
+
+        });
+    }
+    
+    $scope.viewDetails = function(emp) {
+        emp.company = $scope.user.company;
+        localStorage.empFinancial = JSON.stringify(emp);
+        window.location.href = "#employeeSalarySlip";
+    }
+
+    $scope.getAllEmployeeSalary();
 
 });
 
@@ -160,4 +224,22 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     
     $scope.getSalaryStructure();
 
+});
+
+angular.module("app").controller('employeeSalarySlip', function ($scope, userService, $location) {
+
+    $scope.emp = {};
+    
+    console.log("Employee Salary Slip loaded ..");
+    $scope.showProgress = false;
+    $scope.dataObj = {};
+    $scope.user = JSON.parse(localStorage.erpUser);
+    //console.log(localStorage.empFinancial);
+    $scope.emp = JSON.parse(localStorage.empFinancial);
+    
+    $scope.month = months[$scope.emp.company.filter.month];
+    $scope.year = $scope.emp.company.filter.year;
+    console.log("Month:" + $scope.month.id + " Year:" + $scope.year);
+    $scope.url = root;
+  
 });
