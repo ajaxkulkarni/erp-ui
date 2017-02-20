@@ -1,7 +1,7 @@
 body{
     font-family: "Lato", sans-serif !important;
     font-size: 20px;
-    color: rgb(64,64,64);
+    color: rgb(80,80,80);
    
 }
 
@@ -181,6 +181,8 @@ h3{
 }
 #backbtn{
    margin-top: 5px;
+    margin-left: 0px;
+    padding-bottom: 0px;
 }
 .dashimgs{
     text-align: center ;
@@ -201,6 +203,7 @@ h3{
     margin-top: 10px;
    padding-bottom: 10px;
     text-align: center;
+    
 }
 .levcol{
     height: 900px;
@@ -251,10 +254,11 @@ h3{
 .levcard{
     height: auto;
     
-    border-style: solid;
+    /*border-style: solid;
     border-color: rgb(64,64,64);
-    border-width: medium;
+    border-width: medium;*/
     margin-bottom: 20px;
+    box-shadow: 0 0 5px rgb(200,200,200); 
 }
 
 
@@ -338,9 +342,9 @@ dropdown-menu:hover{
     padding: inherit;
     height: 40px;
     font-size: 25px;
-    color: rgb(64,64,64);
-    border-color: rgb(64,64,64);
-    border-width: medium;
+    color: rgb(80,80,80);
+    border-color: rgb(140,140,140);
+    border-width: 0.5 px;
     box-shadow: none;
 }
 
