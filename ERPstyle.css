@@ -1,7 +1,7 @@
 body{
     font-family: "Lato", sans-serif !important;
-    font-size: 20px;
-    color: rgb(80,80,80);
+    font-size: 18px;
+    color: rgb(120,120,120);
    
 }
 
@@ -174,7 +174,7 @@ h3{
 .tpband{
     height: 60px;
     width: auto;
-    background-color: rgb(177,213,239);
+    background-color: none;
     margin-bottom: -10px;
     text-align: left;
      
@@ -183,6 +183,7 @@ h3{
    margin-top: 5px;
     margin-left: 0px;
     padding-bottom: 0px;
+    
 }
 .dashimgs{
     text-align: center ;
@@ -212,7 +213,9 @@ h3{
 }
 
 #foo{
-    position: relative;
+    position: fixed;
+    top: 90%;
+    width: 100%;
     background-color: white;
     height: 100px;
     box-shadow: 0 0 5px rgb(200,200,200); 
@@ -343,9 +346,10 @@ dropdown-menu:hover{
     height: 40px;
     font-size: 25px;
     color: rgb(80,80,80);
-    border-color: rgb(140,140,140);
-    border-width: 0.5 px;
+    border-color: rgb(200,200,200);
+    border-width: 0.5px;
     box-shadow: none;
+    
 }
 
 .butte {
@@ -388,4 +392,8 @@ dropdown-menu:hover{
 .crdown {
      padding-top: 30px;
     padding-right: 10px
+}
+
+html,body{
+    height: 100%;
 }
