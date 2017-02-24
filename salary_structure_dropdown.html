@@ -26,19 +26,24 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <br>
+                
+                
+                <div class="row ropad">
+                    
                 <div class=" form-group">
                     <label for="usr">Base salary ( % of gross salary) </label>
                     <input id="basic" type="number" class="form-control set_sal" ng-model="user.company.basic.percentage">
                     <p style="color:red" ng-show="basicError && user.company.basic == null">Please enter a valid value</p>
                 </div>
-
-                <hr size="30">
+                </div>
+                
+                <div class="row ropad grrow">
+            
                 
                  <div class=" form-group">
                     <label for="pwd">Add allowances</label>
                     <!--<input type="emil id" class="form-control" >-->
-                    <select name="allowance" class="form-control" ng-model="allowance">
+                    <select name="allowance" class="form-control forpad" ng-model="allowance ">
                         <option value="">Select allowance</option>
                         <option value="HRA">H.R.A.(% of base salary)</option>
                         <option value="Conveyance">Conveyance (% of base salary)</option>
@@ -46,10 +51,10 @@
                     </select>
 
                 </div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block butte" ng-click="add('add')">Add allowance</button>
-                <br>
-
-                <hr size="30">
+                <button type="button" class="btn  btn-xs adbtun " ng-click="add('add')"><span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" width=40px ></span></button>
+                
+                    
+                </div>
                 <!--<div class=" form-group" ng-repeat="salary in user.company.salaryInfo">
                     <label for="usr">{{salary.rule}}</label>
                     <input type="number" class="form-control set_sal" ng-model="salary.percentage">
@@ -57,7 +62,7 @@
                 </div>-->
 
                 <div class="row" ng-repeat="salary in user.company.salaryInfo">
-                    <div class="levcard2" ng-show="salary.type == 'add'">
+                    <div class="levcard2 crcompt" ng-show="salary.type == 'add'">
 
                         <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
                             <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
@@ -88,12 +93,15 @@
                
 
                 <hr size="30">
+                
+                
+                <div class="row ropad grrow">
 
-
+                
                 <div class=" form-group">
                     <label for="pwd">Add deductions</label>
                     <!--<input type="emil id" class="form-control" >-->
-                    <select name="deduction" class="form-control" ng-model="deduction">
+                    <select name="deduction" class="form-control forpad" ng-model="deduction">
                         <option value="">Select deduction</option>
                         <option value="Provident fund">Provident Fund</option>
                         <option value="Professional Tax">Professional Tax</option>
@@ -101,8 +109,10 @@
                     </select>
 
                 </div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block butte" ng-click="add('sub')">Add deduction</button>
-                <br>
+                <button type="button" class="btn  btn-xs adbtun" ng-click="add('sub')"><span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" width=40px ></span></button>
+                
+                
+            </div>
 
                 <hr size="30">
                 
@@ -134,6 +144,8 @@
 
                     </div>
                 </div>
+                
+                <hr size="30">
 
 
                 <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Structure </button>

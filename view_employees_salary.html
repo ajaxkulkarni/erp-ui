@@ -41,14 +41,21 @@
                 </div>
 
             </div>
-            <div class="col-sm-1 moliv  ">
+            <div class="col-sm-1 moliv subsalinfo  ">
                 <div class=" form-group  ">
-                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="getAllEmployeeSalary()">Submit</button>
+                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet salmit" ng-click="getAllEmployeeSalary()">Submit</button>
                    
                 </div>
 
             </div>
-           
+            
+           <div class="col-sm-4   ">
+                <div class=" form-group  ">
+                    <button type="button" class="btn btn-xs  nbtn " ng-click="getAllEmployeeSalary()"><span><img src="imgs/n_excel.png" alt="back" id="closbtn" width=50px ></span></button>
+                   
+                </div>
+
+            </div>
             
         </div>
 
@@ -70,7 +77,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)">
-                        <td><span ng-show="employee.selected">S</span></td>
+                        <td><span ng-show="employee.selected"><span><img src="imgs/n_tick.png" alt="back" id="closbtn" width=20px ></span></span></td>
                         <td>{{$index + 1}}</td>
                         <td>{{employee.name}}</td>
                         <td>{{employee.id}}</td>
