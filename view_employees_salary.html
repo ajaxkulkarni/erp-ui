@@ -41,7 +41,15 @@
                 </div>
 
             </div>
+            <div class="col-sm-1 moliv  ">
+                <div class=" form-group  ">
+                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="getAllEmployeeSalary()">Submit</button>
+                   
+                </div>
 
+            </div>
+           
+            
         </div>
 
 
@@ -49,8 +57,10 @@
             <table class="table distabl table-hover">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>#</th>
                         <th>Name</th>
+                        <th>Emp ID</th>
                         <th>Gross salary</th>
                         <th>Total leaves</th>
                         <th>Net Paid</th>
@@ -59,9 +69,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="employee in employees">
-                        <td>{{employee.id}}</td>
+                    <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)">
+                        <td><span ng-show="employee.selected">S</span></td>
+                        <td>{{$index + 1}}</td>
                         <td>{{employee.name}}</td>
+                        <td>{{employee.id}}</td>
                         <td>{{employee.financial.salary}}</td>
                         <td>{{employee.withoutPayLeaves}}</td>
                         <td>{{employee.financial.amountPayable}}</td>

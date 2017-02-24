@@ -91,6 +91,7 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
 
     $scope.response = {};
     $scope.month = {};
+    $scope.selectedEmployees = [];
     
     console.log("Employee Salary Slips structure loaded ..");
     $scope.showProgress = false;
@@ -129,12 +130,32 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
         });
     }
     
+    $scope.selectEmployee = function(employee) {
+        if(employee.selected) {
+            employee.selected = false
+        } else {
+            employee.selected = true;
+        }
+        console.log("Count:" + $scope.selectedEmployees.length);
+    }
+    
+    $scope.isEmployeeSelected = function(employee) {
+        var i = 0;
+        for(i = 0; i< $scope.selectedEmployees.length; i++ ) {
+            if($scope.selectedEmployees[i] == employee.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     $scope.viewDetails = function(emp) {
         emp.company = $scope.user.company;
         localStorage.empFinancial = JSON.stringify(emp);
         window.location.href = "#employeeSalarySlip";
     }
 
+        
     $scope.getAllEmployeeSalary();
 
 });
