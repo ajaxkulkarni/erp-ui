@@ -32,7 +32,10 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
         }
         salary.amount = 0;
         salary.percentage = 0;
-       
+        salary.amountType = 'percentage';
+        if(salary.rule == 'Custom') {
+            salary.customRule = true;
+        }
         $scope.user.company.salaryInfo.push(salary);
     }
 

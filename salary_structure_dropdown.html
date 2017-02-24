@@ -42,6 +42,7 @@
                         <option value="">Select allowance</option>
                         <option value="HRA">H.R.A.(% of base salary)</option>
                         <option value="Conveyance">Conveyance (% of base salary)</option>
+                        <option value="Custom">Custom</option>
                     </select>
 
                 </div>
@@ -63,9 +64,20 @@
                         </button>
 
                         <div class=" form-group forpad">
-                            <label for="usr">{{salary.rule}}</label>
-                            <input type="number" class="form-control set_sal" ng-model="salary.percentage">
-
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="usr">{{salary.rule}}</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage">
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" ng-model="salary.amountType">
+                                        <option value="percentage">%</option>
+                                        <option value="amount">Rs./-</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -83,6 +95,7 @@
                         <option value="">Select deduction</option>
                         <option value="Provident fund">Provident Fund</option>
                         <option value="Professional Tax">Professional Tax</option>
+                        <option value="Custom">Custom</option>
                     </select>
 
                 </div>
@@ -99,8 +112,21 @@
                         </button>
 
                         <div class=" form-group forpad">
-                            <label for="usr">{{salary.rule}}</label>
-                            <input type="number" class="form-control set_sal" ng-model="salary.percentage">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="usr" ng-show="!salary.customRule">{{salary.rule}}</label>
+                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule">
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage">
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control" ng-model="salary.amountType">
+                                        <option value="percentage">%</option>
+                                        <option value="amount">Rs./-</option>
+                                    </select>
+                                </div>
+                            </div>
 
                         </div>
 
