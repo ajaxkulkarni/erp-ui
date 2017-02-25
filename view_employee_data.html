@@ -20,27 +20,35 @@
 
 
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 ">
-            <br>
+        <div class="col-sm-6 col-sm-offset-3  ">
+         <div class="row fullprof">
+             
+         <div class="col-sm-6 ">
+            </div>
+             
+        <div class="col-sm-6 col-sm-offset-6  ">
             <div class=" form-group">
                 <label for="usr">Employee number</label>
-                <h3 type="number" class="form-control">{{emp.id}}</h3>
+                <h3 type="number" class="viewempinf">{{emp.id}}</h3>
             </div>
             <div class=" form-group">
                 <label for="pwd">Name</label>
-                <h3 class="form-control">{{emp.name}}</h3>
+                <h3 class="viewempinf">{{emp.name}}</h3>
             </div>
-
-            <hr size="30">
             
+         </div>
+            
+         <div class="row">    
+
+          <div class="ropad grrow"> 
             <div class=" form-group">
                 <label for="pwd">Current designation</label>
-                <h3 class="form-control">{{emp.designation}}</h3>
+                <h3 class="viewempinf">{{emp.designation}}</h3>
             </div>
 
             <div class=" form-group">
                 <label for="pwd">Department / Function</label>
-                <h3 class="form-control">{{emp.department}}</h3>
+                <h3 class="viewempinf">{{emp.department}}</h3>
             </div>
             <!--<div class=" form-group">
                 <label for="pwd">Reporting to</label>
@@ -48,54 +56,62 @@
             </div>-->
             <div class=" form-group">
                 <label for="pwd">Location</label>
-                <h3 class="form-control">{{emp.location}}</h3>
+                <h3 class="viewempinf">{{emp.location}}</h3>
             </div>
-            <div class=" form-group">
-                <label for="pwd">Qualification</label>
-                <h3 class="form-control">{{emp.qualification}}</h3>
+             
+             <div class=" form-group">
+                <label for="usr">Joining date</label>
+                <h3 class="viewempinf">--</h3>
+            </div>
+             
+             <div class=" form-group">
+                <label for="pwd">Employee type</label>
+                <h3 class="viewempinf">{{emp.type}}</h3>
+            </div>
+            </div>  
             </div>
             
             <hr size="30">
             
             <div class=" form-group">
-                <label for="pwd">Employee type</label>
-                <h3 class="form-control">{{emp.type}}</h3>
+                <label for="pwd">Qualification</label>
+                <h3 class="viewempinf">{{emp.qualification}}--</h3>
             </div>
-            <div class=" form-group">
-                <label for="usr">Joining date</label>
-                <h3 class="form-control"></h3>
-            </div>
+             
+            
 
             <div class=" form-group">
                 <label for="pwd">Previous experience details</label>
-                <h3 class="form-control"></h3>
+                <h3 class="viewempinf">--</h3>
             </div>
 
             <hr size="30">
 
             <div class=" form-group" style="display:block">
                 <label for="usr">Employee Pan number</label>
-                <h3 class="form-control">{{emp.financial.pan}}</h3>
+                <h3 class="viewempinf">{{emp.financial.pan}}</h3>
             </div>
 
             <div class=" form-group">
                 <label for="usr">Employee account number</label>
-                <h3 class="form-control">{{emp.financial.accountNumber}}</h3>
+                <h3 class="viewempinf">{{emp.financial.accountNumber}}</h3>
             </div>
 
             <div class=" form-group">
                 <label for="pwd">Bank name</label>
-                <h3 class="form-control"></h3>
+                <h3 class="viewempinf">--</h3>
             </div>
 
             <div class=" form-group">
                 <label for="pwd">Provident fund (PF) number</label>
-                <h3 class="form-control"></h3>
+                <h3 class="viewempinf">--</h3>
             </div>
-
+             
+             </div>
 
             <button type="button" class="btn btn-secondary btn-lg btn-block ">Print</button>
 
+        
         </div>
     </div>
 

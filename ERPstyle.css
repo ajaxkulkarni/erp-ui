@@ -480,3 +480,21 @@ html,body{
 
 
 
+
+.fullprof {
+     height: auto;
+    padding: 15px;
+    /*border-style: solid;
+    border-color: rgb(64,64,64);
+    border-width: medium;*/
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgb(200,200,200); 
+}
+
+.viewempinf {
+    margin-top: -5px;
+    
+    font-size: 25px;
+    color: rgb(100,100,100);
+    font-weight: 300;!important 
+}
