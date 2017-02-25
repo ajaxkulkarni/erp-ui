@@ -93,7 +93,7 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
     $scope.month = {};
     $scope.selectedEmployees = [];
     
-    console.log("Employee Salary Slips structure loaded ..");
+    console.log("Employee Salary Slips loaded ..");
     $scope.showProgress = false;
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
@@ -104,6 +104,8 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
     $scope.month = $scope.months[new Date().getMonth()];
     $scope.year = new Date().getYear() + 1900;
     console.log("Month:" + $scope.month.id + " Year:" + $scope.year);
+    $scope.url = root;
+    console.log(root);
     
     /*$.skylo({
         state: 'success',
