@@ -75,8 +75,8 @@ h1{
     height: 70px;
     width: 48px;
     
-    color: rgb(64,64,64);
-    padding-top: 20px;
+    color: black;
+    padding-top: 25px;
     padding-bottom: 5px;
 }
 
@@ -86,24 +86,32 @@ h1{
 
 
 .splashline{
-    
-    text-align: left;
+   
+    text-align: center;
     padding-left: 10px;
-    padding-right: 10px; 
+    padding-right: 10px;
+    height: 10px;
+    position: fixed
+    width=auto;
 }
 
 #spltxt{
-    padding-top: 5px;
+    position: relative;
+    
+    display: inline-block;
     font-size: 300%;
-    font-weight: 500 !important;
+    background: white;
+    color:rgb(100,100,100);
+    
 }
 #splinfo{
     margin-top: 0px;
     display: block;
+    color: white;
    
 }
 .teamim{
-    width:auto;
+    height
     
     text-align: center;
     padding-bottom: 15px;
@@ -143,8 +151,7 @@ h1{
 }
 
 #closbtn{
-    margin-top: 5px ;
-    margin-right: -5px;
+    
     opacity: 0.8;
     float: right;
 }
@@ -353,11 +360,12 @@ dropdown-menu:hover{
     margin-top: -5px;
     padding: inherit;
     height: 40px;
-    font-size: 18px;
+    font-size: 22px;
     color: rgb(80,80,80);
     border-color: rgb(200,200,200);
     border-width: 0.5px;
     box-shadow: none;
+    padding-left: 10px;
     
 }
 
@@ -493,8 +501,75 @@ html,body{
 
 .viewempinf {
     margin-top: -5px;
-    
     font-size: 25px;
     color: rgb(100,100,100);
     font-weight: 300;!important 
+}
+
+.immod {
+    width=100%;
+}
+
+.bakdiv {
+    background-image: url("imgs/space-desk-workspace-coworking.jpg");
+    padding-bottom: 400px;
+}
+
+.fximg {
+    position:fixed;
+    width: auto
+}
+
+.locwid {
+    width: 80%;
+}
+
+.btnlocmod {
+    margin-top:-40px;
+}
+
+
+
+.ciewlocbac {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: rgb(240,240,240);
+}
+
+.frpds {
+    padding-left: 15px;
+}
+
+.frpdsdr {
+    padding-left: 15px;
+    padding-top: 10px;
+    background:rgb(240,240,240); 
+    margin-bottom: 15px;
+}
+
+.usrimgvew {
+    padding-bottom: 15px;
+    margin-top: -35px;
+    text-align: center;
+}
+
+
+
+.foocomplogo {
+    float: right;
+    margin-right: -35px;
+    margin-top: 20px;
+    display: block;
+    padding: 0px;
+}
+
+.footxt {
+    margin-top: 0px;
+    margin-right: 20px;
+    float: right;
+}
+
+.jusadm {
+    margin-top: -25px;
+    margin-bottom: 15px;
 }
