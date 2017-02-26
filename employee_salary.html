@@ -57,10 +57,13 @@
                         <label for="usr">Other allowance</label>
                         <p ng-show="salary > 0">{{getTotal()}}</p>
                     </div>
-
                     
+                    </div>
+                <br>
 
-                    <div class="form-group" ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'sub'">
+                    <div class="row ropad grrow ">
+
+                    <div class="form-group " ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'sub'">
                         <label for="usr">{{salaryInfo.rule}}</label>
                         <p ng-show="salary > 0">{{getAmount(salaryInfo)}}</p>
                     </div>
