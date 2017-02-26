@@ -88,22 +88,25 @@
                                 <input type="text" class="form-control" ng-model="employee.joiningDate">
                             </datepicker>
                         </div>
-                        <br/>
-                        <div class=" form-group ropad grrow">
+                        <br>
+                        
+                        
+                        <div class=" form-group ropad grrow locpadt">
                             <label for="pwd">Previous experience details</label>
                             <div class="row">
-                                <div class="col-sm-4">
+                                <div class="col-sm-12">
                                     <input type="text" class="form-control" ng-model="companyName">
                                 </div>
-                                <div class="col-sm-3">
-                                    <select class="form-control locwid" ng-model="yearFrom" ng-options="year.name for year in years">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <select class="form-control locdat" ng-model="yearFrom" ng-options="year.name for year in years">
                                     </select>
-                                </div>
-                                <div class="col-sm-3">
-                                    <select class="form-control locwid" ng-model="yearTo" ng-options="year.name for year in years2">
+                                
+                                    <select class="form-control locdat" ng-model="yearTo" ng-options="year.name for year in years2">
                                     </select>
-                                </div>
-                                <div class="col-sm-2">
+                                
+                               
                                     <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
                                 </div>
                             </div>
@@ -120,6 +123,7 @@
                         <div class=" form-group ropad grrow">
                             <label for="pwd">Qualification</label>
                             <input type="text" class="form-control locwid " ng-model="employee.qualification">
+                            
                             <span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
                         </div>
 

@@ -29,12 +29,14 @@
             <div class="col-sm-8 col-sm-offset-2 levcard">
 
 
-                <h3><span><strong>{{emp.company.name}}</strong><h4><strong>Salary Slip</strong></h4></span></h3>
+                <h2><span><strong>{{emp.company.name}}</strong><h4><strong>Salary Slip</strong></h4></span></h2>
                 <h4><span><strong> Month & Year : </strong>{{month.name}} {{year}}</span></h4>
                 <hr size="30">
 
-                <h4><span><strong>Employee number : </strong>{{emp.id}}</span></h4>
+               
                 <h4><span><strong>Name : </strong>{{emp.name}}</span></h4>
+                 <h4><span><strong>Employee number : </strong>{{emp.id}}</span></h4>
+                
                 <h4><span><strong> Designation:  </strong> {{emp.designation}}</span></h4>
 
                 <h4><span><strong>Account number : </strong>{{emp.financial.accountNumber}}</span></h4>
@@ -76,6 +78,7 @@
                                 <td><strong>Total Benefits</strong></td>
                                 <td><strong>{{emp.financial.totalBenefits}}</strong></td>
                                <!-- <td><strong>210000</strong></td>-->
+                                <td></td>
 
                             </tr>
                         </tbody>
@@ -107,6 +110,7 @@
                                 <td></td>
 
                                 <td><strong>Total Deductions</strong></td>
+                                <td></td>
                                 <td><strong>{{emp.financial.totalDeductions}}</strong></td>
                                <!-- <td><strong>210000</strong></td>-->
 
@@ -125,8 +129,8 @@
 
                 <hr size="30">
 
-                <h4><span><strong>Gross Salary : {{emp.financial.salary}} </strong></span></h4>
-                <h4><span><strong>Payable salary : {{emp.financial.amountPayable}} </strong></span></h4>
+                <h3><span><strong>Gross Salary : Rs {{emp.financial.salary}}/- </strong></span></h3>
+                <h3><span><strong>Payable salary : Rs {{emp.financial.amountPayable}}/- </strong></span></h3>
                 <br>
 
             </div>
