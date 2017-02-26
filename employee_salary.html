@@ -8,7 +8,7 @@
 
         <div class="row tpband">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <a href="#leaves"><img src="imgs/back_icon_grey.png" alt="back" id="backbtn" width=50px style="border:thick">
+                <a href="#salary"><img src="imgs/back_icon_grey.png" alt="back" id="backbtn" width=50px style="border:thick">
                 </a>
             </div>
         </div>
@@ -24,7 +24,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
-                
+
 
                 <div class="form-group">
                     <label for="pwd">Name</label>
@@ -40,29 +40,36 @@
                     <input id="basic" type="number" class="form-control set_sal" ng-model="salary">
                     <p style="color:red" ng-show="salaryError && salary == null">Please enter a valid value</p>
                 </div>
-                
+
                 <div class="row ropad grrow">
 
-                <div class="form-group">
-                    <label for="usr">Basic</label>
-                    <p ng-show="salary > 0">{{(user.company.basic.percentage/100)*(salary)}}</p>
+                    <div class="form-group">
+                        <label for="usr">Basic</label>
+                        <p ng-show="salary > 0">{{(user.company.basic.percentage/100)*(salary)}}</p>
+                    </div>
+
+                    <div class="form-group" ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'add'">
+                        <label for="usr">{{salaryInfo.rule}}</label>
+                        <p ng-show="salary > 0">{{getAmount(salaryInfo)}}</p>
+                    </div>
+
+                    <div class="form-group ontmarg">
+                        <label for="usr">Other allowance</label>
+                        <p ng-show="salary > 0">{{getTotal()}}</p>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group" ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'sub'">
+                        <label for="usr">{{salaryInfo.rule}}</label>
+                        <p ng-show="salary > 0">{{getAmount(salaryInfo)}}</p>
+                    </div>
+
                 </div>
-                
-                <div class="form-group" ng-repeat="salaryInfo in user.company.salaryInfo">
-                    <label for="usr">{{salaryInfo.rule}}</label>
-                    <p ng-show="salary > 0">{{(salaryInfo.percentage/100)*(user.company.basic.percentage/100)*(salary)}}</p>
-                </div>
-                
-                <div class="form-group ontmarg">
-                    <label for="usr">Other allowance</label>
-                    <p ng-show="salary > 0">{{getTotal()}}</p>
-                </div>
-                
-                </div>
-                
+
                 <button type="button" class="btn btn-secondary btn-lg btn-block ontmbtu " ng-click="save()">Save</button>
-                    
-                
+
+
 
             </div>
         </div>

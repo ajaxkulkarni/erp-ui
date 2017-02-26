@@ -38,14 +38,14 @@
                     <div class=" form-group">
                         <label for="usr">Leave from</label>
                         <datepicker date-format="yyyy-MM-dd">
-                            <input type="date" class="form-control" name="from" ng-model="leave.from" ng-required="true" ng-change="calculateDays()">
+                            <input type="text" class="form-control" name="from" ng-model="leave.from" ng-required="true" ng-change="calculateDays()">
                         </datepicker>
                         <p style="color:red" ng-show="showLeaveErrors && leaveForm.from.$invalid">Please select from date</p>
                     </div>
                     <div class=" form-group">
                         <label for="usr">Leave to</label>
                         <datepicker date-format="yyyy-MM-dd">
-                            <input type="date" class="form-control" name="to" ng-model="leave.to" ng-required="true" ng-change="calculateDays()">
+                            <input type="text" class="form-control" name="to" ng-model="leave.to" ng-required="true" ng-change="calculateDays()">
                         </datepicker>
                         <p style="color:red" ng-show="showLeaveErrors && leaveForm.to.$invalid">Please select to date</p>
                         <p style="color:red" ng-show="incorrectDate">To date cannot be less than From date</p>

@@ -38,13 +38,38 @@
 
             <div class=" form-group">
                 <label for="usr">Company TAN number</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" ng-model="user.company.tan">
             </div>
 
             <div class=" form-group">
                 <label for="usr">Telephone number</label>
                 <input type="text" class="form-control" name="phone" ng-model="user.company.phone" ng-required="true">
                 <p style="color:red" ng-show="companyFormShowErros == true && companyForm.phone.$invalid">Please enter valid Company Contact number</p>
+            </div>
+            
+            <div class=" form-group">
+                <label for="usr">Company Account number</label>
+                <input type="text" class="form-control" ng-model="user.company.financial.accountNumber">
+            </div>
+            
+            <div class=" form-group">
+                <label for="usr">Company PAN</label>
+                <input type="text" class="form-control" ng-model="user.company.financial.pan">
+            </div>
+            
+            <div class=" form-group">
+                <label for="usr">Company Bank name</label>
+                <input type="text" class="form-control" ng-model="user.company.financial.bankName">
+            </div>
+            
+            <div class=" form-group">
+                <label for="usr">Company Bank Branch</label>
+                <input type="text" class="form-control" ng-model="user.company.financial.branchName">
+            </div>
+            
+            <div class=" form-group">
+                <label for="usr">Company Bank IFSC Code</label>
+                <input type="text" class="form-control" ng-model="user.company.financial.ifscCode">
             </div>
 
             <div class="checkbox">

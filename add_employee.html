@@ -12,7 +12,7 @@
                 </a>
             </div>
         </div>
-        
+
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
@@ -24,7 +24,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
-                
+
                 <div id="page1">
                     <ng-form name="form1">
                         <!--<div class=" form-group">
@@ -70,11 +70,12 @@
                             <label for="pwd">Location</label>
                             <input type="text" class="form-control" ng-model="employee.location">
                         </div>
-                       
+
                         <div class=" form-group">
                             <label for="pwd">Employee type</label>
                             <!--<input type="text" class="form-control">-->
                             <select name="type" class="form-control" ng-model="employee.type">
+                                <option value="">Select Type</option>
                                 <option value="Permanent">Full time</option>
                                 <option value="Part">Part time</option>
                                 <option value="Contract">Contract</option>
@@ -83,23 +84,45 @@
                         </div>
                         <div class=" form-group">
                             <label for="usr">Joining date</label>
-                            <input type="date" class="form-control" ng-model="employee.joiningDate">
+                            <datepicker date-format="yyyy-MM-dd">
+                                <input type="text" class="form-control" ng-model="employee.joiningDate">
+                            </datepicker>
                         </div>
-                        
+                        <br/>
                         <div class=" form-group ropad grrow">
                             <label for="pwd">Previous experience details</label>
-                            <input type="text" class="form-control locwid">
-                            
-                            <span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
-                            
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" ng-model="companyName">
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control locwid" ng-model="yearFrom" ng-options="year.name for year in years">
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control locwid" ng-model="yearTo" ng-options="year.name for year in years2">
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
+                                </div>
+                            </div>
+                            <p ng-repeat="exp in employee.experiences">
+                                In {{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear !=0 ? exp.toYear: "Now"}}
+                                <button type="button" class="btn btn-xs crs crdown" ng-click="removeExperience(exp)">
+                                    <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                                </button>
+                            </p>
+
+
                         </div>
-                        
-                         <div class=" form-group ropad grrow">
+
+                        <div class=" form-group ropad grrow">
                             <label for="pwd">Qualification</label>
                             <input type="text" class="form-control locwid " ng-model="employee.qualification">
                             <span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
                         </div>
-                        
+
 
 
                         <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="showPage2(form1.$valid)">Next</button>

@@ -44,7 +44,9 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
     }
     
     $scope.calculateDays = function () {
-        $scope.leave.noOfDays = 1 + ($scope.leave.to - $scope.leave.from)/(3600*24*1000)
+        var time1 = new Date($scope.leave.to).getTime();
+        var time2 = new Date($scope.leave.from).getTime();
+        $scope.leave.noOfDays = 1 + (time1 - time2)/(3600*24*1000);
         if($scope.leave.noOfDays < 0) {
             $scope.leave.noOfDays = 0;
         }

@@ -1,3 +1,16 @@
+function getAllYears() {
+    var startYear = new Date().getFullYear();
+    var years = [];
+    var i = 0;
+    for(i = 0; i < 50; i++) {
+        var year = {};
+        year.name = startYear - i;
+        year.value = startYear - i;
+        years.push(year);
+    }
+    return years;
+}
+
 angular.module("app").controller('employee', function ($scope, userService, $location) {
 
     $scope.response = {};
@@ -15,7 +28,45 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         initialBurst: 30,
         flat: false
     });*/
-
+    $scope.years = getAllYears();
+    $scope.years2 = getAllYears();
+    var fromYear = {};
+    fromYear.name = "From";
+    fromYear.value = -1;
+    $scope.years.push(fromYear);
+    $scope.yearFrom = $scope.years[$scope.years.length - 1];
+   
+    
+    var now = {};
+    now.name = "Now";
+    now.value = 0;
+    $scope.years2.push(now);
+    var toYear = {};
+    toYear.name = "To";
+    toYear.value = -1;
+    $scope.years2.push(toYear);
+    $scope.yearTo = $scope.years2[$scope.years2.length - 1];
+    console.log("Years:" + $scope.yearFrom);
+    
+    $scope.addExperience = function() {
+        if($scope.yearFrom.value < 0 || $scope.yearTo.value < 0) {
+            alert("Please select both from and to years");
+            return;
+        }
+        var exp = {};
+        exp.companyName = $scope.companyName;
+        exp.fromYear = $scope.yearFrom.value;
+        exp.toYear = $scope.yearTo.value;
+        if($scope.employee.experiences == null) {
+            $scope.employee.experiences = [];
+        }
+        $scope.employee.experiences.push(exp);
+    }
+    
+    $scope.removeExperience = function(exp) {
+        $scope.employee.experiences.pop(exp)
+    }
+    
     $scope.showPage2 = function (formValid) {
         if (!formValid) {
             $scope.form1ShowErrors = true;

@@ -141,15 +141,39 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
         console.log("Count:" + $scope.selectedEmployees.length);
     }
     
-    $scope.isEmployeeSelected = function(employee) {
+    $scope.downloadBankStatement = function() {
         var i = 0;
-        for(i = 0; i< $scope.selectedEmployees.length; i++ ) {
-            if($scope.selectedEmployees[i] == employee.id) {
-                return true;
+        var employeeIds = "";
+        for(i = 0; i< $scope.employees.length; i++ ) {
+            if($scope.employees[i].selected) {
+                employeeIds = employeeIds + $scope.employees[i].id + ",";
             }
         }
-        return false;
+        if(employeeIds == "") {
+            employeeIds = " ";
+        }
+        var fullUrl = root + "/downloadBankStatement/"+ $scope.user.company.id + "/" + employeeIds + "/"+ $scope.year + "/"+ $scope.month.id;
+        console.log("URL:" + fullUrl);
+        window.location.href = fullUrl;
     }
+    
+    $scope.downloadMaster = function() {
+        var i = 0;
+        var employeeIds = "";
+        for(i = 0; i< $scope.employees.length; i++ ) {
+            if($scope.employees[i].selected) {
+                employeeIds = employeeIds + $scope.employees[i].id + ",";
+            }
+        }
+        if(employeeIds == "") {
+            employeeIds = " ";
+        }
+        var fullUrl = root + "/downloadSalaryMaster/"+ $scope.user.company.id + "/" + employeeIds + "/"+ $scope.year + "/"+ $scope.month.id;
+        console.log("URL:" + fullUrl);
+        window.location.href = fullUrl;
+    }
+    
+    
     
     $scope.viewDetails = function(emp) {
         emp.company = $scope.user.company;
@@ -208,12 +232,27 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         });
     }
     
+    $scope.getAmount = function(salaryInfo) {
+        if(salaryInfo.amountType == 'percentage') {
+            return Math.round((salaryInfo.percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary));
+        } else {
+            return salaryInfo.amount;
+        }
+    }
+    
     $scope.getTotal = function() {
         
         var total = ($scope.user.company.basic.percentage/100)*($scope.salary);
         var i = 0;
         for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
-            total = total + ($scope.user.company.salaryInfo[i].percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary);
+            if($scope.user.company.salaryInfo[i].type != 'add') {
+                continue;
+            }
+            if($scope.user.company.salaryInfo[i].amountType == 'percentage') {
+                total = total + Math.round(($scope.user.company.salaryInfo[i].percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary));
+            } else {
+                total = total + $scope.user.company.salaryInfo[i].amount;
+            }  
         }
         total = $scope.salary - total;
         console.log("Total:" + total);
@@ -233,6 +272,9 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
             return;
         }
         $scope.showProgress = true;
+        if($scope.employee.financial == null) {
+            $scope.employee.financial = {};
+        }
         $scope.employee.financial.salary = $scope.salary;
         $scope.dataObj.user = $scope.employee;
         userService.callService($scope, "/addSalary").then(function (response) {

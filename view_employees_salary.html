@@ -8,9 +8,7 @@
 
         <div class="row tpband">
             <div class="col-sm-12 ">
-                <img src="imgs/back_icon_grey.png" alt="back" id="backbtn" width=50px style="border:thick">
-
-               
+                <a href="#salary"><img src="imgs/back_icon_grey.png" alt="back" id="backbtn" width=50px style="border:thick"></a>
             </div>
         </div>
 
@@ -52,14 +50,12 @@
            <div class="col-sm-3">
                
                 <div class=" form-group">
-                    <a href="{{url}}/downloadBankStatement/{{user.company.id}}/0/{{year}}/{{month.id}}"><span><img src="imgs/n_pdf.png" alt="back" class="expdficon" width=50px ></span>
-                   </a>
+                    <span style="cursor:pointer" ng-click="downloadBankStatement()"><img src="imgs/n_pdf.png" alt="back" class="expdficon" width=50px ></span>
                 </div>
              </div> 
              <div class="col-sm-1">
                 <div class=" form-group ">
-                    <a href="{{url}}/downloadSalaryMaster/{{user.company.id}}/0/{{year}}/{{month.id}}"><span><img src="imgs/n_excel.png" alt="back" width=50px class="expdficon" ></span>
-                    </a>
+                    <span style="cursor:pointer" ng-click="downloadMaster()"><img src="imgs/n_excel.png" alt="back" width=50px class="expdficon" ></span>
                 </div>
 
             </div>
