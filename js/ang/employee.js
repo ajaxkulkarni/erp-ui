@@ -1,16 +1,3 @@
-function getAllYears() {
-    var startYear = new Date().getFullYear();
-    var years = [];
-    var i = 0;
-    for(i = 0; i < 50; i++) {
-        var year = {};
-        year.name = startYear - i;
-        year.value = startYear - i;
-        years.push(year);
-    }
-    return years;
-}
-
 angular.module("app").controller('employee', function ($scope, userService, $location) {
 
     $scope.response = {};
@@ -18,7 +5,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         user: {}
     };
     $scope.user = JSON.parse(localStorage.erpUser);
-    console.log("Employee loaded .." + $scope.user.company);
+    console.log("Employee loaded .." + $scope.user.name);
     $scope.showProgress = false;
     $("#page1").show();
     $("#page2").hide();
@@ -28,35 +15,20 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         initialBurst: 30,
         flat: false
     });*/
-    $scope.years = getAllYears();
-    $scope.years2 = getAllYears();
-    var fromYear = {};
-    fromYear.name = "From";
-    fromYear.value = -1;
-    $scope.years.push(fromYear);
-    $scope.yearFrom = $scope.years[$scope.years.length - 1];
    
-    
-    var now = {};
-    now.name = "Now";
-    now.value = 0;
-    $scope.years2.push(now);
-    var toYear = {};
-    toYear.name = "To";
-    toYear.value = -1;
-    $scope.years2.push(toYear);
-    $scope.yearTo = $scope.years2[$scope.years2.length - 1];
-    console.log("Years:" + $scope.yearFrom);
-    
     $scope.addExperience = function() {
-        if($scope.yearFrom.value < 0 || $scope.yearTo.value < 0) {
-            alert("Please select both from and to years");
+        if(!$scope.yearFrom || !$scope.companyName) {
+            alert("Please enter atleast the company Name and starting date of experience");
+            return;
+        }
+        if($scope.yearTo < $scope.yearFrom) {
+            alert("From date cannot be greater than to date!");
             return;
         }
         var exp = {};
         exp.companyName = $scope.companyName;
-        exp.fromYear = $scope.yearFrom.value;
-        exp.toYear = $scope.yearTo.value;
+        exp.fromYear = $scope.yearFrom;
+        exp.toYear = $scope.yearTo;
         if($scope.employee.experiences == null) {
             $scope.employee.experiences = [];
         }
@@ -64,6 +36,29 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     }
     
     $scope.removeExperience = function(exp) {
+        $scope.employee.experiences.pop(exp)
+    }
+    
+    $scope.addQualification = function() {
+        if(!$scope.universityName || !$scope.to || !$scope.from) {
+            alert("Please enter university name, from and to date of the qualification");
+            return;
+        }
+        if($scope.to < $scope.from) {
+            alert("From date cannot be greater than to date!");
+            return;
+        }
+        var exp = {};
+        exp.companyName = $scope.universityName;
+        exp.fromYear = $scope.from;
+        exp.toYear = $scope.to;
+        if($scope.employee.qualifications == null) {
+            $scope.employee.qualifications = [];
+        }
+        $scope.employee.qualifications.push(exp);
+    }
+    
+    $scope.removeQualification = function(exp) {
         $scope.employee.experiences.pop(exp)
     }
     
