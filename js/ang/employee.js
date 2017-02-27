@@ -1,3 +1,18 @@
+function getDate($scope) {
+    var d = new Date($scope.employee.joiningDate);
+    var curr_date = d.getDate();
+    var curr_month = d.getMonth() + 1; //Months are zero based
+    var curr_year = d.getFullYear();
+    if (curr_month < 10) {
+        curr_month = "0" + curr_month;
+    };
+    if (curr_date < 10) {
+        curr_date = "0" + curr_date;
+    };
+    var joiningDate = curr_year + "-" + curr_month + "-" + curr_date;
+    return joiningDate;
+}
+
 angular.module("app").controller('employee', function ($scope, userService, $location) {
 
     $scope.response = {};
@@ -9,19 +24,22 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     $scope.showProgress = false;
     $("#page1").show();
     $("#page2").hide();
+
+
+
     /*$.skylo({
         state: 'success',
         inchSpeed: 200,
         initialBurst: 30,
         flat: false
     });*/
-   
-    $scope.addExperience = function() {
-        if(!$scope.yearFrom || !$scope.companyName) {
+
+    $scope.addExperience = function () {
+        if (!$scope.yearFrom || !$scope.companyName) {
             alert("Please enter atleast the company Name and starting date of experience");
             return;
         }
-        if($scope.yearTo < $scope.yearFrom) {
+        if ($scope.yearTo < $scope.yearFrom) {
             alert("From date cannot be greater than to date!");
             return;
         }
@@ -29,22 +47,22 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         exp.companyName = $scope.companyName;
         exp.fromYear = $scope.yearFrom;
         exp.toYear = $scope.yearTo;
-        if($scope.employee.experiences == null) {
+        if ($scope.employee.experiences == null) {
             $scope.employee.experiences = [];
         }
         $scope.employee.experiences.push(exp);
     }
-    
-    $scope.removeExperience = function(exp) {
+
+    $scope.removeExperience = function (exp) {
         $scope.employee.experiences.pop(exp)
     }
-    
-    $scope.addQualification = function() {
-        if(!$scope.universityName || !$scope.to || !$scope.from) {
+
+    $scope.addQualification = function () {
+        if (!$scope.universityName || !$scope.to || !$scope.from) {
             alert("Please enter university name, from and to date of the qualification");
             return;
         }
-        if($scope.to < $scope.from) {
+        if ($scope.to < $scope.from) {
             alert("From date cannot be greater than to date!");
             return;
         }
@@ -52,16 +70,16 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         exp.companyName = $scope.universityName;
         exp.fromYear = $scope.from;
         exp.toYear = $scope.to;
-        if($scope.employee.qualifications == null) {
+        if ($scope.employee.qualifications == null) {
             $scope.employee.qualifications = [];
         }
         $scope.employee.qualifications.push(exp);
     }
-    
-    $scope.removeQualification = function(exp) {
+
+    $scope.removeQualification = function (exp) {
         $scope.employee.qualifications.pop(exp)
     }
-    
+
     $scope.showPage2 = function (formValid) {
         if (!formValid) {
             $scope.form1ShowErrors = true;
@@ -74,9 +92,12 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     if (localStorage.erpEmployee != null && localStorage.erpEmployee != 'null') {
         console.log("Employee found:" + localStorage.erpEmployee);
         $scope.employee = JSON.parse(localStorage.erpEmployee);
+        joiningDate = getDate($scope);
+        console.log(joiningDate);
+        $scope.employee.joiningDate = joiningDate;
     }
-    
-    if(localStorage.erpViewEmployee != null && localStorage.erpViewEmployee != 'null') {
+
+    if (localStorage.erpViewEmployee != null && localStorage.erpViewEmployee != 'null') {
         console.log("Employee View found:" + localStorage.erpViewEmployee);
         $scope.emp = JSON.parse(localStorage.erpViewEmployee);
     }
@@ -141,7 +162,7 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
         localStorage.erpEmployee = JSON.stringify(emp);
         window.location.href = "#addEmployee";
     }
-    
+
     $scope.view = function (emp) {
         localStorage.erpViewEmployee = JSON.stringify(emp);
         window.location.href = "#viewEmployee";

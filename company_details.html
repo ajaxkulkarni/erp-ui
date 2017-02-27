@@ -20,7 +20,7 @@
         <ng-form name="companyForm">
             <div class=" form-group">
                 <label for="usr">Registered company name</label>
-                <input type="text" class="form-control" name="name" ng-model="user.company.name" ng-required="true">
+                <input type="text" class="form-control" name="name" ng-model="user.company.name" ng-required="true" ng-readonly="nameReadOnly">
                 <p style="color:red" ng-show="companyFormShowErros == true && companyForm.name.$invalid">Please enter valid Company name</p>
             </div>
 

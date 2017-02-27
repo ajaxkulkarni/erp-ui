@@ -71,6 +71,10 @@ angular.module("app").controller('company', function ($scope, userService, $loca
         initialBurst: 30,
         flat: false
     });*/
+    
+    if($scope.user.company.name!= null && $scope.user.company.name.length > 0) {
+        $scope.nameReadOnly = true;
+    }
 
     $scope.saveCompany = function (formValid) {
         console.log("Terms :" + $scope.terms);
