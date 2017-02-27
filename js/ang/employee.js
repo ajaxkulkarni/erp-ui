@@ -59,7 +59,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     }
     
     $scope.removeQualification = function(exp) {
-        $scope.employee.experiences.pop(exp)
+        $scope.employee.qualifications.pop(exp)
     }
     
     $scope.showPage2 = function (formValid) {
