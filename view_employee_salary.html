@@ -49,10 +49,10 @@
                     <table class="table distabl table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Earnings</th>
-                                <th>Gross </th>
-                                <th>Payable</th>
+                                <th class="distabl">#</th>
+                                <th class="distabl">Earnings</th>
+                                <th class="distabl">Gross (Rs)</th>
+                                <!--<th class="distabl">Payable</th>-->
 
                             </tr>
                         </thead>
@@ -61,14 +61,14 @@
                                 <td>1</td>
                                 <td>Basic Salary</td>
                                 <td>{{emp.financial.basic.amount}}</td>
-                                <td>{{emp.financial.basic.amount}}</td>
+                                <!--<td>{{emp.financial.basic.amount}}</td>-->
 
                             </tr>
                             <tr ng-repeat="benefit in emp.financial.benefits">
                                 <td>2</td>
                                 <td>{{benefit.rule}}</td>
                                 <td>{{benefit.amount}}</td>
-                                <td>{{benefit.amount}}</td>
+                                <!--<td>{{benefit.amount}}</td>-->
 
                             </tr>
 
@@ -78,7 +78,7 @@
                                 <td><strong>Total Benefits</strong></td>
                                 <td><strong>{{emp.financial.totalBenefits}}</strong></td>
                                <!-- <td><strong>210000</strong></td>-->
-                                <td></td>
+                                <!--<td></td>-->
 
                             </tr>
                         </tbody>
@@ -88,11 +88,11 @@
 
                     <table class="table distabl table-hover">
                         <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Deductions</th>
+                            <tr class="distabl">
+                                <th class="distabl">#</th>
+                                <th class="distabl">Deductions</th>
                                 <th></th>
-                                <th>Amount </th>
+                                <th class="distabl">Amount (Rs) </th>
 
 
                             </tr>
@@ -127,10 +127,10 @@
                 <h4><span><strong>Current Advance : </strong> -- </span></h4>
                 <h4><span><strong> Advance Balance : </strong> -- </span></h4>-->
 
-                <hr size="30">
+                <!--<hr size="30">
 
-                <h3><span><strong>Gross Salary : Rs {{emp.financial.salary}}/- </strong></span></h3>
-                <h3><span><strong>Payable salary : Rs {{emp.financial.amountPayable}}/- </strong></span></h3>
+                <h3 class="ropad grrow "><span><strong>Gross Salary : Rs {{emp.financial.salary}}/- </strong></span></h3>-->
+                <h3 class="ropad grrow " ><span><strong>Net Payable salary : Rs {{emp.financial.amountPayable}}/- </strong></span></h3>
                 <br>
 
             </div>

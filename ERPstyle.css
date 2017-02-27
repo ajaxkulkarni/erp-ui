@@ -148,6 +148,7 @@ h1{
     float: right;
     margin-top: 5px;
     margin-bottom: 20px;
+    border-radius:3px;
 }
 
 #closbtn{
@@ -245,7 +246,7 @@ h1{
 /* view leaves page*/
 .distabl{
     font-size: 20px;
-    text-align: left;
+    text-align: center;!important
      
 }
 .btndet{
@@ -266,8 +267,8 @@ h1{
 .yearn{
     display: block;
     text-align: right;
-    
-    
+    padding-bottom: 20px;
+    margin-bottom: 0px;
 }
 .levcard{
     height: auto;
@@ -598,4 +599,14 @@ html,body{
     
     margin-right: -70px;
     
+}
+
+#closbtn lcmod {
+    margin-top: 5px;
+    margin-right: 0px;
+}
+
+.lcmod {
+    margin-right: -5px;
+    margin-top: 10px;
 }

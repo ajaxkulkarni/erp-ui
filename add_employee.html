@@ -31,10 +31,17 @@
                             <label for="usr">Employee number</label>
                             <input type="number" class="form-control">
                         </div>-->
+                        
+                        <div class=" form-group">
+                            <label for="pwd">Employee ID</label>
+                            <input type="text" name="name" class="form-control" ng-model="employee.id" ng-required="true">
+                            <p style="color:red" ng-show="form1ShowErrors && form1.name.$invalid">Please Enter employee ID</p>
+                        </div>
+                        
                         <div class=" form-group">
                             <label for="pwd">Name</label>
                             <input type="text" name="name" class="form-control" ng-model="employee.name" ng-required="true">
-                            <p style="color:red" ng-show="form1ShowErrors && form1.name.$invalid">Please Enter valid employee name</p>
+                            <p style="color:red" ng-show="form1ShowErrors && form1.name.$invalid">Please Enter  employee name</p>
                         </div>
                         <!-- <div class=" form-group">
                             <label for="pwd">Middle</label>
@@ -52,7 +59,7 @@
                         <div class=" form-group">
                             <label for="pwd">Current designation</label>
                             <input type="text" name="designation" class="form-control" ng-model="employee.designation" ng-required="true">
-                            <p style="color:red" ng-show="form1ShowErrors && form1.designation.$invalid">Please Enter valid employee designation</p>
+                            <p style="color:red" ng-show="form1ShowErrors && form1.designation.$invalid">Please Enter employee designation</p>
                         </div>
                         <!--<div class=" form-group">
                             <label for="pwd">Current level</label>
