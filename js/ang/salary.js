@@ -8,7 +8,7 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
 
     $scope.response = {};
     console.log("Salary structure loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     $scope.basicError = false;
@@ -52,7 +52,7 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getSalaryStructure").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.user.company = response.company;
@@ -74,7 +74,7 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
         $scope.dataObj.user = $scope.user
         userService.callService($scope, "/addSalaryStructure").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Salary structure updated successfully!");
             //$("#myModal").modal('show');
@@ -94,7 +94,7 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
     $scope.selectedEmployees = [];
     
     console.log("Employee Salary Slips loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     $scope.user.company.filter = {};
@@ -123,7 +123,7 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployeeSalaryInfo").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.employees = response.company.employees;
@@ -190,7 +190,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
 
     $scope.response = {};
     console.log("Employee Salary structure loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     $scope.basicError = false;
@@ -210,7 +210,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getSalaryStructure").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.user.company = response.company;
@@ -224,7 +224,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.employees = response.user.company.employees;
@@ -279,7 +279,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         $scope.dataObj.user = $scope.employee;
         userService.callService($scope, "/addSalary").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Employee Salary updated successfully!");
             //$("#myModal").modal('show');
@@ -299,7 +299,7 @@ angular.module("app").controller('employeeSalarySlip', function ($scope, userSer
     $scope.emp = {};
     
     console.log("Employee Salary Slip loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     //console.log(localStorage.empFinancial);

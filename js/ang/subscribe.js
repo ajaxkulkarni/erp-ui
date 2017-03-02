@@ -3,7 +3,7 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
     console.log("Loaded init ..");
     $scope.response = {};
     $scope.dataObj = {};
-    $scope.showProgress = false;
+    userService.initLoader($scope);
 
     /*$.skylo({
         state: 'success',
@@ -31,7 +31,7 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/subscribeUser").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Your application is submitted successfully. Our team will soon contact you for further process.")
         });

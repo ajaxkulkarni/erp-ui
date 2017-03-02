@@ -21,7 +21,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     };
     $scope.user = JSON.parse(localStorage.erpUser);
     console.log("Employee loaded .." + $scope.user.name);
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $("#page1").show();
     $("#page2").hide();
 
@@ -120,7 +120,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
 
         userService.callService($scope, "/addEmployee").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Employee details updated successfully!");
 
@@ -135,7 +135,7 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
 
     $scope.response = {};
     console.log("Employees loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     localStorage.erpEmployee = null;
@@ -151,7 +151,7 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
 
@@ -182,7 +182,7 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
 
         userService.callService($scope, "/addEmployee").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Employee deleted successfully!");
             $scope.getAllEmployees();

@@ -3,7 +3,7 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
     $scope.response = {};
     $scope.dataObj = {};
     console.log("Home loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     //alert("Before close!");
     $("#successModal").hide();
     $('body').removeClass('modal-open');
@@ -31,7 +31,7 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getUser").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             if ($scope.response == null || $scope.response.status != 200) {
@@ -63,7 +63,7 @@ angular.module("app").controller('company', function ($scope, userService, $loca
     };
     $scope.user = JSON.parse(localStorage.erpUser);
     console.log("Company loaded .." + $scope.user.email);
-    $scope.showProgress = false;
+    userService.initLoader($scope);
 
     /*$.skylo({
         state: 'success',
@@ -90,7 +90,7 @@ angular.module("app").controller('company', function ($scope, userService, $loca
 
         userService.callService($scope, "/addCompany").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Company details updated successfully!");
             //window.location.href = "#home";
@@ -112,7 +112,7 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
     }
     $scope.user = JSON.parse(localStorage.erpUser);
     console.log("Profile loaded .." + $scope.user.email);
-    $scope.showProgress = false;
+    userService.initLoader($scope);
 
     /*$.skylo({
         state: 'success',
@@ -138,7 +138,7 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
 
         userService.callService($scope, "/changePassword").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Password changed successfully!");
             //window.location.href = "#home";

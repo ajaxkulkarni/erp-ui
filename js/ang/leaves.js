@@ -2,7 +2,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
 
     $scope.response = {};
     console.log("Leaves loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
 
@@ -20,7 +20,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.employees = response.user.company.employees;
@@ -34,7 +34,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.leaveTypes = response.company.leaveTypes;
@@ -78,7 +78,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         }
         userService.callService($scope, "/applyLeave").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             if($scope.response.status == -101) {
                 console.log("Exceeded limit!");
@@ -104,7 +104,7 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
 
     $scope.response = {};
     console.log("Leaves Data loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
 
@@ -120,7 +120,7 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllLeaves").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope,"");
             $scope.employees = response.company.employees;
@@ -145,7 +145,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
 
     $scope.response = {};
     console.log("Leaves Details loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     $scope.employee = JSON.parse(localStorage.erpEmployee);
@@ -169,7 +169,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
         $scope.dataObj.user = $scope.employee;
         userService.callService($scope,"/getEmployeeLeaves").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope,"");
             $scope.leaves = response.user.leaves;
@@ -183,7 +183,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
         $scope.dataObj.leave = $scope.leave;
         userService.callService($scope, '/updateLeave').then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Leave updated successfully!");
             $scope.getEmployeeLeaves();
@@ -198,7 +198,7 @@ angular.module("app").controller('editLeave', function ($scope, userService, $lo
 
     $scope.response = {};
     console.log("Leaves loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
 
@@ -215,7 +215,7 @@ angular.module("app").controller('editLeave', function ($scope, userService, $lo
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.leaveTypes = response.company.leaveTypes;
@@ -239,7 +239,7 @@ angular.module("app").controller('editLeave', function ($scope, userService, $lo
         $scope.dataObj.leave = $scope.leave;
         userService.callService($scope, "/applyLeave").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Leave applied successfully!");
             //$("#myModal").modal('show');
@@ -259,7 +259,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
 
     $scope.response = {};
     console.log("Leave Policy loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
 
@@ -277,7 +277,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
         $scope.dataObj.requestType = "ALL";
         userService.callService($scope, '/getAllLeaveTypes').then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope,"");
             $scope.leaveTypes = response.company.leaveTypes;
@@ -294,7 +294,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, '/addLeavePolicy').then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Leave policy updated!");
         });

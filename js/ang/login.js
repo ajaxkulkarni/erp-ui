@@ -3,7 +3,7 @@ angular.module("app").controller('login', function ($scope, userService, $locati
     $scope.response = {};
     $scope.dataObj = {};
     console.log("Loaded ..");
-    $scope.showProgress = false;
+    userService.initLoader($scope);
 
     /*$.skylo({
         state: 'success',
@@ -22,7 +22,7 @@ angular.module("app").controller('login', function ($scope, userService, $locati
         $scope.dataObj.user = $scope.user;
         userService.callService($scope,"/loginUser").then(function (response) {
             //$.skylo('end');
-            $scope.showProgress = false;
+            userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope,"");
             if($scope.response == null || $scope.response.status != 200) {
