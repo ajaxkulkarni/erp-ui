@@ -23,14 +23,25 @@
         <div ng-include="'response.html'"></div>
 
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 ">
+            <div class="col-sm-6 col-sm-offset-3 makpg">
+                
+                
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#basc">Home</a></li>
+                    <li><a data-toggle="tab" href="#qual">Menu 1</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                </ul>
+                <br>
+                
 
-                <div id="page1">
+                <div class="tab-content" id="page1">
                     <ng-form name="form1">
                         <!--<div class=" form-group">
                             <label for="usr">Employee number</label>
                             <input type="number" class="form-control">
                         </div>-->
+                        
+                    <div class="tab-pane" id="basc">
                         
                         <div class=" form-group">
                             <label for="pwd">Employee ID</label>
@@ -89,6 +100,11 @@
                                 <option value="Contract">Internship</option>
                             </select>
                         </div>
+                        
+                    </div>
+                        
+                    <div class="tab-pane" id="qual">
+                        
                         <div class=" form-group">
                             <label for="usr">Joining date</label>
                             <datepicker date-format="yyyy-MM-dd">
@@ -126,6 +142,8 @@
                             </p>
 
 
+                        </div>
+                            
                         </div>
 
                         <div class=" form-group ropad grrow">

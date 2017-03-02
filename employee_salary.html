@@ -23,7 +23,7 @@
 
 
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 ">
+            <div class="col-sm-6 col-sm-offset-3 makpg ">
 
 
                 <div class="form-group">
@@ -41,7 +41,7 @@
                     <p style="color:red" ng-show="salaryError && salary == null">Please enter a valid value</p>
                 </div>
 
-                <div class="row ropad grrow">
+                <div class="row ropad grrow lacmarg">
 
                     <div class="form-group">
                         <label for="usr">Basic</label>
@@ -61,7 +61,7 @@
                     </div>
                 <br>
 
-                    <div class="row ropad grrow ">
+                    <div class="row ropad grrow lacmarg">
 
                     <div class="form-group " ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'sub'">
                         <label for="usr">{{salaryInfo.rule}}</label>
