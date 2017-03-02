@@ -26,7 +26,7 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
     });*/
 
     $scope.getUser = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         console.log("Prog:" + $scope.showProgress);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getUser").then(function (response) {
@@ -83,7 +83,7 @@ angular.module("app").controller('company', function ($scope, userService, $loca
             return;
         }
 
-        $scope.showProgress = true;
+        userService.showLoading($scope);
 
         // $scope.user.company.user = $scope.user;
         $scope.dataObj.user = $scope.user;
@@ -107,6 +107,9 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
     $scope.dataObj = {
         user: {}
     };
+    if(localStorage.erpUser == null || localStorage.erpUser == 'null') {
+        return;
+    }
     $scope.user = JSON.parse(localStorage.erpUser);
     console.log("Profile loaded .." + $scope.user.email);
     $scope.showProgress = false;
@@ -128,7 +131,7 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
             $scope.passwordMatchErrors = true;
             return;
         }
-        $scope.showProgress = true;
+        userService.showLoading($scope);
 
         // $scope.user.company.user = $scope.user;
         $scope.dataObj.user = $scope.user;

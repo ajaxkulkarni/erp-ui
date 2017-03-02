@@ -27,7 +27,7 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
         $.skylo('start');
         $.skylo('inch', 5);*/
         
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/subscribeUser").then(function (response) {
             //$.skylo('end');

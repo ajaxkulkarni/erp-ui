@@ -18,7 +18,7 @@ angular.module("app").controller('login', function ($scope, userService, $locati
        /* $scope.showProgress = true;
         $.skylo('start');
         $.skylo('inch', 5);*/
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope,"/loginUser").then(function (response) {
             //$.skylo('end');

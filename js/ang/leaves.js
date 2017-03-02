@@ -16,7 +16,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
     
 
     $scope.getAllEmployees = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
@@ -30,7 +30,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
     }
 
     $scope.getAllLeaveTypes = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
             //$.skylo('end');
@@ -70,7 +70,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
        
         
         //if($scope.user.)
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.leave.appliedBy = $scope.user;
         $scope.dataObj.leave = $scope.leave;
          if($scope.modalShown) {
@@ -116,7 +116,7 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
     });*/
 
     $scope.getAllEmployeeLeaves = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllLeaves").then(function (response) {
             //$.skylo('end');
@@ -165,7 +165,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
     
 
     $scope.getEmployeeLeaves = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.employee;
         userService.callService($scope,"/getEmployeeLeaves").then(function (response) {
             //$.skylo('end');
@@ -179,7 +179,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
     
     $scope.cancelLeave = function() {
         $scope.leave.status = "Cancelled";
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.leave = $scope.leave;
         userService.callService($scope, '/updateLeave').then(function (response) {
             //$.skylo('end');
@@ -211,7 +211,7 @@ angular.module("app").controller('editLeave', function ($scope, userService, $lo
 
 
     $scope.getAllLeaveTypes = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
             //$.skylo('end');
@@ -234,7 +234,7 @@ angular.module("app").controller('editLeave', function ($scope, userService, $lo
             console.log("Incorrect days!");
             return;
         }
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.leave.appliedBy = $scope.user;
         $scope.dataObj.leave = $scope.leave;
         userService.callService($scope, "/applyLeave").then(function (response) {
@@ -272,7 +272,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
 
 
     $scope.getAllLeaveTypes = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         $scope.dataObj.requestType = "ALL";
         userService.callService($scope, '/getAllLeaveTypes').then(function (response) {
@@ -289,7 +289,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
     $scope.addLeavePolicy = function () {
         //console.log("Scope :" + $scope.user.company + " actual " + JSON.stringify($scope.leaveTypes));
         //$scope.user.company.leavePolicy = $scope.company.leavePolicy;
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.user.company.leaveTypes = $scope.leaveTypes;
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, '/addLeavePolicy').then(function (response) {

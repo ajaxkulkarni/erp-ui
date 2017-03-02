@@ -47,7 +47,7 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
 
     $scope.getSalaryStructure = function () {
         
-        $scope.showProgress = true;
+        userService.showLoading($scope);
        
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getSalaryStructure").then(function (response) {
@@ -70,7 +70,7 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
             return;
         }
          
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user
         userService.callService($scope, "/addSalaryStructure").then(function (response) {
             //$.skylo('end');
@@ -117,7 +117,7 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
 
     
     $scope.getAllEmployeeSalary = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.user.company.filter.month = $scope.month.id;
         $scope.user.company.filter.year = $scope.year;
         $scope.dataObj.user = $scope.user;
@@ -205,7 +205,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
 
     $scope.getSalaryStructure = function () {
         
-        $scope.showProgress = true;
+        userService.showLoading($scope);
        
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getSalaryStructure").then(function (response) {
@@ -220,7 +220,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     }
     
     $scope.getAllEmployees = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
@@ -271,7 +271,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
             $scope.salaryError = true;
             return;
         }
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         if($scope.employee.financial == null) {
             $scope.employee.financial = {};
         }

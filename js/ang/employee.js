@@ -110,7 +110,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
             return;
         }
 
-        $scope.showProgress = true;
+        userService.showLoading($scope);
 
         // $scope.user.company.user = $scope.user;
         $scope.dataObj.user = $scope.employee;
@@ -147,7 +147,7 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
     });*/
 
     $scope.getAllEmployees = function () {
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getAllEmployees").then(function (response) {
             //$.skylo('end');
@@ -175,7 +175,7 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
 
     $scope.deleteEmployee = function () {
 
-        $scope.showProgress = true;
+        userService.showLoading($scope);
         // $scope.user.company.user = $scope.user;
         $scope.dataObj.user = $scope.employee;
         $scope.dataObj.user.employeeStatus = "D";

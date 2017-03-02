@@ -13,6 +13,7 @@ app.service('userService', function ($http, $q) {
     var response = {};
 
     this.showResponse = function ($scope,successMsg) {
+        $("#myLoader").hide();
         if ($scope.response == null) {
             $scope.response = {};
             $scope.response.status = -111;
@@ -35,6 +36,12 @@ app.service('userService', function ($http, $q) {
             $("#errorModal").modal('show');
         }
         //console.log("Response :" + $scope.response.reseponseText);
+    }
+    
+    this.showLoading = function($scope) {
+        console.log("Showing loader..");
+        //$("#myLoader").modal('show');
+        $("#myLoader").show();
     }
 
     this.callService = function ($scope, method) {
