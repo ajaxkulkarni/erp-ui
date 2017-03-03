@@ -36,11 +36,11 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
 
     $scope.addExperience = function () {
         if (!$scope.yearFrom || !$scope.companyName) {
-            alert("Please enter atleast the company Name and starting date of experience");
+            userService.validationError($scope,"Please enter atleast the company Name and starting date of experience");
             return;
         }
         if ($scope.yearTo < $scope.yearFrom) {
-            alert("From date cannot be greater than to date!");
+            userService.validationError($scope,"From date cannot be greater than to date!");
             return;
         }
         var exp = {};
@@ -59,11 +59,11 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
 
     $scope.addQualification = function () {
         if (!$scope.universityName || !$scope.to || !$scope.from) {
-            alert("Please enter university name, from and to date of the qualification");
+            userService.validationError($scope,"Please enter university name, from and to date of the qualification");
             return;
         }
         if ($scope.to < $scope.from) {
-            alert("From date cannot be greater than to date!");
+            userService.validationError($scope,"From date cannot be greater than to date!");
             return;
         }
         var exp = {};
@@ -87,6 +87,8 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         joiningDate = getDate($scope);
         console.log(joiningDate);
         $scope.employee.joiningDate = joiningDate;
+    } else {
+        $scope.employee = {};
     }
 
     if (localStorage.erpViewEmployee != null && localStorage.erpViewEmployee != 'null') {

@@ -49,6 +49,11 @@ app.service('userService', function ($http, $q) {
         console.log("Hiding loader..");
         
     }
+    
+    this.validationError = function($scope, msg) {
+        $scope.errorText = msg;
+        $("#warningModal").modal('show');
+    }
 
     this.callService = function ($scope, method) {
         var defer = $q.defer();
