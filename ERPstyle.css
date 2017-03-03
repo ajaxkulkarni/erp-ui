@@ -541,7 +541,8 @@ html,body{
 }
 
 .frpds {
-    padding-left: 15px;
+    text-align: center;
+    
 }
 
 .frpdsdr {
@@ -638,4 +639,21 @@ html,body{
 .lacmarg {
     margin-left: 0px;
     margin-right: 0px;
+}
+
+.htpag {
+    height: 100%;
+}
+
+#foo negmar {
+    margin-top: -100px;
+}
+
+.negmar {
+    margin-top: -100px;
+}
+
+#imusr {
+    opacity: 0.3;
+    
 }
