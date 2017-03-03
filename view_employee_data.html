@@ -22,44 +22,45 @@
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 fullprof ">
          <br>
-        <br>
+        
          <div class="row frpds "> 
              
         
              
               <span><img src="imgs/round-account-button-with-user-inside.png" alt="back" id="imusr" width=130px;></span>
              
+             <br>
+              
+        
              <div class=" form-group">
-                <label for="usr">Employee number</label>
-                <h3 type="number" class="viewempinf">{{emp.id}}</h3>
-            </div>
-            <div class=" form-group">
-                <label for="pwd">Name</label>
+                
                 <h3 class="viewempinf">{{emp.name}}</h3>
             </div>
              
-       
+             <div class=" form-group ">
+                
+                <h3 class="viewempinf ">{{emp.designation}}</h3>
+            </div>
+             
+             <div class=" form-group  ">
             
-            
-            
-            
-            
+                <h3 class="viewempinf ">{{emp.department}}</h3>
+            </div>
+             
          
         </div>  
          
-          <br>  
-            <div class="row frpdsdr "> 
+            
+     <hr size="10">          
+            
+            
+        <div class="row frpdsdr "> 
                 
                 
-            <div class=" form-group ">
-                <label for="pwd">Current designation</label>
-                <h3 class="viewempinf ">{{emp.designation}}</h3>
-            </div>
-
-            <div class=" form-group  ">
-                <label for="pwd">Department / Function</label>
-                <h3 class="viewempinf ">{{emp.department}}</h3>
-            </div>
+            
+                <label for="usr" class="lblwid">Employee number</label>
+                <h3 type="number" class="viewempinf">{{emp.id}}</h3>
+            
             <!--<div class=" form-group">
                 <label for="pwd">Reporting to</label>
                 <h3 class="form-control"></h3>
@@ -79,23 +80,23 @@
                 <h3 class="viewempinf">{{emp.type}}</h3>
             </div>
               
-            </div>
+        
             
-            
+     <hr size="10"> 
             
             <div class=" form-group">
                 <label for="pwd">Qualification</label>
                 <h3 class="viewempinf" ng-repeat="qualification in emp.qualifications">{{qualification.companyName}} from {{qualification.fromYear}} - {{qualification.toYear}}</h3>
             </div>
              
-            
+        <hr size="10"> 
 
             <div class=" form-group">
                 <label for="pwd">Previous experience details</label>
                 <h3 class="viewempinf" ng-repeat="exp in emp.experiences">{{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}</h3>
             </div>
-
-            <div class="row frpdsdr ">
+            <hr size="10"> 
+           
 
             <div class=" form-group" style="display:block">
                 <label for="usr">Employee Pan number</label>
