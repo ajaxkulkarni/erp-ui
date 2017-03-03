@@ -27,9 +27,9 @@
                 
                 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#basc">Home</a></li>
-                    <li><a data-toggle="tab" href="#qual">Menu 1</a></li>
-                    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                    <li class="active"><a data-toggle="tab"  ng-click="tab=1">Home</a></li>
+                    <li><a data-toggle="tab"  ng-click="tab=2">Menu 1</a></li>
+                    <li><a data-toggle="tab"  ng-click="tab=3">Menu 2</a></li>
                 </ul>
                 <br>
                 
@@ -41,7 +41,7 @@
                             <input type="number" class="form-control">
                         </div>-->
                         
-                    <div id="basc" class="tab-pane fade in active" >
+                    <div id="basc" class="tab-pane fade in active" ng-show="tab == 1 || !tab">
                         
                         <div class=" form-group">
                             <label for="pwd">Employee ID</label>
@@ -103,7 +103,7 @@
                         
                     </div>
                         
-                    <div class="tab-pane" id="qual">
+                    <div class="tab-pane" id="qual" ng-show="tab == 2">
                         
                         <div class=" form-group">
                             <label for="usr">Joining date</label>
@@ -146,7 +146,7 @@
                             
                         </div>
 
-                        <div class=" form-group ropad grrow">
+                        <div class=" form-group ropad grrow" ng-show="tab == 3">
                             <label for="pwd">Qualification</label>
                             <div class="row">
                                 <div class="col-sm-12">
@@ -180,7 +180,7 @@
                     </ng-form>
                 </div>
 
-                <div id="page2">
+                <div id="page2" ng-show="tab == 4">
                     <ng-form name="form2">
                         <div class=" form-group">
                             <label for="usr">Employee Pan number</label>
