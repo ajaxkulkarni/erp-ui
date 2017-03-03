@@ -42,6 +42,7 @@
                         </datepicker>
                         <p style="color:red" ng-show="showLeaveErrors && leaveForm.from.$invalid">Please select from date</p>
                     </div>
+                    <br>
                     <div class=" form-group">
                         <label for="usr">Leave to</label>
                         <datepicker date-format="yyyy-MM-dd">
@@ -50,6 +51,7 @@
                         <p style="color:red" ng-show="showLeaveErrors && leaveForm.to.$invalid">Please select to date</p>
                         <p style="color:red" ng-show="incorrectDate">To date cannot be less than From date</p>
                     </div>
+                    <br>
                     <div class=" form-group">
                         <label for="usr">Number of days</label>
                         <input type="number" class="form-control" ng-model="leave.noOfDays" name="days" ng-required="true">
