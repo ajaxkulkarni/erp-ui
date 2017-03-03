@@ -27,15 +27,15 @@
                 
                 
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab"  ng-click="tab=1">Home</a></li>
-                    <li><a data-toggle="tab"  ng-click="tab=2">Menu 1</a></li>
-                    <li><a data-toggle="tab"  ng-click="tab=3">Menu 2</a></li>
+                    <li class="active"><a style="cursor:pointer" data-toggle="tab"  ng-click="tab=1">Home</a></li>
+                    <li><a data-toggle="tab" style="cursor:pointer"  ng-click="tab=2">Menu 1</a></li>
+                    <li><a data-toggle="tab" style="cursor:pointer"  ng-click="tab=3">Menu 2</a></li>
                 </ul>
                 <br>
                 
 
                 <div class="tab-content" id="page1">
-                    <ng-form name="form1">
+                    <ng-form name="form">
                         <!--<div class=" form-group">
                             <label for="usr">Employee number</label>
                             <input type="number" class="form-control">
@@ -43,16 +43,16 @@
                         
                     <div id="basc" class="tab-pane fade in active" ng-show="tab == 1 || !tab">
                         
-                        <div class=" form-group">
+                        <!--<div class=" form-group">
                             <label for="pwd">Employee ID</label>
                             <input type="text" name="name" class="form-control" ng-model="employee.id" ng-required="true">
-                            <p style="color:red" ng-show="form1ShowErrors && form1.name.$invalid">Please Enter employee ID</p>
-                        </div>
+                            <p style="color:red" ng-show="formShowErrors && form.name.$invalid" focus-me="{{formShowErrors && form.name.$invalid}}">Please Enter employee ID</p>
+                        </div>-->
                         
                         <div class=" form-group">
                             <label for="pwd">Name</label>
-                            <input type="text" name="name" class="form-control" ng-model="employee.name" ng-required="true">
-                            <p style="color:red" ng-show="form1ShowErrors && form1.name.$invalid">Please Enter  employee name</p>
+                            <input type="text" name="name" class="form-control" ng-model="employee.name" ng-required="true" focus-me="{{nameInvalid}}">
+                            <p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter  employee name</p>
                         </div>
                         <!-- <div class=" form-group">
                             <label for="pwd">Middle</label>
@@ -64,13 +64,13 @@
                         </div>-->
                         <div class=" form-group">
                             <label for="pwd">Email</label>
-                            <input type="email" name="email" class="form-control" ng-model="employee.email" ng-required="true">
-                            <p style="color:red" ng-show="form1ShowErrors && form1.email.$invalid">Please Enter valid employee email</p>
+                            <input type="email" name="email" class="form-control" ng-model="employee.email" ng-required="true" focus-me="{{emailInvalid}}">
+                            <p style="color:red" ng-show="formShowErrors && form.email.$invalid">Please Enter valid employee email</p>
                         </div>
                         <div class=" form-group">
                             <label for="pwd">Current designation</label>
-                            <input type="text" name="designation" class="form-control" ng-model="employee.designation" ng-required="true">
-                            <p style="color:red" ng-show="form1ShowErrors && form1.designation.$invalid">Please Enter employee designation</p>
+                            <input type="text" name="designation" class="form-control" ng-model="employee.designation" ng-required="true" focus-me="{{designationInvalid}}">
+                            <p style="color:red" ng-show="formShowErrors && form.designation.$invalid">Please Enter employee designation</p>
                         </div>
                         <!--<div class=" form-group">
                             <label for="pwd">Current level</label>
@@ -92,13 +92,14 @@
                         <div class=" form-group">
                             <label for="pwd">Employee type</label>
                             <!--<input type="text" class="form-control">-->
-                            <select name="type" class="form-control" ng-model="employee.type">
+                            <select name="type" class="form-control" ng-model="employee.type" ng-required="true" focus-me="{{typeInvalid}}">
                                 <option value="">Select Type</option>
                                 <option value="Permanent">Full time</option>
                                 <option value="Part">Part time</option>
                                 <option value="Contract">Contract</option>
                                 <option value="Contract">Internship</option>
                             </select>
+                            <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select employee type</p>
                         </div>
                         
                     </div>
@@ -173,15 +174,11 @@
                                 </button>
                             </p>
                         </div>
-
-
-
-                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="showPage2(form1.$valid)">Next</button>
-                    </ng-form>
-                </div>
+                      
+                
 
                 <div id="page2" ng-show="tab == 4">
-                    <ng-form name="form2">
+                    
                         <div class=" form-group">
                             <label for="usr">Employee Pan number</label>
                             <input type="text" class="form-control" ng-model="employee.financial.pan">
@@ -198,10 +195,12 @@
                             <label for="pwd">Provident fund (PF) number</label>
                             <input type="text" class="form-control" ng-model="employee.financial.pfNumber">
                         </div>
-                    </ng-form>
+                    
 
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="saveEmployee(form2.$valid)">Save</button>
                 </div>
+                <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
+                </ng-form>
+                   </div>
             </div>
         </div>
     </div>

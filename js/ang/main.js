@@ -220,6 +220,23 @@ app.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
+app.directive('focusMe', function($timeout) {
+        return {
+          scope: { trigger: '@focusMe' },
+          link: function(scope, element) {
+            scope.$watch('trigger', function(value) {
+              //alert(value);
+              if(value === "true") {
+                $timeout(function() {
+                  element[0].focus();
+                });
+              }
+            });
+          }
+        };
+      });
+ 
+
 /*app.directive('form1', function () {
     return {
         restrict: 'A',

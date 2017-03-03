@@ -80,14 +80,6 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         $scope.employee.qualifications.pop(exp)
     }
 
-    $scope.showPage2 = function (formValid) {
-        if (!formValid) {
-            $scope.form1ShowErrors = true;
-            return;
-        }
-        $("#page1").hide();
-        $("#page2").show();
-    }
 
     if (localStorage.erpEmployee != null && localStorage.erpEmployee != 'null') {
         console.log("Employee found:" + localStorage.erpEmployee);
@@ -102,11 +94,26 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         $scope.emp = JSON.parse(localStorage.erpViewEmployee);
     }
 
+    function setFocus(form) {
+        //console.log("setting focus.." + $scope.employee.name);
+        if(form.name.$invalid) {
+            $scope.nameInvalid = true;
+        }
+        else if(form.email.$invalid) {
+            $scope.emailInvalid = true;
+        }
+        else if(form.designation.$invalid) {
+            $scope.designationInvalid = true;
+        }
+        else if(form.type.$invalid) {
+            $scope.typeInvalid = true;
+        }
+    };
 
-    $scope.saveEmployee = function (formValid) {
-
-        if (!formValid) {
-            $scope.form2ShowErrors = true;
+    $scope.saveEmployee = function (form) {
+        if (!form.$valid) {
+            $scope.formShowErrors = true;
+            setFocus(form);
             return;
         }
 
