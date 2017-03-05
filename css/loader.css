@@ -22,9 +22,11 @@
 
 .loader-position {
     margin-top: 2%;
-    margin-left: 30%;
+    align-content: center;
+    text-align: center;
     position: fixed;
     z-index: 100;
+    width: 100%;
 }
 
 @-webkit-keyframes spin {
