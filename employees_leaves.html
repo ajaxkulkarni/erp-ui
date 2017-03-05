@@ -17,10 +17,53 @@
             <div class="col-sm-6 ">
                 <h2 class="pghdgs">View leaves</h2>
             </div>
-            <div class="col-sm-6 ">
-                <h2 class="yearn">Year 2017</h2>
-            </div>
         </div>
+        
+        
+        <div class="row">
+            <div class="col-sm-1 moliv ">
+
+                <div class=" form-group ">
+                    <select class="form-control" ng-model="year" ng-options="year for year in years">
+                       
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm-1 moliv  ">
+                <div class=" form-group  ">
+
+                    <select class="form-control" ng-model="month" ng-options="m.name for m in months">
+                        
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm-1 moliv subsalinfo  ">
+                <div class=" form-group  ">
+                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet salmit" ng-click="getAllEmployeeSalary()">Submit</button>
+                   
+                </div>
+
+            </div>
+            
+           <div class="col-sm-3">
+               
+                <div class=" form-group">
+                    <span style="cursor:pointer" ng-click="downloadBankStatement()"><img src="imgs/n_pdf.png" alt="back" class="expdficon" width=50px ></span>
+                </div>
+             </div> 
+             <div class="col-sm-1">
+                <div class=" form-group ">
+                    <span style="cursor:pointer" ng-click="downloadMaster()"><img src="imgs/n_excel.png" alt="back" width=50px class="expdficon" ></span>
+                </div>
+
+            </div>
+            
+        </div>
+        
+        
+        
 
         <div ng-include="'response.html'"></div>
 

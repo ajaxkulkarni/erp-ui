@@ -69,8 +69,9 @@
                     <tr>
                         <th></th>
                         <th class="distabl">#</th>
-                        <th class="distabl">Name</th>
                         <th class="distabl">Emp ID</th>
+                        <th class="distabl">Name</th>
+                        
                         <th class="distabl">Gross salary</th>
                         <th class="distabl">Total leaves</th>
                         <th class="distabl">Net Paid</th>
@@ -82,14 +83,18 @@
                     <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)">
                         <td><span ng-show="employee.selected"><span><img src="imgs/n_tick.png" alt="back" id="closbtn" width=20px ></span></span></td>
                         <td>{{$index + 1}}</td>
-                        <td>{{employee.name}}</td>
+                        
                         <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
                         <td>{{employee.financial.salary}}</td>
                         <td>{{employee.withoutPayLeaves}}</td>
                         <td>{{employee.financial.amountPayable}}</td>
                         <td>{{employee.financial.accountNumber}}</td>
                         <td>
                             <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(employee)">Details</button>
+                        </td>
+                         <td>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(employee)">Edit</button>
                         </td>
                     </tr>
 

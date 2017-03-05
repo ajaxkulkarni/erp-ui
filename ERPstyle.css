@@ -450,8 +450,8 @@ html,body{
 
 
 .subsalinfo {
-    padding-bottom: 26px;
-    
+    padding-bottom: 20px;
+    margin-top: -3px;
     margin-bottom: 20px;
 }
 
@@ -480,6 +480,7 @@ html,body{
 
 .expdficon {
     margin-left: 20px;
+    
     float: right;
     margin-top: -11px;
     margin-bottom: 10px;
@@ -678,3 +679,19 @@ html,body{
 
 
 
+
+.pdsoid {
+    padding-left: 100px;
+    padding-right: 10px;
+}
+
+.compnam {
+    font-weight: 400;
+    background-color: rgb(227,228,229);
+    margin: 3px;
+    font-size: 16px;
+}
+
+.imgsdow {
+    box-shadow: 0 0 5px rgb(200,200,200); 
+}
