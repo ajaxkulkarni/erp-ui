@@ -695,3 +695,12 @@ html,body{
 .imgsdow {
     box-shadow: 0 0 5px rgb(200,200,200); 
 }
+
+.adempnav {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.pdademo {
+    margin-top: 10px;
+}
