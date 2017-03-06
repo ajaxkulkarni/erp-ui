@@ -37,11 +37,11 @@
                         
                     </select>
                 </div>
-
+                
             </div>
             <div class="col-sm-1 moliv subsalinfo  ">
                 <div class=" form-group  ">
-                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet salmit" ng-click="getAllEmployeeSalary()">Submit</button>
+                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet salmit" ng-click="getAllEmployeeLeaves()">Submit</button>
                    
                 </div>
 
@@ -72,6 +72,7 @@
                 <thead >
                     <tr >
                         <th class="distabl">#</th>
+                        <th class="distabl">ID</th>
                         <th class="distabl">Name</th>
                         <th class="distabl">Email</th>
                         <th class="distabl" ng-repeat="leaveType in leaveTypes">{{leaveType.name}}</th>
@@ -84,7 +85,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="emp in employees">
-                        {{emp.leaveCount.values}}
+                        <td>{{$index + 1}}</td>
                         <td>{{emp.id}}</td>
                         <td>{{emp.name}}</td>
                         <td>{{emp.email}}</td>

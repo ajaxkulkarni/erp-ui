@@ -1,3 +1,10 @@
+var leaveYears = [2016,2017,2018,2019,2020];
+var leaveMonths = [{name:"Select Month", id: -1}, { name: "January", id: 0 }, { name: "February", id: 1 }, { name: "March", id: 2 }, { name: "April", id: 3 },
+                    { name: "May", id: 4 }, { name: "June", id: 5 }, { name: "July", id: 6 }, { name: "August", id: 7 },
+                    { name: "September", id: 8 }, { name: "October", id: 9 }, { name: "November", id: 10 }, { name: "December", id: 11 }
+                   ];
+
+
 angular.module("app").controller('leaves', function ($scope, userService, $location) {
 
     $scope.response = {};
@@ -124,10 +131,24 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
         initialBurst: 30,
         flat: false
     });*/
+    
+    $scope.years = leaveYears;
+    $scope.months = leaveMonths;
+    console.log(leaveMonths);
+    $scope.month = leaveMonths[0];
+    $scope.year = new Date().getYear() + 1900;
+    console.log(" Year:" + $scope.year);
 
     $scope.getAllEmployeeLeaves = function () {
-        userService.showLoading($scope);
+        if($scope.user.company.filter == null) {
+            $scope.user.company.filter = {};
+        }
+        if($scope.month.id >= 0) {
+            $scope.user.company.filter.month = $scope.month.id;
+        }
+        $scope.user.company.filter.year = $scope.year;
         $scope.dataObj.user = $scope.user;
+        userService.showLoading($scope);
         userService.callService($scope, "/getAllLeaves").then(function (response) {
             //$.skylo('end');
             userService.initLoader($scope);
@@ -140,8 +161,10 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
 
         });
     }
+    
 
     $scope.viewDetails = function (emp) {
+        emp.company = $scope.user.company;
         localStorage.erpEmployee = JSON.stringify(emp);
         window.location.href = "#leaveDetails";
     }
@@ -195,6 +218,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
             //$.skylo('end');
             userService.initLoader($scope);
             $scope.response = response;
+            $("#myModal").modal('hide');
             userService.showResponse($scope, "Leave updated successfully!");
             $scope.getEmployeeLeaves();
         });

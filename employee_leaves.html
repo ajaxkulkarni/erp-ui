@@ -17,7 +17,7 @@
 
         <div class="row">
             <div class="col-sm-12 ">
-                <h2 class="pghdgs">Leave Details - Employee name</h2>
+                <h2 class="pghdgs">Leave Details - {{employee.name}}</h2>
             </div>
         </div>
 
@@ -50,24 +50,22 @@
                         <th class="distabl">#</th>
                         <th class="distabl">From</th>
                         <th class="distabl">To</th>
-                        <!--<th class="distabl" ng-repeat="leaveType in leaveTypes">{{leaveType.name}}</th>-->
                         <th>Type</th>
-        <!--<th>PL</th>
-        <th>SL</th>-->
+                        <th>Days</th>
                         <th>Reason</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="emp in employees">
-                        {{emp.leaveCount.values}}
-                        <td>{{emp.id}}</td>
-                        <td>{{emp.name}}</td>
-                        <td>{{emp.email}}</td>
-                        <td ng-repeat="count in emp.leaveCount">{{count.count}}</td>
-                        <td>{{emp.totalLeaves}}</td>
+                    <tr ng-repeat="leave in leaves">
+                        <td>{{$index + 1}}</td>
+                        <td>{{leave.fromString}}</td>
+                        <td>{{leave.toString}}</td>
+                        <td>{{leave.type.name}}</td>
+                        <td>{{leave.noOfDays}}</td>
+                        <td>{{leave.reason}}</td>
                         <td>
-                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(emp)">Details</button>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="showCancel(leave)">Cancel</button>
                         </td>
                     </tr>
 
