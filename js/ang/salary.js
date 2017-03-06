@@ -188,7 +188,11 @@ angular.module("app").controller('employeeSalarySlips', function ($scope, userSe
         window.location.href = fullUrl;
     }
     
-    
+    $scope.edit = function(emp) {
+        emp.company = $scope.user.company;
+        localStorage.empFinancial = JSON.stringify(emp);
+        window.location.href = "#employeeSalary";
+    }
     
     $scope.viewDetails = function(emp) {
         emp.company = $scope.user.company;
@@ -209,6 +213,12 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     $scope.basicError = false;
+    if(localStorage.empFinancial != null && localStorage.empFinancial != 'null') {
+        //console.log(localStorage.empFinancial);
+        $scope.employee = JSON.parse(localStorage.empFinancial);
+        $scope.salary = $scope.employee.financial.salary;
+        console.log("Salary :" + $scope.salary);
+    }
 
     /*$.skylo({
         state: 'success',
@@ -221,7 +231,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     $scope.getSalaryStructure = function () {
         
         userService.showLoading($scope);
-        //$scope.user.company.currentEmployee = 
+        $scope.user.company.currentEmployee = $scope.employee;
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getSalaryStructure").then(function (response) {
             //$.skylo('end');
@@ -311,6 +321,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
             $scope.employee.financial = {};
         }
         $scope.employee.financial.salary = $scope.salary;
+        $scope.employee.company = $scope.user.company;
         $scope.dataObj.user = $scope.employee;
         userService.callService($scope, "/addSalary").then(function (response) {
             //$.skylo('end');
