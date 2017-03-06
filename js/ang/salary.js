@@ -221,7 +221,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     $scope.getSalaryStructure = function () {
         
         userService.showLoading($scope);
-       
+        //$scope.user.company.currentEmployee = 
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getSalaryStructure").then(function (response) {
             //$.skylo('end');
@@ -248,32 +248,48 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     }
     
     $scope.getAmount = function(salaryInfo) {
-        if(salaryInfo.amountType == 'percentage') {
+        console.log("Salary Info :" + salaryInfo.amount + ":" + salaryInfo.rule);
+        if(salaryInfo.amountType == 'percentage' && !salaryInfo.amount && $scope.salary > 0) {
             return Math.round((salaryInfo.percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary));
         } else {
             return salaryInfo.amount;
         }
     }
     
+    $scope.getAmounts = function() {
+        console.log("Getting amounts ..");
+        $scope.user.company.basic.amount = ($scope.user.company.basic.percentage/100)*($scope.salary);
+        $scope.getOthers();
+    }
+    
+    $scope.getOthers = function() {
+        for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
+            if($scope.user.company.salaryInfo[i].amountType == 'percentage') {
+                $scope.user.company.salaryInfo[i].amount = Math.round(($scope.user.company.salaryInfo[i].percentage/100)*($scope.user.company.basic.amount));
+            }   
+        }
+    }
+    
     $scope.getTotal = function() {
         
-        var total = ($scope.user.company.basic.percentage/100)*($scope.salary);
+        var total = ($scope.user.company.basic.amount);
         var i = 0;
         for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
             if($scope.user.company.salaryInfo[i].type != 'add') {
                 continue;
             }
-            if($scope.user.company.salaryInfo[i].amountType == 'percentage') {
-                total = total + Math.round(($scope.user.company.salaryInfo[i].percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary));
-            } else {
-                total = total + $scope.user.company.salaryInfo[i].amount;
-            }  
+            total = total + $scope.user.company.salaryInfo[i].amount;      
         }
         total = $scope.salary - total;
         console.log("Total:" + total);
         return total;
     }
-
+    
+    /*$scope.remove = function(item) {
+        var index = $scope.user.company.salaryInfo.indexOf(item);
+        $scope.user.company.salaryInfo.splice(index, 1);
+        $scope.getAmounts();
+    }*/
 
     $scope.save = function () {
 
@@ -283,6 +299,10 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         }
         
         if($scope.salary == null || $scope.salary < 0) {
+            $scope.salaryError = true;
+            return;
+        }
+        if(!$scope.user.company.basic.amount || $scope.user.company.basic.amount < 0) {
             $scope.salaryError = true;
             return;
         }
