@@ -30,6 +30,14 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
             salary.rule = $scope.deduction;
             salary.description = $("#deduction").text();
         }
+        if(!salary.rule) {
+            if(type == 'add') {
+                $scope.allowanceError = true;
+            } else {
+                $scope.deductionError = true;
+            }
+            return;
+        }
         salary.amount = 0;
         salary.percentage = 0;
         salary.amountType = 'percentage';
@@ -66,10 +74,17 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
 
         if($scope.user.company.basic == null || $scope.user.company.basic.percentage < 0) {
             $scope.basicError = true;
-            $("#basic").focus();
             return;
         }
-         
+        var i = 0;
+        for(i = 0; i < $scope.user.company.salaryInfo.length; i++) {
+            var sal = $scope.user.company.salaryInfo[i];
+            if(!sal.rule || !sal.percentage || !sal.amountType || (sal.percentage > 100 && sal.amountType == 'percentage')) {
+                console.log("Error in salary info..");
+                sal.error = true;
+                return;
+            }
+        }
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user
         userService.callService($scope, "/addSalaryStructure").then(function (response) {

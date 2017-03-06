@@ -22,18 +22,18 @@
 
         <div ng-include="'response.html'"></div>
 
-       <div class="row">
+        <div class="row">
             <div class="col-sm-6 col-sm-offset-3 makpg">
-                
-                
+
+
                 <ul class="nav nav-tabs adempnav">
-                    <li class="active"><a style="cursor:pointer" data-toggle="tab"  ng-click="tab=1">Personal</a></li>
-                    <li><a data-toggle="tab" style="cursor:pointer"  ng-click="tab=2">Experience</a></li>
-                    <li><a data-toggle="tab" style="cursor:pointer"  ng-click="tab=3">Educational</a></li>
-                    <li><a data-toggle="tab" style="cursor:pointer"  ng-click="tab=4">Financial</a></li>
+                    <li class="active"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Personal</a></li>
+                    <li><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Experience</a></li>
+                    <li><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Educational</a></li>
+                    <li><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Financial</a></li>
                 </ul>
                 <br>
-                
+
 
                 <div class="tab-content" id="page1">
                     <ng-form name="form">
@@ -41,21 +41,21 @@
                             <label for="usr">Employee number</label>
                             <input type="number" class="form-control">
                         </div>-->
-                        
-                    <div id="basc" class="tab-pane fade in active" ng-show="tab == 1 || !tab">
-                        
-                        <!--<div class=" form-group">
+
+                        <div id="basc" class="tab-pane fade in active" ng-show="tab == 1 || !tab">
+
+                            <!--<div class=" form-group">
                             <label for="pwd">Employee ID</label>
                             <input type="text" name="name" class="form-control" ng-model="employee.id" ng-required="true">
                             <p style="color:red" ng-show="formShowErrors && form.name.$invalid" focus-me="{{formShowErrors && form.name.$invalid}}">Please Enter employee ID</p>
                         </div>-->
-                        
-                        <div class=" form-group">
-                            <label for="pwd">Name</label>
-                            <input type="text" name="name" class="form-control" ng-model="employee.name" ng-required="true" focus-me="{{nameInvalid}}">
-                            <p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter  employee name</p>
-                        </div>
-                        <!-- <div class=" form-group">
+
+                            <div class=" form-group">
+                                <label for="pwd">Name</label>
+                                <input type="text" name="name" class="form-control" ng-model="employee.name" ng-required="true" focus-me="{{nameInvalid}}">
+                                <p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter employee name</p>
+                            </div>
+                            <!-- <div class=" form-group">
                             <label for="pwd">Middle</label>
                             <input type="text" class="form-control">
                         </div>
@@ -63,120 +63,110 @@
                             <label for="pwd">Last Name</label>
                             <input type="text" class="form-control">
                         </div>-->
-                        <div class=" form-group">
-                            <label for="pwd">Email</label>
-                            <input type="email" name="email" class="form-control" ng-model="employee.email" ng-required="true" focus-me="{{emailInvalid}}">
-                            <p style="color:red" ng-show="formShowErrors && form.email.$invalid">Please Enter valid employee email</p>
-                        </div>
-                        <div class=" form-group">
-                            <label for="pwd">Current designation</label>
-                            <input type="text" name="designation" class="form-control" ng-model="employee.designation" ng-required="true" focus-me="{{designationInvalid}}">
-                            <p style="color:red" ng-show="formShowErrors && form.designation.$invalid">Please Enter employee designation</p>
-                        </div>
-                        <!--<div class=" form-group">
+                            <div class=" form-group">
+                                <label for="pwd">Email</label>
+                                <input type="email" name="email" class="form-control" ng-model="employee.email" ng-required="true" focus-me="{{emailInvalid}}">
+                                <p style="color:red" ng-show="formShowErrors && form.email.$invalid">Please Enter valid employee email</p>
+                            </div>
+                            <div class=" form-group">
+                                <label for="pwd">Current designation</label>
+                                <input type="text" name="designation" class="form-control" ng-model="employee.designation" ng-required="true" focus-me="{{designationInvalid}}">
+                                <p style="color:red" ng-show="formShowErrors && form.designation.$invalid">Please Enter employee designation</p>
+                            </div>
+                            <!--<div class=" form-group">
                             <label for="pwd">Current level</label>
                             <input type="text" class="form-control">
                         </div>-->
-                        <div class=" form-group">
-                            <label for="pwd">Department / Function</label>
-                            <input type="text" class="form-control" ng-model="employee.department">
-                        </div>
-                        <!--<div class=" form-group">
+                            <div class=" form-group">
+                                <label for="pwd">Department / Function</label>
+                                <input type="text" class="form-control" ng-model="employee.department">
+                            </div>
+                            <!--<div class=" form-group">
                             <label for="pwd">Reporting to</label>
                             <input type="text" class="form-control" ng-model="employee.supervisor">
                         </div>-->
-                        <div class=" form-group">
-                            <label for="pwd">Location</label>
-                            <input type="text" class="form-control" ng-model="employee.location">
-                        </div>
+                            <div class=" form-group">
+                                <label for="pwd">Location</label>
+                                <input type="text" class="form-control" ng-model="employee.location">
+                            </div>
 
-                        <div class=" form-group">
-                            <label for="pwd">Employee type</label>
-                            <!--<input type="text" class="form-control">-->
-                            <select name="type" class="form-control" ng-model="employee.type" ng-required="true" focus-me="{{typeInvalid}}">
+                            <div class=" form-group">
+                                <label for="pwd">Employee type</label>
+                                <!--<input type="text" class="form-control">-->
+                                <select name="type" class="form-control" ng-model="employee.type" ng-required="true" focus-me="{{typeInvalid}}">
                                 <option value="">Select Type</option>
                                 <option value="Permanent">Full time</option>
                                 <option value="Part">Part time</option>
                                 <option value="Contract">Contract</option>
                                 <option value="Contract">Internship</option>
                             </select>
-                            <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select employee type</p>
-                        </div>
-                        
-                    </div>
-                        
-                    <div class="tab-pane" id="qual" ng-show="tab == 2">
-                        
-                        <div class=" form-group">
-                            <label for="usr">Joining date</label>
-                            <datepicker date-format="yyyy-MM-dd">
-                                <input type="text" class="form-control" ng-model="employee.joiningDate">
-                            </datepicker>
-                        </div>
-                        <br>
-                        
-                        
-                        <div class=" form-group ropad grrow locpadt">
-                            <label for="pwd">Previous experience details</label>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control" ng-model="companyName" placeholder="Company Name">
-                                    
-                                      <input type="text" class="form-control pdademo" >
-                                    
-                                    
-                                </div>
+                                <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select employee type</p>
                             </div>
-                            
-                            
-                           
-                            
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <datepicker date-format="yyyy-MM-dd">
-                                        <input type="text" class="form-control locdat" ng-model="yearFrom" placeholder="From date">
-                                    </datepicker>
-                                    <datepicker date-format="yyyy-MM-dd">
-                                        <input type="text" class="form-control locdat" ng-model="yearTo" placeholder="To date">
-                                    </datepicker>
-                               
-                                    <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
-                                </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="qual" ng-show="tab == 2">
+
+                            <div class=" form-group">
+                                <label for="usr">Joining date</label>
+                                <datepicker date-format="yyyy-MM-dd">
+                                    <input type="text" class="form-control" ng-model="employee.joiningDate">
+                                </datepicker>
                             </div>
-                            <br/>
-                            <p ng-repeat="exp in employee.experiences">
-                                In {{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}
-                                <button type="button" class="btn btn-xs crs crdown" ng-click="removeExperience(exp)">
+                            <br>
+
+
+                            <div class=" form-group ropad grrow locpadt">
+                                <label for="pwd">Previous experience details</label>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" ng-model="companyName" placeholder="Company Name">
+                                        <input type="text" class="form-control pdademo" >
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <datepicker date-format="yyyy-MM-dd">
+                                            <input type="text" class="form-control locdat" ng-model="yearFrom" placeholder="From date">
+                                        </datepicker>
+                                        <datepicker date-format="yyyy-MM-dd">
+                                            <input type="text" class="form-control locdat" ng-model="yearTo" placeholder="To date">
+                                        </datepicker>
+
+                                        <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
+                                    </div>
+                                </div>
+                                <br/>
+                                <p ng-repeat="exp in employee.experiences">
+                                    In {{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}
+                                    <button type="button" class="btn btn-xs crs crdown" ng-click="removeExperience(exp)">
                                     <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                                 </button>
-                            </p>
+                                </p>
 
+
+                            </div>
 
                         </div>
-                            
-                        </div>
 
-                        <div class=" form-group ropad grrow" ng-show="tab == 3">
+                        <div class=" form-group ropad grrow tab-pane" ng-show="tab == 3">
                             <label for="pwd">Qualification</label>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" ng-model="universityName" placeholder="Univesity Name">
-                                    
                                     <input type="text" class="form-control pdademo" >
-                                    
                                     <input type="text" class="form-control pdademo" >
-                                    
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <datepicker date-format="yyyy-MM-dd">
-                                        <input type="text" class="form-control locdat" ng-model="from" placeholder="From date" >
+                                        <input type="text" class="form-control locdat" ng-model="from" placeholder="From date">
                                     </datepicker>
                                     <datepicker date-format="yyyy-MM-dd">
-                                        <input type="text" class="form-control locdat" ng-model="to" placeholder="To date" >
+                                        <input type="text" class="form-control locdat" ng-model="to" placeholder="To date">
                                     </datepicker>
-                               
+
                                     <span><img style="cursor:pointer" ng-click="addQualification()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
                                 </div>
                             </div>
@@ -188,45 +178,47 @@
                                 </button>
                             </p>
                         </div>
-                      
-                
 
-                <div id="page2" ng-show="tab == 4">
-                    
-                        <div class=" form-group">
-                            <label for="usr">Employee Pan number</label>
-                            <input type="text" class="form-control" ng-model="employee.financial.pan">
-                        </div>
-                        <div class=" form-group">
-                            <label for="usr">Employee account number</label>
-                            <input type="text" class="form-control" ng-model="employee.financial.accountNumber">
-                        </div>
-                        <div class=" form-group">
-                            <label for="pwd">Bank name</label>
-                            <input type="text" class="form-control" ng-model="employee.financial.bankName">
-                        </div>
-                        <div class=" form-group">
-                            <label for="pwd">Provident fund (PF) number</label>
-                            <input type="text" class="form-control" ng-model="employee.financial.pfNumber">
-                        </div>
-                    
 
+
+                        <div class="tab-pane" ng-show="tab == 4">
+
+                            <div class=" form-group">
+                                <label for="usr">Employee Pan number</label>
+                                <input type="text" class="form-control" ng-model="employee.financial.pan">
+                            </div>
+                            <div class=" form-group">
+                                <label for="usr">Employee account number</label>
+                                <input type="text" class="form-control" ng-model="employee.financial.accountNumber">
+                            </div>
+                            <div class=" form-group">
+                                <label for="pwd">Bank name</label>
+                                <input type="text" class="form-control" ng-model="employee.financial.bankName">
+                            </div>
+                            <div class=" form-group">
+                                <label for="pwd">Provident fund (PF) number</label>
+                                <input type="text" class="form-control" ng-model="employee.financial.pfNumber">
+                            </div>
+
+
+
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
+                    </ng-form>
                 </div>
-                <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
-                </ng-form>
-                   </div>
             </div>
         </div>
     </div>
 
     <script>
-        $(function () {
+        $(function() {
             if (!Modernizr.inputtypes.date) {
                 $('input[type=date]').datepicker({
                     dateFormat: 'yy-mm-dd'
                 });
             }
         });
+
     </script>
 
 

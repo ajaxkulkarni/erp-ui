@@ -31,7 +31,7 @@
                     
                 <div class=" form-group">
                     <label for="usr">Base salary ( % of gross salary) </label>
-                    <input id="basic" type="number" class="form-control set_sal" ng-model="user.company.basic.percentage">
+                    <input id="basic" type="number" class="form-control set_sal" ng-model="user.company.basic.percentage" focus-me="{{basicError}}">
                     <p style="color:red" ng-show="basicError && user.company.basic == null">Please enter a valid value</p>
                 </div>
                 </div>
@@ -42,13 +42,13 @@
                  <div class=" form-group">
                     <label for="pwd">Add allowances</label>
                     <!--<input type="emil id" class="form-control" >-->
-                    <select name="allowance" class="form-control forpad" ng-model="allowance ">
+                    <select name="allowance" class="form-control forpad" ng-model="allowance " focus-me="{{allowanceError && !allowance}}">
                         <option value="">Select allowance</option>
                         <option value="HRA">H.R.A.(% of base salary)</option>
                         <option value="Conveyance">Conveyance (% of base salary)</option>
                         <option value="Custom">Custom</option>
                     </select>
-
+                     <p ng-show="allowanceError && !allowance" style="color:red">Please select a value</p>
                 </div>
                 <button type="button" class="btn  btn-xs adbtun " ng-click="add('add')"><span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" width=40px ></span></button>
                 
@@ -71,19 +71,19 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="usr" ng-show="!salary.customRule">{{salary.rule}}</label>
-                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule">
+                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule" focus-me="{{salary.error && !salary.rule}}">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage">
+                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage" focus-me="{{salary.error && !salary.percentage}}">
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control" ng-model="salary.amountType">
+                                    <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
                                         <option value="percentage">%</option>
                                         <option value="amount">Rs./-</option>
                                     </select>
                                 </div>
                             </div>
-
+                            <p ng-show="salary.error && (!salary.rule || !salary.percentage || (salary.percentage > 100 && salary.amountType=='percentage'))" style="color:red">Please enter all valid values</p>
                         </div>
 
                     </div>
@@ -100,13 +100,13 @@
                 <div class=" form-group">
                     <label for="pwd">Add deductions</label>
                     <!--<input type="emil id" class="form-control" >-->
-                    <select name="deduction" class="form-control forpad" ng-model="deduction">
+                    <select name="deduction" class="form-control forpad" ng-model="deduction" focus-me="{{deductionError && !deduction}}">
                         <option value="">Select deduction</option>
                         <option value="Provident fund">Provident Fund</option>
                         <option value="Professional Tax">Professional Tax</option>
                         <option value="Custom">Custom</option>
                     </select>
-
+                    <p ng-show="deductionError && !deduction"  style="color:red">Please select a value</p>
                 </div>
                 <button type="button" class="btn  btn-xs adbtun" ng-click="add('sub')"><span><img src="imgs/n_addbtn.png" alt="back" id="closbtn" width=40px ></span></button>
                 
@@ -124,19 +124,20 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <label for="usr" ng-show="!salary.customRule">{{salary.rule}}</label>
-                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule">
+                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule" focus-me="{{salary.error && !salary.rule}}">
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage">
+                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage" focus-me="{{salary.error && !salary.percentage}}">
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control" ng-model="salary.amountType">
+                                    <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
                                         <option value="percentage">%</option>
                                         <option value="amount">Rs./-</option>
                                     </select>
                                 </div>
                             </div>
-
+                            
+                            <p ng-show="salary.error && (!salary.rule || !salary.percentage || (salary.percentage > 100 && salary.amountType=='percentage'))" style="color:red">Please enter all valid details</p>
                         </div>
 
                     </div>

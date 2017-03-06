@@ -24,6 +24,10 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.employees = response.user.company.employees;
+            if($scope.employees == null || $scope.employees.length == 0) {
+                $scope.noEmployees = true;
+                userService.validationError($scope, "No Employee record found for your company. Please add employees first.");
+            }
             console.log("Company:" + JSON.stringify(response.user.company));
 
         });
@@ -38,6 +42,12 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
             $scope.response = response;
             userService.showResponse($scope, "");
             $scope.leaveTypes = response.company.leaveTypes;
+            if($scope.leaveTypes == null || $scope.leaveTypes.length == 0) {
+                if($scope.noEmployees) {
+                    return;
+                }
+                userService.validationError($scope, "Please define a leave structure for your company first.");
+            }
             //console.log(response.user.company);
 
         });
