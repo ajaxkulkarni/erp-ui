@@ -216,8 +216,10 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     if(localStorage.empFinancial != null && localStorage.empFinancial != 'null') {
         //console.log(localStorage.empFinancial);
         $scope.employee = JSON.parse(localStorage.empFinancial);
-        $scope.salary = $scope.employee.financial.salary;
-        console.log("Salary :" + $scope.salary);
+        if($scope.employee.financial != null) {
+            $scope.salary = $scope.employee.financial.salary;
+            console.log("Salary :" + $scope.salary);   
+        }
     }
 
     /*$.skylo({
@@ -313,28 +315,33 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
             if($scope.user.company.salaryInfo[i].amount < 0) {
                 $scope.user.company.salaryInfo[i].error = true;
+                console.log("Rule :" + $scope.user.company.salaryInfo[i].rule + ":" + $scope.user.company.salaryInfo[i].amount);
                 return false;
             }
         }
+        return true;
     }
 
     $scope.save = function () {
-
         if($scope.employee == null) {
             $scope.salaryError = true;
+            console.log("Employee NULL");
             return;
         }
         
         if($scope.salary == null || $scope.salary < 0) {
             $scope.salaryError = true;
+            console.log("Salary invalid");
             return;
         }
         if(!$scope.user.company.basic.amount || $scope.user.company.basic.amount < 0) {
             $scope.salaryError = true;
+            console.log("basic invalid");
             return;
         }
         if(!checkSalaryInfo()) {
             $scope.salaryError = true;
+            console.log("salry infos invalid");
             return;
         }
         userService.showLoading($scope);
