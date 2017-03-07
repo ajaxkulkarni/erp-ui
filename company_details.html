@@ -3,7 +3,7 @@
 
 <div class="row tpband">
     <div class="col-sm-6 col-sm-offset-3 ">
-        <a href="#home"><img src="imgs/back_icon_grey.png" alt="back" id="backbtn" width=50px style="border:thick">
+        <a href="#home"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
         </a>
     </div>
 </div>
@@ -83,12 +83,13 @@
                 <p ng-show="companyFormShowErros == true && companyForm.terms.$invalid" style="color:red">Please accept our terms and conditions</p>
             </div>
 
-
+            <div class="frbtnonpg">
 
             <!--data-toggle="modal" data-target="#myModal"-->
             <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveCompany(companyForm.$valid)">Save</button>
+            </div>
         </ng-form>
-
+            
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog ">

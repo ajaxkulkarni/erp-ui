@@ -482,7 +482,7 @@ html,body{
     margin-left: 20px;
     
     float: right;
-    margin-top: -11px;
+    margin-top: -13px;
     margin-bottom: 10px;
 }
 
@@ -503,7 +503,7 @@ html,body{
     border-width: medium;*/
     margin-bottom: 20px;
     box-shadow: 0 0 5px rgb(200,200,200); 
-    width: 675px;
+    
     
 }
 
@@ -586,7 +586,7 @@ html,body{
 }
 
 .locdat {
-    width: 300px;
+    width: 60%;
     margin-top: 10px;
 }
 
@@ -680,9 +680,18 @@ html,body{
 
 
 
-.pdsoid {
-    padding-left: 100px;
+.pdsid{
+    
+    padding-top: 25px;
+    padding-bottom: 5px;
+    background-color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgb(200,200,200); 
+    
+    
+    padding-left: 10px;
     padding-right: 10px;
+    
 }
 
 .compnam {
@@ -703,4 +712,16 @@ html,body{
 
 .pdademo {
     margin-top: 10px;
+}
+
+.frbtnonpg {
+    height: 60px;
+}
+
+.xlicon {
+    margin-left: 20px;
+    
+    float: right;
+    
+    margin-bottom: 10px;
 }
