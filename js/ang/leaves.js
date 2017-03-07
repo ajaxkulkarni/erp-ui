@@ -1,5 +1,5 @@
 var leaveYears = [2016,2017,2018,2019,2020];
-var leaveMonths = [{name:"Select Month", id: -1}, { name: "January", id: 0 }, { name: "February", id: 1 }, { name: "March", id: 2 }, { name: "April", id: 3 },
+var leaveMonths = [{name:"Whole Year", id: 15}, { name: "January", id: 0 }, { name: "February", id: 1 }, { name: "March", id: 2 }, { name: "April", id: 3 },
                     { name: "May", id: 4 }, { name: "June", id: 5 }, { name: "July", id: 6 }, { name: "August", id: 7 },
                     { name: "September", id: 8 }, { name: "October", id: 9 }, { name: "November", id: 10 }, { name: "December", id: 11 }
                    ];
@@ -173,10 +173,13 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
         if($scope.user.company.filter == null) {
             $scope.user.company.filter = {};
         }
-        if($scope.month.id >= 0) {
+        if($scope.month.id != 15) {
             $scope.user.company.filter.month = $scope.month.id;
+        } else {
+            $scope.user.company.filter.month = null;
         }
         $scope.user.company.filter.year = $scope.year;
+        console.log("Filter:" + JSON.stringify($scope.user.company.filter));
         $scope.dataObj.user = $scope.user;
         userService.showLoading($scope);
         userService.callService($scope, "/getAllLeaves").then(function (response) {
