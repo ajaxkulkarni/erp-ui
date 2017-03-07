@@ -276,15 +276,21 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
             if($scope.user.company.salaryInfo[i].amountType == 'percentage') {
                 $scope.user.company.salaryInfo[i].amount = Math.round(($scope.user.company.salaryInfo[i].percentage/100)*($scope.user.company.basic.amount));
-            }   
+            }
+            
         }
+        $scope.amountPayable = $scope.salary - deductions;
     }
     
     $scope.getTotal = function() {
         
         var total = ($scope.user.company.basic.amount);
         var i = 0;
+        var deductions = 0;
         for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
+            if($scope.user.company.salaryInfo[i].type == 'sub') {
+                deductions = deductions + $scope.user.company.salaryInfo[i].amount;
+            }
             if($scope.user.company.salaryInfo[i].type != 'add') {
                 continue;
             }
@@ -292,6 +298,7 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         }
         total = $scope.salary - total;
         console.log("Total:" + total);
+        $scope.amountPayable = $scope.salary - deductions;
         return total;
     }
     
@@ -300,6 +307,16 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
         $scope.user.company.salaryInfo.splice(index, 1);
         $scope.getAmounts();
     }*/
+    
+    function checkSalaryInfo() {
+        var i = 0;
+        for(i=0;i<$scope.user.company.salaryInfo.length;i++) {
+            if($scope.user.company.salaryInfo[i].amount < 0) {
+                $scope.user.company.salaryInfo[i].error = true;
+                return false;
+            }
+        }
+    }
 
     $scope.save = function () {
 
@@ -313,6 +330,10 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
             return;
         }
         if(!$scope.user.company.basic.amount || $scope.user.company.basic.amount < 0) {
+            $scope.salaryError = true;
+            return;
+        }
+        if(!checkSalaryInfo()) {
             $scope.salaryError = true;
             return;
         }

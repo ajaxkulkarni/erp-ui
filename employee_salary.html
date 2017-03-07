@@ -95,7 +95,7 @@
                                         <label for="usr">{{salary.rule}}</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="number" class="form-control set_sal" ng-model="salary.amount" ng-init="getAmount(salary)" focus-me="{{salary.error && !salary.percentage}}" ng-change="getTotal()">
+                                        <input type="number" class="form-control set_sal" ng-model="salary.amount" ng-init="getAmount(salary)" focus-me="{{salary.error}}" ng-change="getTotal()">
                                     </div>
                                     <!--<div class="col-md-3">
                                         <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
@@ -104,7 +104,7 @@
                                     </select>
                                     </div>-->
                                 </div>
-                                <p ng-show="salary.error && (!salary.rule || !salary.percentage || (salary.percentage > 100 && salary.amountType=='percentage'))" style="color:red">Please enter all valid values</p>
+                                <p ng-show="salary.error && salary.amount < 0" style="color:red">Please enter all valid values</p>
                             </div>
 
                         </div>
@@ -135,7 +135,7 @@
                                         <label for="usr">{{salary.rule}}</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="number" class="form-control set_sal" ng-model="salary.amount" ng-init="getAmount(salary)" focus-me="{{salary.error && !salary.percentage}}" ng-change="getTotal()">
+                                        <input type="number" class="form-control set_sal" ng-model="salary.amount" ng-init="getAmount(salary)" focus-me="{{salary.error}}" ng-change="getTotal()">
                                     </div>
                                     <!--<div class="col-md-3">
                                         <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
@@ -144,7 +144,7 @@
                                     </select>
                                     </div>-->
                                 </div>
-                                <p ng-show="salary.error && (!salary.rule || !salary.percentage || (salary.percentage > 100 && salary.amountType=='percentage'))" style="color:red">Please enter all valid values</p>
+                                <p ng-show="salary.error && salary.amount < 0" style="color:red">Please enter all valid values</p>
                             </div>
 
                         </div>
@@ -152,7 +152,7 @@
                 </div>
                 
                 <div>
-                    <h4 class="ropad grrow " ><span><strong>Net Payable salary : Rs {{emp.financial.amountPayable}}/- </strong></span></h4>
+                    <h4 class="ropad grrow " ><span><strong>Net Payable salary : Rs {{amountPayable}}/- </strong></span></h4>
                 
                 </div>
                 <!--<div class="row ropad grrow lacmarg">

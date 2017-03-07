@@ -24,13 +24,11 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 makpg">
-
-
-                <ul class="nav nav-tabs adempnav">
-                    <li class="active"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Personal</a></li>
-                    <li><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Experience</a></li>
-                    <li><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Educational</a></li>
-                    <li><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Financial</a></li>
+                <ul class="nav nav-tabs adempnav" ng-init="tab=1">
+                    <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Personal</a></li>
+                    <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Experience</a></li>
+                    <li ng-class="{'active': tab == 3}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Educational</a></li>
+                    <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Financial</a></li>
                 </ul>
                 <br>
 

@@ -100,15 +100,19 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         //console.log("setting focus.." + $scope.employee.name);
         if(form.name.$invalid) {
             $scope.nameInvalid = true;
+            $scope.tab = 1;
         }
         else if(form.email.$invalid) {
             $scope.emailInvalid = true;
+            $scope.tab = 1;
         }
         else if(form.designation.$invalid) {
             $scope.designationInvalid = true;
+            $scope.tab = 1;
         }
         else if(form.type.$invalid) {
             $scope.typeInvalid = true;
+            $scope.tab = 1;
         }
     };
 

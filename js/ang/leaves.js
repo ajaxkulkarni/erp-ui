@@ -64,23 +64,53 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
         var time1 = new Date($scope.leave.to).getTime();
         var time2 = new Date($scope.leave.from).getTime();
         $scope.leave.noOfDays = 1 + (time1 - time2)/(3600*24*1000);
-        if($scope.leave.noOfDays < 0) {
+        if($scope.leave.noOfDays <= 0) {
+            $scope.incorrectDate = true;
             $scope.leave.noOfDays = 0;
+        } else {
+            $scope.incorrectDate = false;
         }
     }
+    
+    function setFocus(form) {
+        //console.log("setting focus.." + $scope.employee.name);
+        if(form.employee.$invalid) {
+            $scope.invalidEmployee = true;
+            return;
+        }
+        else if(form.from.$invalid) {
+            $scope.invalidFrom = true;
+            return;
+        }
+        else if(form.to.$invalid || $scope.incorrectDate) {
+            $scope.invalidTo = true;
+            return;
+        }
+        else if(form.days.$invalid || $scope.incorrectDays) {
+            $scope.invalidDays = true;
+            return;
+        }
+        else if(form.type.$invalid) {
+            $scope.invalidType = true;
+            return;
+        }
+    };
 
-    $scope.applyLeave = function (valid) {
-        if (!valid) {
+    $scope.applyLeave = function (form) {
+        if (!form.$valid) {
             $scope.showLeaveErrors = true;
+            setFocus(form);
             return;
         }
         if ($scope.leave.noOfDays <= 0) {
             $scope.incorrectDays = true;
+            setFocus(form);
             console.log("Incorrect days!");
             return;
         }
         if ($scope.leave.from > $scope.leave.to) {
             $scope.incorrectDate = true;
+            setFocus(form);
             console.log("Incorrect date!");
             return;
         }
