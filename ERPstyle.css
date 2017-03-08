@@ -601,10 +601,11 @@ html,body{
     height: 70px;
     width: 150px;
     
-    color: black;
-    padding-top: 27px;
+    color: rgb(130,130,130);
+    padding-top: 29px;
     line-height: 95%;
     font-size: 17px;
+    
     
     margin-right: -70px;
     
@@ -724,4 +725,12 @@ html,body{
     float: right;
     
     margin-bottom: 10px;
+}
+
+.lgin_correct {
+    width: 80%;
+}
+
+.crt_cnt {
+    align-content: center;
 }

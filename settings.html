@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+
+<body>
+
+
+
+    <div class="container">
+
+        <div class="row tpband">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <a href="#leaves"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Settings</h2>
+            </div>
+        </div>
+
+        <div ng-include="'response.html'"></div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 makpg ">
+                
+                <h2 class="pghdgs">Change Password</h2>
+                
+                <div class=" form-group" ng-repeat="policy in leaveTypes">
+                    <label for="pwd">Maximum {{policy.name}} leaves per year</label>
+                    <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
+                </div>
+               
+
+
+                <div class="frbtnonpg">
+                <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="addLeavePolicy()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+</body>
+
+</html>
