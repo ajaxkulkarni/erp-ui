@@ -24,7 +24,7 @@
 
         <div class="row ">
             <div class="col-sm-6 col-sm-offset-3 makpg">
-                
+
                 <ng-form name="leaveForm">
                     <div class=" form-group">
                         <label for="pwd">Name</label>
@@ -68,13 +68,13 @@
                     </div>
                     <div class=" form-group">
                         <label for="usr">Comment</label>
-                        <input type="text" class="form-control" ng-model="leave.reason">
+                        <input type="text" class="form-control" ng-model="leave.reason" maxlength="40">
                     </div>
-                    
+
                     <div class="frbtnonpg">
 
-                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="applyLeave(leaveForm)">Submit</button>
-                    
+                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="applyLeave(leaveForm)">Submit</button>
+
                     </div>
 
                 </ng-form>
@@ -107,8 +107,8 @@
 
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
-    
-    <div id="warningModal" class="modal fade" role="dialog">
+
+    <div id="leaveWarningModal" class="modal fade" role="dialog">
         <div class="modal-dialog ">
 
             <!-- Modal content-->
@@ -117,21 +117,22 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 </div>
-                <div ng-include="'response.html"></div>
-                <div class="modal-body">
+                <div class="modal-body failmodal">
+
+                    <span><img src="imgs/n_err.svg" alt="back"width=80px;></span>
+
                     <p>This employee has exceeded the limit for {{leave.type.name}} leave. Applied leaves will be considered for without pay. Do you still want to apply the leave?</p>
-                        
+
                 </div>
                 <div class="modal-footer" style="border:none">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>
-
-                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-click="applyLeave(true)">Apply Leave</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">OK</button>
                 </div>
             </div>
 
         </div>
+
     </div>
-    
+
 
 </body>
 

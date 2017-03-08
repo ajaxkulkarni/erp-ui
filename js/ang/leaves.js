@@ -129,7 +129,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
             $scope.response = response;
             if($scope.response.status == -101) {
                 console.log("Exceeded limit!");
-                $("#warningModal").modal('show');
+                $("#leaveWarningModal").modal('show');
                 $scope.modalShown = true;
             } else {
                 userService.showResponse($scope, "Leave applied successfully!");    

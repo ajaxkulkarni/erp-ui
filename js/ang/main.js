@@ -1,7 +1,7 @@
 var app = angular.module("app", ["ngRoute","720kb.datepicker"]);
 
-//var host = "http://localhost:8080/erp-service";
-var host = "http://35.167.123.68:8080/erp";
+var host = "http://localhost:8080/erp-service";
+//var host = "http://35.167.123.68:8080/erp";
 var root = host + "/service";
 var rootAdmin = host + "/adminService";
 
@@ -28,7 +28,8 @@ app.service('userService', function ($http, $q) {
                 return;
             }
             localStorage.erpEmployee = null;
-            $scope.response.responseText = successMsg;
+            $scope.successMsg = successMsg;
+            console.log("Response Text:" + $scope.response.responseText);
             $("#successModal").show();
             $("#successModal").modal('show');
             //console.log("Response :" + $scope.response.reseponseText);
@@ -61,7 +62,7 @@ app.service('userService', function ($http, $q) {
         res.success(function (data, status, headers, config) {
             response = data;
             defer.resolve(response);
-            console.log("Result :" + JSON.stringify(data) + ":" + JSON.stringify(headers))
+            //console.log("Result :" + JSON.stringify(data) + ":" + JSON.stringify(headers))
            
 
         });
