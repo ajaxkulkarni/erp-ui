@@ -168,6 +168,7 @@ angular.module("app").controller('leavesData', function ($scope, userService, $l
     $scope.month = leaveMonths[0];
     $scope.year = new Date().getYear() + 1900;
     console.log(" Year:" + $scope.year);
+    $scope.root = root;
 
     $scope.getAllEmployeeLeaves = function () {
         if($scope.user.company.filter == null) {
@@ -215,6 +216,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
     $scope.dataObj = {};
     $scope.user = JSON.parse(localStorage.erpUser);
     $scope.employee = JSON.parse(localStorage.erpEmployee);
+    $scope.root = root;
 
     /*$.skylo({
         state: 'success',
