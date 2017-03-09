@@ -79,27 +79,6 @@
 
                 </ng-form>
 
-                <!-- Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog ">
-
-                        <!-- Modal content-->
-                        <div class="modal-content" style="text-align: center;">
-                            <div class="modal-header" style="border:none">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <div class="modal-body">
-                                <p>Leave added successfully</p>
-                            </div>
-                            <div class="modal-footer" style="border:none">
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
 
             </div>
         </div>
@@ -125,7 +104,7 @@
 
                 </div>
                 <div class="modal-footer" style="border:none">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal" ng-click="applyLeave(leaveForm)">OK</button>
                 </div>
             </div>
 

@@ -135,9 +135,13 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
             //$.skylo('end');
             userService.initLoader($scope);
             $scope.response = response;
-            userService.showResponse($scope, "Employee details updated successfully!");
+            userService.showResponse($scope, "Employee details updated successfully!","employees");
 
         });
+    }
+    
+     $scope.close = function() {
+        userService.close("#viewEmployees");
     }
 
 
@@ -197,10 +201,14 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
             //$.skylo('end');
             userService.initLoader($scope);
             $scope.response = response;
-            userService.showResponse($scope, "Employee deleted successfully!");
+            userService.showResponse($scope, "Employee deleted successfully!","employees");
             $scope.getAllEmployees();
 
         });
+    }
+    
+     $scope.close = function() {
+        userService.close("");
     }
 
     $scope.getAllEmployees();

@@ -95,6 +95,10 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
             return;
         }
     };
+    
+     $scope.close = function() {
+        userService.close("#viewLeaves");
+    }
 
     $scope.applyLeave = function (form) {
         if (!form.$valid) {
@@ -132,7 +136,7 @@ angular.module("app").controller('leaves', function ($scope, userService, $locat
                 $("#leaveWarningModal").modal('show');
                 $scope.modalShown = true;
             } else {
-                userService.showResponse($scope, "Leave applied successfully!");    
+                userService.showResponse($scope, "Leave applied successfully!","leavesData");    
             }
             //$("#myModal").modal('show');
             //console.log(response.user.company);
@@ -224,6 +228,10 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
         initialBurst: 30,
         flat: false
     });*/
+    
+    $scope.close = function() {
+        userService.close("");
+    }
 
     $scope.showCancel = function(leave) {
         $scope.leave = leave;
@@ -235,6 +243,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
     $scope.getEmployeeLeaves = function () {
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.employee;
+        console.log("Employee :" + JSON.stringify($scope.employee));
         userService.callService($scope,"/getEmployeeLeaves").then(function (response) {
             //$.skylo('end');
             userService.initLoader($scope);
@@ -254,7 +263,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
             userService.initLoader($scope);
             $scope.response = response;
             $("#myModal").modal('hide');
-            userService.showResponse($scope, "Leave updated successfully!");
+            userService.showResponse($scope, "Leave updated successfully!","leaveDetails");
             $scope.getEmployeeLeaves();
         });
     }
@@ -263,66 +272,6 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
 
 });
 
-angular.module("app").controller('editLeave', function ($scope, userService, $location) {
-
-    $scope.response = {};
-    console.log("Leaves loaded ..");
-    userService.initLoader($scope);
-    $scope.dataObj = {};
-    $scope.user = JSON.parse(localStorage.erpUser);
-
-    /*$.skylo({
-        state: 'success',
-        inchSpeed: 200,
-        initialBurst: 30,
-        flat: false
-    });*/
-
-
-    $scope.getAllLeaveTypes = function () {
-        userService.showLoading($scope);
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/getAllLeaveTypes").then(function (response) {
-            //$.skylo('end');
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "");
-            $scope.leaveTypes = response.company.leaveTypes;
-            //console.log(response.user.company);
-
-        });
-    }
-
-    $scope.applyLeave = function (valid) {
-        if (!valid) {
-            $scope.showLeaveErrors = true;
-            return;
-        }
-        if ($scope.leave.noOfDays <= 0) {
-            $scope.incorrectDays = true;
-            console.log("Incorrect days!");
-            return;
-        }
-        userService.showLoading($scope);
-        $scope.leave.appliedBy = $scope.user;
-        $scope.dataObj.leave = $scope.leave;
-        userService.callService($scope, "/applyLeave").then(function (response) {
-            //$.skylo('end');
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "Leave applied successfully!");
-            //$("#myModal").modal('show');
-            //console.log(response.user.company);
-
-        });
-    }
-
-    $scope.getAllLeaveTypes();
-    
-    //console.log("Leaves all loaded ..");
-
-
-});
 
 angular.module("app").controller('leavePolicy', function ($scope, userService, $location) {
 
@@ -354,6 +303,11 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
 
         });
     }
+    
+     $scope.close = function() {
+        userService.close("#main");
+     }   
+    
 
     $scope.addLeavePolicy = function () {
         //console.log("Scope :" + $scope.user.company + " actual " + JSON.stringify($scope.leaveTypes));

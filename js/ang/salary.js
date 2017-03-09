@@ -97,6 +97,10 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
 
         });
     }
+    
+    $scope.close = function() {
+        userService.close("#main");
+    }
 
     $scope.getSalaryStructure();
 
@@ -360,6 +364,10 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
             //console.log(response.user.company);
 
         });
+    }
+    
+    $scope.close = function() {
+        userService.close("#employeeSalarySlips");
     }
 
     $scope.getAllEmployees();

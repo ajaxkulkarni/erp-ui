@@ -12,7 +12,7 @@ app.service('userService', function ($http, $q) {
 
     var response = {};
 
-    this.showResponse = function ($scope,successMsg) {
+    this.showResponse = function ($scope,successMsg,successLink) {
         $scope.showProgress = false;
         if ($scope.response == null) {
             $scope.response = {};
@@ -27,7 +27,12 @@ app.service('userService', function ($http, $q) {
             if(successMsg == "") {
                 return;
             }
-            localStorage.erpEmployee = null;
+            /*if(successLink!= null && successLink != "") {
+                $scope.successLink = successLink;
+            } else {
+                $scope.successLink = "#main";
+            }*/
+            //localStorage.erpEmployee = null;
             $scope.successMsg = successMsg;
             console.log("Response Text:" + $scope.response.responseText);
             $("#successModal").show();
@@ -54,6 +59,13 @@ app.service('userService', function ($http, $q) {
     this.validationError = function($scope, msg) {
         $scope.errorText = msg;
         $("#warningModal").modal('show');
+    }
+    
+    this.close = function(url) {
+        $("#successModal").modal('hide');
+        if(url != null && url != "") {
+            window.location.href = url;
+        }
     }
 
     this.callService = function ($scope, method) {

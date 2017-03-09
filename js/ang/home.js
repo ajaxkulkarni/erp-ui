@@ -99,6 +99,10 @@ angular.module("app").controller('company', function ($scope, userService, $loca
 
         });
     }
+    
+    $scope.close = function() {
+        userService.close("#main");
+    }
 
 
 });
