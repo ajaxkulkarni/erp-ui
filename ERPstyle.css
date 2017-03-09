@@ -236,8 +236,8 @@ h1{
 }
 
 #foo{
-    position:relative;
     
+    position: relative;
     width: 100%;
     background-color: white;
     height: 100px;
@@ -568,10 +568,11 @@ html,body{
 
 .foocomplogo {
     float: right;
-    margin-right: -35px;
-    margin-top: 20px;
+    
+    vertical-align:middle;
     display: block;
     padding: 0px;
+    margin-right: 20px;
 }
 
 .footxt {
@@ -626,6 +627,7 @@ html,body{
     padding: none;
     margin: 0px;
     z-index: -3;
+    
     
 }
 
@@ -733,4 +735,29 @@ html,body{
 
 .crt_cnt {
     align-content: center;
+}
+
+#foob {
+    
+   
+    vertical-align:middle;
+    width: 100%;
+    background-color: white;
+    height: 100px;
+    box-shadow: 0 0 5px rgb(200,200,200);
+    background-color: rgb(227,228,229);
+    padding-left: 20px;
+    
+}
+
+.correc_foo {
+    margin: 0px;
+     height: 00px;
+     position: relative;
+    
+}
+
+.forfull {
+    border-width: thick;
+    min-height: 80%;
 }
