@@ -287,7 +287,7 @@ h1{
     opacity: 0.2; 
     width:auto;
     text-align: center;
-    background-color: white;
+    background-color: transparent;
     margin: 0px;
     padding: 0px;
 }
@@ -414,7 +414,7 @@ dropdown-menu:hover{
 
 .crdown {
      padding-top: 0px;
-    padding-right: 13px
+    padding-right: 8px
 }
 
 html,body{
@@ -740,7 +740,7 @@ html,body{
 #foob {
     
    
-    vertical-align:middle;
+    padding-top: 20px;
     width: 100%;
     background-color: white;
     height: 100px;
@@ -760,4 +760,33 @@ html,body{
 .forfull {
     border-width: thick;
     min-height: 80%;
+}
+
+.ademp_svbtng {
+    height: 60px;
+   
+   
+}
+
+.foo_ext_mod {
+    
+}
+
+.fir_width {
+    width: 100px;
+}
+
+.distabl2 {
+    font-size: 20px;
+    text-align: left;!important
+}
+
+#addem_frt {
+    float: right;
+    margin: 10px;
+}
+
+#addem_bak {
+     float: left;
+    margin: 10px;
 }

@@ -131,7 +131,7 @@
                                             <input type="text" class="form-control locdat"  maxlength="80" ng-model="yearTo" placeholder="To date">
                                         </datepicker>
 
-                                        <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.svg" alt="back" id="closbtn" class="btnlocmod" width=100px ></span>
+                                        <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.svg" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
                                     </div>
                                 </div>
                                 <br/>
@@ -165,7 +165,7 @@
                                         <input type="text" class="form-control locdat" maxlength="80" ng-model="to" placeholder="To date">
                                     </datepicker>
 
-                                    <span><img style="cursor:pointer" ng-click="addQualification()" src="imgs/n_addbtn.svg" alt="back" id="closbtn" class="btnlocmod" width=100px ></span>
+                                    <span><img style="cursor:pointer" ng-click="addQualification()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px ></span>
                                 </div>
                             </div>
                             <br/>
@@ -201,14 +201,39 @@
 
 
                         </div>
-                        <div class="frbtnonpg">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
-                        </div>
+                       
+                        <a href="#"><img src="imgs/n_back.png" alt="back" id="addem_bak" width=50px style="border:thick">
+                        </a>
+                        
+                        <a href="#"><img src="imgs/n_front.png" alt="back" id="addem_frt" width=50px style="border:thick">
+                        </a>
+                        
+                        
+                        
                     </ng-form>
                 </div>
             </div>
+            
+                
+            <div class="col-sm-6 col-sm-offset-3 makpg">
+                
+            <div class="ademp_svbtng">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
+             </div>
+        
+        
+            </div>
+            
+            
+            
         </div>
+        
+        
+        
     </div>
+    
+    
+    
 
     <script>
         $(function() {
