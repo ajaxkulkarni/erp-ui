@@ -151,6 +151,10 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
 
         });
     }
+    
+    $scope.close = function() {
+        userService.close("#main");
+    }
 
 
 });
