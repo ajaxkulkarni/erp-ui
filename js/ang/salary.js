@@ -264,8 +264,10 @@ angular.module("app").controller('employeeSalary', function ($scope, userService
     }
     
     $scope.getAmount = function(salaryInfo) {
-        console.log("Salary Info :" + salaryInfo.amount + ":" + salaryInfo.rule);
+        console.log("Salary Info :" + salaryInfo.amount + ":" + salaryInfo.rule + ":" + salaryInfo.amountType);
         if(salaryInfo.amountType == 'percentage' && !salaryInfo.amount && $scope.salary > 0) {
+            console.log("Calculating for.." + salaryInfo.rule);
+            salaryInfo.amount = Math.round((salaryInfo.percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary));
             return Math.round((salaryInfo.percentage/100)*($scope.user.company.basic.percentage/100)*($scope.salary));
         } else {
             return salaryInfo.amount;
