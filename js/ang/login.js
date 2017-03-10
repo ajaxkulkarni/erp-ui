@@ -36,6 +36,21 @@ angular.module("app").controller('login', function ($scope, userService, $locati
         });
 
     };
+    
+    $scope.sendPassword = function() {
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope,"/forgotPassword").then(function (response) {
+            //$.skylo('end');
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope,"Password sent successfully!");
+        });
+    }
+    
+    $scope.close = function() {
+        userService.close("login.html");
+    }
 
 
 });
