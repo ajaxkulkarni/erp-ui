@@ -100,6 +100,12 @@
                             </select>
                                 <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select employee type</p>
                             </div>
+                            
+                            <!--<div class=" form-group">
+                                <label for="pwd">Upload Profile Photo - {{employee.pic}}</label>
+                                <img src="{{employee.pic}}"/>
+                                <input type="file" class="form-control" maxlength="80" ng-model="employee.pic">
+                            </div>-->
 
                         </div>
 
@@ -119,7 +125,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <input type="text" class="form-control" ng-model="companyName" maxlength="80" placeholder="Company Name">
-                                        <input type="text" class="form-control pdademo" maxlength="80" >
+                                        <input type="text" class="form-control pdademo" maxlength="80" ng-model="designation" placeholder="Designation">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -136,7 +142,7 @@
                                 </div>
                                 <br/>
                                 <p ng-repeat="exp in employee.experiences">
-                                    In {{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}
+                                    In {{exp.companyName}} as {{exp.designation}} from {{exp.fromYear}} - {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}
                                     <button type="button" class="btn btn-xs crs crdown" ng-click="removeExperience(exp)">
                                     <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                                 </button>
@@ -152,8 +158,8 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <input type="text" class="form-control" maxlength="80" ng-model="universityName" placeholder="Univesity Name">
-                                    <input type="text" class="form-control pdademo" maxlength="80" >
-                                    <input type="text" class="form-control pdademo" maxlength="80" >
+                                    <input type="text" class="form-control pdademo" maxlength="80" ng-model="degree" placeholder="Degree">
+                                    <input type="text" class="form-control pdademo" maxlength="80" ng-model="subject" placeholder="Specialization">
                                 </div>
                             </div>
                             <div class="row">
@@ -170,7 +176,7 @@
                             </div>
                             <br/>
                             <p ng-repeat="exp in employee.qualifications">
-                                In {{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear !=0 ? exp.toYear: "Now"}}
+                                 {{exp.designation}} from {{exp.companyName}} in {{exp.specialization}} from {{exp.fromYear}} - {{exp.toYear !=0 ? exp.toYear: "Now"}}
                                 <button type="button" class="btn btn-xs crs crdown" ng-click="removeQualification(exp)">
                                     <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                                 </button>
@@ -202,11 +208,11 @@
 
                         </div>
                        
-                        <a href="#"><img src="imgs/n_back.png" alt="back" id="addem_bak" width=50px style="border:thick">
-                        </a>
+                        <img src="imgs/n_back.png" alt="back" id="addem_bak" width=50px style="border:thick;cursor:pointer" ng-click="tab > 1?tab = tab - 1:tab=1">
                         
-                        <a href="#"><img src="imgs/n_front.png" alt="back" id="addem_frt" width=50px style="border:thick">
-                        </a>
+                        
+                        <img src="imgs/n_front.png" alt="back" id="addem_frt" width=50px style="border:thick;cursor:pointer" ng-click="tab < 4?tab = tab + 1:tab=4">
+                        
                         
                         
                         

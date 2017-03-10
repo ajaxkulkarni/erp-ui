@@ -47,6 +47,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         exp.companyName = $scope.companyName;
         exp.fromYear = $scope.yearFrom;
         exp.toYear = $scope.yearTo;
+        exp.designation = $scope.designation;
         if ($scope.employee.experiences == null) {
             $scope.employee.experiences = [];
         }
@@ -70,6 +71,8 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         exp.companyName = $scope.universityName;
         exp.fromYear = $scope.from;
         exp.toYear = $scope.to;
+        exp.designation = $scope.degree;
+        exp.specialization = $scope.subject;
         if ($scope.employee.qualifications == null) {
             $scope.employee.qualifications = [];
         }
