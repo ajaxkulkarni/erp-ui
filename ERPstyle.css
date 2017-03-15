@@ -808,4 +808,9 @@ html,body{
 
 .levtopb {
   width=200px;
+    margin: 2px;
+}
+
+.loginpd {
+    padding-left: 30px;
 }
