@@ -793,9 +793,19 @@ html,body{
 }
 
 .toplev {
-    padding: 15px;
+   padding: 15px;
+    padding-bottom: 0px;
+    padding-left: 15px;
 }
 
 .imgshadw {
      
+}
+
+.lgbtn {
+    width: auto; !important
+}
+
+.levtopb {
+  width=200px;
 }
