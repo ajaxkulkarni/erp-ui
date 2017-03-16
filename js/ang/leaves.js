@@ -239,6 +239,16 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
         $("#myModal").modal('show');
     }
     
+    $scope.editable = function(val) {
+        if(val == 'true') {
+            $scope.leaveBalance = $.extend(true,{},$scope.user.leaveBalance);
+        }
+        if(val == 'false') {
+            $scope.user.leaveBalance = $scope.leaveBalance;
+        }
+        $scope.editBalance = val;
+    }
+    
 
     $scope.getEmployeeLeaves = function () {
         userService.showLoading($scope);
@@ -249,8 +259,24 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
             userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope,"");
+            $scope.user = response.user;
             $scope.leaves = response.user.leaves;
 
+        });
+    }
+    
+    $scope.updateLeaveBalance = function() {
+        
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, '/updateLeaveBalance').then(function (response) {
+            //$.skylo('end');
+            userService.initLoader($scope);
+            $scope.response = response;
+            //$("#myModal").modal('hide');
+            userService.showResponse($scope, "Leave balance updated successfully!","leaveDetails");
+            $scope.editBalance = 'false';
+            $scope.getEmployeeLeaves();
         });
     }
     
