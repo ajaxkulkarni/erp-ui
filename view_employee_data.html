@@ -58,7 +58,7 @@
                 
                 
             
-                <label for="usr" class="lblwid">Employee number</label>
+                <label for="usr" class="lblwid">Employee ID</label>
                 <h3 type="number" class="viewempinf">{{emp.id}}</h3>
             
             <!--<div class=" form-group">
@@ -86,14 +86,14 @@
             
             <div class=" form-group">
                 <label for="pwd">Qualification</label>
-                <h3 class="viewempinf" ng-repeat="qualification in emp.qualifications">{{qualification.designation}} from {{qualification.companyName}} in {{qualification.specialization}} from {{qualification.fromYear}} - {{qualification.toYear}}</h3>
+                <h3 class="viewempinf" ng-repeat="qualification in emp.qualifications">{{qualification.designation}} ( {{qualification.specialization}} )  from {{qualification.companyName}}  <br> {{qualification.fromYear}} to {{qualification.toYear}}</h3>
             </div>
              
         <hr size="10"> 
 
             <div class=" form-group">
                 <label for="pwd">Previous experience details</label>
-                <h3 class="viewempinf" ng-repeat="exp in emp.experiences">As {{exp.designation}} in {{exp.companyName}} from {{exp.fromYear}} - {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}</h3>
+                <h3 class="viewempinf" ng-repeat="exp in emp.experiences">{{exp.designation}} in {{exp.companyName}} <br> {{exp.fromYear}} to {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}}</h3>
             </div>
             <hr size="10"> 
            
