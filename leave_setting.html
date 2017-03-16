@@ -24,103 +24,54 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 makpg ">
-                
+
                 <!--<div class=" form-group" ng-repeat="policy in leaveTypes">
                     <label for="pwd">Maximum {{policy.name}} leaves per year</label>
                     <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
                 </div>-->
-            <br>  
-            
-            <!----------------->
-                
-            <div>   
-            <div class="col-md-4">
-                <label>Sick leaves</label>
-            </div>
-            
-            
-            <div class="col-md-4">
-                <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
-            </div>
-            
-            
-            <div class="col-md-4">
-                <select class="form-control">
-                        <option value="percentage">Yearly</option>
-                         <option value="amount">Monthly</option>
-                 </select>
-            </div>
-            </div>
-                
-            <br>  
-            <br> 
-            <br>
-                
-            <!---------------------->
-            
-            <div>   
-            <div class="col-md-4">
-                <label>Personal leaves</label>
-            </div>
-            
-            
-            <div class="col-md-4">
-                <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
-            </div>
-            
-            
-            <div class="col-md-4">
-                <select class="form-control">
-                        <option value="percentage">Yearly</option>
-                         <option value="amount">Monthly</option>
-                 </select>
-            </div>
-            </div>    
-                
-            <br>  
-            <br> 
-            <br>
-                
-            <!---------------------->    
-                
-            <div>   
-            <div class="col-md-4">
-                <label>Other leaves</label>
-            </div>
-            
-            
-            <div class="col-md-4">
-                <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
-            </div>
-            
-            
-            <div class="col-md-4">
-                <select class="form-control">
-                        <option value="percentage">Yearly</option>
-                         <option value="amount">Monthly</option>
-                 </select>
-            </div>
-            </div>    
-                
-            <br>  
-            <br> 
-            <br>
-                
-            <!---------------------->   
-                
+                <br>
 
-             <div class="frbtnonpg">
-                <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="addLeavePolicy()">Save</button>
+                <!----------------->
+
+                <div ng-repeat="policy in leaveTypes">
+                    <div class="col-md-4">
+                        <label>{{policy.name}} leaves</label>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" ng-model="policy.count">
+                    </div>
+
+                    
+                    <div class="col-md-4">
+                        <select class="form-control" ng-model="policy.frequency">
+                            <option value="Yearly">Yearly</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
+
+                    <br>
+                    <br>
+                    <br>
                 </div>
-        
+
+
+                <!---------------------->
+
+
+                <div class="frbtnonpg">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="addLeavePolicy()">Save</button>
+                </div>
+
+            </div>
         </div>
-        </div>
-        
-        
-        
+
+
+
     </div>
 
-    
+
 
 </body>
 
