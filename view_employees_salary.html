@@ -84,11 +84,11 @@
                         <td><span ng-show="employee.selected"><span><img src="imgs/n_tick.svg" alt="back" id="closbtn" width=20px ></span></span></td>
                         <td>{{$index + 1}}</td>
                         
-                        <td>{{employee.id}}</td>
+                        <td>{{employee.regId}}</td>
                         <td>{{employee.name}}</td>
                         <td>{{employee.financial.salary}}</td>
                         <!--<td>{{employee.withoutPayLeaves}}</td>-->
-                        <td>{{employee.financial.amountPayable}}</td>
+                        <td>{{employee.financial.amountPayable ? employee.financial.amountPayable : "NA" }}</td>
                         <td>{{employee.financial.accountNumber}}</td>
                         <td>
                             <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(employee)">Salary Slip</button>

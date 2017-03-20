@@ -8,7 +8,7 @@
 
         <div class="row tpband">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <a href="#employees"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
+                <a href="{{backLink}}"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
                 </a>
             </div>
         </div>
@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <h2 class="pghdgs">Add new employee</h2>
+                <h2 class="pghdgs">{{title}}</h2>
             </div>
         </div>
 
@@ -56,8 +56,8 @@
                             
                              <div class=" form-group">
                                 <label for="pwd">Employee ID</label>
-                                <!--<input type="number" name="name" maxlength="80" class="form-control" ng-model="employee.name" ng-required="true" focus-me="{{nameInvalid}}">-->
-                                <p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter employee ID</p>
+                                <input type="text" name="name" maxlength="40" class="form-control" ng-model="employee.regId">
+                                <!--<p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter employee ID</p>-->
                             </div>
                             
                             
@@ -216,10 +216,10 @@
 
                         </div>
                        
-                        <img src="imgs/n_back.png" alt="back" id="addem_bak" width=50px style="border:thick;cursor:pointer" ng-click="tab > 1?tab = tab - 1:tab=1">
+                        <img src="imgs/n_back.png" alt="back" id="addem_bak" width=50px style="border:thick;cursor:pointer" ng-show="tab>1" ng-click="tab > 1?tab = tab - 1:tab=1">
                         
                         
-                        <img src="imgs/n_front.png" alt="back" id="addem_frt" width=50px style="border:thick;cursor:pointer" ng-click="tab < 4?tab = tab + 1:tab=4">
+                        <img src="imgs/n_front.png" alt="back" id="addem_frt" width=50px style="border:thick;cursor:pointer" ng-show="tab<4" ng-click="tab < 4?tab = tab + 1:tab=4">
                         
                         
                         

@@ -82,6 +82,11 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     $scope.removeQualification = function (exp) {
         $scope.employee.qualifications.pop(exp)
     }
+    
+    $scope.goToAddEmp = function() {
+        localStorage.erpEmployee = null;
+        window.location.href = "#addEmployee";
+    }
 
 
     if (localStorage.erpEmployee != null && localStorage.erpEmployee != 'null') {
@@ -90,8 +95,12 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         joiningDate = getDate($scope);
         console.log(joiningDate);
         $scope.employee.joiningDate = joiningDate;
+        $scope.title = "Edit Employee";
+        $scope.backLink = "#viewEmployees";
     } else {
         $scope.employee = {};
+        $scope.title = "Add new Employee";
+        $scope.backLink = "#employees";
     }
 
     if (localStorage.erpViewEmployee != null && localStorage.erpViewEmployee != 'null') {
@@ -133,7 +142,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         $scope.user = JSON.parse(localStorage.erpUser);
         $scope.dataObj.user.company = $scope.user.company;
 
-
+        //console.log("Qual:" + $scope.dataObj.user.qualifications);
         userService.callService($scope, "/addEmployee").then(function (response) {
             //$.skylo('end');
             userService.initLoader($scope);

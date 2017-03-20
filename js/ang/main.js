@@ -1,7 +1,8 @@
 var app = angular.module("app", ["ngRoute","720kb.datepicker"]);
 
 //var host = "http://localhost:8080/erp-service";
-var host = "http://35.167.123.68:8080/erp";
+//var host = "http://35.167.123.68:8080/erp";
+var host = "https://tiffeat.com:8443/erp";
 var root = host + "/service";
 var rootAdmin = host + "/adminService";
 
