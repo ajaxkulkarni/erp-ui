@@ -295,18 +295,18 @@ http://www.tooplate.com/view/2081-solution
                         <h2 class="wow bounce">Get One month free trial !</h2>
                         <p class="wow fadeIn" data-wow-delay="0.6s">Sign up for our free trial for one month.<br> Just key in your details below and we will get in touch with you. </p>
                     </div>
-                    <form action="#" method="get" class="wow fadeInUp" data-wow-delay="0.9s">
+                    <!--<form action="#" method="get" class="wow fadeInUp" data-wow-delay="0.9s">-->
                         <div class="col-md-3 col-sm-3"></div>
                         <div class="col-md-6 col-sm-6">
                             <ng-form name="subscribeForm">
                                 <input name="name" type="text" class="form-control" id="email" placeholder="Enter Your Name" ng-model="user.name" ng-required="true">
-                                <!--<p ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</p>-->
+                                <span ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</span>
                                 <br>
                                 <input name="email" type="email" class="form-control" id="email" placeholder="Enter Your Email" ng-model="user.email" ng-required="true">
-                                <!--<p ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</p>-->
+                                <span ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</span>
                                 <br>
                                 <input name="phone" type="text" class="form-control" id="email" placeholder="Enter Your Contact Number" ng-model="user.phone" ng-required="true">
-                                <!--<p ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter contact number</p>-->
+                                <span ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter contact number</span>
                                 <br>
                                 <input name="submit" type="submit" class="form-control " id="submit" ng-click="subscribeUser(subscribeForm.$valid)">
 
@@ -315,7 +315,7 @@ http://www.tooplate.com/view/2081-solution
                         </div>
 
 
-                    </form>
+                    <!--</form>-->
                 </div>
             </div>
         </div>

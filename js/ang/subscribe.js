@@ -17,6 +17,10 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
         window.location.href = "login.html";
     }
     
+    $scope.close = function() {
+        userService.close("#");
+    }
+    
     $scope.subscribeUser = function (formValid) {
         if (!formValid) {
             $scope.subscribeShowErrors = true;
@@ -33,7 +37,7 @@ angular.module("app").controller('subscribe', function ($scope, userService, $lo
             //$.skylo('end');
             userService.initLoader($scope);
             $scope.response = response;
-            userService.showResponse($scope, "Your application is submitted successfully. Our team will soon contact you for further process.")
+            userService.showResponse($scope, "Your application is submitted successfully. Our team will soon contact you for further process.", "");
         });
 
     };
