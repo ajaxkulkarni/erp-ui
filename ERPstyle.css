@@ -827,3 +827,11 @@ html,body{
 .cancel_btn_margin {
     margin-left: 10px;
 }
+
+#help_pos {
+    float: right;
+  margin-top: 7px;
+    margin-left: 0px;
+    padding-bottom: 0px;
+    padding: 1px;
+}
