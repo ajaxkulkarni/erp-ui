@@ -3,34 +3,29 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
     $scope.response = {};
     $scope.dataObj = {};
     console.log("Home loaded ..");
-    userService.initLoader($scope);
-    //alert("Before close!");
+    //userService.initLoader($scope);
+
     $("#successModal").hide();
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
-    
 
-    if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
+
+    /*if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
         window.location.href = "index.html";
-    }
-    
+    }*/
+
     localStorage.erpEmployee = null;
     
-    $scope.user = JSON.parse(localStorage.erpUser);
+    window.location.href="#home";
 
-    /*$.skylo({
-        state: 'success',
-        inchSpeed: 200,
-        initialBurst: 30,
-        flat: false
-    });*/
+    //$scope.user = JSON.parse(localStorage.erpUser);
 
-    $scope.getUser = function () {
+    /*$scope.getUser = function () {
         userService.showLoading($scope);
         console.log("Prog:" + $scope.showProgress);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getUser").then(function (response) {
-            //$.skylo('end');
+
             userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "");
@@ -39,18 +34,12 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
             }
             $scope.user = response.user;
             localStorage.erpUser = JSON.stringify($scope.user);
-            if($scope.user.status == 'P') {
-                window.location.href = "#changePassword";
-            } else if ($scope.user.company == null) {
-                window.location.href = "#companyDetails";
-            } else {
-                window.location.href = "#home";
-            }
+
 
         });
     }
 
-    $scope.getUser();
+    $scope.getUser();*/
 
 
 });
@@ -71,10 +60,9 @@ angular.module("app").controller('company', function ($scope, userService, $loca
         initialBurst: 30,
         flat: false
     });*/
-    if($scope.user.company == null) {
+    if ($scope.user.company == null) {
         $scope.user.company = {};
-    }
-    else if($scope.user.company.name!= null && $scope.user.company.name.length > 0) {
+    } else if ($scope.user.company.name != null && $scope.user.company.name.length > 0) {
         $scope.nameReadOnly = true;
     }
 
@@ -99,8 +87,8 @@ angular.module("app").controller('company', function ($scope, userService, $loca
 
         });
     }
-    
-    $scope.close = function() {
+
+    $scope.close = function () {
         userService.close("#main");
     }
 
@@ -113,26 +101,55 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
     $scope.dataObj = {
         user: {}
     };
-    if(localStorage.erpUser == null || localStorage.erpUser == 'null') {
+    if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
+        window.location.href = "index.html";
         return;
     }
+    
+    //console.log("Stored user:" + localStorage.erpUser);
     $scope.user = JSON.parse(localStorage.erpUser);
+    if($scope.user.name) {
+        return;
+    }
     console.log("Profile loaded .." + $scope.user.name);
     userService.initLoader($scope);
 
-    /*$.skylo({
-        state: 'success',
-        inchSpeed: 200,
-        initialBurst: 30,
-        flat: false
-    });*/
+
+    $scope.getUser = function () {
+        userService.showLoading($scope);
+        console.log("Prog:" + $scope.showProgress);
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/getUser").then(function (response) {
+
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $scope.user = response.user;
+            localStorage.erpUser = JSON.stringify($scope.user);
+            if ($scope.user.status == 'P') {
+                window.location.href = "#changePassword";
+            } else if ($scope.user.company == null) {
+                window.location.href = "#companyDetails";
+            } else {
+                window.location.href = "#home";
+            }
+
+
+        });
+    }
+
+    $scope.getUser();
+
 
     $scope.changePassword = function (formValid) {
         if (!formValid) {
             $scope.passwordErrors = true;
             return;
         }
-        if($scope.user.newPassword != $scope.confirmPassword) {
+        if ($scope.user.newPassword != $scope.confirmPassword) {
             console.log($scope.user.newPassword + " !=: " + $scope.confirmPassword);
             $scope.passwordMatchErrors = true;
             return;
@@ -151,16 +168,16 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
 
         });
     }
-    
-    $scope.logout = function() {
+
+    $scope.logout = function () {
         localStorage.erpUser = null;
         localStorage.erpEmployee = null;
         localStorage.empFinancial = null;
         $scope.user = null;
         window.location.href = "index.html";
     }
-    
-    $scope.close = function() {
+
+    $scope.close = function () {
         userService.close("#main");
     }
 
@@ -173,13 +190,13 @@ angular.module("app").controller('help', function ($scope, userService, $locatio
     $scope.dataObj = {
         user: {}
     };
-    if(localStorage.erpUser == null || localStorage.erpUser == 'null') {
+    if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
         return;
     }
-    $scope.user = JSON.parse(localStorage.erpUser);
-    console.log("Profile loaded .." + $scope.user.email);
-    userService.initLoader($scope);
+    //$scope.user = JSON.parse(localStorage.erpUser);
+    console.log("Help loaded .." + $scope.user.email);
+    //userService.initLoader($scope);
 
     $scope.backLink = "#main";
-    
+
 });

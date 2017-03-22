@@ -24,7 +24,7 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
     userService.initLoader($scope);
     $("#page1").show();
     $("#page2").hide();
-
+    $scope.root = root;
 
 
     /*$.skylo({

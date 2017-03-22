@@ -99,7 +99,7 @@ angular.module("app").controller('salaryStructure', function ($scope, userServic
     }
     
     $scope.close = function() {
-        userService.close("#main");
+        userService.close("#salary");
     }
 
     $scope.getSalaryStructure();

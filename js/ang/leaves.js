@@ -331,7 +331,7 @@ angular.module("app").controller('leavePolicy', function ($scope, userService, $
     }
     
      $scope.close = function() {
-        userService.close("#main");
+        userService.close("#leaves");
      }   
     
 
