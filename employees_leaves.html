@@ -65,7 +65,7 @@
             <table class="table distabl table-hover">
                 <thead >
                     <tr >
-                        <th class="distabl">#</th>
+                        <th class="distabl ">#</th>
                         <th class="distabl">ID</th>
                         <th class="distabl">Name</th>
                         <th class="distabl">Email</th>
@@ -81,8 +81,8 @@
                     <tr ng-repeat="emp in employees">
                         <td>{{$index + 1}}</td>
                         <td>{{emp.id}}</td>
-                        <td>{{emp.name}}</td>
-                        <td>{{emp.email}}</td>
+                        <td id="tbl_width">{{emp.name}}</td>
+                        <td id="tbl_width">{{emp.email}}</td>
                         <td ng-repeat="count in emp.leaveCount">{{count.count}}</td>
                         <td>{{emp.totalLeaves}}</td>
                         <td>

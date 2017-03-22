@@ -795,7 +795,8 @@ html,body{
 .toplev {
    padding: 15px;
     padding-bottom: 0px;
-    padding-left: 15px;
+    padding-left: 25px;
+    
 }
 
 .imgshadw {
@@ -813,4 +814,16 @@ html,body{
 
 .loginpd {
     padding-left: 30px;
+}
+
+.tbl_width {
+    width: auto;
+}
+
+#tbl_width {
+    min-width:200px;
+}
+
+.cancel_btn_margin {
+    margin-left: 10px;
 }
