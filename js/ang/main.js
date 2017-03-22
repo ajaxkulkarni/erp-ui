@@ -220,6 +220,10 @@ app.config(function ($routeProvider) {
             templateUrl: "view_employee_salary.html",
             controller: "employeeSalarySlip"
         })
+        .when("/help", {
+            templateUrl: "help.html",
+            controller: "help"
+        })
 });
 
 app.directive('fileModel', ['$parse', function ($parse) {

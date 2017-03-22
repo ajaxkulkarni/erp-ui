@@ -117,7 +117,7 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
         return;
     }
     $scope.user = JSON.parse(localStorage.erpUser);
-    console.log("Profile loaded .." + $scope.user.email);
+    console.log("Profile loaded .." + $scope.user.name);
     userService.initLoader($scope);
 
     /*$.skylo({
@@ -165,4 +165,21 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
     }
 
 
+});
+
+angular.module("app").controller('help', function ($scope, userService, $location) {
+
+    $scope.response = {};
+    $scope.dataObj = {
+        user: {}
+    };
+    if(localStorage.erpUser == null || localStorage.erpUser == 'null') {
+        return;
+    }
+    $scope.user = JSON.parse(localStorage.erpUser);
+    console.log("Profile loaded .." + $scope.user.email);
+    userService.initLoader($scope);
+
+    $scope.backLink = "#main";
+    
 });
