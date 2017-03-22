@@ -152,6 +152,14 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
         });
     }
     
+    $scope.logout = function() {
+        localStorage.erpUser = null;
+        localStorage.erpEmployee = null;
+        localStorage.empFinancial = null;
+        $scope.user = null;
+        window.location.href = "index.html";
+    }
+    
     $scope.close = function() {
         userService.close("#main");
     }

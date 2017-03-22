@@ -8,8 +8,8 @@
 
         <div class="row tpband">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <a href="{{backLink}}"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
-                </a>
+                <img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick;cursor:pointer" data-toggle="modal" data-target="#backWarningModal">
+                
             </div>
         </div>
 
@@ -53,14 +53,14 @@
                                 <input type="text" name="name" maxlength="80" class="form-control" ng-model="employee.name" ng-required="true" focus-me="{{nameInvalid}}">
                                 <p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter employee name</p>
                             </div>
-                            
-                             <div class=" form-group">
+
+                            <div class=" form-group">
                                 <label for="pwd">Employee ID</label>
                                 <input type="text" name="name" maxlength="40" class="form-control" ng-model="employee.regId">
                                 <!--<p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter employee ID</p>-->
                             </div>
-                            
-                            
+
+
                             <!-- <div class=" form-group">
                             <label for="pwd">Middle</label>
                             <input type="text" class="form-control">
@@ -108,7 +108,7 @@
                             </select>
                                 <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select employee type</p>
                             </div>
-                            
+
                             <!--<div class=" form-group">
                                 <label for="pwd">Upload Profile Photo - {{employee.pic}}</label>
                                 <img src="{{employee.pic}}"/>
@@ -142,7 +142,7 @@
                                             <input type="text" class="form-control locdat" maxlength="80" ng-model="yearFrom" placeholder="From date">
                                         </datepicker>
                                         <datepicker date-format="yyyy-MM-dd">
-                                            <input type="text" class="form-control locdat"  maxlength="80" ng-model="yearTo" placeholder="To date">
+                                            <input type="text" class="form-control locdat" maxlength="80" ng-model="yearTo" placeholder="To date">
                                         </datepicker>
 
                                         <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.svg" alt="back" id="closbtn" class="btnlocmod" width=40px data-toggle="tooltip" title="Add experience"></span>
@@ -184,7 +184,7 @@
                             </div>
                             <br/>
                             <p ng-repeat="exp in employee.qualifications">
-                                 {{exp.designation}}   ({{exp.specialization}}) from {{exp.companyName}}<br>( {{exp.fromYear}} to  {{exp.toYear !=0 ? exp.toYear: "Now"}})
+                                {{exp.designation}} ({{exp.specialization}}) from {{exp.companyName}}<br>( {{exp.fromYear}} to {{exp.toYear !=0 ? exp.toYear: "Now"}})
                                 <button type="button" class="btn btn-xs crs crdown" ng-click="removeQualification(exp)">
                                     <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                                 </button>
@@ -215,39 +215,62 @@
 
 
                         </div>
-                       
+
                         <img src="imgs/n_back.png" alt="back" id="addem_bak" width=50px style="border:thick;cursor:pointer" ng-show="tab>1" ng-click="tab > 1?tab = tab - 1:tab=1">
-                        
-                        
+
+
                         <img src="imgs/n_front.png" alt="back" id="addem_frt" width=50px style="border:thick;cursor:pointer" ng-show="tab<4" ng-click="tab < 4?tab = tab + 1:tab=4">
-                        
-                        
-                        
-                        
+
+
+
+
                     </ng-form>
                 </div>
             </div>
-            
-                
+
+
             <div class="col-sm-6 col-sm-offset-3 makpg">
-                
-            <div class="ademp_svbtng">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
-             </div>
-        
-        
+
+                <div class="ademp_svbtng">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="saveEmployee(form)">Save</button>
+                </div>
+
+
             </div>
-            
-            
-            
+
+
+
         </div>
-        
-        
-        
+
+        <div id="backWarningModal" class="modal" role="dialog">
+            <div class="modal-dialog ">
+
+                <!-- Modal content-->
+                <div class="modal-content" style="text-align: center;">
+                    <div class="modal-header" style="border:none">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <div class="modal-body failmodal">
+
+                        <span><img src="imgs/n_err.svg" alt="back"width=80px;></span>
+
+                        <p>Are you sure you want to go back? All unsaved data will be lost!</p>
+                    </div>
+                    <div class="modal-footer" style="border:none">
+                       <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="goBack()">OK</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
     </div>
-    
-    
-    
+
+
+
 
     <script>
         $(function() {

@@ -152,6 +152,11 @@ angular.module("app").controller('employee', function ($scope, userService, $loc
         });
     }
     
+    $scope.goBack = function() {
+        $("#backWarningModal").modal('hide');
+        window.location.href = $scope.backLink;
+    }
+    
      $scope.close = function() {
         userService.close("#viewEmployees");
     }
