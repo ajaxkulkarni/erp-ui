@@ -60,6 +60,7 @@
 
                     <div class="row">
                         <div class="levcard2 crcompt">
+                            
                             <!--<button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
                             <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                         </button>-->
@@ -84,15 +85,19 @@
 
                         </div>
                     </div>
+                    
 
                     <div class="row" ng-repeat="salary in user.company.salaryInfo">
                         <div class="levcard2 crcompt" ng-show="salary.type == 'add'">
+                            
                             <!--<button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
                             <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                         </button>-->
 
                             <div class=" form-group forpad">
+                                
                                 <div class="row">
+                                    
                                     <div class="col-md-4">
                                         <label for="usr">{{salary.rule}}</label>
                                     </div>
@@ -126,12 +131,14 @@
                 <br>
                 <div class="row ropad grrow lacmarg">
                     <div class="row" ng-repeat="salary in user.company.salaryInfo">
+                        
                         <div class="levcard2 crcompt" ng-show="salary.type == 'sub'">
                             <!--<button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
                             <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                         </button>-->
-
+                            
                             <div class=" form-group forpad">
+                                
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label for="usr">{{salary.rule}}</label>
@@ -152,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-                
+                <br>
                 <div>
                     <h4 class="ropad grrow " ><span><strong>Net Payable salary : Rs {{amountPayable}}/- </strong></span></h4>
                 
