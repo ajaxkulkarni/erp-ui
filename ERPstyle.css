@@ -1,5 +1,5 @@
 body{
-    font-family: "Lato", sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
     font-size: 17px;
     color: rgb(100,100,100);
     font-weight: 400;!important 
@@ -305,7 +305,7 @@ h1{
 }
 
 .modal-content{
-    font-family: "Lato", sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
     font-size: 20px;
     color: rgb(64,64,64);
     background-color: white;
@@ -314,7 +314,7 @@ h1{
 }
 
 .dropdown-menu{
-    font-family: "Lato", sans-serif !important;
+    font-family: "Open Sans", sans-serif !important;
     font-size: 17px;
     font-weight: 300;!important
     color: rgb(64,64,64);
@@ -770,7 +770,7 @@ html,body{
 }
 
 .foo_ext_mod {
-    
+    color: gray;
 }
 
 .fir_width {
@@ -834,4 +834,13 @@ html,body{
     margin-left: 0px;
     padding-bottom: 0px;
     padding: 1px;
+}
+
+#lnk_no_syle {
+    text-decoration: none; !important
+}
+
+.lnk_no_syle {
+    text-decoration: none;!important
+    
 }
