@@ -15,8 +15,8 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
     }*/
 
     localStorage.erpEmployee = null;
-    
-    window.location.href="#home";
+
+    window.location.href = "#home";
 
     //$scope.user = JSON.parse(localStorage.erpUser);
 
@@ -83,11 +83,13 @@ angular.module("app").controller('company', function ($scope, userService, $loca
             userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Company details updated successfully!");
+            localStorage.erpUser = JSON.stringify($scope.user);
             //window.location.href = "#home";
 
         });
     }
-
+    
+   
     $scope.close = function () {
         userService.close("#main");
     }
@@ -106,9 +108,22 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
         return;
     }
     
+    $scope.logout = function () {
+        console.log("Logging out ..");
+        localStorage.erpUser = null;
+        localStorage.erpEmployee = null;
+        localStorage.empFinancial = null;
+        $scope.user = null;
+        window.location.href = "index.html";
+    }
+
+    $scope.close = function () {
+        userService.close("#main");
+    }
+
     //console.log("Stored user:" + localStorage.erpUser);
     $scope.user = JSON.parse(localStorage.erpUser);
-    if($scope.user.name) {
+    if ($scope.user.name) {
         return;
     }
     console.log("Profile loaded .." + $scope.user.name);
@@ -133,16 +148,33 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
                 window.location.href = "#changePassword";
             } else if ($scope.user.company == null) {
                 window.location.href = "#companyDetails";
-            } else {
-                window.location.href = "#home";
             }
-
 
         });
     }
 
     $scope.getUser();
 
+
+    
+
+
+});
+
+angular.module("app").controller('password', function ($scope, userService, $location) {
+
+    $scope.response = {};
+    $scope.dataObj = {
+        user: {}
+    };
+    if (localStorage.erpUser == null || localStorage.erpUser == 'null') {
+        window.location.href = "index.html";
+        return;
+    }
+
+    $scope.user = JSON.parse(localStorage.erpUser);
+
+    console.log("Password loaded ..");
 
     $scope.changePassword = function (formValid) {
         if (!formValid) {
@@ -164,6 +196,8 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
             userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Password changed successfully!");
+            $scope.user.status = "A";
+            localStorage.erpUser = JSON.stringify($scope.user);
             //window.location.href = "#home";
 
         });

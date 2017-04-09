@@ -1,7 +1,7 @@
-var app = angular.module("app", ["ngRoute","720kb.datepicker"]);
+var app = angular.module("app", ["ngRoute", "720kb.datepicker"]);
 
-//var host = "http://localhost:8080/erp-service";
-var host = "https://tiffeat.com:8443/erp";
+var host = "http://localhost:8080/erp-service";
+//var host = "https://tiffeat.com:8443/erp";
 var root = host + "/service";
 var rootAdmin = host + "/adminService";
 
@@ -12,7 +12,7 @@ app.service('userService', function ($http, $q) {
 
     var response = {};
 
-    this.showResponse = function ($scope,successMsg,successLink) {
+    this.showResponse = function ($scope, successMsg, successLink) {
         $scope.showProgress = false;
         if ($scope.response == null) {
             $scope.response = {};
@@ -24,7 +24,7 @@ app.service('userService', function ($http, $q) {
         console.log("Response :" + $scope.response.status + " msg:" + successMsg);
         //$scope.response.status = response.status;
         if ($scope.response.status == 200) {
-            if(successMsg == "") {
+            if (successMsg == "") {
                 return;
             }
             /*if(successLink!= null && successLink != "") {
@@ -38,32 +38,32 @@ app.service('userService', function ($http, $q) {
             $("#successModal").show();
             $("#successModal").modal('show');
             //console.log("Response :" + $scope.response.reseponseText);
-        }  else {
+        } else {
             $("#errorModal").modal('show');
         }
         //console.log("Response :" + $scope.response.reseponseText);
     }
-    
-    this.showLoading = function($scope) {
+
+    this.showLoading = function ($scope) {
         console.log("Showing loader..");
         $scope.showProgress = true;
         console.log("Loaded loader..");
     }
-    
-    this.initLoader = function($scope) {
+
+    this.initLoader = function ($scope) {
         $scope.showProgress = false;
         console.log("Hiding loader..");
-        
+
     }
-    
-    this.validationError = function($scope, msg) {
+
+    this.validationError = function ($scope, msg) {
         $scope.errorText = msg;
         $("#warningModal").modal('show');
     }
-    
-    this.close = function(url) {
+
+    this.close = function (url) {
         $("#successModal").modal('hide');
-        if(url != null && url != "") {
+        if (url != null && url != "") {
             window.location.href = url;
         }
     }
@@ -75,7 +75,7 @@ app.service('userService', function ($http, $q) {
             response = data;
             defer.resolve(response);
             //console.log("Result :" + JSON.stringify(data) + ":" + JSON.stringify(headers))
-           
+
 
         });
         res.error(function (data, status, headers, config) {
@@ -198,7 +198,7 @@ app.config(function ($routeProvider) {
         })
         .when("/changePassword", {
             templateUrl: "password_reset.html",
-            controller: "profile"
+            controller: "password"
         })
         .when("/salary", {
             templateUrl: "dashboard_salary.html",
@@ -226,6 +226,32 @@ app.config(function ($routeProvider) {
         })
 });
 
+app.run(function ($rootScope, $location) {
+
+    // register listener to watch route changes
+    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+        var user = JSON.parse(localStorage.erpUser);
+        console.log("Route changed!!" + next.templateUrl);
+        /*if (next.templateUrl == null) {
+            return;
+        }*/
+        if (user != null && user.name != null) {
+            // no logged user, we should be going to #login
+            if (user.status == 'P') {
+                if (next.templateUrl != "password_reset.html") {
+                    //window.location.href = "#changePassword";
+                    $location.path("/changePassword");
+                }
+            } else if (user.company == null) {
+                if (next.templateUrl != "company_details.html") {
+                    //window.location.href = "#companyDetails";
+                    $location.path("/companyDetails");
+                }
+            }
+        }
+    });
+});
+
 app.directive('fileModel', ['$parse', function ($parse) {
     return {
         restrict: 'A',
@@ -242,22 +268,24 @@ app.directive('fileModel', ['$parse', function ($parse) {
     };
 }]);
 
-app.directive('focusMe', function($timeout) {
-        return {
-          scope: { trigger: '@focusMe' },
-          link: function(scope, element) {
-            scope.$watch('trigger', function(value) {
-              //alert(value);
-              if(value === "true") {
-                $timeout(function() {
-                  element[0].focus();
-                });
-              }
+app.directive('focusMe', function ($timeout) {
+    return {
+        scope: {
+            trigger: '@focusMe'
+        },
+        link: function (scope, element) {
+            scope.$watch('trigger', function (value) {
+                //alert(value);
+                if (value === "true") {
+                    $timeout(function () {
+                        element[0].focus();
+                    });
+                }
             });
-          }
-        };
-      });
- 
+        }
+    };
+});
+
 
 /*app.directive('form1', function () {
     return {
