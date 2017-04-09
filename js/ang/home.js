@@ -83,6 +83,7 @@ angular.module("app").controller('company', function ($scope, userService, $loca
             userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope, "Company details updated successfully!");
+            $scope.user.company.id = response.companyId;
             localStorage.erpUser = JSON.stringify($scope.user);
             //window.location.href = "#home";
 
