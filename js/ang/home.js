@@ -44,6 +44,17 @@ angular.module("app").controller('home', function ($scope, userService, $locatio
 
 });
 
+angular.module("app").controller('dashboard', function ($scope, userService, $location) {
+
+    $scope.response = {};
+    $scope.dataObj = {};
+    console.log("Dashboard loaded ..");
+    //userService.initLoader($scope);
+    $scope.user = JSON.parse(localStorage.erpUser);
+
+
+});
+
 angular.module("app").controller('company', function ($scope, userService, $location) {
 
     $scope.response = {};
@@ -124,9 +135,9 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
 
     //console.log("Stored user:" + localStorage.erpUser);
     $scope.user = JSON.parse(localStorage.erpUser);
-    if ($scope.user.name) {
+    /*if ($scope.user.name) {
         return;
-    }
+    }*/
     console.log("Profile loaded .." + $scope.user.name);
     userService.initLoader($scope);
 
@@ -147,7 +158,7 @@ angular.module("app").controller('profile', function ($scope, userService, $loca
             localStorage.erpUser = JSON.stringify($scope.user);
             if ($scope.user.status == 'P') {
                 window.location.href = "#changePassword";
-            } else if ($scope.user.company == null) {
+            } else if ($scope.user.company == null && $scope.user.loginType != 'Employee') {
                 window.location.href = "#companyDetails";
             }
 

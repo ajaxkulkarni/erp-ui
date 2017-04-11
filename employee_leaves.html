@@ -48,7 +48,7 @@
             <div class="row">
 
                 <div class="col-md-12" ng-init="editBalance = 'false'">
-                    <div ng-repeat="bal in user.leaveBalance">
+                    <div ng-repeat="bal in employee.leaveBalance">
                         <h4 ng-show="editBalance == 'false'"><span>{{bal.name}} Balance : <strong>{{bal.count}}</strong> days</span></h4>
 
                         <form class="form-inline" ng-show="editBalance == 'true'">
@@ -62,10 +62,10 @@
                     </div>
 
                 </div>
-
+                
 
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-show="editBalance == 'false'"  ng-click="editable('true')">Edit</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-show="editBalance == 'false'"  ng-click="editable('true')" ng-if="user.loginType != 'Employee'">Edit</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block cancel_btn_margin " ng-show="editBalance == 'true'"   ng-click="editable('false')">Cancel</button>
                     <button type="button" class="btn btn-secondary btn-lg btn-block " ng-show="editBalance == 'true'"  ng-click="updateLeaveBalance()">Save</button>
                 </div>

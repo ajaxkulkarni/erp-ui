@@ -57,7 +57,7 @@
                             </td>
 
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal">Delete Profile</button>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete Profile</button>
                             </td>
 
                         </tr>

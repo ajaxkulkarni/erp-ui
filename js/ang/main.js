@@ -1,7 +1,7 @@
 var app = angular.module("app", ["ngRoute", "720kb.datepicker"]);
 
-//var host = "http://localhost:8080/erp-service";
-var host = "https://tiffeat.com:8443/erp";
+var host = "http://localhost:8080/erp-service";
+//var host = "https://tiffeat.com:8443/erp";
 var root = host + "/service";
 var rootAdmin = host + "/adminService";
 
@@ -154,6 +154,7 @@ app.config(function ($routeProvider) {
             templateUrl: "response.html"
         })
         .when("/home", {
+            controller: "dashboard",
             templateUrl: "dashboard.html"
         })
         .when("/companyDetails", {
@@ -231,7 +232,8 @@ app.run(function ($rootScope, $location) {
     // register listener to watch route changes
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
         var user = JSON.parse(localStorage.erpUser);
-        console.log("Route changed!!" + next.templateUrl);
+        //console.log("User:" + localStorage.erpUser);
+        //console.log("Route changed!!" + next.templateUrl);
         /*if (next.templateUrl == null) {
             return;
         }*/
@@ -242,7 +244,7 @@ app.run(function ($rootScope, $location) {
                     //window.location.href = "#changePassword";
                     $location.path("/changePassword");
                 }
-            } else if (user.company == null) {
+            } else if (user.company == null && user.loginType != 'Employee') {
                 if (next.templateUrl != "company_details.html") {
                     //window.location.href = "#companyDetails";
                     $location.path("/companyDetails");

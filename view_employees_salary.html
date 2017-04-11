@@ -49,7 +49,7 @@
 
             </div>
             
-           <div class="col-sm">
+           <div class="col-sm" ng-if="user.loginType!='Employee'">
                
                 
                     <span style="cursor:pointer" ng-click="downloadBankStatement()"><img src="imgs/n_pdf.svg" alt="back" class="expdficon" width=50px data-toggle="tooltip" title="Export letter to bank as pdf"></span>
@@ -94,7 +94,7 @@
                         <td>{{employee.financial.accountNumber}}</td>
                         
                         <td>
-                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="edit(employee)">Add/Edit</button>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="edit(employee)" ng-if="user.loginType!='Employee'">Add/Edit</button>
                         </td>
                         <td>
                             <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(employee)">Salary Slip</button>

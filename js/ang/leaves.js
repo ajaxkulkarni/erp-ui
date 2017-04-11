@@ -259,7 +259,7 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
             userService.initLoader($scope);
             $scope.response = response;
             userService.showResponse($scope,"");
-            $scope.user = response.user;
+            $scope.employee = response.user;
             $scope.leaves = response.user.leaves;
 
         });

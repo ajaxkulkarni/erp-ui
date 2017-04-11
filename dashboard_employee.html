@@ -29,7 +29,7 @@
             <div class="col-sm-6 col-sm-offset-3 ">
                 
 
-                    <div class="col-sm-2 dashimgs  ">
+                    <div class="col-sm-2 dashimgs  " ng-if="user.loginType != 'Employee'">
                         <a style="cursor:pointer" ng-click="goToAddEmp()"><img src="imgs/n_ademp.svg" alt="employee management" height=150px></a>
                         <h3 class="txtdas"><span>Add employee</span></h3>
                     </div>

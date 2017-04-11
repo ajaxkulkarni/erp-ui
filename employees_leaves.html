@@ -52,7 +52,7 @@
             
            <div class="col-sm">
                
-                    <a href="{{root}}/downloadLeavesMaster/{{user.company.id}}/0/{{year}}/{{month.id}}"><span style="cursor:pointer"><img src="imgs/n_excel.svg" alt="back" width=50px class="expdficon" data-toggle="tooltip" title="Export seleted data to excel" ></span></a>
+                    <a ng-if="user.loginType != 'Employee'" href="{{root}}/downloadLeavesMaster/{{user.company.id}}/0/{{year}}/{{month.id}}"><span style="cursor:pointer"><img src="imgs/n_excel.svg" alt="back" width=50px class="expdficon" data-toggle="tooltip" title="Export seleted data to excel" ></span></a>
                 
 
             </div>
@@ -72,14 +72,10 @@
                         <th class="distabl ">#</th>
                         <th class="distabl">ID</th>
                         <th class="distabl">Name</th>
-                        <!--<th class="distabl">Email</th>--->
                         <th class="distabl" ng-repeat="leaveType in leaveTypes">{{leaveType.name}}</th>
-                        <!--<th>AL</th>
-        <th>PL</th>
-        <th>SL</th>-->
                         <th>Total</th>
                         <th></th>
-                        <th></th>
+                        <!--<th></th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -87,7 +83,6 @@
                         <td>{{$index + 1}}</td>
                         <td>{{emp.id}}</td>
                         <td id="tbl_width">{{emp.name}}</td>
-                        <!--<td id="tbl_width">{{emp.email}}</td>-->
                         <td ng-repeat="count in emp.leaveCount">{{count.count}}</td>
                         <td>{{emp.totalLeaves}}</td>
                         <td>
