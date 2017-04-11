@@ -1,6 +1,38 @@
 <!doctype html>
 <html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="ERPstyle.css">
+    <link href='http://fonts.googleapis.com/css?family=Nato<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">' rel='stylesheet' type='text/css'>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/loader.css"\>
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script type="text/javascript" src="js/angular-route.js"></script>
+
+    <script type="text/javascript" src="js/ang/main.js"></script>
+
+    <script type="text/javascript" src="js/ang/login.js"></script>
+
+
+    <title>HR made easy</title>
+</head>
+
 <body>
 
 
@@ -10,7 +42,7 @@
 
         <div class="row tpband">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <a href="#salary"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                <a href="#"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
                 
             </div>
@@ -18,7 +50,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <h2 class="pghdgs">Set salary structure</h2>
+                <h2 class="pghdgs">Add New Project</h2>
             </div>
         </div>
 
@@ -31,9 +63,9 @@
                 <div class="row ropad">
                     
                 <div class=" form-group">
-                    <label for="usr">Base salary ( % of gross salary) </label>
-                    <input id="basic" type="number" class="form-control set_sal" ng-model="user.company.basic.percentage" focus-me="{{basicError}}">
-                    <p style="color:red" ng-show="basicError && user.company.basic == null">Please enter a valid value</p>
+                    <label for="usr">Project title </label>
+                    <input id="basic" type="text" class="form-control set_sal" ng->
+                    
                 </div>
                 </div>
                 
@@ -41,7 +73,7 @@
             
                 
                  <div class=" form-group">
-                    <label for="pwd">Add allowances</label>
+                    <label for="pwd">Add Team menbers</label>
                     <!--<input type="emil id" class="form-control" >-->
                     <select name="allowance" class="form-control forpad" ng-model="allowance " focus-me="{{allowanceError && !allowance}}">
                         <option value="">Select allowance</option>

@@ -89,6 +89,28 @@
         </div>
 
         <div ng-include="'response.html'"></div>
+        
+        
+        
+        <div class="col-sm-12 makpg Proj_top_tab">
+
+           <div class="row">     
+                    
+                    <button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left"><span>Add New Project</span></button>
+                    
+                    <button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left">Add Column</button>
+               
+               
+            <div class="col-sm">
+               
+                    <a href=#><span ><img src="imgs/n_excel.svg" alt="back" width=50px id="exl_icon"></span></a>
+                
+
+            </div>
+                
+
+        </div>
+        </div>
 
         <div class="col-sm-12 makpg shdmld ">
             <div class="table-responsive">
@@ -96,13 +118,12 @@
                     <thead class="distabl">
                         <tr>
                             <th class="distabl">ID</th>
-                            <th class="distabl">Title</th>
-                            <th class="distabl">Functions</th>
-                            <th class="distabl">Status</th>
+                            <th class="distabl">Project title</th>
+                            <th class="distabl">Details</th>
+                            
                             <th></th>
                             <th></th>
-                            <th></th>
-                            <th></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -112,16 +133,12 @@
                             <td>{{emp.email}}</td>
                             <td>{{emp.designation}}</td>
                             <td></td>
-                            <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="view(emp)">View</button>
-                            </td>
+                            
+
+                            
 
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="edit(emp)">Edit Profile</button>
-                            </td>
-
-                            <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal">Delete Profile</button>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" >Dive in</button>
                             </td>
 
                         </tr>

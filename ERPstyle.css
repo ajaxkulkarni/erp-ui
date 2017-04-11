@@ -844,3 +844,17 @@ html,body{
     text-decoration: none;!important
     
 }
+
+.btn_to_left {
+    float: left;
+    margin-left: 20px;
+}
+
+.Proj_top_tab {
+    height: auto;
+}
+
+#exl_icon {
+    float: right;
+    margin-right: 20px;
+}
