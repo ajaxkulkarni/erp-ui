@@ -36,7 +36,10 @@
 <body>
 
 
+ <div class="container-fluid bckgrclr">
 
+
+        <div ng-include="'response.html'"></div>
 
     <div class="container">
 
@@ -67,22 +70,29 @@
                     <input id="basic" type="text" class="form-control set_sal" ng->
                     
                 </div>
+                    
+                <div class="form-group">
+                    <label for="comment">Project Details</label>
+                    <textarea class="form-control set_sal" rows="3" id="comment"></textarea>
+                </div>
+                    
                 </div>
                 
                 <div class="row ropad grrow lacmarg">
             
                 
                  <div class=" form-group">
-                    <label for="pwd">Add Team menbers</label>
+                    <label for="pwd">Add Team members</label>
                     <!--<input type="emil id" class="form-control" >-->
                     <select name="allowance" class="form-control forpad" ng-model="allowance " focus-me="{{allowanceError && !allowance}}">
-                        <option value="">Select allowance</option>
+                        <option value="">Select member</option>
                         <option value="HRA">H.R.A.(% of base salary)</option>
                         <option value="Conveyance">Conveyance (% of base salary)</option>
                         <option value="Custom">Custom</option>
                     </select>
-                     <p ng-show="allowanceError && !allowance" style="color:red">Please select a value</p>
+                     
                 </div>
+                    
                 <button type="button" class="btn  btn-xs adbtun " ng-click="add('add')"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add allowance" ></span></button>
                 
                     
@@ -93,126 +103,52 @@
                     <button type="button" class="btn btn-secondary btn-lg btn-block butte" ng-click="remove(salary)">Remove</button>
                 </div>-->
 
-                <div class="row" ng-repeat="salary in user.company.salaryInfo">
-                    <div class="levcard2 crcompt" ng-show="salary.type == 'add'">
+                <div class="row" >
+                    <div class=" levcard2 crcompt" >
+                        <div class="col-sm-12">
+                        
 
-                        <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
-                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
-                        </button>
-
-                        <div class=" form-group forpad">
+                        
+                            
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label for="usr" ng-show="!salary.customRule">{{salary.rule}}</label>
-                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule" focus-me="{{salary.error && !salary.rule}}">
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage" focus-me="{{salary.error && !salary.percentage}}">
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
-                                        <option value="percentage">%</option>
-                                        <option value="amount">Rs./-</option>
-                                    </select>
-                                </div>
+                               
+                                
+                                    Aniket Kulkarni (Design)
+                               
+                                    <span><img src="imgs/clear-button.png" alt="back" id="closbtn2" width=10px ></span>
+                                
+                                
                             </div>
-                            <p ng-show="salary.error && (!salary.rule || !salary.percentage || (salary.percentage > 100 && salary.amountType=='percentage'))" style="color:red">Please enter all valid values</p>
-                        </div>
-
-                    </div>
-                </div>
-
-               
-
-               
-                <hr>
-                
-                <div class="row ropad grrow lacmarg">
-
-                
-                <div class=" form-group">
-                    <label for="pwd">Add deductions</label>
-                    <!--<input type="emil id" class="form-control" >-->
-                    <select name="deduction" class="form-control forpad" ng-model="deduction" focus-me="{{deductionError && !deduction}}">
-                        <option value="">Select deduction</option>
-                        <option value="Provident fund">Provident Fund</option>
-                        <option value="Professional Tax">Professional Tax</option>
-                        <option value="Custom">Custom</option>
-                    </select>
-                    <p ng-show="deductionError && !deduction"  style="color:red">Please select a value</p>
-                </div>
-                <button type="button" class="btn  btn-xs adbtun" ng-click="add('sub')"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add deduction"></span></button>
-                
-                
-            </div>
-                
-                <div class="row" ng-repeat="salary in user.company.salaryInfo">
-                    <div class="levcard2 crcompt" ng-show="salary.type == 'sub'">
-
-                        <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
-                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
-                        </button>
-
-                        <div class=" form-group forpad">
+                            <hr style="margin: 5px 0" />
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label for="usr" ng-show="!salary.customRule">{{salary.rule}}</label>
-                                    <input type="text" class="form-control set_sal" ng-model="salary.rule" ng-show="salary.customRule" focus-me="{{salary.error && !salary.rule}}">
-                                </div>
-                                <div class="col-md-4">
-                                    <input type="number" class="form-control set_sal" ng-model="salary.percentage" focus-me="{{salary.error && !salary.percentage}}">
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
-                                        <option value="percentage">%</option>
-                                        <option value="amount">Rs./-</option>
-                                    </select>
-                                </div>
+                               
+                                
+                                    Ajinkya Kulkarni (Developement)
+                                
+                                    <span><img src="imgs/clear-button.png" alt="back" id="closbtn2" width=10px ></span>
+                               
+                                
                             </div>
                             
-                            <p ng-show="salary.error && (!salary.rule || !salary.percentage || (salary.percentage > 100 && salary.amountType=='percentage'))" style="color:red">Please enter all valid details</p>
+                        
                         </div>
-
                     </div>
                 </div>
-                
-                <hr size="30">
 
-                <div class="frbtnonpg">
-                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Structure </button>
-                </div>
-
-                <!-- Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog ">
-
-                        <!-- Modal content-->
-                        <div class="modal-content" style="text-align: center;">
-                            <div class="modal-header" style="border:none">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to save Salary structure?
-                                    <br>Changes may affect salary break-up of current employees as well</p>
-                            </div>
-                            <div class="modal-footer" style="border:none">
-                                <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
-
-                                <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-click="save()">Save</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
                 <br>
 
 
 
             </div>
+            <div class="col-sm-6 col-sm-offset-3 makpg">
+            <div class="frbtnonpg">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Add Project </button>
+                </div>
+            </div>
         </div>
+        
     </div>
-
+    </div>
 
 </body>
 

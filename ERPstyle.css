@@ -858,3 +858,33 @@ html,body{
     float: right;
     margin-right: 20px;
 }
+
+#closbtn2 {
+    opacity: 0.5;
+    float: right;
+    padding-top: 9px;
+}
+
+#adbtn2 {
+    opacity: 0.7;
+    
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.ropad_proj {
+     padding: 10px;
+    margin-top: -10px;
+}
+
+#dash_line {
+    display: block;
+    height: 2px;
+    background: grey;
+    opacity: 0.2;
+    margin-bottom: 30px;
+}
+
+.but_leftspace {
+    margin-left:20px;
+}
