@@ -58,7 +58,7 @@
 
                             <div class=" form-group">
                                 <label for="pwd">Employee ID</label>
-                                <input type="text" name="name" maxlength="40" class="form-control" ng-model="employee.regId">
+                                <input type="text" name="name" maxlength="40" class="form-control" ng-model="employee.regId" ng-disabled="user.loginType=='Employee'">
                                 <!--<p style="color:red" ng-show="formShowErrors && form.name.$invalid">Please Enter employee ID</p>-->
                             </div>
 
@@ -73,7 +73,7 @@
                         </div>-->
                             <div class=" form-group">
                                 <label for="pwd">Email</label>
-                                <input type="email" name="email" class="form-control" maxlength="80" ng-model="employee.email" ng-required="true" focus-me="{{emailInvalid}}">
+                                <input type="email" name="email" class="form-control" maxlength="80" ng-model="employee.email" ng-required="true" focus-me="{{emailInvalid}}" ng-disabled="user.loginType=='Employee'">
                                 <p style="color:red" ng-show="formShowErrors && form.email.$invalid">Please Enter valid employee email</p>
                             </div>
                             <div class=" form-group">
@@ -111,7 +111,7 @@
                                 <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select employee type</p>
                             </div>
                             
-                            <div class=" form-group">
+                            <div class=" form-group" ng-if="user.loginType!='Employee'">
                                 <label for="pwd">Employee Login</label>
                                 <input type="radio" value="" ng-model="employee.loginType"> None
                                 <input type="radio" value="Owner" ng-model="employee.loginType"> Admin
