@@ -4,6 +4,11 @@ var months= [{ name: "January", id: 0 }, { name: "February", id: 1 }, { name: "M
                     { name: "September", id: 8 }, { name: "October", id: 9 }, { name: "November", id: 10 }, { name: "December", id: 11 }
                    ];
 
+angular.module("app").controller('salary', function ($scope, userService, $location) {
+    console.log("Salary main loaded ..");
+    $scope.user = JSON.parse(localStorage.erpUser);
+});
+
 angular.module("app").controller('salaryStructure', function ($scope, userService, $location) {
 
     $scope.response = {};
