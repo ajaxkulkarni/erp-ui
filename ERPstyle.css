@@ -888,3 +888,16 @@ html,body{
 .but_leftspace {
     margin-left:20px;
 }
+
+#basic width_80 {
+    width: 70%;
+}
+
+
+.width-80 {
+    width: 70%;
+}
+
+.btn_left {
+    float: left;
+}

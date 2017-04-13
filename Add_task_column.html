@@ -53,7 +53,7 @@
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 ">
-                <h2 class="pghdgs">Add New Task</h2>
+                <h2 class="pghdgs">Add Columns</h2>
             </div>
         </div>
 
@@ -71,59 +71,25 @@
                     
                 </div>
                     
-                <div class="form-group">
-                    <label for="comment">Details</label>
-                    <textarea class="form-control set_sal" rows="3" id="comment"></textarea>
-                </div>
-                    
-                <div class=" form-group">
-                    <label for="usr">Date</label>
-                        <datepicker date-format="yyyy-MM-dd">
-                        <input type="text" class="form-control" maxlength="80" ng-model="employee.joiningDate">
-                     </datepicker>
-                </div>
-                    
-                <!--<div class=" form-group">
-                    <label for="pwd">Priority</label>
-                                <input type="text" class="form-control">
-                    <select name="type" class="form-control" >
-                    <option value="">Select Priority</option>
-                    <option value="Permanent">High</option>
-                    <option value="Part">Medium</option>
-                    <option value="Contract">Low</option>
-                                
+                <div class="row ropad grrow lacmarg">
+            
+                
+                 <div class=" form-group">
+                    <label for="pwd">Add Columns / Criteria to track</label>
+                    <!--<input type="emil id" class="form-control" >-->
+                    <select name="allowance" class="form-control forpad">
+                        <option value="">Select Column type</option>
+                        <option value="HRA">Custom Text</option>
+                        <option value="Conveyance">Custom date</option>
+                        <option value="Custom">Custom</option>
                     </select>
-                        
-                 </div>-->
-                    
-                    <br>
-                <div>  
-                <button type="button" class="btn btn-secondary btn-lg btn-block but_leftspace " >Delete Task </button>
-                    
-                 <button type="button" class="btn btn-secondary btn-lg btn-block but_leftspace" >Task Completed </button>
-                    
-                 </div>    
-                </div>
-
-             
-<!-------------------File Tab----------------------------->
-                
-                
-                 <div class="row ropad">
-                    <div> 
-                    <h4><span>Upload file and write a brief discription</span></h4>
-                     <input id="basic" type="text" class="form-control set_sal" >
-                    <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" >Upload file </button>
-                     </div>
-                     <br>
                      
-                     <div>
-                   <h4><span><strong>File:</strong>hreasy frontend css code along with wireframes</span></h4><br>
-                     <h4><span>By Aniket Kulkarni on 21/3/2017</span></h4>
-                    </div>
+                </div>
+                    
+                <button type="button" class="btn  btn-xs adbtun " ng-click="add('add')"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add allowance" ></span></button>
                 
                     
-               
+                </div>
                     
                 <!--<div class=" form-group">
                     <label for="pwd">Priority</label>
@@ -138,18 +104,16 @@
                         
                  </div>-->
                     
-                    <br>
-                  
                 </div>
                 
+               
                 
                 
-
 
             </div>
             <div class="col-sm-6 col-sm-offset-3 makpg">
             <div class="frbtnonpg">
-                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Task </button>
+                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save </button>
                 </div>
             </div>
         </div>
