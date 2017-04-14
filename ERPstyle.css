@@ -423,7 +423,7 @@ html,body{
 }
 
 .grrow {
-    background: rgb(240,240,240)
+    background: rgb(240,240,240);
 }
 
 .ropad {
@@ -900,4 +900,35 @@ html,body{
 
 .btn_left {
     float: left;
+}
+
+.blue_txt {
+    color: rgb(52,152,219);
+}
+
+.comment_box {
+    
+    padding: 2px;
+    padding-left: 3px;
+    padding-right: 10px;
+    border-width: 1px;
+    background: rgb(240,240,240);
+    border-radius: 5px;
+    width: 90%;
+    float: right;
+    text-align: right;
+    margin-bottom: 10px;
+    }
+
+.comment_box_me {
+      padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 1px;
+    background: rgb(240,240,240);
+    border-radius: 5px;
+    width: 90%;
+    float: left;
+    text-align: left;
+    margin-bottom: 10px;
 }
