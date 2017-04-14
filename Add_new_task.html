@@ -44,7 +44,7 @@
     <div class="container">
 
         <div class="row tpband">
-            <div class="col-sm-6 col-sm-offset-3 ">
+            <div class="col-sm-8 col-sm-offset-2 ">
                 <a href="#"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
                 
@@ -97,12 +97,12 @@
                  </div>-->
                     
                     <br>
-                <div>  
-                <button type="button" class="btn btn-secondary btn-lg btn-block but_leftspace " >Delete Task </button>
+                
+                 <div class="frbtnonpg">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Changes </button>
+                </div>
                     
-                 <button type="button" class="btn btn-secondary btn-lg btn-block but_leftspace" >Task Completed </button>
-                    
-                 </div>    
+                     
                 </div>
 
              <hr style="margin: 5px 0" />
@@ -183,15 +183,55 @@
                 
             <hr style="margin: 5px 0" />
              <hr style="margin: 5px 0" />    
+            <!-------------------Comment Tab----------------------------->  
+            
+             <br>   
+            <div class="table-responsive">
+                <table class="table logtabl table-hover">
+                    <thead class="distabl">
+                        <tr>
+                            <th class="distabl">Date</th>
+                            <th class="distabl">Record</th>
+                            <th class="distabl">Details</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>22/5/2017</td>
+                            <td>Ajinkya Kulkarni</td>
+                            <td>Task Title change</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>22/5/2017</td>
+                            <td>Aniket Kulkarni</td>
+                            <td>File Uplode 'frontend.pdf'</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </div>    
+                
+                
+            
             
      </div>
             
             
             
             <div class="col-sm-6 col-sm-offset-3 makpg">
-            <div class="frbtnonpg">
-                <button type="button" class="btn btn-secondary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Save Task </button>
-                </div>
+                
+             <div>  
+                <button type="button" class="btn btn-secondary btn-lg btn-block but_leftspace " >Delete Task </button>
+                    
+                 <button type="button" class="btn btn-secondary btn-lg btn-block but_leftspace" >Task Completed </button>
+                    
+                 </div>   
+                
+           
+                
             </div>
         </div>
         

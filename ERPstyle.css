@@ -932,3 +932,8 @@ html,body{
     text-align: left;
     margin-bottom: 10px;
 }
+
+.logtabl {
+    font-size: 17px;
+    text-align: center;!important
+}
