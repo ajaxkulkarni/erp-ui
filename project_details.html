@@ -42,12 +42,11 @@
                 <div class="col-sm-12 makpg Proj_top_tab">
 
                     <div class="row">
-
-                        <a href="#projectStructure"><span><img src="imgs/n_addbtn.png" alt="back" id="adbtn2" width="50px" >Add Field</span></a>
-
-                        <span><img src="imgs/n_addbtn.png" alt="back" id="adbtn2" width=50px ng-click="addNew()" ng-if="user.currentProject.fields.length > 0">Add New Record</span> 
+                        
+                        <span ng-if="user.currentProject.fields.length > 0"><img src="imgs/n_Add_task.svg" alt="back" id="adbtn2" width=50px ng-click="addNew()" title="Add Record"></span> 
 
 
+                        <a href="#projectStructure"><span><img src="imgs/n_Add_column.svg" alt="back" id="adbtn2" width="50px" title="Add Column" ></span></a>
 
 
                         <a href=#><span ><img src="imgs/n_excel.svg" alt="back" width=50px id="exl_icon"></span></a>
