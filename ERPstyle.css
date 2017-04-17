@@ -937,3 +937,15 @@ html,body{
     font-size: 17px;
     text-align: center;!important
 }
+
+#closbtn2 closbtn_padding {
+    
+}
+
+#closbtn2 padd_crsbtn {
+    
+}
+
+#padd_crsbtn {
+    padding-right: 0px;
+}

@@ -22,8 +22,7 @@
 
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 ">
-                    <h2 class="pghdgs">Add Columns</h2>
-                    <h5><span>Add criterias which you want to track. It can be end date, feedback, priority etc. Select custom type from drop-down to select column type.</span></h5>
+                    <span class="pghdgs"><h2>Add Columns</h2> <h5>Add criterias which you want to track. It can be end date, feedback, priority etc. Select custom type from drop-down to select column type.</h5></span>
                 </div>
             </div>
 
@@ -42,22 +41,28 @@
                         </div>
 
                         <div class="row ropad grrow lacmarg">
+                            
+                            <br>
 
 
                             <div class=" form-group">
-                                <label for="pwd">Add Columns / Criteria to track</label>
+                                <label for="pwd ">Add Columns / Criteria to track</label>
                                 <!--<input type="emil id" class="form-control" >-->
 
 
                             </div>
 
                             <button type="button" class="btn  btn-xs adbtun " ng-click="add()"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add field" ></span></button>
+                            
+    
 
                             <div class="row" ng-repeat="field in user.currentProject.fields">
+                                <hr>
                                 <div class=" form-group">
                                     <div class="col-md-6">
                                         <input id="basic" type="text" class="form-control set_sal" ng-model="field.name" placeholder="Field name">
                                     </div>
+                                    
                                     <div class="col-md-4">
                                         <select name="allowance" class="form-control forpad" ng-model="field.type">
                                         <option value="">Select Column type</option>

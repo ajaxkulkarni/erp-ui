@@ -49,11 +49,14 @@
                             </div>
 
                             <div class=" form-group">
-                                <label for="usr">Date</label>
+                                <label for="usr">Date Created</label>
                                 <datepicker date-format="yyyy-MM-dd">
                                     <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
                                 </datepicker>
                             </div>
+                            <br/>
+                            
+
 
                             <div class="form-group" ng-repeat="field in user.currentRecord.values">
                                 <label for="comment">{{field.name}}</label>
@@ -79,14 +82,17 @@
                         <div class="row ropad">
                             <div class="form-group">
                                 <h4><span>Upload file and write a brief discription</span></h4>
+                                
                                 <div id="upload_profile_picture_div">
                                     {{file.name}}
-                                    <div class="button" ngf-select ng-model="file" name="file"  ngf-max-size="20MB" style="border:1px">Select File </div>
+                                    <div class="button blue_txt" ngf-select ng-model="file" name="file"  ngf-max-size="20MB" style="border:1px" style="cursor:pointer">Select File </div>
+                                    
                                 </div>
+                                
                                 <label for="usr">File Name</label>
                                 <input type="text" class="form-control set_sal" ng-model="file.name">
-                                <label for="usr">Description</label>
-                                <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>
+                                <!--<label for="usr">Description</label>
+                                <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>-->
                                 <button type="button" class="btn btn-secondary btn-lg btn-block btn_left">Upload file </button>
                             </div>
                             <br>
@@ -102,7 +108,8 @@
 
                             <h5><span>By Ajinkya Kulkarni on 21/3/2017</span></h5>
                             <h4><span><strong>File: </strong>hreasy backend javascript with online logins</span></h4>
-                            <h4><span class="blue_txt">Download</span></h4>
+                            <h4><span class="blue_txt" style="cursor:pointer">Download</span> | <span class="blue_txt" style="cursor:pointer"> Remove</span></h4>
+                            
 
                             <br>
 
