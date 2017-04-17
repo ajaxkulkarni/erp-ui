@@ -1,8 +1,9 @@
-var app = angular.module("app", ["ngRoute", "720kb.datepicker"]);
+var app = angular.module("app", ["ngRoute", "720kb.datepicker","ngFileUpload"]);
 
-//var host = "http://localhost:8080/erp-service";
-var host = "https://tiffeat.com:8443/erp";
+var host = "http://localhost:8080/erp-service";
+//var host = "https://tiffeat.com:8443/erp";
 var root = host + "/service";
+var projectRoot = host + "/projectService"
 var rootAdmin = host + "/adminService";
 
 
@@ -68,9 +69,13 @@ app.service('userService', function ($http, $q) {
         }
     }
 
-    this.callService = function ($scope, method) {
+    this.callService = function ($scope, method, $root) {
         var defer = $q.defer();
-        var res = $http.post(root + method, $scope.dataObj);
+        var url = root + method;
+        if($root == "P") {
+            url = projectRoot + method;
+        }
+        var res = $http.post(url, $scope.dataObj);
         res.success(function (data, status, headers, config) {
             response = data;
             defer.resolve(response);
@@ -224,6 +229,26 @@ app.config(function ($routeProvider) {
         .when("/help", {
             templateUrl: "help.html",
             controller: "help"
+        })
+        .when("/myProjects", {
+            templateUrl: "dashboard_projects.html",
+            controller: "projects"
+        })
+        .when("/myProject", {
+            templateUrl: "add_project.html",
+            controller: "updateProject"
+        })
+        .when("/projectStructure", {
+            templateUrl: "project_structure.html",
+            controller: "projectStructure"
+        })
+        .when("/projectDetails", {
+            templateUrl: "project_details.html",
+            controller: "projectDetails"
+        })
+        .when("/updateRecord", {
+            templateUrl: "add_record.html",
+            controller: "updateRecord"
         })
 });
 

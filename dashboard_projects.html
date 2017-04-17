@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+
+<body>
+
+
+
+    <div class="container-fluid bckgrclr htpag">
+
+
+        <div ng-include="'response.html'"></div>
+
+
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="row tpband">
+                    <div class="col-sm-12">
+                        <a href="#"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+
+                        <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="pghdgs">My Projects</h2>
+                    </div>
+
+                </div>
+
+                <div ng-include="'response.html'"></div>
+
+
+
+                <div class="col-sm-12 makpg Proj_top_tab">
+
+                    <div class="row">
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left" ng-click="addNew()"><span>Add New Project</span></button>
+
+                        <!--<button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left">Add Column</button>-->
+
+
+                        <div class="col-sm">
+
+                            <a href=#><span ><img src="imgs/n_excel.svg" alt="back" width=50px id="exl_icon"></span></a>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 makpg shdmld ">
+                    <div class="table-responsive">
+                        <table class="table distabl table-hover">
+                            <thead class="distabl">
+                                <tr>
+                                    <th class="distabl">#</th>
+                                    <th class="distabl">Project title</th>
+                                    <th class="distabl">Details</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in projects">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{project.title}}</td>
+                                    <td>{{project.description}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectProject(project)">Dive in</button>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</body>
+
+
+</html>

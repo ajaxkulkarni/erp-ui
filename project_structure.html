@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+
+<body>
+
+
+    <div class="container-fluid bckgrclr">
+
+
+        <div ng-include="'response.html'"></div>
+
+        <div class="container">
+
+            <div class="row tpband">
+                <div class="col-sm-8 col-sm-offset-2 ">
+                    <a href="#projectDetails"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                    <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 ">
+                    <h2 class="pghdgs">Add Columns</h2>
+                    <h5><span>Add criterias which you want to track. It can be end date, feedback, priority etc. Select custom type from drop-down to select column type.</span></h5>
+                </div>
+            </div>
+
+            <div ng-include="'response.html'"></div>
+
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3 makpg">
+
+
+                    <div class="row ropad">
+
+                        <div class=" form-group">
+                            <label for="usr">Title (TEXT) </label>
+                            <input id="basic" type="text" ng-model="user.currentProject.titleField.name" class="form-control set_sal">
+
+                        </div>
+
+                        <div class="row ropad grrow lacmarg">
+
+
+                            <div class=" form-group">
+                                <label for="pwd">Add Columns / Criteria to track</label>
+                                <!--<input type="emil id" class="form-control" >-->
+
+
+                            </div>
+
+                            <button type="button" class="btn  btn-xs adbtun " ng-click="add()"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add field" ></span></button>
+
+                            <div class="row" ng-repeat="field in user.currentProject.fields">
+                                <div class=" form-group">
+                                    <div class="col-md-6">
+                                        <input id="basic" type="text" class="form-control set_sal" ng-model="field.name" placeholder="Field name">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <select name="allowance" class="form-control forpad" ng-model="field.type">
+                                        <option value="">Select Column type</option>
+                                        <option value="TEXT">Text</option>
+                                        <option value="DATE">Date</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span style="cursor:pointer" ng-click="remove(field)"><img src="imgs/clear-button.png" alt="back" id="closbtn2" width=10px ></span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <!--<br/>-->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="col-sm-6 col-sm-offset-3 makpg">
+                    <div class="frbtnonpg">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save </button>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+
+</html>

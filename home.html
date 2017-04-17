@@ -16,26 +16,31 @@
 
     <link rel="stylesheet" href="ERPstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    
+
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    
+
     <link href="css/angular-datepicker.css" rel="stylesheet" type="text/css" />
 
-    <link href="css/loader.css" rel="stylesheet" type="text/css"/>
-    
+    <link href="css/loader.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript" src="js/angular.min.js"></script>
 
     <script type="text/javascript" src="js/angular-route.js"></script>
 
+    <script src="js/ng-file-upload-shim.min.js"></script>
+    <script src="js/ng-file-upload.min.js"></script>
+
     <script type="text/javascript" src="js/ang/main.js"></script>
 
     <script type="text/javascript" src="js/ang/home.js"></script>
-    
+
     <script type="text/javascript" src="js/ang/employee.js"></script>
 
     <script type="text/javascript" src="js/ang/leaves.js"></script>
 
     <script type="text/javascript" src="js/ang/salary.js"></script>
+
+    <script type="text/javascript" src="js/ang/project.js"></script>
 
 
     <title>HR made easy</title>
@@ -45,14 +50,14 @@
 
 <body ng-app="app" class="bckgrclr">
 
-    <nav ng-controller="profile" >
+    <nav ng-controller="profile">
 
 
 
         <ul class="lis1">
             <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
-            
-            
+
+
 
 
             <div class="dropdown lis2">
@@ -64,13 +69,13 @@
                     <li><a href="#changePassword">Settings</a></li>
                     <li><a href="#help">How To</a></li>
                     <li><a href="#">Contact us</a></li>
-                    
+
                     <li class="divider"></li>
-                    <li class="compnam"><span >{{user.company.name}}</span></li>
-                    
+                    <li class="compnam"><span>{{user.company.name}}</span></li>
+
                 </ul>
             </div>
-            
+
             <li class="empnam">{{user.name}}</li>
 
 
@@ -101,7 +106,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+
 
 </body>
 
@@ -122,7 +127,7 @@
         
     </div>
 </footer>-->
-    
+
 <!---<footer class="footer1" >
     <div class="navbar navbar-default foocls">
   <div class="container">
@@ -140,23 +145,23 @@
 </footer>--->
 <footer class="footer navbar-fixed-bottom correc_foo">
     <!---<div class="navbar navbar-default foocls"></div>--->
-<div id="foob" >
-  
-    <a href="http://www.resoneuronance.com" target="_blank" class="lnk_no_syle"><span class="navbar-text foo_ext_mod">
+    <div id="foob">
+
+        <a href="http://www.resoneuronance.com" target="_blank" class="lnk_no_syle"><span class="navbar-text foo_ext_mod">
       &#169 hreasy, resoneuronance pvt ltd
       </span></a>
-  
-<!--</div>--->
+
+        <!--</div>--->
 
 
-    
 
-    <!--<h3><span class="footxt"></span></h3>
+
+        <!--<h3><span class="footxt"></span></h3>
     <span><img src="imgs/logonew.png" alt="back" class="foocomplogo"  height=60px;;></span>--->
 
     </div>
 </footer>
-    
-    
+
+
 
 </html>
