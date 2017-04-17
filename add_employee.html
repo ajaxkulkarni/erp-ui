@@ -53,9 +53,9 @@
                             <div class=" form-group" ng-if="user.loginType!='Employee'">
                                 <label for="pwd">Employee Login As</label>
                                 <br>
-                                <input type="radio" value="" ng-model="employee.loginType"> Employee &nbsp;
+                                <input type="radio" value="Employee" ng-model="employee.loginType"> Employee &nbsp;
                                 <input type="radio" value="Owner" ng-model="employee.loginType"> Admin &nbsp;
-                                <input type="radio" value="Employee" ng-model="employee.loginType"> None
+                                <input type="radio" value="" ng-model="employee.loginType"> None
                                 <p style="color:red" ng-show="formShowErrors && form.type.$invalid">Please select valid login type</p>
                             </div>
                             <hr>
