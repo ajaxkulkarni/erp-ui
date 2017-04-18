@@ -23,6 +23,7 @@ angular.module("app").controller('projects', function ($scope, userService, $loc
 
     $scope.user = JSON.parse(localStorage.erpUser);
 
+
     $scope.getAllUserProjects = function () {
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
@@ -68,6 +69,14 @@ angular.module("app").controller('updateProject', function ($scope, userService,
 
     $scope.user = JSON.parse(localStorage.erpUser);
 
+
+    $scope.title = "Add New Project";
+    $scope.backLink = "#myProjects";
+
+    if ($scope.user.currentProject != null && $scope.user.currentProject.id != null) {
+        $scope.title = "Edit Project";
+        $scope.backLink = "#projectDetails"
+    }
 
 
     $scope.getProject = function () {
@@ -339,16 +348,16 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
         });
     }
-    
-     $scope.showDelete = function (file) {
+
+    $scope.showDelete = function (file) {
         $scope.user.currentRecord.file = {
             id: file.id,
             fileName: file.fileName
         };
         $("#deleteFile").modal('show');
     }
-     
-     $scope.deleteFile = function () {
+
+    $scope.deleteFile = function () {
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/deleteFile", "P").then(function (response) {
@@ -359,7 +368,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
             if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
-            
+
         });
     }
 
@@ -391,7 +400,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
                 }
             }
         }
-        
+
         Upload.upload({
             url: projectRoot + '/uploadFile',
             data: {
