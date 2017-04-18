@@ -949,3 +949,9 @@ html,body{
 #padd_crsbtn {
     padding-right: 0px;
 }
+
+.proj_table {
+     font-size: 20px;
+    text-align: center;!important
+    height: 100px !important;
+    overflow: auto;
