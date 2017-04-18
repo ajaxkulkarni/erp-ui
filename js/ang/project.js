@@ -14,7 +14,7 @@ function getTodaysDate() {
     return today;
 }
 
-angular.module("app").controller('projects', function ($scope, userService, $location) {
+angular.module("app").controller('projects', function ($scope, userService, $location, Upload) {
 
     $scope.response = {};
     $scope.dataObj = {};
@@ -309,12 +309,13 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 });
 
 
-angular.module("app").controller('updateRecord', function ($scope, userService, $location) {
+angular.module("app").controller('updateRecord', function ($scope, userService, $location, Upload) {
 
     $scope.response = {};
     $scope.dataObj = {};
     console.log("Record details loaded ..");
 
+    $scope.rootUrl = projectRoot + "/getFile/";
 
 
     $scope.user = JSON.parse(localStorage.erpUser);
@@ -338,6 +339,29 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
         });
     }
+    
+     $scope.showDelete = function (file) {
+        $scope.user.currentRecord.file = {
+            id: file.id,
+            fileName: file.fileName
+        };
+        $("#deleteFile").modal('show');
+    }
+     
+     $scope.deleteFile = function () {
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/deleteFile", "P").then(function (response) {
+            $("#deleteFile").modal('hide');
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "File deleted successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            
+        });
+    }
 
 
     $scope.save = function () {
@@ -353,6 +377,39 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
                 return;
             }
         });
+    }
+
+    $scope.upload = function () {
+        console.log("In upload!");
+        var user = {
+            id: $scope.user.id,
+            email: $scope.user.email,
+            currentRecord: {
+                id: $scope.user.currentRecord.id,
+                file: {
+                    fileName: $scope.fileName
+                }
+            }
+        }
+        
+        Upload.upload({
+            url: projectRoot + '/uploadFile',
+            data: {
+                file: $scope.file,
+                user: JSON.stringify(user)
+            }
+        }).then(function (resp) {
+                userService.showResponse($scope, "File Uploaded successfully!");
+
+            },
+            function (resp) {
+                console.log('Error status: ' + resp.status);
+                $scope.errorMsg = "Error connecting server!";
+            },
+            function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                //console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
     }
 
     $scope.getProject = function () {
