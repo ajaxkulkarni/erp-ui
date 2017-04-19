@@ -47,13 +47,13 @@
 
                             </div>
 
-                            <div class=" form-group">
+                            <div class=" form-group" style="margin-bottom:45px">
                                 <label for="usr">Date Created</label>
                                 <datepicker date-format="yyyy-MM-dd">
                                     <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
                                 </datepicker>
                             </div>
-                            <br/>
+                            
 
 
 
@@ -61,6 +61,7 @@
                                 <label for="comment">{{field.name}}</label>
                                 <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
                                     <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+                                    <br>
                                 </datepicker>
                                 <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
                             </div>
@@ -75,6 +76,8 @@
                         <div class="frbtnonpg">
                             <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
                         </div>
+                        <br>
+                        
                     </div>
 
                     <div class="tab-content" ng-show="tab==2">
@@ -84,9 +87,11 @@
 
                                 <div id="upload_profile_picture_div">
                                     {{file.name}}
-                                    <div class="button blue_txt" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="border:1px" style="cursor:pointer">Select File </div>
+                                    <div class="button blue_txt" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="border:1px" >
+                                    <strong style="cursor: pointer">Select File</strong> </div>
 
                                 </div>
+                                <hr>
 
                                 <label for="usr">File Name</label>
                                 <input type="text" class="form-control set_sal" ng-model="fileName">
@@ -144,7 +149,7 @@
                                 <thead class="distabl">
                                     <tr>
                                         <th class="distabl">Date</th>
-                                        <th class="distabl">Record</th>
+                                        <th class="distabl">By</th>
                                         <th class="distabl">Details</th>
 
                                     </tr>

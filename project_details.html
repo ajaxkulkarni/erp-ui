@@ -30,7 +30,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <h2 class="pghdgs">{{user.currentProject.name}}</h2>
+                        <h2 class="pghdgs"> {{user.currentProject.title}}</h2>
                     </div>
 
                 </div>
@@ -64,14 +64,14 @@
 
 
                     <div class="table-responsive">
-                        <table class="table proj_table table-hover" ng-if="user.currentProject.fields.length > 0">
+                        <table class="table proj_table table-hover" style="font-size:17px" ng-if="user.currentProject.fields.length > 0">
                             <thead class="distabl">
                                 <tr>
-                                    <th class="distabl">#</th>
-                                    <th class="distabl">{{user.currentProject.titleField.name}}</th>
-                                    <th class="distabl" ng-repeat="field in user.currentProject.fields">{{field.name}}</th>
-                                    <th class="distabl">Date Created</th>
-                                    <th></th>
+                                    <th class="distabl" style="min-width:50px">#</th>
+                                    <th class="distabl" style="min-width:300px">{{user.currentProject.titleField.name}}</th>
+                                    <th class="distabl" style="min-width:300px" ng-repeat="field in user.currentProject.fields">{{field.name}}</th>
+                                    <th class="distabl" style="min-width:150px">Created</th>
+                                    <th style="min-width:150px"></th>
                                     
                                 </tr>
                             </thead>
@@ -81,7 +81,7 @@
                                     <td>{{rec.titleField.value}}</td>
                                     <td ng-repeat="field in rec.values">{{field.value}}</td>
                                     <td>{{rec.recordDateString}}</td>
-                                    <td><a ><span class="blue_txt" ng-click="selectRecord(rec)" style="cursor:pointer">Edit</span></a>|<span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Delete</span></td>
+                                    <td><a ><span class="blue_txt" ng-click="selectRecord(rec)" style="cursor:pointer">Edit</span></a> | <span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Delete</span></td>
                                     <!--<td>
                                         <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectRecord(rec)">Edit</button>
                                     </td>

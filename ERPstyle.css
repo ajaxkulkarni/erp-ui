@@ -720,6 +720,7 @@ html,body{
 
 .frbtnonpg {
     height: 60px;
+   
 }
 
 .xlicon {
@@ -904,6 +905,7 @@ html,body{
 
 .blue_txt {
     color: rgb(52,152,219);
+    
 }
 
 .comment_box {
@@ -955,3 +957,21 @@ html,body{
     text-align: center;!important
     height: 100px !important;
     overflow: auto;
+
+.proj_table_width {
+    min-width: 1400px;
+}
+
+.table-width {
+    
+}
+
+.tablewidth {
+     table-layout: fixed;
+    word-wrap: break-word;
+}
+
+.fixcolmn {
+    
+    border-right: 1px solid #ddd;
+}
