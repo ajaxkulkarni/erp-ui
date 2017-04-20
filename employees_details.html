@@ -36,9 +36,8 @@
                             <th class="distabl">Email</th>
                             <th class="distabl">Designation</th>
                             <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th style="min-width:200px"></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -49,18 +48,19 @@
                             <td>{{emp.designation}}</td>
                             <td></td>
                             <td>
-                                <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="view(emp)">View</button>
+                                <h4 ><span class= "blue_txt" style="cursor:pointer" ng-click="view(emp)">View</span> |
+                                <span class= "blue_txt" style="cursor:pointer" ng-click="edit(emp)">Edit</span> | <span class= "blue_txt" style="cursor:pointer" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete</span></h4>
                                 
                                 
                             </td>
 
-                            <td>
+                            <!--<td>
                                 <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="edit(emp)">Edit Profile</button>
                             </td>
 
                             <td>
                                 <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete Profile</button>
-                            </td>
+                            </td>-->
 
                         </tr>
 
