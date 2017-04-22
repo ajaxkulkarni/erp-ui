@@ -268,7 +268,8 @@ angular.module("app").controller('leaveDetails', function ($scope, userService, 
     $scope.updateLeaveBalance = function() {
         
         userService.showLoading($scope);
-        $scope.dataObj.user = $scope.user;
+        $scope.dataObj.user = $scope.employee;
+        //console.log($scope.user.id + ":" + $scope.user.leaveCount);
         userService.callService($scope, '/updateLeaveBalance').then(function (response) {
             //$.skylo('end');
             userService.initLoader($scope);
