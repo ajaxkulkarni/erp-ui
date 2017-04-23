@@ -122,22 +122,13 @@
                         <div class="row ropad">
                             <div class="form-group">
                                 <label for="comment">Add Comment:</label>
-                                <textarea class="form-control" rows="3" id="comment"></textarea>
+                                <textarea class="form-control" rows="3" id="comment" ng-model="comment"></textarea>
+                                <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
                             </div>
 
-                            <div class="comment_box">
-                                <h5><span>By Ajinkya Kulkarni on 21/3/2017</span>&nbsp;|&nbsp;<span class="blue_txt">Remove</span></h5>
-                                <h4><span>hreasy backend javascript with online logins</span></h4>
-                            </div>
-
-                            <div class="comment_box">
-                                <h5><span>By Ajinkya Kulkarni on 21/3/2017</span>&nbsp;|&nbsp;<span class="blue_txt">Remove</span></h5>
-                                <h4><span>hreasy backend javascript with online logins</span></h4>
-                            </div>
-
-                            <div class="comment_box_me">
-                                <h5><span>By Aniket Kulkarni on 21/3/2017</span>&nbsp;|&nbsp;<span class="blue_txt">Remove</span></h5>
-                                <h4><span>hreasy backend javascript with online logins</span></h4>
+                            <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
+                                <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>
+                                <h4><span>{{comment.comment}}</span></h4>
                             </div>
 
                         </div>

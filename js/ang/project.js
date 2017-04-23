@@ -122,7 +122,7 @@ angular.module("app").controller('updateProject', function ($scope, userService,
 
             userService.initLoader($scope);
             $scope.response = response;
-            userService.showResponse($scope, "Project created successfully!");
+            userService.showResponse($scope, "Project updated successfully!");
 
 
         });
@@ -132,15 +132,15 @@ angular.module("app").controller('updateProject', function ($scope, userService,
         $scope.user.currentProject.users.push($scope.selectedUser);
 
         var index = $scope.users.indexOf($scope.selectedUser);
-        $scope.users.splice($scope.selectedUser, 1);
+        $scope.users.splice(index, 1);
     }
 
     $scope.remove = function (user) {
-        console.log(user.name)
         $scope.users.push(user);
 
         var index = $scope.user.currentProject.users.indexOf(user);
-        $scope.user.currentProject.users.splice(user, 1);
+        console.log(user.name + ":" + index);
+        $scope.user.currentProject.users.splice(index, 1);
     }
 
     if ($scope.user.currentProject != null && $scope.user.currentProject.id > 0) {
@@ -220,7 +220,7 @@ angular.module("app").controller('projectStructure', function ($scope, userServi
 
     $scope.remove = function (field) {
         var index = $scope.user.currentProject.fields.indexOf(field);
-        $scope.user.currentProject.fields.splice(field, 1);
+        $scope.user.currentProject.fields.splice(index, 1);
     }
 
     $scope.getProject();
@@ -371,6 +371,40 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
         });
     }
+    
+    $scope.addComment = function () {
+        userService.showLoading($scope);
+        $scope.user.currentRecord.comment = {
+            comment: $scope.comment
+        }
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/updateComment", "P").then(function (response) {
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Comment added successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+
+        });
+    }
+    
+    $scope.removeComment = function (comment) {
+        $scope.user.currentRecord.comment = {
+            id: comment.id
+        }
+        $scope.dataObj.user = $scope.user;
+        userService.showLoading($scope);
+        userService.callService($scope, "/updateComment", "P").then(function (response) {
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Comment deleted successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+
+        });
+    }
 
 
     $scope.save = function () {
@@ -448,7 +482,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
 
     $scope.close = function () {
-        userService.close("#projectDetails");
+        userService.close("#updateRecord");
     }
 
     if ($scope.user.currentRecord == null || $scope.user.currentRecord.id == null) {
