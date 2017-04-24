@@ -1,7 +1,7 @@
 var app = angular.module("app", ["ngRoute", "720kb.datepicker","ngFileUpload"]);
 
-var host = "http://localhost:8080/erp-service";
-//var host = "https://tiffeat.com:8443/erp";
+//var host = "http://localhost:8080/erp-service";
+var host = "https://tiffeat.com:8443/erp";
 var root = host + "/service";
 var projectRoot = host + "/projectService"
 var rootAdmin = host + "/adminService";
