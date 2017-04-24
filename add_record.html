@@ -146,18 +146,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>22/5/2017</td>
-                                        <td>Ajinkya Kulkarni</td>
-                                        <td>Task Title change</td>
+                                    <tr ng-repeat="log in user.currentRecord.logs">
+                                        <td>{{log.logDate}}</td>
+                                        <td>{{log.user.name}}</td>
+                                        <td>{{log.log}}</td>
                                     </tr>
-
-                                    <tr>
-                                        <td>22/5/2017</td>
-                                        <td>Aniket Kulkarni</td>
-                                        <td>File Uplode 'frontend.pdf'</td>
-                                    </tr>
-
 
                                 </tbody>
                             </table>
