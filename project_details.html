@@ -76,18 +76,13 @@
                                 </tr>
                             </thead>
                             <tbody ng-if="user.currentProject.records.length > 0">
-                                <tr ng-repeat="rec in user.currentProject.records">
+                                <tr ng-repeat="rec in user.currentProject.records" ng-click="selectRecord(rec)" style="cursor:pointer">
                                     <td>{{$index + 1}}</td>
                                     <td>{{rec.titleField.value}}</td>
                                     <td ng-repeat="field in rec.values">{{field.value}}</td>
                                     <td>{{rec.recordDateString}}</td>
-                                    <td><a ><span class="blue_txt" ng-click="selectRecord(rec)" style="cursor:pointer">Edit</span></a> | <span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Delete</span></td>
-                                    <!--<td>
-                                        <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectRecord(rec)">Edit</button>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="showDelete(rec)">Delete</button>
-                                    </td>-->
+                                    <!--<td><a ><span class="blue_txt" ng-click="selectRecord(rec)" style="cursor:pointer">Edit</span></a> | <span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Delete</span></td>
+                                    -->
 
                                 </tr>
 
