@@ -13,7 +13,7 @@
         <div class="container">
 
             <div class="row tpband">
-                <div class="col-sm-8 col-sm-offset-2 ">
+                <div class="col-sm-12">
                     <a href="#projectDetails"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
                     <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
 
@@ -21,14 +21,14 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 ">
+                <div class="col-sm-12 ">
                     <h2 class="pghdgs">Update Record</h2>
                 </div>
             </div>
 
             
             <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 makpg">
+                <div class="col-sm-12 makpg">
 
                     <ul class="nav nav-tabs adempnav" ng-init="tab=1">
                         <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="tab-content" ng-show="tab==2">
-                        <div class="row ropad">
+                        <div class="row ropad grrow" style="margin:5px">
                             <div class="form-group">
                                 <h4><span>Upload file and write a brief discription</span></h4>
 
@@ -91,7 +91,7 @@
                                     <strong style="cursor: pointer">Select File</strong> </div>
 
                                 </div>
-                                <hr>
+                                <br>
 
                                 <label for="usr">File Name</label>
                                 <input type="text" class="form-control set_sal" ng-model="fileName">
@@ -125,6 +125,7 @@
                                 <textarea class="form-control" rows="3" id="comment" ng-model="comment"></textarea>
                                 <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
                             </div>
+                            
 
                             <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
                                 <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>

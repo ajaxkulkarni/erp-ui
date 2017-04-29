@@ -206,7 +206,11 @@ h1{
    margin-top: 5px;
     margin-left: 0px;
     padding-bottom: 0px;
-    
+    opacity: 0.5;
+}
+
+#backbtn:hover{
+    opacity: 1;
 }
 .dashimgs{
     text-align: center ;
@@ -835,6 +839,10 @@ html,body{
     margin-left: 0px;
     padding-bottom: 0px;
     padding: 1px;
+    opacity: 0.5;
+}
+#help_pos:hover{
+    opacity: 1;
 }
 
 #lnk_no_syle {
