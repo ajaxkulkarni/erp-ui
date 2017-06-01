@@ -1,8 +1,8 @@
 body{
     font-family: "Open Sans", sans-serif !important;
     font-size: 17px;
-    color: rgb(100,100,100);
-    font-weight: 400;!important 
+    color: rgb(120,120,120);
+    font-weight: 300;!important 
 }
 
 /*FIRST PAGE*/
@@ -965,21 +965,38 @@ html,body{
     text-align: center;!important
     height: 100px !important;
     overflow: auto;
-
-.proj_table_width {
-    min-width: 1400px;
 }
 
-.table-width {
+
+.crd_design {
+    border: none;
+    background-color: rgb(244,244,244);
+    height: 40px;
+    padding-bottom: 40px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    padding-top: 0px
+   
+}
+
+#card_icons {
+    float: right;
     
+    margin-right: 15px;
+    opacity: 0.2;
+
 }
 
-.tablewidth {
-     table-layout: fixed;
-    word-wrap: break-word;
+#card_icons:hover {
+
+    opacity: 0.8;
+
 }
 
-.fixcolmn {
-    
-    border-right: 1px solid #ddd;
+.fade_hover {
+    opacity: 0.3;
+}
+.fade_hover:hover {
+    opacity: 0.9;
 }
