@@ -247,7 +247,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
 
-
+    $scope.user.currentRecord = {};
+    
+    
     $scope.getProject = function () {
         userService.showLoading($scope);
         $scope.dataObj.requestType = "REC";
@@ -277,7 +279,11 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.selectRecord = function (record) {
         $scope.user.currentRecord = record;
         localStorage.erpUser = JSON.stringify($scope.user);
-        window.location.href = "#updateRecord"
+        //window.location.href = "#updateRecord"
+    }
+    
+    $scope.cancel = function() {
+        $scope.user.currentRecord = {};
     }
 
     $scope.showDelete = function (rec) {
@@ -310,6 +316,24 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         userService.close("#projectDetails");
     }
 
+    
+    $scope.save = function () {
+        userService.showLoading($scope);
+        $scope.user.currentRecord.status = "A";
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/updateRecord", "P").then(function (response) {
+
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Record updated successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $scope.getProject();
+        });
+    }
+
+    
 
     $scope.getProject();
 
@@ -407,21 +431,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
     }
 
 
-    $scope.save = function () {
-        userService.showLoading($scope);
-        $scope.user.currentRecord.status = "A";
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/updateRecord", "P").then(function (response) {
-
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "Record updated successfully!!");
-            if ($scope.response == null || $scope.response.status != 200) {
-                return;
-            }
-        });
-    }
-
+    
     $scope.upload = function () {
         console.log("In upload!");
         var user = {
