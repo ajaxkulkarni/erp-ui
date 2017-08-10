@@ -333,6 +333,12 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         });
     }
 
+    $scope.fieldClass = function(field) {
+        if(field.maxLength) {
+            return "panel-body";
+        }
+        return "panel-body field_value";
+    }
     
 
     $scope.getProject();
