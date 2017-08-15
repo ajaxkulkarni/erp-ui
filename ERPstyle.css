@@ -207,6 +207,7 @@ h1{
     margin-left: 0px;
     padding-bottom: 0px;
     opacity: 0.5;
+    
 }
 
 #backbtn:hover{
@@ -861,6 +862,8 @@ html,body{
 
 .Proj_top_tab {
     height: auto;
+    padding-top: 10px; !important
+    
 }
 
 #exl_icon {
@@ -878,7 +881,7 @@ html,body{
     opacity: 0.7;
     
     margin-left: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 04px;
 }
 
 .ropad_proj {
@@ -971,12 +974,13 @@ html,body{
 .crd_design {
     border: none;
     background-color: rgb(244,244,244);
-    /*height: 50px;*/
-/*    padding-bottom: 40px;*/
-    font-size: 15px;
-    margin-bottom: 10px;
+    height:35px;
+    
+    font-size: 14px;
+    margin-bottom: 0px;
     margin-top: 0px;
-    padding-top: 0px;
+    padding-bottom: 40px;
+    padding-top: -20px;
     word-wrap:break-word;
     /*border: 1px solid black;*/
     /*text-overflow: ellipsis;
@@ -1010,4 +1014,20 @@ html,body{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.pghdgs_V2 {
+    text-align: center;
+    margin-top: -25px;
+    padding-top: 0px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+#card_date_postion {
+    font-size: 500px;!important
+}
+
+.crd_date_position {
+    font-size: 2px;
 }
