@@ -645,6 +645,7 @@ html,body{
     background-color: white;
     margin-bottom: 10px;
     box-shadow: 0 0 5px rgb(200,200,200); 
+    
 }
 
 .shdwmld {
@@ -861,7 +862,7 @@ html,body{
 }
 
 .Proj_top_tab {
-    height: auto;
+    height: 75px;
     padding-top: 10px; !important
     
 }
@@ -972,7 +973,7 @@ html,body{
 
 
 .crd_design {
-    border: none;
+    border:0px;
     background-color: rgb(244,244,244);
     height:35px;
     
@@ -980,7 +981,7 @@ html,body{
     margin-bottom: 0px;
     margin-top: 0px;
     padding-bottom: 40px;
-    padding-top: -20px;
+    padding-top:0px;
     word-wrap:break-word;
     /*border: 1px solid black;*/
     /*text-overflow: ellipsis;
@@ -1030,4 +1031,9 @@ html,body{
 
 .crd_date_position {
     font-size: 2px;
+}
+
+.edge_color {
+    border-width: 15px;
+    border-color: black;
 }
