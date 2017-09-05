@@ -20,6 +20,7 @@
 
         <div class="row tpband">
             <div class="col-sm-12">
+
                 <a href="#myProjects"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick "></a>
 
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
@@ -59,66 +60,205 @@
             </div>
         </div>
 
+        <div class="col-sm-12">
+            <div class="col-sm-12 makpg edge_color" style="padding-bottom:5px; padding-top:22px;" ng-repeat="rec in user.currentProject.records">
 
-        <div class="col-sm-12 makpg edge_color" style="padding-bottom:5px; padding-top:22px;" ng-repeat="rec in user.currentProject.records">
+                <div class="row" style="padding-left:15px; padding-right:10px; margin-top:-15px; border-color: black;">
 
-            <div class="row" style="padding-left:15px; padding-right:10px; margin-top:-15px; border-color: black;">
+                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" ng-if="user.currentRecord.id!=rec.id">{{rec.titleField.value}}</span>
 
-                <span data-toggle="tooltip" title="{{rec.titleField.name}}" ng-if="user.currentRecord.id!=rec.id">{{rec.titleField.value}}</span>
+                    <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
+                        <label for="usr">{{user.currentRecord.titleField.name}} </label>
+                        <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
+                    </div>
 
-                <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
-                    <label for="usr">{{user.currentRecord.titleField.name}} </label>
-                    <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
-                </div>
+                    <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
+                        <label for="usr">Record Date</label>
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
+                        </datepicker>
 
-                <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
-                    <label for="usr">Record Date</label>
-                    <datepicker date-format="yyyy-MM-dd">
-                        <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
-                    </datepicker>
-
-                </div>
+                    </div>
 
 
-                <span ng-if="user.currentRecord.id!=rec.id"><a href="#"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=20px></a>
+                    <span ng-if="user.currentRecord.id!=rec.id"><a href="#"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=20px></a>
 
                         <a href="#"><img src="imgs/attachment-clip.svg" alt="back" id="card_icons" width=20px></a>
                         <a href="#"><img src="imgs/chat-bubble.svg" alt="back" id="card_icons" width=20px></a>
                         <a style="cursor:pointer" ng-click="selectRecord(rec)"><img src="imgs/underline-button.svg" alt="back" id="card_icons" width=20px></a></span>
 
+                </div>
+
+                <div class="row" style="padding-right:10px; padding-left:10px;">
+                    <div class="col-sm-3" style="padding :5px;" ng-repeat="field in rec.values">
+
+                        <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}" ng-if="user.currentRecord.id!=rec.id">
+                            <div ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="cursor:pointer">{{field.value}}</div>
+                        </div>
+
+                        <div class="form-group" ng-if="user.currentRecord.id==rec.id">
+                            <label for="usr">{{field.name}} </label>
+                            <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
+                                <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+                                <br>
+                            </datepicker>
+                            <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+                        </div>
+
+                    </div>
+
+
+                    <!--<p data-toggle="tooltip" title="Record Date" ng-if="user.currentRecord.id!=rec.id">{{rec.recordDateString}}</p>-->
+
+                    <div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="cancel()">Cancel</button>
+                    </div>
+
+
+                </div>
+
             </div>
+        </div>
 
-            <div class="row" style="padding-right:10px; padding-left:10px;">
-                <div class="col-sm-3" style="padding :5px;" ng-repeat="field in rec.values">
 
-                    <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}" ng-if="user.currentRecord.id!=rec.id">
-                        <div ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="cursor:pointer">{{field.value}}</div>
+        <div class="col-sm-4 col-sm-offset-0" style="overflow:scroll; height: 400px"  ng-if="user.currentRecord.id!=rec.id">
+            <div class="makpg" style="margin:none; padding-left: 10px; padding-right: 10px">
+
+                <ul class="nav nav-tabs adempnav" ng-init="tab=1">
+                    <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
+                    <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Files</a></li>
+                    <li ng-class="{'active': tab == 3}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Comments</a></li>
+                    <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Change Log</a></li>
+                </ul>
+                <br>
+
+                <div class="tab-content" ng-show="tab==1">
+                    <div class="row ropad">
+
+                        <div class=" form-group">
+                            <label for="usr">{{user.currentRecord.titleField.name}} </label>
+                            <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
+
+                        </div>
+
+                        <div class=" form-group" style="margin-bottom:45px">
+                            <label for="usr">Date Created</label>
+                            <datepicker date-format="yyyy-MM-dd">
+                                <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
+                            </datepicker>
+                        </div>
+
+
+
+
+                        <div class="form-group" ng-repeat="field in user.currentRecord.values">
+                            <label for="comment">{{field.name}}</label>
+                            <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
+                                <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+                                <br>
+                            </datepicker>
+                            <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+                        </div>
+                        <hr>
+
+                        <h4><span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Remove Record </span><span><br>Record will be added to archive folder</span></h4>
+
                     </div>
 
-                    <div class="form-group" ng-if="user.currentRecord.id==rec.id">
-                        <label for="usr">{{field.name}} </label>
-                        <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
-                            <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+
+
+                    <div class="frbtnonpg">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
+                    </div>
+                    <br>
+
+                </div>
+
+                <div class="tab-content" ng-show="tab==2">
+                    <div class="row ropad grrow" style="margin:5px">
+                        <div class="form-group">
+                            <h4><span>Upload file and write a brief discription</span></h4>
+
+                            <div id="upload_profile_picture_div">
+                                {{file.name}}
+                                <div class="button blue_txt" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="border:1px">
+                                    <strong style="cursor: pointer">Select File</strong> </div>
+
+                            </div>
                             <br>
-                        </datepicker>
-                        <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+
+                            <label for="usr">File Name</label>
+                            <input type="text" class="form-control set_sal" ng-model="fileName">
+                            <!--<label for="usr">Description</label>
+                                <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>-->
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="upload()">Upload file </button>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="row ropad">
+
+                        <div ng-repeat="file in user.currentRecord.files">
+                            <h5><span>By {{file.createdBy.name}} on 21/3/2017</span></h5>
+                            <h4><span><strong>File: </strong>{{file.fileName}}</span></h4>
+                            <h4><a href="{{rootUrl}}{{file.id}}" target="_blank"><span class="blue_txt">Download</span></a> | <span class="blue_txt" style="cursor:pointer" ng-click="showDelete(file)"> Delete</span></h4>
+
+                            <hr style="margin: 5px 0" />
+                        </div>
+
+                        <br>
+
                     </div>
 
                 </div>
 
+                <div class="tab-content" ng-show="tab==3">
+                    <div class="row ropad">
+                        <div class="form-group">
+                            <label for="comment">Add Comment:</label>
+                            <textarea class="form-control" rows="3" id="comment" ng-model="comment"></textarea>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
+                        </div>
 
-                <!--<p data-toggle="tooltip" title="Record Date" ng-if="user.currentRecord.id!=rec.id">{{rec.recordDateString}}</p>-->
 
-                <div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="cancel()">Cancel</button>
+                        <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
+                            <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>
+                            <h4><span>{{comment.comment}}</span></h4>
+                        </div>
+
+                    </div>
                 </div>
 
+                <div class="tab-content" ng-show="tab == 4">
+                    <div class="table-responsive">
+                        <table class="table logtabl table-hover">
+                            <thead class="distabl">
+                                <tr>
+                                    <th class="distabl">Date</th>
+                                    <th class="distabl">By</th>
+                                    <th class="distabl">Details</th>
 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="log in user.currentRecord.logs">
+                                    <td>{{log.logDate}}</td>
+                                    <td>{{log.user.name}}</td>
+                                    <td>{{log.log}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                </div>
             </div>
 
         </div>
-
 
 
 
@@ -162,7 +302,6 @@
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
-
     </script>
 
 
