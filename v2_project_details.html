@@ -11,7 +11,7 @@
 
 
 
-    <div class="container-fluid bckgrclr htpag">
+    <div class="container-fluid bckgrclr htpag" ng-esc="cancel()" tabindex="0">
 
 
         <div ng-include="'response.html'"></div>
@@ -59,15 +59,15 @@
 
             </div>
         </div>
-
-        <div class="col-sm-8" style="padding-right:4px; padding-left:0px; overflow:scroll; height:600px;">
+        
+        <div class="col-sm-{{mainDiv}}" style="padding-right:4px; padding-left:0px; overflow:scroll; height:600px;">
             <div class="makpg edge_color" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
-                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" ng-if="user.currentRecord.id!=rec.id">{{rec.titleField.value}}</span>
+                    <span data-toggle="tooltip" title="{{rec.titleField.name}}">{{rec.titleField.value}}</span>
 
-                    <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
+                    <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
                         <label for="usr">{{user.currentRecord.titleField.name}} </label>
                         <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
                     </div>
@@ -78,42 +78,45 @@
                             <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
                         </datepicker>
 
-                    </div>
+                    </div>-->
 
 
-                    <span ng-if="user.currentRecord.id!=rec.id"><a href="#"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=20px></a>
-
-                        <a href="#"><img src="imgs/attachment-clip.svg" alt="back" id="card_icons" width=20px></a>
-                        <a href="#"><img src="imgs/chat-bubble.svg" alt="back" id="card_icons" width=20px></a>
-                        <a style="cursor:pointer" ng-click="selectRecord(rec)"><img src="imgs/underline-button.svg" alt="back" id="card_icons" width=20px></a></span>
+                    <span>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 2)"><img src="imgs/attachment-clip.svg" alt="back" id="card_icons" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="imgs/chat-bubble.svg" alt="back" id="card_icons" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 1)"><img src="imgs/underline-button.svg" alt="back" id="card_icons" width=20px></a>
+                    </span>
 
                 </div>
 
                 <div class="row" style="padding-right:10px; padding-left:10px;">
                     <div class="col-sm-3" style="padding :5px;" ng-repeat="field in rec.values">
 
-                        <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}" ng-if="user.currentRecord.id!=rec.id">
-                            <div ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="cursor:pointer"><h4>{{field.value}}</h4></div>
+                        <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
+                            <div ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="cursor:pointer">
+                                <h4>{{field.value}}</h4>
+                            </div>
                         </div>
 
-                        <div class="form-group" ng-if="user.currentRecord.id==rec.id">
+                        <!--<div class="form-group" ng-if="user.currentRecord.id==rec.id">
                             <label for="usr">{{field.name}} </label>
                             <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
                                 <input type="text" class="form-control" maxlength="80" ng-model="field.value">
                                 <br>
                             </datepicker>
                             <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
-                        </div>
+                        </div>-->
 
                     </div>
 
 
                     <!--<p data-toggle="tooltip" title="Record Date" ng-if="user.currentRecord.id!=rec.id">{{rec.recordDateString}}</p>-->
 
-                    <div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
+                    <!--<div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
                         <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
                         <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="cancel()">Cancel</button>
-                    </div>
+                    </div>-->
 
 
                 </div>
@@ -123,16 +126,16 @@
 
 
 
-        <div class="col-sm-4 col-sm-offset-0" style="overflow:scroll; height:600px; padding-left: 5px; padding-right: 5px">
+        <div class="col-sm-4 col-sm-offset-0" style="overflow:scroll; height:600px; padding-left: 5px; padding-right: 5px" ng-if="user.currentRecord.id != null">
             <div class="makpg" style="margin:none; padding-left: 8px; padding-right: 8px">
 
-                <ul class="nav nav-tabs adempnav" ng-init="tab=1">
+                <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
                     <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
                     <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Files</a></li>
                     <li ng-class="{'active': tab == 3}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Comments</a></li>
                     <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Change Log</a></li>
                 </ul>
-                <br>
+                <br>-->
 
                 <div class="tab-content" ng-show="tab==1">
                     <div class="row ropad">
@@ -143,7 +146,7 @@
 
                         </div>
 
-                        <div class=" form-group" style="margin-bottom:45px">
+                        <div class="form-group" style="margin-bottom:45px">
                             <label for="usr">Date Created</label>
                             <datepicker date-format="yyyy-MM-dd">
                                 <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
@@ -182,15 +185,15 @@
                             <h4><span>Upload file and write a brief discription</span></h4>
 
                             <div id="upload_profile_picture_div">
-                                {{file.name}}
-                                <div class="button blue_txt" ngf-select ng-model="file" name="file" ngf-max-size="20MB" style="border:1px">
+                                {{user.currentRecord.file.name}}
+                                <div class="button blue_txt" ngf-select ng-model="user.currentRecord.file" name="file" ngf-max-size="20MB" style="border:1px">
                                     <strong style="cursor: pointer">Select File</strong> </div>
 
                             </div>
                             <br>
 
                             <label for="usr">File Name</label>
-                            <input type="text" class="form-control set_sal" ng-model="fileName">
+                            <input type="text" class="form-control set_sal" ng-model="user.currentRecord.file.fileName">
                             <!--<label for="usr">Description</label>
                                 <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>-->
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="upload()">Upload file </button>
@@ -218,7 +221,7 @@
                     <div class="row ropad">
                         <div class="form-group">
                             <label for="comment">Add Comment:</label>
-                            <textarea class="form-control" rows="3" id="comment" ng-model="comment"></textarea>
+                            <textarea class="form-control" rows="3" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
                         </div>
 
@@ -303,6 +306,7 @@
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
+
     </script>
 
 

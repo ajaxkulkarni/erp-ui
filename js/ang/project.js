@@ -229,11 +229,25 @@ angular.module("app").controller('projectStructure', function ($scope, userServi
 
 });
 
+app.directive('ngEsc', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress keyup", function (event) {
+            if (event.which === 27) {
+                scope.$apply(function () {
+                    scope.$eval(attrs.ngEsc);
+                });
 
-angular.module("app").controller('projectDetails', function ($scope, userService, $location) {
+                event.preventDefault();
+            }
+        });
+    };
+});
+
+angular.module("app").controller('projectDetails', function ($scope, userService, $location,Upload) {
 
     $scope.response = {};
     $scope.dataObj = {};
+    $scope.file = {};
     console.log("Project details loaded ..");
 
 
@@ -248,8 +262,10 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
 
     $scope.user.currentRecord = {};
-    
-    
+
+    $scope.mainDiv = 12;
+
+
     $scope.getProject = function () {
         userService.showLoading($scope);
         $scope.dataObj.requestType = "REC";
@@ -276,14 +292,27 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         window.location.href = "#updateRecord"
     }
 
-    $scope.selectRecord = function (record) {
-        $scope.user.currentRecord = record;
-        localStorage.erpUser = JSON.stringify($scope.user);
+    $scope.selectRecord = function (record, tab) {
+
+        if ($scope.user.currentRecord.id == null) {
+            $scope.getRecord();
+            $scope.user.currentRecord = record;
+            localStorage.erpUser = JSON.stringify($scope.user);
+            $scope.tab = tab;
+            $scope.mainDiv = 8;
+        } else {
+            if (tab != $scope.tab) {
+                $scope.tab = tab;
+            } else {
+                $scope.cancel();
+            }
+        }
         //window.location.href = "#updateRecord"
     }
-    
-    $scope.cancel = function() {
+
+    $scope.cancel = function () {
         $scope.user.currentRecord = {};
+        $scope.mainDiv = 12;
     }
 
     $scope.showDelete = function (rec) {
@@ -292,91 +321,6 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             status: 'D'
         };
         $("#deleteRecord").modal('show');
-    }
-
-
-    $scope.deleteRecord = function () {
-        $("#deleteRecord").modal('hide');
-        userService.showLoading($scope);
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/updateRecord", "P").then(function (response) {
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "Record deleted successfully!!");
-            if ($scope.response == null || $scope.response.status != 200) {
-                return;
-            }
-            $scope.user.currentRecord = null;
-        });
-    }
-
-
-
-    $scope.close = function () {
-        userService.close("#projectDetails");
-    }
-
-    
-    $scope.save = function () {
-        userService.showLoading($scope);
-        $scope.user.currentRecord.status = "A";
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/updateRecord", "P").then(function (response) {
-
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "Record updated successfully!!");
-            if ($scope.response == null || $scope.response.status != 200) {
-                return;
-            }
-            $scope.getProject();
-        });
-    }
-
-    $scope.fieldClass = function(field) {
-        if(field.maxLength) {
-            return "panel-body";
-        }
-        return "panel-body field_value";
-    }
-    
-
-    $scope.getProject();
-
-
-
-});
-
-
-angular.module("app").controller('updateRecord', function ($scope, userService, $location, Upload) {
-
-    $scope.response = {};
-    $scope.dataObj = {};
-    console.log("Record details loaded ..");
-
-    $scope.rootUrl = projectRoot + "/getFile/";
-
-
-    $scope.user = JSON.parse(localStorage.erpUser);
-
-
-
-    $scope.getRecord = function () {
-        userService.showLoading($scope);
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/getRecord", "P").then(function (response) {
-
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "");
-            if ($scope.response == null || $scope.response.status != 200) {
-                return;
-            }
-            $scope.user = response.user;
-            $scope.user.currentRecord.recordDate = $scope.user.currentRecord.recordDateString;
-            localStorage.erpUser = JSON.stringify($scope.user);
-
-        });
     }
 
     $scope.showDelete = function (file) {
@@ -401,13 +345,17 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
         });
     }
-    
+
     $scope.addComment = function () {
-        userService.showLoading($scope);
-        $scope.user.currentRecord.comment = {
-            comment: $scope.comment
+        if($scope.user.currentRecord.comment.comment == null) {
+            return;
         }
+        userService.showLoading($scope);
+        /*$scope.user.currentRecord.comment = {
+            comment: $scope.currentComment
+        }*/
         $scope.dataObj.user = $scope.user;
+        console.log($scope.dataObj);
         userService.callService($scope, "/updateComment", "P").then(function (response) {
             userService.initLoader($scope);
             $scope.response = response;
@@ -418,7 +366,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
         });
     }
-    
+
     $scope.removeComment = function (comment) {
         $scope.user.currentRecord.comment = {
             id: comment.id
@@ -437,16 +385,16 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
     }
 
 
-    
+
     $scope.upload = function () {
-        console.log("In upload!");
+        console.log($scope.user.currentRecord.file);
         var user = {
             id: $scope.user.id,
             email: $scope.user.email,
             currentRecord: {
                 id: $scope.user.currentRecord.id,
                 file: {
-                    fileName: $scope.fileName
+                    fileName: $scope.user.currentRecord.fileName
                 }
             }
         }
@@ -454,7 +402,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
         Upload.upload({
             url: projectRoot + '/uploadFile',
             data: {
-                file: $scope.file,
+                file: $scope.user.currentRecord.file,
                 user: JSON.stringify(user)
             }
         }).then(function (resp) {
@@ -470,6 +418,94 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
                 //console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
             });
     }
+
+
+    $scope.deleteRecord = function () {
+        $("#deleteRecord").modal('hide');
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/updateRecord", "P").then(function (response) {
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Record deleted successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $scope.user.currentRecord = null;
+        });
+    }
+
+
+
+    $scope.close = function () {
+        userService.close("#projectDetails");
+    }
+
+
+    $scope.save = function () {
+        userService.showLoading($scope);
+        $scope.user.currentRecord.status = "A";
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/updateRecord", "P").then(function (response) {
+
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Record updated successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $scope.getProject();
+        });
+    }
+
+    $scope.fieldClass = function (field) {
+        if (field.maxLength) {
+            return "panel-body";
+        }
+        return "panel-body field_value";
+    }
+    
+    $scope.getRecord = function () {
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/getRecord", "P").then(function (response) {
+
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $scope.user = response.user;
+            $scope.user.currentRecord.recordDate = $scope.user.currentRecord.recordDateString;
+            localStorage.erpUser = JSON.stringify($scope.user);
+
+        });
+    }
+
+
+
+    $scope.getProject();
+
+
+
+});
+
+
+angular.module("app").controller('updateRecord', function ($scope, userService, $location, Upload) {
+
+    $scope.response = {};
+    $scope.dataObj = {};
+    console.log("Record details loaded ..");
+
+    $scope.rootUrl = projectRoot + "/getFile/";
+
+
+    $scope.user = JSON.parse(localStorage.erpUser);
+
+
+
+    
 
     $scope.getProject = function () {
         userService.showLoading($scope);
