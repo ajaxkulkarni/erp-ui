@@ -288,8 +288,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
         var canvas = document.createElement('canvas');
         canvas.style.display = 'none';
-        canvas.width = '32';
-        canvas.height = '32';
+        canvas.width = '30';
+        canvas.height = '28';
         document.body.appendChild(canvas);
         var context = canvas.getContext('2d');
         context.fillStyle = bgColor;
