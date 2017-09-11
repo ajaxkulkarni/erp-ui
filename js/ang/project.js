@@ -243,7 +243,7 @@ app.directive('ngEsc', function () {
     };
 });
 
-angular.module("app").controller('projectDetails', function ($scope, userService, $location,Upload) {
+angular.module("app").controller('projectDetails', function ($scope, userService, $location, Upload) {
 
     $scope.response = {};
     $scope.dataObj = {};
@@ -282,6 +282,32 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             localStorage.erpUser = JSON.stringify($scope.user);
 
         });
+    }
+
+    $scope.getInitials = function (user, bgColor, fontColor) {
+
+        var canvas = document.createElement('canvas');
+        canvas.style.display = 'none';
+        canvas.width = '32';
+        canvas.height = '32';
+        document.body.appendChild(canvas);
+        var context = canvas.getContext('2d');
+        context.fillStyle = bgColor;
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.font = "16px Arial";
+        context.fillStyle = fontColor;
+        var first, last;
+        if (user != null && user.name != null) {
+            first = user.name[0];
+            var initials = first;
+            context.fillText(initials.toUpperCase(), 10, 23);
+            //last = name.last && name.last != '' ? name.last[0] : null;
+            var data = canvas.toDataURL();
+            document.body.removeChild(canvas);
+            return data;
+        } else {
+            return false;
+        }
     }
 
     $scope.addNew = function () {
@@ -347,7 +373,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
     $scope.addComment = function () {
-        if($scope.user.currentRecord.comment.comment == null) {
+        if ($scope.user.currentRecord.comment.comment == null) {
             return;
         }
         userService.showLoading($scope);
@@ -464,7 +490,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         }
         return "panel-body field_value";
     }
-    
+
     $scope.getRecord = function () {
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
@@ -505,7 +531,7 @@ angular.module("app").controller('updateRecord', function ($scope, userService, 
 
 
 
-    
+
 
     $scope.getProject = function () {
         userService.showLoading($scope);
