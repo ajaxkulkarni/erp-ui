@@ -212,6 +212,7 @@ h4{
     margin-left: 0px;
     padding-bottom: 0px;
     opacity: 0.5;
+    float: left;
     
 }
 
@@ -618,7 +619,7 @@ html,body{
     color: rgb(130,130,130);
     padding-top: 29px;
     line-height: 95%;
-    font-size: 17px;
+    font-size: 15px;
     
     
     margin-right: -70px;
@@ -843,7 +844,7 @@ html,body{
 }
 
 #help_pos {
-    float: right;
+    float: left;
   margin-top: 8px;
     margin-left: 0px;
     padding-bottom: 0px;
