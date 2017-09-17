@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-           
+
 
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3 makpg">
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="row ropad grrow lacmarg">
-                            
+
                             <br>
 
 
@@ -53,8 +53,8 @@
                             </div>
 
                             <button type="button" class="btn  btn-xs adbtun " ng-click="add()"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add field" ></span></button>
-                            
-    
+
+
 
                             <div class="row" ng-repeat="field in user.currentProject.fields">
                                 <hr>
@@ -62,17 +62,27 @@
                                     <div class="col-md-6">
                                         <input id="basic" type="text" class="form-control set_sal" ng-model="field.name" placeholder="Field name">
                                     </div>
-                                    
+
                                     <div class="col-md-4">
                                         <select name="allowance" class="form-control forpad" ng-model="field.type">
                                         <option value="">Select Column type</option>
                                         <option value="TEXT">Text</option>
                                         <option value="DATE">Date</option>
-                                    </select>
+                                            <option value="MULTIPLE">Dropdown</option>
+                                        </select>
                                     </div>
+
+
                                     <div class="col-md-2">
                                         <span style="cursor:pointer" ng-click="remove(field)"><img src="imgs/clear-button.png" alt="back" id="closbtn2" width=10px ></span>
                                     </div>
+
+
+                                </div>
+                                
+                                <div class="col-md-6" ng-if="field.type == 'MULTIPLE'">
+                                    <br/>
+                                    <input id="multi" type="text" class="form-control set_sal" ng-model="field.values" placeholder="Value1, Value2 ..">
                                 </div>
                                 <hr />
                                 <!--<br/>-->
@@ -91,7 +101,7 @@
                     <div class="frbtnonpg">
                         <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save </button>
                     </div>
-                    
+
                 </div>
             </div>
 

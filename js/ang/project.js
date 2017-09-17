@@ -318,7 +318,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         window.location.href = "#updateRecord"*/
         $scope.mainDiv = 8;
         $scope.tab = 1;
-        $scope.user.currentRecord = { id:0};
+        $scope.user.currentRecord = {
+            id: 0
+        };
         $scope.user.currentRecord.values = $scope.user.currentProject.fields;
         $scope.user.currentRecord.titleField = $scope.user.currentProject.titleField;
         $scope.user.currentRecord.recordDate = getTodaysDate();
@@ -344,8 +346,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
     $scope.cancel = function () {
-        if($scope.user.currentRecord.id == 0) {
-             $scope.user.currentProject.records.shift();
+        if ($scope.user.currentRecord.id == 0) {
+            $scope.user.currentProject.records.shift();
         }
         $scope.user.currentRecord = {};
         $scope.mainDiv = 12;
@@ -472,6 +474,42 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
 
+    $scope.filterRecords = function (record) {
+        if ($scope.searchText == null || $scope.searchText.trim().length == 0) {
+            return true;
+        }
+        if (matchValue(record.titleField.value, $scope.searchText)) {
+            return true;
+        }
+        var i = 0;
+        console.log(record.values[0].value);
+        for (i = 0; i < record.values.length; i++) {
+            if (matchValue(record.values[i].value, $scope.searchText)) {
+                return true;
+            }
+        }
+        //Match users also
+        if(record.createdUser!= null && matchValue(record.createdUser.name, $scope.searchText)) {
+            return true;
+        }
+        if(record.assignedUser!= null && matchValue(record.assignedUser.name, $scope.searchText)) {
+            return true;
+        }
+        return false;
+    }
+
+    function matchValue(value, search) {
+        if (search == null) {
+            return true;
+        }
+        if (value == null) {
+            return false;
+        }
+        if (value.toLowerCase().indexOf(search.toLowerCase()) != -1) {
+            return true;
+        }
+        return false;
+    }
 
     $scope.close = function () {
         userService.close("#projectDetails");
@@ -479,7 +517,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
 
     $scope.save = function () {
-        if($scope.user.currentRecord.id == 0) {
+        if ($scope.user.currentRecord.id == 0) {
             $scope.user.currentRecord.id = null;
         }
         userService.showLoading($scope);

@@ -49,19 +49,18 @@
 
                 <a href="#projectStructure"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="45px" title="Add Column" ></span></a>
 
-
                 <a href=#><span ><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=45px id="exl_icon"></span></a>
 
                 <a href=#myProject><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=45px id="exl_icon"></span></a>
 
-
+                <input id="searchText" type="text" class="form-control set_sal" ng-model="searchText" placeholder="Search text .." style="width:50%">
 
 
             </div>
         </div>
 
         <div class="col-sm-{{mainDiv}}" style="padding-right:4px; padding-left:0px; overflow:scroll; height:600px;">
-            <div class="makpg edge_color" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records">
+            <div class="makpg edge_color" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
@@ -79,9 +78,9 @@
                         </datepicker>
 
                     </div>-->
-                    
-                    <img ng-if="rec.createdUser != null" ng-src="{{getInitials(rec.createdUser, '#B0C4DE', '#191970')}}"  data-toggle="tooltip" title="Created by : {{rec.createdUser.name}}">
-                    
+
+                    <img ng-if="rec.createdUser != null" ng-src="{{getInitials(rec.createdUser, '#B0C4DE', '#191970')}}" data-toggle="tooltip" title="Created by : {{rec.createdUser.name}}">
+
                     <img ng-if="rec.assignedUser != null" ng-src="{{getInitials(rec.assignedUser, '#999', '#ccc')}}" data-toggle="tooltip" title="Assigned to : {{rec.assignedUser.name}}">
 
                     <span>
@@ -155,7 +154,7 @@
                             </datepicker>
                         </div>
 
-                        
+
 
 
                         <div class="form-group" ng-repeat="field in user.currentRecord.values">
@@ -165,6 +164,11 @@
                                 <br>
                             </datepicker>
                             <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+
+                            <select class="form-control forpad" ng-if="field.type=='MULTIPLE'" ng-model="field.value" class="form-control" ng-options="value for value in field.possibleValues">
+                                <option value="">Select option</option>
+                        
+                            </select>
                         </div>
 
                         <div class=" form-group">
@@ -320,6 +324,7 @@
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
+
     </script>
 
 
