@@ -311,11 +311,18 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
     $scope.addNew = function () {
-        console.log($scope.user.currentRecord)
+        /*console.log($scope.user.currentRecord)
         $scope.user.currentRecord = null;
         localStorage.erpUser = JSON.stringify($scope.user);
         console.log($scope.user.currentRecord)
-        window.location.href = "#updateRecord"
+        window.location.href = "#updateRecord"*/
+        $scope.mainDiv = 8;
+        $scope.tab = 1;
+        $scope.user.currentRecord = { id:0};
+        $scope.user.currentRecord.values = $scope.user.currentProject.fields;
+        $scope.user.currentRecord.titleField = $scope.user.currentProject.titleField;
+        $scope.user.currentRecord.recordDate = getTodaysDate();
+        $scope.user.currentProject.records.unshift($scope.user.currentRecord);
     }
 
     $scope.selectRecord = function (record, tab) {
@@ -337,6 +344,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
     $scope.cancel = function () {
+        if($scope.user.currentRecord.id == 0) {
+             $scope.user.currentProject.records.shift();
+        }
         $scope.user.currentRecord = {};
         $scope.mainDiv = 12;
     }
@@ -469,6 +479,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
 
     $scope.save = function () {
+        if($scope.user.currentRecord.id == 0) {
+            $scope.user.currentRecord.id = null;
+        }
         userService.showLoading($scope);
         $scope.user.currentRecord.status = "A";
         $scope.dataObj.user = $scope.user;
