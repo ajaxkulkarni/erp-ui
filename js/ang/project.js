@@ -329,7 +329,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
     $scope.selectRecord = function (record, tab) {
 
-        if ($scope.user.currentRecord.id == null) {
+        if ($scope.user.currentRecord.id == null || $scope.user.currentRecord.id != record.id) {
             $scope.getRecord();
             $scope.user.currentRecord = record;
             localStorage.erpUser = JSON.stringify($scope.user);
