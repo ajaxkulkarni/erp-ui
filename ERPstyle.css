@@ -27,7 +27,7 @@ h4{
 
 #logo{
     padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 2px;
     
 }
 
@@ -49,7 +49,7 @@ h4{
 }*/
 .navba{
     width: auto;
-    height: 70px;
+    height: 45px;
     margin-bottom: 0px;
     box-shadow: 0 0 5px rgb(200,200,200); 
     background-color: white;
@@ -64,11 +64,11 @@ h4{
 .lis2{
     text-decoration: none !important;
     float: right;
-    height: 70px;
+    height: 50px;
     width: 150px;
     text-align: right;
     color: rgb(64,64,64);
-    padding:15px 25px;
+    padding:5px 25px;
     margin: auto;
    
     
@@ -617,7 +617,7 @@ html,body{
     width: 150px;
     
     color: rgb(130,130,130);
-    padding-top: 29px;
+    padding-top: 16px;
     line-height: 95%;
     font-size: 15px;
     
@@ -870,7 +870,7 @@ html,body{
 }
 
 .Proj_top_tab {
-    height: 75px;
+    height: 65px;
     padding-top: 10px; !important
     
 }
@@ -1043,4 +1043,40 @@ html,body{
 
 .edge_color {
     border-left: 5px solid red;
+}
+
+.txt_search {
+    height:40px;
+    border: None;
+    background-color:rgb(240,240,240);
+    align-content: center;
+    padding-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    float: right;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 2.5px;
+    width: 20%;
+}
+
+.lbl_design {
+    background-color:darkseagreen;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 15px;
+    margin-left: 4px;
+}
+
+#clear_project_tab {
+    float: right;
+    margin-bottom: 10px;
+    opacity: 0.1;
+}
+
+#clear_project_tab:hover {
+    
+    opacity: 0.5;
 }

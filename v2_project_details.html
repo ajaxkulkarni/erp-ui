@@ -48,14 +48,15 @@
 
 
                 <a href="#projectStructure"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="45px" title="Add Column" ></span></a>
-
+                
                 <a href=#><span ><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=45px id="exl_icon"></span></a>
 
                 <a href=#myProject><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=45px id="exl_icon"></span></a>
 
-                <input id="searchText" type="text" class="form-control set_sal" ng-model="searchText" placeholder="Search text .." style="width:50%">
+                
+                <input id="searchText" type="text" class="txt_search " ng-model="searchText" placeholder="Search by keyword .." style="width:50%">
 
-
+                
             </div>
         </div>
 
@@ -65,7 +66,8 @@
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
                     <span data-toggle="tooltip" title="{{rec.titleField.name}}">{{rec.titleField.value}}</span>
-
+                    <span class="label label-default lbl_design">N</span>
+                    <span class="label label-default lbl_design">A</span>
                     <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
                         <label for="usr">{{user.currentRecord.titleField.name}} </label>
                         <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
@@ -79,9 +81,11 @@
 
                     </div>-->
 
-                    <img ng-if="rec.createdUser != null" ng-src="{{getInitials(rec.createdUser, '#B0C4DE', '#191970')}}" data-toggle="tooltip" title="Created by : {{rec.createdUser.name}}">
+                    <!---<img ng-if="rec.createdUser != null" ng-src="{{getInitials(rec.createdUser, '#B0C4DE', '#191970')}}" data-toggle="tooltip" title="Created by : {{rec.createdUser.name}}">
 
-                    <img ng-if="rec.assignedUser != null" ng-src="{{getInitials(rec.assignedUser, '#999', '#ccc')}}" data-toggle="tooltip" title="Assigned to : {{rec.assignedUser.name}}">
+                    <img ng-if="rec.assignedUser != null" ng-src="{{getInitials(rec.assignedUser, '#999', '#ccc')}}" data-toggle="tooltip" title="Assigned to : {{rec.assignedUser.name}}">---->
+                    
+                    
 
                     <span>
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=20px></a>
@@ -95,6 +99,7 @@
                 <div class="row" style="padding-right:10px; padding-left:10px;">
                     <div class="col-sm-3" style="padding :5px;" ng-repeat="field in rec.values">
                         <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
+                            
                             <div ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="cursor:pointer">
                                 <h4>{{field.value}}</h4>
                             </div>
@@ -137,8 +142,15 @@
                     <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Change Log</a></li>
                 </ul>
                 <br>-->
+                
+                <span><img src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
 
                 <div class="tab-content" ng-show="tab==1">
+                    
+                    
+                         
+                   
+                    
                     <div class="row ropad">
 
                         <div class=" form-group">
