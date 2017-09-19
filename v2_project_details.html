@@ -97,11 +97,11 @@
                 </div>
 
                 <div class="row" style="padding-right:10px; padding-left:10px;">
-                    <div class="col-sm-3" style="padding :5px;" ng-repeat="field in rec.values">
+                    <div class="col-sm-3 field-style"  ng-repeat="field in rec.values">
                         <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
                             
-                            <div ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="cursor:pointer">
-                                <h4>{{field.value}}</h4>
+                            <div style="cursor:pointer">
+                                <h4 ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)">{{field.value}}</h4>
                             </div>
                         </div>
 
@@ -133,7 +133,7 @@
 
 
         <div class="col-sm-4 col-sm-offset-0" style="overflow:scroll; height:600px; padding-left: 5px; padding-right: 5px" ng-if="user.currentRecord.id != null">
-            <div class="makpg" style="margin:none; padding-left: 8px; padding-right: 8px">
+            <div class="makpg" style="margin:none; padding-left: 8px; padding-right:8px;position:relative">
 
                 <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
                     <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
@@ -202,7 +202,7 @@
 
 
 
-                    <div class="frbtnonpg">
+                    <div class="frbtnonpg" style="position:absolute;top:0;right:0;">
                         <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
                     </div>
                     <br>

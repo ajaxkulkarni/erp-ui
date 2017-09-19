@@ -73,30 +73,37 @@
                                 <tr>
                                     <th style="text-align: center">#</th>
                                     <th style="text-align: center">Team Member</th>
-                                    <th style="text-align: center">Write</th>
-                                    <th style="text-align: center">Read</th>
+                                    <th style="text-align: center">Department</th>
+                                    <th style="text-align: center">Records</th>
+                                    <th style="text-align: center">Files</th>
+                                    <th style="text-align: center">Comments</th>
                                     <th></th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr ng-repeat="usr in user.currentProject.users">
                                     <td>1</td>
-                                    <td>Team member 1</td>
+                                    <td>{{usr.name}}</td>
+                                    <td>{{usr.department}}</td>
                                     <td>
                                         <div class="checkbox" style="margin-top:0px">
-                                            <label class="checkbox-inline"><input type="checkbox" value=""></label>
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="user.rights.recordAccess"></label>
                                         </div>
                                     </td>
                                     <td>
                                          <div class="checkbox" style="margin-top:0px">
-                                            <label class="checkbox-inline"><input type="checkbox" value=""></label>
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="user.rights.fileAccess"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                         <div class="checkbox" style="margin-top:0px">
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="user.rights.commentAccess"></label>
                                         </div>
                                     </td>
                                     
-                                    
                                     <td>
-                                        <img src="imgs/clear-button.png" alt="back" id="closbtn2" width=10px >
+                                        <img src="imgs/clear-button.png" alt="back" id="closbtn2" width="10px" ng-click="remove(usr)">
                                     </td>
 
                                 </tr>

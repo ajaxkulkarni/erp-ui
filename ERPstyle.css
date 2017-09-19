@@ -983,18 +983,29 @@ html,body{
 .crd_design {
     border:0px;
     background-color: rgb(244,244,244);
-    height:20px;
+/*    min-height:36px;*/
     
     font-size: 14px;
     margin-bottom: 0px;
     margin-top: 0px;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
     padding-top:0px;
     word-wrap:break-word;
     /*border: 1px solid black;*/
     /*text-overflow: ellipsis;
     overflow: hidden;*/
    
+}
+
+.panel-body {
+    min-height: 32px;
+    padding: 8px;
+    margin: 3px auto;
+}
+
+.field-style {
+    padding-left: 3px;
+    padding-right: 3px;
 }
 
 #card_icons {
