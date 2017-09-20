@@ -21,7 +21,7 @@
         <div class="row tpband">
             <div class="col-sm-12">
 
-                <a href="#myProjects"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick "></a>
+                <a href="#myProjects"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
 
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
 
@@ -54,13 +54,13 @@
                 <a href=#myProject><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=45px id="exl_icon"></span></a>
 
                 
-                <input id="searchText" type="text" class="txt_search " ng-model="searchText" placeholder="Search by keyword .." style="width:50%">
+                <input id="searchText" type="text" class="txt_search " ng-model="searchText" placeholder="Search by keyword .." style="width:280px">
 
                 
             </div>
         </div>
 
-        <div class="col-sm-{{mainDiv}}" style="padding-right:4px; padding-left:0px; overflow:scroll; height:600px;">
+        <div class="col-sm-{{mainDiv}}" style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:600px;">
             <div class="makpg edge_color" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
@@ -132,7 +132,7 @@
 
 
 
-        <div class="col-sm-4 col-sm-offset-0" style="overflow:scroll; height:600px; padding-left: 5px; padding-right: 5px" ng-if="user.currentRecord.id != null">
+        <div class="col-sm-4 col-sm-offset-0" style="overflow-y: scroll; overflow-x: hidden ; height:600px; padding-left: 5px; padding-right: 5px" ng-if="user.currentRecord.id != null">
             <div class="makpg" style="margin:none; padding-left: 8px; padding-right:8px;position:relative">
 
                 <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
@@ -202,7 +202,7 @@
 
 
 
-                    <div class="frbtnonpg" style="position:absolute;top:0;right:0;">
+                    <div class="frbtnonpg" style="position:absolute; top:5px; right:10px;">
                         <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
                     </div>
                     <br>

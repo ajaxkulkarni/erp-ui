@@ -654,6 +654,7 @@ html,body{
     margin-bottom: 10px;
     box-shadow: 0 0 5px rgb(200,200,200); 
     
+    
 }
 
 .shdwmld {
@@ -1054,6 +1055,7 @@ html,body{
 
 .edge_color {
     border-left: 5px solid red;
+    box-shadow: 0 0 5px rgb(50,50,50); !important
 }
 
 .txt_search {
