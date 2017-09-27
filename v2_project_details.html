@@ -65,9 +65,9 @@
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
-                    <span data-toggle="tooltip" title="{{rec.titleField.name}}">{{rec.titleField.value}}</span>
-                    <span class="label label-default lbl_design">N</span>
-                    <span class="label label-default lbl_design">A</span>
+                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900;">{{rec.titleField.value}}</span>
+                    <span class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">N</span>
+                    <span class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">A</span>
                     <span class="label label-default lbl_design" style="background-color:rgb(210,210,210);">10 Sep</span>
                     <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
                         <label for="usr">{{user.currentRecord.titleField.name}} </label>
@@ -89,6 +89,7 @@
                     
 
                     <span>
+                        <a style="cursor:pointer"><img src="imgs/clear-button.svg" alt="back" id="card_icons" width=20px></a>
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=20px></a>
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 2)"><img src="imgs/attachment-clip.svg" alt="back" id="card_icons" width=20px></a>
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="imgs/chat-bubble.svg" alt="back" id="card_icons" width=20px></a>

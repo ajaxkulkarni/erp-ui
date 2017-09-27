@@ -1074,7 +1074,9 @@ html,body{
 }
 
 .lbl_design {
-    background-color:darkseagreen;
+    /*background-color:#B3E5FC;*/
+    font-weight:500;
+    border-color: black;
     padding-bottom: 0px;
     padding-top: 0px;
     padding-left: 5px;
@@ -1093,3 +1095,10 @@ html,body{
     
     opacity: 0.5;
 }
+
+.lbl_Name_style {
+    background:None;
+    color: grey;
+    border: solid;
+    border-width: solid;
+     border-color:rgb(200,200,200);
