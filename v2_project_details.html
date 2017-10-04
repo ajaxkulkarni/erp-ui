@@ -66,9 +66,9 @@
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
                     <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900;">{{rec.titleField.value}}</span>
-                    <span class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">N</span>
-                    <span class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">A</span>
-                    <span class="label label-default lbl_design" style="background-color:rgb(210,210,210);">10 Sep</span>
+                    <span data-toggle="tooltip" title="Created By" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.createdUser.name}}</span>
+                    <span data-toggle="tooltip" title="Assigned To" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name}}</span>
+                    <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
                     <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
                         <label for="usr">{{user.currentRecord.titleField.name}} </label>
                         <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">

@@ -284,7 +284,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         });
     }
 
-    $scope.getInitials = function (user, bgColor, fontColor) {
+    /*$scope.getInitials = function (user, bgColor, fontColor) {
 
         var canvas = document.createElement('canvas');
         canvas.style.display = 'none';
@@ -308,8 +308,13 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         } else {
             return false;
         }
-    }
+    }*/
 
+    $scope.getInitials = function (user) {
+        return user.name[0].toUpperCase();
+    }
+    
+    
     $scope.addNew = function () {
         /*console.log($scope.user.currentRecord)
         $scope.user.currentRecord = null;
