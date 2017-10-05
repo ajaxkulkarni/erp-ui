@@ -118,6 +118,7 @@ angular.module("app").controller('updateProject', function ($scope, userService,
     $scope.save = function () {
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
+        console.log($scope.user.currentProject.users[0]);
         userService.callService($scope, "/createProject", "P").then(function (response) {
 
             userService.initLoader($scope);
@@ -201,6 +202,7 @@ angular.module("app").controller('projectStructure', function ($scope, userServi
     $scope.save = function () {
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
+        console.log($scope);
         userService.callService($scope, "/updateProjectStructure", "P").then(function (response) {
 
             userService.initLoader($scope);
@@ -358,7 +360,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         $scope.mainDiv = 12;
     }
 
-    $scope.showDelete = function (rec) {
+    $scope.showDeleteRecord = function (rec) {
+        console.log("Deleteing record .." + rec);
+        $scope.deleteRecord = rec;
         $scope.user.currentRecord = {
             id: rec.id,
             status: 'D'

@@ -1054,8 +1054,11 @@ html,body{
 }
 
 .edge_color {
-    border-left: 5px solid red;
     box-shadow: 0 0 5px rgb(50,50,50); !important
+}
+
+.card-border {
+    border-left: 5px solid red;
 }
 
 .txt_search {

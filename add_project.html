@@ -88,17 +88,22 @@
                                     <td>{{usr.department}}</td>
                                     <td>
                                         <div class="checkbox" style="margin-top:0px">
-                                            <label class="checkbox-inline"><input type="checkbox" ng-model="user.rights.recordAccess"></label>
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="usr.rights.recordAccess"></label>
                                         </div>
                                     </td>
                                     <td>
                                          <div class="checkbox" style="margin-top:0px">
-                                            <label class="checkbox-inline"><input type="checkbox" ng-model="user.rights.fileAccess"></label>
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="usr.rights.fileAccess"></label>
                                         </div>
                                     </td>
                                     <td>
                                          <div class="checkbox" style="margin-top:0px">
-                                            <label class="checkbox-inline"><input type="checkbox" ng-model="user.rights.commentAccess"></label>
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="usr.rights.commentAccess"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                         <div class="checkbox" style="margin-top:0px">
+                                            <label class="checkbox-inline"><input type="checkbox" ng-model="usr.rights.projectAccess"></label>
                                         </div>
                                     </td>
                                     
@@ -113,7 +118,7 @@
                     </div>
                    
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class=" levcard2 crcompt">
                             <div class="col-sm-12">
                                 <div class="row" ng-repeat="usr in user.currentProject.users">
@@ -125,7 +130,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
                     <br>
 
