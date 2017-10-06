@@ -11,7 +11,7 @@
 
 
 
-    <div class="container-fluid bckgrclr htpag" ng-esc="cancel()" tabindex="0">
+    <div class="container-fluid bckgrclr htpag"  ng-esc="cancel()" tabindex="0">
 
 
         <div ng-include="'response.html'"></div>
@@ -19,13 +19,13 @@
 
 
         <div class="row tpband">
-            <div class="col-sm-12">
+           
 
                 <a href="#myProjects"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
 
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
 
-            </div>
+            
         </div>
 
 
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-sm-{{mainDiv}}" style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; max-height:600px; height:80%;">
+        <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; max-height:600px; height:80%;">
             <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
@@ -138,14 +138,16 @@
             <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px;position:relative;padding-top:15px; ">
 
                 <div class="tab-content" style="" ng-show="tab==1">
+                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                    
 
-                    <div class="row" style="padding:0px;margin:0px;">
-                        <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                    <div class="row " style="padding:0px;margin:0px;margin-top:-10px;">
+                        
                         <button type="button" class="btn btn-secondary btn-lg btn-block" style="float:left;" ng-click="save()">Save Changes </button>
-                        <br>
-                        <br>
-                        <hr>
+                        
+                        
                     </div>
+                    <hr style="padding:0px;margin:0px;">
                     <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
                     <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
                     <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Files</a></li>
