@@ -11,7 +11,7 @@
 
 
 
-    <div class="container-fluid bckgrclr htpag"  ng-esc="cancel()" tabindex="0">
+    <div class="container-fluid bckgrclr htpag"  ng-esc="cancel()" tabindex="0" style="height:100%;">
 
 
         <div ng-include="'response.html'"></div>
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; max-height:600px; height:80%;">
+        <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:10%;">
             <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
@@ -223,6 +223,8 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab==2">
+                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                    
                     <div class="row ropad grrow" style="margin:5px">
                         <div class="form-group">
                             <h4><span>Upload file and write a brief discription</span></h4>
@@ -261,6 +263,8 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab==3">
+                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp; 
+                    
                     <div class="row ropad">
                         <div class="form-group">
                             <label for="comment">Add Comment:</label>
@@ -278,6 +282,7 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab == 4">
+                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
                     <div class="table-responsive">
                         <table class="table logtabl table-hover" style="font-size:12px;">
                             <thead class="distabl">
@@ -324,7 +329,7 @@
 
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to delete this record ({{deleteRecord.titleField.name}})? All the data related to this record will be archived.</p>
+                    <p>Are you sure you want to delete this record ({{deleteRecord.titleField.name}})? <br> All the data related to this record will be archived.</p>
                     <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
                 </div>
                 <div class="modal-footer" style="border:none">
