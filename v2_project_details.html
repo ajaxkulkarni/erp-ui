@@ -1,7 +1,7 @@
 <!doctype html>
-<html>
+<html style="height:100%;">
 
-<head>
+<head style="height:100%;">
 
 </head>
 
@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="col-sm-12">
-                <h2 class="pghdgs_V2"> {{user.currentProject.title}}</h2>
+                <h2 class="pghdgs_V2" style="z-index:-1;"> {{user.currentProject.title}}</h2>
             </div>
 
         </div>
@@ -44,10 +44,10 @@
             
             <div class="row">
 
-                <span ng-if="user.currentProject.fields.length > 0"><img src="imgs/n_Add_task.svg" alt="back" class="fade_hover" id="adbtn2" width=45px ng-click="addNew()" title="Add Record" style="cursor:pointer"></span>
+                <span ng-if="user.currentProject.fields.length > 0"><img src="imgs/n_Add_task.svg" alt="back" class="fade_hover" id="adbtn2" width=45px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
 
 
-                <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="45px" title="Add Column" ></span></a>
+                <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="45px" title="Add Column" style="float:left;" ></span></a>
 
                 <a href=#><span ><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=45px id="exl_icon"></span></a>
 
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:10%;">
+        <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:70vh">
             <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
@@ -134,11 +134,26 @@
 
 
 
-        <div class="col-sm-4 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px" ng-if="user.currentRecord.id != null">
+        <div class="col-sm-4 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px; height:70vh" ng-if="user.currentRecord.id != null">
             <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px;position:relative;padding-top:15px; ">
+                <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                
+                
+                <span>
+                        <!--<a ng-if="rec.id != null" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/trash1600.png" alt="back" id="card_icons" width=22px></a>-->
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" id="card_icons" width=19px></a>
+                        <a style="cursor:pointer" ng-if="user.currentProject.accessRights.fileAccess" ng-click="selectRecord(rec, 2)"><img src="imgs/attachment-clip.png" alt="back" id="card_icons" width=20px></a>
+                        <a style="cursor:pointer" ng-if="user.currentProject.accessRights.commentAccess" ng-click="selectRecord(rec, 3)"><img src="imgs/chat-bubble.png" alt="back" id="card_icons" width=20px></a>
+                        <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(rec, 1)"><img src="imgs/underline-button.png" alt="back" id="card_icons" width=20px></a>
+                </span>
+                
+                
+                
+                
+                
 
                 <div class="tab-content" style="" ng-show="tab==1">
-                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                    
                     
 
                     <div class="row " style="padding:0px;margin:0px;margin-top:-10px;">
@@ -166,7 +181,7 @@
                         <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
 </div> -->
 
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden;">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:52vh; ">
 
                         <div class=" form-group">
                             <label for="usr">{{user.currentRecord.titleField.name}} </label>
@@ -223,7 +238,9 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab==2">
-                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                    
+                    
+                    
                     
                     <div class="row ropad grrow" style="margin:5px">
                         <div class="form-group">
@@ -263,7 +280,6 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab==3">
-                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp; 
                     
                     <div class="row ropad">
                         <div class="form-group">
@@ -282,7 +298,6 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab == 4">
-                    <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
                     <div class="table-responsive">
                         <table class="table logtabl table-hover" style="font-size:12px;">
                             <thead class="distabl">
