@@ -65,7 +65,7 @@
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
-                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900;">{{rec.titleField.value}}</span>
+                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900; color:#4885ed;">{{rec.titleField.value}}</span>
                     <span data-toggle="tooltip" title="Created By: {{rec.createdUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.createdUser.name[0]}}</span>
                     <span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name[0]}}</span>
                     <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
@@ -229,7 +229,7 @@
 
 
 
-                    <div class="row ropad grrow" style="margin:5px">
+                    <div class="row ropad grrow" style="margin:5px; padding-bottom:0px;">
                         <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess">
                             <h4><span>Upload file and write a brief discription</span></h4>
 
@@ -247,10 +247,12 @@
                                 <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>-->
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="upload()">Upload file </button>
                         </div>
-                        <br>
+                        
                     </div>
+                    
+                    
 
-                    <div class="row ropad">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:30vh; ">
 
                         <div ng-repeat="file in user.currentRecord.files">
                             <h5><span>By {{file.createdBy.name}} on 21/3/2017</span></h5>
@@ -269,14 +271,21 @@
                 <div class="tab-content" ng-show="tab==3">
 
                     <div class="row ropad">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess">
+                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess" >
+                            
                             <label for="comment">Add Comment:</label>
                             <textarea class="form-control" rows="3" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
+                            
                         </div>
+                        <br>
+                        <br>
+                        
+                        <hr style="padding:0px;margin:0px;">
 
 
-                        <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
+
+                        <div class="comment_box" ng-repeat="comment in user.currentRecord.comments" >
                             <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>
                             <h4><span>{{comment.comment}}</span></h4>
                         </div>
@@ -284,7 +293,7 @@
                     </div>
                 </div>
 
-                <div class="tab-content" ng-show="tab == 4">
+                <div class="tab-content" ng-show="tab == 4" >
                     <div class="table-responsive">
                         <table class="table logtabl table-hover" style="font-size:12px;">
                             <thead class="distabl">
@@ -310,6 +319,7 @@
 
 
                 </div>
+                
             </div>
 
         </div>
