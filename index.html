@@ -18,6 +18,7 @@ http://www.tooplate.com/view/2081-solution
     <meta name="keywords" content="">
     <meta name="description" content="">
 
+    <link rel='stylesheet' href='css/loading-bar.min.css' type='text/css' media='all' />
     <!-- animate -->
     <link rel="stylesheet" href="/hreasy_front/css/animate.min.css">
     <!-- bootstrap -->
@@ -35,7 +36,9 @@ http://www.tooplate.com/view/2081-solution
     <script type="text/javascript" src="js/angular.min.js"></script>
 
     <script type="text/javascript" src="js/angular-route.js"></script>
-    
+
+    <script type='text/javascript' src='js/loading-bar.min.js'></script>
+
     <script src="js/ng-file-upload-shim.min.js"></script>
     <script src="js/ng-file-upload.min.js"></script>
 
@@ -299,23 +302,23 @@ http://www.tooplate.com/view/2081-solution
                         <p class="wow fadeIn" data-wow-delay="0.6s">Sign up for our free trial for one month.<br> Just key in your details below and we will get in touch with you. </p>
                     </div>
                     <!--<form action="#" method="get" class="wow fadeInUp" data-wow-delay="0.9s">-->
-                        <div class="col-md-3 col-sm-3"></div>
-                        <div class="col-md-6 col-sm-6">
-                            <ng-form name="subscribeForm">
-                                <input name="name" type="text" class="form-control" id="email" placeholder="Enter Your Name" ng-model="user.name" ng-required="true">
-                                <span ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</span>
-                                <br>
-                                <input name="email" type="email" class="form-control" id="email" placeholder="Enter Your Email" ng-model="user.email" ng-required="true">
-                                <span ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</span>
-                                <br>
-                                <input name="phone" type="text" class="form-control" id="email" placeholder="Enter Your Contact Number" ng-model="user.phone" ng-required="true">
-                                <span ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter contact number</span>
-                                <br>
-                                <input name="submit" type="submit" class="form-control " id="submit" ng-click="subscribeUser(subscribeForm.$valid)">
+                    <div class="col-md-3 col-sm-3"></div>
+                    <div class="col-md-6 col-sm-6">
+                        <ng-form name="subscribeForm">
+                            <input name="name" type="text" class="form-control" id="email" placeholder="Enter Your Name" ng-model="user.name" ng-required="true">
+                            <span ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</span>
+                            <br>
+                            <input name="email" type="email" class="form-control" id="email" placeholder="Enter Your Email" ng-model="user.email" ng-required="true">
+                            <span ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</span>
+                            <br>
+                            <input name="phone" type="text" class="form-control" id="email" placeholder="Enter Your Contact Number" ng-model="user.phone" ng-required="true">
+                            <span ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter contact number</span>
+                            <br>
+                            <input name="submit" type="submit" class="form-control " id="submit" ng-click="subscribeUser(subscribeForm.$valid)">
 
-                            </ng-form>
+                        </ng-form>
 
-                        </div>
+                    </div>
 
 
                     <!--</form>-->
@@ -324,7 +327,7 @@ http://www.tooplate.com/view/2081-solution
         </div>
     </div>
     <!-- end newsletter -->
-    
+
     <div ng-include="'response.html'"></div>
 
     <!-- start pricing -->
@@ -555,7 +558,8 @@ http://www.tooplate.com/view/2081-solution
             <div class="row">
                 <div class="col-md-8 col-sm-7">
                     <a href="http://www.resoneuronance.com" target="_blank" id="lnk_no_syle">
-                    <p id="lnk_no_syle">&copy; 2016 hreasy,resoneuronance pvt ltd</p></a>
+                        <p id="lnk_no_syle">&copy; 2016 hreasy,resoneuronance pvt ltd</p>
+                    </a>
                 </div>
                 <div class="col-md-4 col-sm-5">
                     <ul class="social-icon">
@@ -575,10 +579,10 @@ http://www.tooplate.com/view/2081-solution
 
     <!-- jQuery -->
     <script src="js/angular-datepicker.js"></script>
-    
-     <!-- Latest compiled and minified JavaScript -->
+
+    <!-- Latest compiled and minified JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    
+
     <!--<script src="/hreasy_front/js/jquery.js"></script>-->
     <!-- bootstrap -->
     <script src="/hreasy_front/js/bootstrap.min.js"></script>
