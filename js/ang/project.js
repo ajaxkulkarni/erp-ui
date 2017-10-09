@@ -281,6 +281,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 return;
             }
             $scope.user = response.user;
+            if($scope.backupRecord != null) {
+                $scope.user.currentRecord = $scope.backupRecord;
+            }
             localStorage.erpUser = JSON.stringify($scope.user);
 
         });
@@ -532,6 +535,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         if ($scope.user.currentRecord.id == 0) {
             $scope.user.currentRecord.id = null;
         }
+        $scope.backupRecord = angular.copy($scope.user.currentRecord,$scope.backupRecord);
         userService.showLoading($scope);
         $scope.user.currentRecord.status = "A";
         $scope.dataObj.user = $scope.user;
