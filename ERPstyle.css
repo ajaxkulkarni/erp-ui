@@ -1009,7 +1009,7 @@ html,body{
     padding-right: 3px;
 }
 
-#card_icons {
+.card_icons {
     float: right;
     
     margin-right: 15px;
@@ -1017,10 +1017,16 @@ html,body{
 
 }
 
-#card_icons:hover {
+.card_icons:hover {
 
     opacity: 0.8;
 
+}
+
+.card_icons_selected {
+    float: right;
+    margin-right: 15px;
+    opacity: 1;
 }
 
 .fade_hover {
