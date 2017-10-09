@@ -315,8 +315,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.getInitials = function (user) {
         return user.name[0].toUpperCase();
     }
-    
-    
+
+
     $scope.addNew = function () {
         /*console.log($scope.user.currentRecord)
         $scope.user.currentRecord = null;
@@ -363,12 +363,28 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.showDeleteRecord = function (rec) {
         console.log("Deleteing record .." + rec);
         $scope.deleteRecord = rec;
-        $scope.user.currentRecord = {
-            id: rec.id,
-            status: 'D'
-        };
+        //$scope.user.currentRecord = $scope.deleteRecord;
+        $scope.deleteRecord.status ='D';
         $("#deleteRecord").modal('show');
-    }
+        
+    };
+    
+    $scope.deleteCurrentRecord = function () {
+        $("#deleteRecord").modal('hide');
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        $scope.dataObj.user.currentRecord = $scope.deleteRecord;
+        userService.callService($scope, "/updateRecord", "P").then(function (response) {
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Record deleted successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $scope.user.currentRecord = null;
+            $scope.deleteRecord = null;
+        });
+    };
 
     $scope.showDelete = function (file) {
         $scope.user.currentRecord.file = {
@@ -429,7 +445,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }
 
         });
-    }
+    };
 
 
 
@@ -464,23 +480,10 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                 //console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
             });
-    }
+    };
 
 
-    $scope.deleteRecord = function () {
-        $("#deleteRecord").modal('hide');
-        userService.showLoading($scope);
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/updateRecord", "P").then(function (response) {
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "Record deleted successfully!!");
-            if ($scope.response == null || $scope.response.status != 200) {
-                return;
-            }
-            $scope.user.currentRecord = null;
-        });
-    }
+    
 
 
     $scope.filterRecords = function (record) {
@@ -498,14 +501,14 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }
         }
         //Match users also
-        if(record.createdUser!= null && matchValue(record.createdUser.name, $scope.searchText)) {
+        if (record.createdUser != null && matchValue(record.createdUser.name, $scope.searchText)) {
             return true;
         }
-        if(record.assignedUser!= null && matchValue(record.assignedUser.name, $scope.searchText)) {
+        if (record.assignedUser != null && matchValue(record.assignedUser.name, $scope.searchText)) {
             return true;
         }
         return false;
-    }
+    };
 
     function matchValue(value, search) {
         if (search == null) {
