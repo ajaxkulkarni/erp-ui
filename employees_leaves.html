@@ -52,7 +52,7 @@
             
            <div class="col-sm">
                
-                    <a ng-if="user.loginType != 'Employee'" href="{{root}}/downloadLeavesMaster/{{user.company.id}}/0/{{year}}/{{month.id}}"><span style="cursor:pointer"><img src="imgs/n_excel.svg" alt="back" width=50px class="expdficon" data-toggle="tooltip" title="Export seleted data to excel" ></span></a>
+                    <a ng-if="user.loginType != 'Employee'" href="{{root}}/downloadLeavesMaster/{{user.company.id}}/0/{{year}}/{{month.id}}"><span style="cursor:pointer"><img src="imgs/n_excel.svg" alt="back" width=40px class="expdficon fade_hover" data-toggle="tooltip" title="Export seleted data to excel" ></span></a>
                 
 
             </div>
@@ -87,7 +87,7 @@
                         <td>{{emp.totalLeaves}}</td>
                         <td>
                             <!--<button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(emp)">View/Edit</button>-->
-                            <a href="#"><img src="imgs/forward-arrow.svg" alt="back" class="card_icons" width=25px></a>
+                            <a href=""><img src="imgs/forward-arrow.svg" alt="back" class="card_icons" width=25px></a>
                         </td>
                     </tr>
 

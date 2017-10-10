@@ -494,7 +494,7 @@ html,body{
 
 .expdficon {
     margin-left: 20px;
-    
+    margin-right:20px;
     float: right;
     margin-top: -13px;
     margin-bottom: 10px;
@@ -776,7 +776,7 @@ html,body{
 
 .forfull {
     border-width: thick;
-    min-height: 80%;
+    min-height: 90vh;
 }
 
 .ademp_svbtng {
@@ -871,7 +871,7 @@ html,body{
 }
 
 .Proj_top_tab {
-    height: 65px;
+    height: 60px;
     padding-top: 10px; !important
     
 }
@@ -888,7 +888,6 @@ html,body{
 }
 
 #adbtn2 {
-    opacity: 0.7;
     
     margin-left: 20px;
     margin-bottom: 04px;
@@ -1074,12 +1073,13 @@ html,body{
     background-color:rgb(240,240,240);
     align-content: center;
     padding-left: 10px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom:10px;
     border-radius: 10px;
     float: left;
     margin-left: 20px;
     margin-right: 20px;
-    margin-top: 2.5px;
+    
     width: 20%;
 }
 
