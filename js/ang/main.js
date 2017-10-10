@@ -1,4 +1,8 @@
-var app = angular.module("app", ["ngRoute", "720kb.datepicker","ngFileUpload"]);
+var app = angular.module("app", ["angular-loading-bar", "ngRoute", "720kb.datepicker", "ngFileUpload"]);
+
+app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
+  }]);
 
 //var host = "http://localhost:8080/erp-service";
 var host = "http://45.79.135.189:8080/erp";
@@ -72,7 +76,7 @@ app.service('userService', function ($http, $q) {
     this.callService = function ($scope, method, $root) {
         var defer = $q.defer();
         var url = root + method;
-        if($root == "P") {
+        if ($root == "P") {
             url = projectRoot + method;
         }
         var res = $http.post(url, $scope.dataObj);
