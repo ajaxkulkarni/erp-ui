@@ -130,6 +130,11 @@ angular.module("app").controller('updateProject', function ($scope, userService,
     }
 
     $scope.add = function () {
+        $scope.selectedUser.rights = {
+            recordAccess: true,
+            fileAccess: true,
+            commentAccess: true
+        };
         $scope.user.currentProject.users.push($scope.selectedUser);
 
         var index = $scope.users.indexOf($scope.selectedUser);
