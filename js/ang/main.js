@@ -1,11 +1,11 @@
-var app = angular.module("app", ["angular-loading-bar", "ngRoute", "720kb.datepicker", "ngFileUpload"]);
+var app = angular.module("app", ["angular-loading-bar", "ngRoute", "720kb.datepicker", "ngFileUpload", "ngTagsInput"]);
 
 app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
   }]);
 
-//var host = "http://localhost:8080/erp-service";
-var host = "http://45.79.135.189:8080/erp";
+var host = "http://localhost:8080/erp-service";
+//var host = "http://45.79.135.189:8080/erp";
 var root = host + "/service";
 var projectRoot = host + "/projectService"
 var rootAdmin = host + "/adminService";

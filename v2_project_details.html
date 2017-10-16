@@ -52,17 +52,20 @@
                 <a href=#><span ><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=40px id="exl_icon"></span></a>
 
                 <a><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
-                
+
                 <a ng-if="user.currentProject.accessRights.projectAccess" href=#myProject><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
 
-                <input id="searchText" type="text" class="txt_search " ng-model="searchText" placeholder="Search by keyword .." style="width:280px">
+                <!--<input id="searchText" type="text" class="txt_search" ng-model="searchText" placeholder="Search by keyword .." style="width:280px">-->
+
+                <tags-input class="bootstrap" ng-model="movies" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
+                </tags-input>
 
 
             </div>
         </div>
 
         <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:70vh">
-            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords" >
+            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
@@ -88,7 +91,7 @@
                     <img ng-if="rec.assignedUser != null" ng-src="{{getInitials(rec.assignedUser, '#999', '#ccc')}}" data-toggle="tooltip" title="Assigned to : {{rec.assignedUser.name}}">---->
 
 
-                    
+
                     <span>
                         <a ng-if="rec.id != null" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/trash1600.png" alt="back" class="card_icons" width=22px></a>
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
@@ -210,6 +213,19 @@
                             </select>
 
                         </div>
+                        
+                        <div class=" form-group">
+                            <label for="pwd">Record color (Optional) </label>
+                            <!--<input type="emil id" class="form-control" >-->
+                            <select name="color" class="form-control forpad" ng-model="user.currentRecord.color">
+                                <option value="#9B9B9B">No color</option>
+                                <option value="#DB3236">Red</option>
+                                <option value="#3CBA54">Green</option>
+                                <option value="#F4C20D">Yellow</option>
+                        
+                            </select>
+
+                        </div>
 
 
 
@@ -234,7 +250,7 @@
                         <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess">
                             <h4><span>Upload file and write a brief discription</span></h4>
 
-                            <div id="upload_profile_picture_div" >
+                            <div id="upload_profile_picture_div">
                                 {{user.currentRecord.file.name}}
                                 <div class="button blue_txt" ngf-select ng-model="user.currentRecord.file" name="file" ngf-max-size="20MB" style="border:1px">
                                     <strong style="cursor: pointer">Select File</strong> </div>
@@ -248,10 +264,10 @@
                                 <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>-->
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="upload()">Upload file </button>
                         </div>
-                        
+
                     </div>
-                    
-                    
+
+
 
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:30vh; ">
 
@@ -272,21 +288,21 @@
                 <div class="tab-content" ng-show="tab==3">
 
                     <div class="row ropad">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess" >
-                            
+                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess">
+
                             <label for="comment">Add Comment:</label>
                             <textarea class="form-control" rows="3" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
-                            
+
                         </div>
                         <br>
                         <br>
-                        
+
                         <hr style="padding:0px;margin:0px;">
 
 
 
-                        <div class="comment_box" ng-repeat="comment in user.currentRecord.comments" >
+                        <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
                             <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>
                             <h4><span>{{comment.comment}}</span></h4>
                         </div>
@@ -294,7 +310,7 @@
                     </div>
                 </div>
 
-                <div class="tab-content" ng-show="tab == 4" >
+                <div class="tab-content" ng-show="tab == 4">
                     <div class="table-responsive">
                         <table class="table logtabl table-hover" style="font-size:12px;">
                             <thead class="distabl">
@@ -320,7 +336,7 @@
 
 
                 </div>
-                
+
             </div>
 
         </div>
