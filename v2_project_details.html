@@ -11,7 +11,7 @@
 
 
 
-    <div class="container-fluid bckgrclr htpag" ng-esc="cancel()" tabindex="0" style="height:100%;">
+    <div class="container-fluid bckgrclr htpag" style="height:100%;">
 
 
         <div ng-include="'response.html'"></div>
@@ -29,7 +29,7 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" style="">
             <div class="col-sm-12">
                 <h2 class="pghdgs_V2" style="z-index:-1;"> {{user.currentProject.title}}</h2>
             </div>
@@ -140,7 +140,7 @@
 
         <div class="col-sm-4 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px; height:70vh" ng-if="user.currentRecord.id != null">
             <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px;position:relative;padding-top:15px; ">
-                <span><img ng-click="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                <span><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
 
 
                 <div class="tab-content" style="" ng-show="tab==1">
