@@ -286,7 +286,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 return;
             }
             $scope.user = response.user;
-            if($scope.backupRecord != null) {
+            if ($scope.backupRecord != null) {
                 $scope.user.currentRecord = $scope.backupRecord;
             }
             localStorage.erpUser = JSON.stringify($scope.user);
@@ -372,11 +372,11 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         console.log("Deleteing record .." + rec);
         $scope.deleteRecord = rec;
         //$scope.user.currentRecord = $scope.deleteRecord;
-        $scope.deleteRecord.status ='D';
+        $scope.deleteRecord.status = 'D';
         $("#deleteRecord").modal('show');
-        
+
     };
-    
+
     $scope.deleteCurrentRecord = function () {
         $("#deleteRecord").modal('hide');
         userService.showLoading($scope);
@@ -491,31 +491,42 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     };
 
 
-    
+
 
 
     $scope.filterRecords = function (record) {
-        if ($scope.searchText == null || $scope.searchText.trim().length == 0) {
-            return true;
-        }
-        if (matchValue(record.titleField.value, $scope.searchText)) {
+        if ($scope.keywords == null || $scope.keywords.length == 0) {
             return true;
         }
         var i = 0;
-        console.log(record.values[0].value);
-        for (i = 0; i < record.values.length; i++) {
-            if (matchValue(record.values[i].value, $scope.searchText)) {
-                return true;
+        var j = 0;
+        var result = false;
+        for (i = 0; i < $scope.keywords.length; i++) {
+            result = false;
+            if ($scope.keywords[i].text.charAt(0) == '@') {
+                //Match users only
+                /*if (record.createdUser == null || !matchValue(record.createdUser.name, $scope.keywords[i].text)) {
+                    result = false;
+                }*/
+                if (record.assignedUser != null && matchValue(record.assignedUser.name, $scope.keywords[i].text.substring(1,$scope.keywords[i].text.length - 1))) {
+                    result = true;
+                }
+            } else if (matchValue(record.titleField.value, $scope.keywords[i].text)) {
+                result = true;
+            } else {
+                for (j = 0; j < record.values.length; j++) {
+                    if (matchValue(record.values[j].value, $scope.keywords[i].text)) {
+                        result = true;
+                        //console.log("True!!");
+                    }
+                }
+            }
+            if(!result) {
+                return false;
             }
         }
-        //Match users also
-        if (record.createdUser != null && matchValue(record.createdUser.name, $scope.searchText)) {
-            return true;
-        }
-        if (record.assignedUser != null && matchValue(record.assignedUser.name, $scope.searchText)) {
-            return true;
-        }
-        return false;
+
+        return true;
     };
 
     function matchValue(value, search) {
@@ -540,7 +551,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         if ($scope.user.currentRecord.id == 0) {
             $scope.user.currentRecord.id = null;
         }
-        $scope.backupRecord = angular.copy($scope.user.currentRecord,$scope.backupRecord);
+        $scope.backupRecord = angular.copy($scope.user.currentRecord, $scope.backupRecord);
         userService.showLoading($scope);
         $scope.user.currentRecord.status = "A";
         $scope.dataObj.user = $scope.user;
