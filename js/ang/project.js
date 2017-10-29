@@ -274,6 +274,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
 
     $scope.getProject = function () {
+
         userService.showLoading($scope);
         $scope.dataObj.requestType = "REC";
         $scope.dataObj.user = $scope.user;
@@ -508,7 +509,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 /*if (record.createdUser == null || !matchValue(record.createdUser.name, $scope.keywords[i].text)) {
                     result = false;
                 }*/
-                if (record.assignedUser != null && matchValue(record.assignedUser.name, $scope.keywords[i].text.substring(1,$scope.keywords[i].text.length - 1))) {
+                if (record.assignedUser != null && matchValue(record.assignedUser.name, $scope.keywords[i].text.substring(1, $scope.keywords[i].text.length - 1))) {
                     result = true;
                 }
             } else if (matchValue(record.titleField.value, $scope.keywords[i].text)) {
@@ -521,7 +522,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                     }
                 }
             }
-            if(!result) {
+            if (!result) {
                 return false;
             }
         }
@@ -543,7 +544,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
     $scope.close = function () {
-        userService.close("#projectDetails");
+        userService.close();
+        //$scope.ca
+        
     }
 
 
@@ -551,7 +554,11 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         if ($scope.user.currentRecord.id == 0) {
             $scope.user.currentRecord.id = null;
         }
-        $scope.backupRecord = angular.copy($scope.user.currentRecord, $scope.backupRecord);
+        try {
+            $scope.backupRecord = angular.copy($scope.user.currentRecord, $scope.backupRecord);
+        } catch(e) {
+            console.log("Error:" + e);
+        }
         userService.showLoading($scope);
         $scope.user.currentRecord.status = "A";
         $scope.dataObj.user = $scope.user;
