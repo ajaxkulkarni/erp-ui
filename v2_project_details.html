@@ -65,7 +65,7 @@
         </div>
 
         <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:70vh">
-            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
+            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;border-color:{{rec.color != null ? rec.color : '#9B9B9B'}}" ng-repeat="rec in user.currentProject.records|filter:filterRecords" >
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
