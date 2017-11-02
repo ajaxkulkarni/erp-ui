@@ -44,7 +44,7 @@
 
             <div class="row">
 
-                <span ng-if="user.currentProject.fields.length > 0"><img src="imgs/n_Add_task.svg" alt="back" class="fade_hover" id="adbtn2" width=40px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
+                <span ng-if="user.currentProject.fields.length > 0 && user.currentProject.accessRights.recordAccess"><img src="imgs/n_Add_task.svg" alt="back" class="fade_hover" id="adbtn2" width=40px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
 
 
                 <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="40px" title="Add Column" style="float:left;" ></span></a>
@@ -274,7 +274,7 @@
                         <div ng-repeat="file in user.currentRecord.files">
                             <h5><span>By {{file.createdBy.name}} on 21/3/2017</span></h5>
                             <h4><span><strong>File: </strong>{{file.fileName}}</span></h4>
-                            <h4><a href="{{rootUrl}}{{file.id}}" target="_blank"><span class="blue_txt">Download</span></a> | <span class="blue_txt" style="cursor:pointer" ng-click="showDelete(file)"> Delete</span></h4>
+                            <h4><a href="{{rootUrl}}{{file.id}}" target="_blank"><span class="blue_txt">Download</span></a> | <span class="blue_txt" style="cursor:pointer" ng-click="deleteFile(file)"> Delete</span></h4>
 
                             <hr style="margin: 5px 0" />
                         </div>

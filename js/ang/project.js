@@ -287,9 +287,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 return;
             }
             $scope.user = response.user;
-            if ($scope.backupRecord != null) {
+            /*if ($scope.backupRecord != null) {
                 $scope.user.currentRecord = $scope.backupRecord;
-            }
+            }*/
             localStorage.erpUser = JSON.stringify($scope.user);
 
         });
@@ -395,15 +395,19 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         });
     };
 
-    $scope.showDelete = function (file) {
+    /*$scope.showDelete = function (file) {
         $scope.user.currentRecord.file = {
             id: file.id,
             fileName: file.fileName
         };
         $("#deleteFile").modal('show');
-    }
+    }*/
 
-    $scope.deleteFile = function () {
+    $scope.deleteFile = function (file) {
+        $scope.user.currentRecord.file = {
+            id: file.id,
+            fileName: file.fileName
+        };
         userService.showLoading($scope);
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/deleteFile", "P").then(function (response) {
@@ -414,6 +418,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
+            var index = $scope.user.currentRecord.files.indexOf($scope.user.currentRecord.file);
+            $scope.user.currentRecord.files.splice(index, 1);
+            $scope.$apply();
 
         });
     }
@@ -436,6 +443,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 return;
             }
 
+            $scope.user.currentRecord.comments.push(response.user.currentRecord.comment);
+            $scope.$apply();
+
         });
     }
 
@@ -453,6 +463,10 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 return;
             }
 
+            var index = $scope.user.currentRecord.comments.indexOf(comment);
+            $scope.user.currentRecord.comments.splice(index, 1);
+            $scope.$apply();
+
         });
     };
 
@@ -466,8 +480,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             currentRecord: {
                 id: $scope.user.currentRecord.id,
                 file: {
-                    fileName: $scope.user.currentRecord.fileName
-                }
+                    fileName: $scope.user.currentRecord.file.fileName
+                },
+                titleField: $scope.user.currentRecord.titleField
             }
         }
 
@@ -479,7 +494,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }
         }).then(function (resp) {
                 userService.showResponse($scope, "File Uploaded successfully!");
-
+                $scope.user.currentRecord.files.push(response.user.currentRecord.file);
+                $scope.$apply();
             },
             function (resp) {
                 console.log('Error status: ' + resp.status);
@@ -546,7 +562,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.close = function () {
         userService.close();
         //$scope.ca
-        
+
     }
 
 
@@ -556,7 +572,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         }
         try {
             $scope.backupRecord = angular.copy($scope.user.currentRecord, $scope.backupRecord);
-        } catch(e) {
+        } catch (e) {
             console.log("Error:" + e);
         }
         userService.showLoading($scope);
