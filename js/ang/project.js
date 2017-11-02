@@ -420,9 +420,21 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }
             var index = $scope.user.currentRecord.files.indexOf($scope.user.currentRecord.file);
             $scope.user.currentRecord.files.splice(index, 1);
-            $scope.$apply();
+            $scope.user.currentRecord.fileCount = $scope.user.currentRecord.files.length;
+            updateFileComments();
 
         });
+    }
+    
+    function updateRecordComments() {
+        var i = 0;
+        for(i = 0; i < $scope.user.currentProject.records.length; i++) {
+            if($scope.user.currentProject.records[i].id == $scope.user.currentRecord.id) {
+                $scope.user.currentProject.records[i].comments = $scope.user.currentRecord.comments;
+                $scope.user.currentProject.records[i].commentCount = $scope.user.currentRecord.commentCount;
+                console.log("Updated comment!!");
+            }
+        }
     }
 
     $scope.addComment = function () {
@@ -444,7 +456,10 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }
 
             $scope.user.currentRecord.comments.push(response.user.currentRecord.comment);
-            $scope.$apply();
+            //$scope.$apply();
+            $scope.user.currentRecord.commentCount = $scope.user.currentRecord.comments.length;
+            console.log("Comments length:" + $scope.user.currentRecord.comments.length + ":" + $scope.user.currentRecord.commentCount);
+            updateRecordComments();
 
         });
     }
@@ -465,11 +480,21 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
             var index = $scope.user.currentRecord.comments.indexOf(comment);
             $scope.user.currentRecord.comments.splice(index, 1);
-            $scope.$apply();
-
+            $scope.user.currentRecord.commentCount = $scope.user.currentRecord.comments.length;
+            updateRecordComments();
         });
     };
 
+    function updateFileComments() {
+        var i = 0;
+        for(i = 0; i < $scope.user.currentProject.records.length; i++) {
+            if($scope.user.currentProject.records[i].id == $scope.user.currentRecord.id) {
+                $scope.user.currentProject.records[i].files = $scope.user.currentRecord.files;
+                $scope.user.currentProject.records[i].fileCount = $scope.user.currentRecord.fileCount;
+                console.log("Updated file!!");
+            }
+        }
+    }
 
 
     $scope.upload = function () {
@@ -495,7 +520,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         }).then(function (resp) {
                 userService.showResponse($scope, "File Uploaded successfully!");
                 $scope.user.currentRecord.files.push(response.user.currentRecord.file);
-                $scope.$apply();
+                $scope.user.currentRecord.fileCount = $scope.user.currentRecord.files.length;
+                updateFileComments();
             },
             function (resp) {
                 console.log('Error status: ' + resp.status);
