@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="ERPstyle.css">
+    <link href='http://fonts.googleapis.com/css?family=Nato<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">' rel='stylesheet' type='text/css'>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/loader.css" \>
+
+    <link rel='stylesheet' href='css/loading-bar.min.css' type='text/css' media='all' />
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script type="text/javascript" src="js/angular-route.js"></script>
+
+    <script type='text/javascript' src='js/loading-bar.min.js'></script>
+
+    <script src="js/ngTextInput.js"></script>
+
+    <script type="text/javascript" src="js/ang/main.js"></script>
+
+    <script src="js/ng-file-upload-shim.min.js"></script>
+    <script src="js/ng-file-upload.min.js"></script>
+
+    <script type="text/javascript" src="js/ang/login.js"></script>
+
+
+    <title>HR made easy</title>
+</head>
+
+<body ng-app="app" ng-controller="login">
+
+    <nav>
+
+
+
+        <!---<ul class="lis1">
+            <li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>
+
+            <div class="dropdown lis2">
+                <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="imgs/menu-alt-512.svg" alt="logo" style: width="40px"></span>
+                </button>
+                <ul class="dropdown-menu ">
+                    <li><a href="#">Get in touch</a></li>
+                    <li><a href="#">How it works</a></li>
+                    <li><a href="#">About us</a></li>
+                </ul>
+            </div>
+        </ul>--->
+
+        <div class="navba">
+            <img id="logo" src="imgs/logonew.svg" alt="logo" style: width="110px">
+        </div>
+
+    </nav>
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+    <div class="container-fluid bckgrclr">
+
+
+        <div ng-include="'response.html'"></div>
+        
+        
+
+        <div class="container-fluid">
+
+            <div class="row tpband">
+                <div class="col-sm-12 ">
+                    <a href="{{backLink}}"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                    <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 ">
+                    <h2 class="pghdgs">Mail Settings</h2>
+                </div>
+            </div>
+
+            
+
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 makpg">
+
+
+                    <div class="row" style="padding:0 15px;">
+
+                        <h3>E-mail notofications can be sent to your registered mail IDs.<br/>Select the checkbox in the table below to tell us <b>'When do you wish to receive an email notifiction?' </b></h3>
+
+                    </div>
+        
+                    <hr>
+                    
+                    
+                    
+                    
+                    <div class="table-responsive">
+                        <table class="table distabl table-hover " style="font-size:15px">
+                            <thead >
+                                <tr>
+                                    <th style="text-align: center">#</th>
+                                    <th style="text-align: center">My Options</th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td style="text-align:left;"><b>I wish to receive a notification for every project record upadate.</b><br>Email will be sent whenever anyone adds/modifies/deletes any record in the project. This includes comments, file uploads for all records.</td>
+                                   
+                                    <td>
+                                        <div class="checkbox" style="margin-top:0px">
+                                            <label class="checkbox-inline"><input type="checkbox" ></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>2</td>
+                                    <td style="text-align:left;"><b>I wish to receive a notification whenever a relevent record is upadate.</b><br>Email will be sent whenever anyone adds/modifies/deletes any record which is either created by you or is asigned to you. This includes comments, file uploads as well.</td>
+                                    
+                                    <td>
+                                        <div class="checkbox" style="margin-top:0px">
+                                            <label class="checkbox-inline"><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>3</td>
+                                    <td style="text-align:left;"><b>I do not wish to receive a notification for project upadate.</b><br>Email will not be sent for any change in project records.</td>
+                                    
+                                    <td>
+                                        <div class="checkbox" style="margin-top:0px">
+                                            <label class="checkbox-inline"><input type="checkbox"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+
+                            </tbody>
+                        </table>
+                    </div>
+                   
+
+                    <!--<div class="row">
+                        <div class=" levcard2 crcompt">
+                            <div class="col-sm-12">
+                                <div class="row" ng-repeat="usr in user.currentProject.users">
+                                    {{usr.name}} ({{usr.department}})
+                                    <span style="cursor:pointer" ng-click="remove(usr)"><img src="imgs/clear-button.png" alt="back" id="closbtn2" width=10px ></span>
+                                    <hr style="margin: 5px 0" />
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <br>
+
+
+
+                </div>
+                <div class="col-sm-8 col-sm-offset-2 makpg">
+                    <div class="frbtnonpg">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" >Save </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <script src="js/angular-datepicker.js"></script>
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+
+
+
+</html>
