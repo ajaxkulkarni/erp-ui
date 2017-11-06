@@ -38,15 +38,6 @@
 
 
 
-        <select name="requestType" class="form-control forpad text-right" ng-model="requestType" style="align:right; width:30%" ng-change="getProject()">
-            <option value="MONTH">This month</option>
-            <option value="WEEK">This week</option>
-            <option value="ALL">All time</option>
-        </select>
-
-
-
-
         <div class="col-sm-12 makpg Proj_top_tab">
 
             <div class="row">
@@ -55,21 +46,27 @@
 
 
                 <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="40px" title="Add Column" style="float:left;" ></span></a>
+               
 
                 <a href=#><span ><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=40px id="exl_icon"></span></a>
 
                 <a href="#projectMailSettings"><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
 
                 <a ng-if="user.currentProject.accessRights.projectAccess" href=#myProject><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
+                
+                <select name="requestType" class="form-control text-right" ng-model="requestType" style="float:right; width:130px; margin:5px 20px; height:33px;" ng-change="getProject()">
+                    <option value="MONTH">This month</option>
+                    <option value="WEEK">This week</option>
+                    <option value="ALL">All time</option>
+                </select>
+
 
                 <!--<input id="searchText" type="text" class="txt_search" ng-model="searchText" placeholder="Search by keyword .." style="width:280px">-->
 
                 <tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
                 </tags-input>
-
-
-
-
+                
+               
 
             </div>
         </div>
