@@ -112,7 +112,12 @@ angular.module("app").controller('updateProject', function ($scope, userService,
     }
 
     $scope.close = function () {
-        userService.close("#projectDetails");
+        if ($scope.user.currentProject.status == 'D') {
+            userService.close("#myProjects");
+        } else {
+            userService.close("#projectDetails");
+        }
+
     }
 
     $scope.save = function () {
@@ -158,6 +163,21 @@ angular.module("app").controller('updateProject', function ($scope, userService,
     }
 
 
+    $scope.deleteCurrentProject = function () {
+        console.log("Deleting ..");
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        $scope.user.currentProject.status = 'D';
+        userService.callService($scope, "/createProject", "P").then(function (response) {
+            userService.initLoader($scope);
+            $scope.response = response;
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            $("#deleteProjectModal").modal('hide');
+            userService.showResponse($scope, "Project deleted successfully!");
+        });
+    }
 
     $scope.getAllUsers();
 
@@ -258,6 +278,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     console.log("Project details loaded ..");
 
 
+    $scope.requestType = "MONTH";
 
     $scope.user = JSON.parse(localStorage.erpUser);
 
@@ -276,7 +297,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.getProject = function () {
 
         userService.showLoading($scope);
-        $scope.dataObj.requestType = "REC";
+        $scope.dataObj.requestType = $scope.requestType;
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getProject", "P").then(function (response) {
 
@@ -346,7 +367,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.selectRecord = function (record, tab) {
 
         if ($scope.user.currentRecord.id == null || $scope.user.currentRecord.id != record.id) {
-            if(tab != 1) {
+            if (tab != 1) {
                 $scope.getRecord();
             }
             $scope.user.currentRecord = record;
@@ -427,11 +448,11 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
         });
     }
-    
+
     function updateRecordComments() {
         var i = 0;
-        for(i = 0; i < $scope.user.currentProject.records.length; i++) {
-            if($scope.user.currentProject.records[i].id == $scope.user.currentRecord.id) {
+        for (i = 0; i < $scope.user.currentProject.records.length; i++) {
+            if ($scope.user.currentProject.records[i].id == $scope.user.currentRecord.id) {
                 $scope.user.currentProject.records[i].comments = $scope.user.currentRecord.comments;
                 $scope.user.currentProject.records[i].commentCount = $scope.user.currentRecord.commentCount;
                 console.log("Updated comment!!");
@@ -489,8 +510,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
     function updateFileComments() {
         var i = 0;
-        for(i = 0; i < $scope.user.currentProject.records.length; i++) {
-            if($scope.user.currentProject.records[i].id == $scope.user.currentRecord.id) {
+        for (i = 0; i < $scope.user.currentProject.records.length; i++) {
+            if ($scope.user.currentProject.records[i].id == $scope.user.currentRecord.id) {
                 $scope.user.currentProject.records[i].files = $scope.user.currentRecord.files;
                 $scope.user.currentProject.records[i].fileCount = $scope.user.currentRecord.fileCount;
                 console.log("Updated file!!");
@@ -651,6 +672,53 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
 });
 
+
+angular.module("app").controller('projectMails', function ($scope, userService, $location) {
+
+    $scope.response = {};
+    $scope.dataObj = {};
+    console.log("Project mail settings loaded .." + localStorage.erpUser);
+
+
+
+    $scope.user = JSON.parse(localStorage.erpUser);
+
+    if ($scope.user.currentProject == null || $scope.user.currentProject.id == null) {
+        window.location.href = "#myProjects";
+        return;
+    }
+
+
+    $scope.close = function () {
+        userService.close("#projectDetails");
+    }
+
+    $scope.save = function () {
+        $scope.dataObj.user = $scope.user;
+        console.log($scope);
+        userService.callService($scope, "/updateMailSettings", "P").then(function (response) {
+            $scope.response = response;
+            if (response == null || response.status != 200) {
+                return;
+            }
+            userService.showResponse($scope, "Mail settings updated successfully!");
+        });
+    }
+
+    function getMailSettings() {
+        $scope.dataObj.user = $scope.user;
+        userService.callService($scope, "/getMailSettings", "P").then(function (response) {
+            if (response == null || response.status != 200) {
+                return;
+            }
+            $scope.user.currentProject.mailConfig = response.user.currentProject.mailConfig;
+            
+        });
+    }
+    
+    getMailSettings();
+
+});
 
 angular.module("app").controller('updateRecord', function ($scope, userService, $location, Upload) {
 

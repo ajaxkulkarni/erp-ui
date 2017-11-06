@@ -38,6 +38,13 @@
 
 
 
+        <select name="requestType" class="form-control forpad text-right" ng-model="requestType" style="align:right; width:30%" ng-change="getProject()">
+            <option value="MONTH">This month</option>
+            <option value="WEEK">This week</option>
+            <option value="ALL">All time</option>
+        </select>
+
+
 
 
         <div class="col-sm-12 makpg Proj_top_tab">
@@ -51,7 +58,7 @@
 
                 <a href=#><span ><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=40px id="exl_icon"></span></a>
 
-                <a><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
+                <a href="#projectMailSettings"><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
 
                 <a ng-if="user.currentProject.accessRights.projectAccess" href=#myProject><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
 
@@ -60,12 +67,15 @@
                 <tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
                 </tags-input>
 
-                
+
+
+
+
             </div>
         </div>
 
         <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:70vh">
-            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;border-color:{{rec.color != null ? rec.color : '#9B9B9B'}}" ng-repeat="rec in user.currentProject.records|filter:filterRecords" >
+            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;border-color:{{rec.color != null ? rec.color : '#9B9B9B'}}" ng-repeat="rec in user.currentProject.records|filter:filterRecords">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
@@ -214,7 +224,7 @@
                             </select>
 
                         </div>
-                        
+
                         <div class=" form-group">
                             <label for="pwd">Record color (Optional) </label>
                             <!--<input type="emil id" class="form-control" >-->
@@ -296,9 +306,9 @@
                             <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
 
                         </div>
-                        
-                        
-                        </div>
+
+
+                    </div>
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:36.5vh; ">
 
                         <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
@@ -310,28 +320,28 @@
                 </div>
 
                 <div class="tab-content" ng-show="tab == 4">
-                <br>
-                <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:60.5vh; ">
-                    <div class="table-responsive">
-                        <table class="table logtabl table-hover" style="font-size:12px;">
-                            <thead class="distabl">
-                                <tr>
-                                    <th class="distabl">Date</th>
-                                    <th class="distabl">By</th>
-                                    <th class="distabl">Details</th>
+                    <br>
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:60.5vh; ">
+                        <div class="table-responsive">
+                            <table class="table logtabl table-hover" style="font-size:12px;">
+                                <thead class="distabl">
+                                    <tr>
+                                        <th class="distabl">Date</th>
+                                        <th class="distabl">By</th>
+                                        <th class="distabl">Details</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="log in user.currentRecord.logs">
-                                    <td>{{log.logDate}}</td>
-                                    <td>{{log.user.name}}</td>
-                                    <td>{{log.log}}</td>
-                                </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="log in user.currentRecord.logs">
+                                        <td>{{log.logDate}}</td>
+                                        <td>{{log.user.name}}</td>
+                                        <td>{{log.log}}</td>
+                                    </tr>
 
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
 
