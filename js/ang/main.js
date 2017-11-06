@@ -253,8 +253,13 @@ app.config(function ($routeProvider) {
         .when("/updateRecord", {
             templateUrl: "add_record.html",
             controller: "updateRecord"
+        }).when("/projectMailSettings", {
+            templateUrl: "project_mail_settings.html",
+            controller: "projectMails"
         })
 });
+
+
 
 app.run(function ($rootScope, $location) {
 
