@@ -413,7 +413,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
-            $scope.user.currentRecord = null;
+            var index = $scope.user.currentProject.records.indexOf($scope.deleteRecord);
+            $scope.user.currentProject.records.splice(index, 1);
+            $scope.cancel();
             $scope.deleteRecord = null;
         });
     };
@@ -635,6 +637,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
+            if($scope.user.currentRecord.id == null) {
+                $scope.cancel();
+            }
             $scope.getProject();
         });
     }
@@ -717,64 +722,5 @@ angular.module("app").controller('projectMails', function ($scope, userService, 
     }
     
     getMailSettings();
-
-});
-
-angular.module("app").controller('updateRecord', function ($scope, userService, $location, Upload) {
-
-    $scope.response = {};
-    $scope.dataObj = {};
-    console.log("Record details loaded ..");
-
-    $scope.rootUrl = projectRoot + "/getFile/";
-
-
-    $scope.user = JSON.parse(localStorage.erpUser);
-
-
-
-
-
-    $scope.getProject = function () {
-        userService.showLoading($scope);
-        $scope.dataObj.requestType = "REC";
-        $scope.dataObj.user = $scope.user;
-        userService.callService($scope, "/getProject", "P").then(function (response) {
-
-            userService.initLoader($scope);
-            $scope.response = response;
-            userService.showResponse($scope, "");
-            if ($scope.response == null || $scope.response.status != 200) {
-                return;
-            }
-            if (response.user.currentProject == null) {
-                window.location.href = "#myProjects";
-                return;
-            }
-            $scope.user.currentRecord.values = response.user.currentProject.fields;
-            $scope.user.currentRecord.titleField = response.user.currentProject.titleField;
-            $scope.user.currentRecord.recordDate = getTodaysDate();
-            localStorage.erpUser = JSON.stringify($scope.user);
-
-        });
-    }
-
-
-
-    $scope.close = function () {
-        userService.close("#updateRecord");
-    }
-
-    if ($scope.user.currentRecord == null || $scope.user.currentRecord.id == null) {
-        console.log("New" + $scope.user.currentProject);
-        $scope.user.currentRecord = {
-
-        };
-        $scope.getProject();
-    } else {
-        $scope.getRecord();
-    }
-
-
 
 });
