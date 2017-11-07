@@ -191,7 +191,7 @@
                         <div class="form-group" style="margin-bottom:45px">
                             <label for="usr">Date Created</label>
                             <datepicker date-format="yyyy-MM-dd">
-                                <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
+                                <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate | date: 'yyyy-MM-dd'">
                             </datepicker>
                         </div>
 
