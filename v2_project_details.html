@@ -114,11 +114,11 @@
                 </div>
 
                 <div class="row" style="padding-right:10px; padding-left:10px;">
-                    <div class="col-sm-2 field-style" ng-repeat="field in rec.values">
+                    <div class="col-sm-{{field.type == 'LONGTEXT' ? '4' : '2'}} field-style" ng-repeat="field in rec.values">
                         <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
 
                             <div style="cursor:pointer">
-                                <h4 ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)">{{field.value}}</h4>
+                                <h4 ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="{{field.maxLength && field.type == 'LONGTEXT' ? 'white-space: pre-wrap' : ''}}">{{field.value}}</h4>
                             </div>
                         </div>
 
@@ -209,6 +209,8 @@
                             </datepicker>
                             <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
 
+                            <textarea class="form-control" ng-model="field.value" ng-if="field.type=='LONGTEXT'" maxlength="800"></textarea>
+                            
                             <select class="form-control forpad" ng-if="field.type=='MULTIPLE'" ng-model="field.value" class="form-control" ng-options="value for value in field.possibleValues">
                                 <option value="">Select option</option>
                         
