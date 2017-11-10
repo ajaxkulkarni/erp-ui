@@ -30,7 +30,7 @@
 
                     <div class="row">
                         
-                        <span><img src="imgs/n_ademp.svg" alt="back" id="adbtn2" class="fade_hover" width=40px style="cursor:pointer"></span> 
+                        <span ng-click="addNew()" ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer"><img src="imgs/n_ademp.svg" alt="back" id="adbtn2" class="fade_hover" width=40px style="cursor:pointer"></span> 
 
 
                         <!---<a href="#"><span><img src="imgs/n_Add_column.svg" alt="back" id="adbtn2" width="50px" title="Add Column" ></span></a>--->
@@ -38,7 +38,7 @@
 
                      
 
-                        <a href=#><span ><img src="imgs/n_add_settings.svg" alt="back" width=40px class="fade_hover" id="exl_icon"></span></a>
+                        <!--<span ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer"><img src="imgs/n_add_settings.svg" alt="back" width=40px class="fade_hover" id="exl_icon"></span>-->
 
 
 
@@ -56,7 +56,8 @@
                 <table class="table distabl table-hover" style="font-size:17px">
                     <thead class="distabl">
                         <tr>
-                            <th style="text-align:center">ID</th>
+                            <th style="text-align:center">Sr. No</th>
+                            <th style="text-align:center">Employee ID</th>
                             <th style="text-align:center">Name</th>
                             <th style="text-align:center">Email</th>
                             <th style="text-align:center">Designation</th>
@@ -67,7 +68,8 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="emp in response.user.company.employees">
-                            <td>{{emp.id}}</td>
+                            <td>{{$index + 1}}</td>
+                            <td>{{emp.regId}}</td>
                             <td>{{emp.name}}</td>
                             <td>{{emp.email}}</td>
                             <td>{{emp.designation}}</td>
@@ -76,8 +78,8 @@
                                 <!----<h4 ><span class= "blue_txt" style="cursor:pointer" ng-click="view(emp)">View</span> |
                                 <span class= "blue_txt" style="cursor:pointer" ng-click="edit(emp)">Edit</span> | <span class= "blue_txt" style="cursor:pointer"  data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete</span></h4> -->
                                 
-                                <span><a style="cursor:pointer" ng-click="delete(emp)"><img src="imgs/clear-button.svg" alt="back" class="card_icons" width=20px ></a>
-                                <a style="cursor:pointer" ng-click="edit(emp)"><img src="imgs/underline-button.svg" alt="back" class="card_icons" width=20px ></a>
+                                <span><a ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer" ng-click="delete(emp)"><img src="imgs/clear-button.svg" alt="back" class="card_icons" width=20px ></a>
+                                <a style="cursor:pointer" ng-if="user.loginType == 'Admin' || user.loginType == null" ng-click="edit(emp)"><img src="imgs/underline-button.svg" alt="back" class="card_icons" width=20px ></a>
                                 <a style="cursor:pointer" ng-click="view(emp)"><img src="imgs/visibility-button.svg" alt="back" class="card_icons" width=20px ></a>
                                 </span>
                                 

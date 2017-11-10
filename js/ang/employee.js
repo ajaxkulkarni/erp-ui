@@ -191,6 +191,11 @@ angular.module("app").controller('employees', function ($scope, userService, $lo
 
         });
     }
+    
+    $scope.addNew = function() {
+        localStorage.erpEmployee = null;
+        window.location.href = "#addEmployee";
+    }
 
     $scope.edit = function (emp) {
         localStorage.erpEmployee = JSON.stringify(emp);
