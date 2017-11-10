@@ -270,7 +270,7 @@ app.directive('ngEsc', function () {
     };
 });
 
-angular.module("app").controller('projectDetails', function ($scope, userService, $location, Upload) {
+angular.module("app").controller('projectDetails', function ($scope, userService, $location, Upload, $routeParams) {
 
     $scope.response = {};
     $scope.dataObj = {};
@@ -281,8 +281,15 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.requestType = "MONTH";
 
     $scope.user = JSON.parse(localStorage.erpUser);
-
-
+    
+    /*alert($routeParams.projectId);*/
+    
+    if($routeParams.projectId != null) {
+        $scope.user.currentProject = {
+            id: $routeParams.projectId
+        }
+    } 
+    
     if ($scope.user.currentProject == null || $scope.user.currentProject.id == null) {
         window.location.href = "#myProjects";
         return;
@@ -597,6 +604,22 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         return true;
     };
 
+    $scope.isFollowUp = function (rec) {
+        if (!rec.followUp) {
+            return false;
+        }
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        var dateString = yyyy + "-" + mm + "-" + dd;
+        if (dateString != rec.recordDateString) {
+            console.log("False!!" + dateString + " != " + rec.recordDateString);
+            return false;
+        }
+        return true;
+    }
+
     function matchValue(value, search) {
         if (search == null) {
             return true;
@@ -637,7 +660,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
-            if($scope.user.currentRecord.id == null) {
+            if ($scope.user.currentRecord.id == null) {
                 $scope.cancel();
             }
             $scope.getProject();
@@ -678,7 +701,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 });
 
 
-angular.module("app").controller('projectMails', function ($scope, userService, $location) {
+angular.module("app").controller('projectMails', function ($scope, userService, $location, $routeParams) {
 
     $scope.response = {};
     $scope.dataObj = {};
@@ -687,6 +710,12 @@ angular.module("app").controller('projectMails', function ($scope, userService, 
 
 
     $scope.user = JSON.parse(localStorage.erpUser);
+    
+    if($routeParams.projectId != null) {
+        $scope.user.currentProject = {
+            id: $routeParams.projectId
+        }
+    } 
 
     if ($scope.user.currentProject == null || $scope.user.currentProject.id == null) {
         window.location.href = "#myProjects";
@@ -717,10 +746,10 @@ angular.module("app").controller('projectMails', function ($scope, userService, 
                 return;
             }
             $scope.user.currentProject.mailConfig = response.user.currentProject.mailConfig;
-            
+
         });
     }
-    
+
     getMailSettings();
 
 });

@@ -12,6 +12,12 @@ angular.module("app").controller('login', function ($scope, userService, $locati
         flat: false
     });*/
 
+    $scope.user = JSON.parse(localStorage.erpUser);
+    
+    if($scope.user != null && $scope.user.id != null) {
+        console.log("Employee loaded .." + $scope.user.name);
+        window.location.href = "home.html";
+    }
 
     $scope.loginUser = function () {
        

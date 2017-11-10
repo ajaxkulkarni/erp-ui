@@ -250,10 +250,17 @@ app.config(function ($routeProvider) {
             templateUrl: "v2_project_details.html",
             controller: "projectDetails"
         })
+        .when("/projectDetails/:projectId", {
+            templateUrl: "v2_project_details.html",
+            controller: "projectDetails"
+        })
         .when("/updateRecord", {
             templateUrl: "add_record.html",
             controller: "updateRecord"
         }).when("/projectMailSettings", {
+            templateUrl: "project_mail_settings.html",
+            controller: "projectMails"
+        }).when("/projectMailSettings/:projectId", {
             templateUrl: "project_mail_settings.html",
             controller: "projectMails"
         })
