@@ -1012,13 +1012,13 @@ html,body{
     float: right;
     
     margin-right: 15px;
-    opacity: 0.2;
+    opacity: 0.3;
 
 }
 
 .card_icons:hover {
 
-    opacity: 0.8;
+    opacity: 1;
 
 }
 
