@@ -78,9 +78,9 @@
 
                     <span data-toggle="tooltip" title="Record ID" style="float:left">{{rec.id}}.&nbsp;</span>
                     <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900; {{user.currentRecord.id == rec.id ? 'color:#4885ed' : ''}}">{{rec.titleField.value}}</span>
-                    <span data-toggle="tooltip" title="Created By: {{rec.createdUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.createdUser.name[0]}}</span>
-                    <span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name[0]}}</span>
-                    <span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>
+                    <span data-toggle="tooltip" title="Created By: {{rec.createdUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.createdUser.name}}</span>
+                    <span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name}}</span>
+                    <!--<span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>-->
                     <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
                     
                     <a ng-if="isFollowUp(rec)" style="cursor:pointer" ><img src="imgs/flag.png" style="margin-left:10px" width=16px></a>
