@@ -83,9 +83,7 @@
                     <span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>
                     <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
                     
-                    <span ng-if="isFollowUp(rec)" style="color:red" data-toggle="tooltip" title="Follow up today">Follow up</span>
-                    
-                    <a  style="cursor:pointer" ><img src="imgs/flag.png" style="margin-left:10px" width=16px></a>
+                    <a ng-if="isFollowUp(rec)" style="cursor:pointer" ><img src="imgs/flag.png" style="margin-left:10px" width=16px></a>
                     
                     <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
                         <label for="usr">{{user.currentRecord.titleField.name}} </label>
