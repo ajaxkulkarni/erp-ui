@@ -74,6 +74,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                
+                                <tr >
+                                    <td>--</td>
+                                    <td>My Tasks</td>
+                                    <td>All your tasks at one place</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <!---<button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectProject(project)">Dive in</button>--->
+                                        
+                                        <a style="cursor:pointer" ng-click="selectProject(project)"><img src="imgs/forward-arrow.svg" alt="back" class="card_icons" width=25px></a>
+                                    </td>
+
+                                </tr>
+                                
+                                
                                 <tr ng-repeat="project in projects">
                                     <td>{{$index + 1}}</td>
                                     <td>{{project.title}}</td>
