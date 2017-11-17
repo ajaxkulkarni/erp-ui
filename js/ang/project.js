@@ -270,31 +270,60 @@ app.directive('ngEsc', function () {
     };
 });
 
-angular.module("app").controller('projectDetails', function ($scope, userService, $location, Upload, $routeParams) {
+angular.module("app").controller('projectDetails', function ($scope, userService, $location, Upload, $routeParams, $http) {
 
     $scope.response = {};
     $scope.dataObj = {};
     $scope.file = {};
     console.log("Project details loaded ..");
 
-
     $scope.requestType = "MONTH";
 
     $scope.user = JSON.parse(localStorage.erpUser);
-    
+
     /*alert($routeParams.projectId);*/
-    
-    if($routeParams.projectId != null) {
+
+    if ($routeParams.projectId != null) {
         $scope.user.currentProject = {
             id: $routeParams.projectId
         }
-    } 
-    
+    }
+
     if ($scope.user.currentProject == null || $scope.user.currentProject.id == null) {
         window.location.href = "#myProjects";
         return;
     }
 
+    $scope.downloadExcel = function () {
+        console.log("Calling .." + projectRoot + "/downloadProjectData");
+        $http({
+            url: projectRoot + "/downloadProjectData",
+            method: "POST",
+            data: $scope.user.currentProject, //this is your json data string
+            headers: {
+                'Content-type': 'application/json'
+            },
+            responseType: 'arraybuffer'
+        }).success(function (data, status, headers, config) {
+            var blob = new Blob([data], {
+                type: "application/vnd.ms-excel"
+            });
+            var objectUrl = URL.createObjectURL(blob);
+            //window.open(objectUrl);
+
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+            a.href = objectUrl;
+            a.download = $scope.user.currentProject.title + ".xls";
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+        }).error(function (data, status, headers, config) {
+            //upload failed
+            console.log("Error!!!" + data);
+        });
+    }
 
     $scope.user.currentRecord = {};
 
@@ -710,12 +739,12 @@ angular.module("app").controller('projectMails', function ($scope, userService, 
 
 
     $scope.user = JSON.parse(localStorage.erpUser);
-    
-    if($routeParams.projectId != null) {
+
+    if ($routeParams.projectId != null) {
         $scope.user.currentProject = {
             id: $routeParams.projectId
         }
-    } 
+    }
 
     if ($scope.user.currentProject == null || $scope.user.currentProject.id == null) {
         window.location.href = "#myProjects";
