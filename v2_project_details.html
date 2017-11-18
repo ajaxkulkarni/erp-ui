@@ -50,9 +50,9 @@
 
                 <span ng-click="downloadExcel()" style="cursor:pointer"><img src="imgs/n_excel.svg" alt="back" class="fade_hover" width=40px id="exl_icon"></span>
 
-                <a href="#projectMailSettings"><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="mail_icon"></span></a>
+                <a href="#projectMailSettings"><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
 
-                <a ng-if="user.currentProject.accessRights.projectAccess"><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=40px id="settings_icon"></span></a>
+                <a ng-if="user.currentProject.accessRights.projectAccess"><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
 
                 <select name="requestType" class="form-control text-right" ng-model="requestType" style="float:right; width:130px; margin:4px 20px; height:34px;font-size:13px;" ng-change="getProject()">
                     <option value="MONTH">This month</option>
@@ -193,10 +193,11 @@
                         <br>
                         <div class=" form-group">
                             <label for="usr">{{user.currentRecord.titleField.name}} </label>
-                            <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
+                            <input id="basic" type="text" class="form-control set_sal " ng-model="user.currentRecord.titleField.value">
 
                         </div>
-
+                        
+                        
                         <div class="form-group" style="margin-bottom:45px">
                             <label for="usr">Record Date (To track this record)</label>
                             <datepicker date-format="yyyy-MM-dd">
@@ -204,11 +205,10 @@
                             </datepicker>
                         </div>
                         
-                        <div class="form-group" style="margin-top:-15px">
+                        <div class="form-group" style="margin-top:-19px">
                             <label for="usr">Follow up (By record date)&nbsp;&nbsp;</label>
                             <input type="checkbox" ng-model="user.currentRecord.followUp">
                         </div>
-
 
                         <div class="form-group" ng-repeat="field in user.currentRecord.values">
                             <label for="comment">{{field.name}}</label>
@@ -225,6 +225,7 @@
                         
                             </select>
                         </div>
+                       
 
                         <div class=" form-group">
                             <label for="pwd">Assign to (Optional) </label>
@@ -235,18 +236,24 @@
                             </select>
 
                         </div>
+                       
 
                         <div class=" form-group">
                             <label for="pwd">Record color (Optional) </label>
                             <!--<input type="emil id" class="form-control" >-->
-                            <select name="color" class="form-control forpad" ng-model="user.currentRecord.color">
+                            <!--<select name="color" class="form-control forpad" ng-model="user.currentRecord.color">
                                 <option value="#9B9B9B">No color</option>
                                 <option value="#DB3236">Red</option>
                                 <option value="#3CBA54">Green</option>
                                 <option value="#F4C20D">Yellow</option>
                         
-                            </select>
-
+                            </select>-->
+                            <br>
+                            <span>
+                                <div  class=" recrd_color" style="background-color:#DB3236;"></div>
+                                <div  class=" recrd_color" style="background-color:#F4C20D;"></div>
+                                <div  class=" recrd_color" style="background-color:#3CBA54;"></div>
+                            </span>
                         </div>
                         
                       

@@ -254,7 +254,8 @@ h4{
     background-color: white;
     height: 100px;
     box-shadow: 0 0 5px rgb(200,200,200);
-    background-color: rgb(227,228,229);
+    /*background-color: rgb(227,228,229);*/
+    background-color: rgb(242,242,242);
     
 }
 /* view leaves page*/
@@ -355,12 +356,12 @@ dropdown-menu:hover{
 
 .failmodal {
     color: rgb(64,64,64);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .accptmodal {
     color: rgb(64,64,64);
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .form-control-2 {
@@ -383,8 +384,8 @@ dropdown-menu:hover{
     border-color: rgb(200,200,200);
     border-width: 0.5px;
     box-shadow: none;
-    padding-left: 10px;
-    
+    padding-left: 7px;
+    padding-right: 5px;
 }
 
 .butte {
@@ -637,7 +638,8 @@ html,body{
 }
 
 .bckgrclr {
-    background-color: rgb(227,228,229);!important
+    /*background-color: rgb(227,228,229);!important*/
+    background-color: rgb(242,242,242);!important
     padding: none;
     margin: 0px;
     z-index: -3;
@@ -762,7 +764,8 @@ html,body{
     background-color: white;
     height: 50px;
     box-shadow: 0 0 5px rgb(200,200,200);
-    background-color: rgb(227,228,229);
+    /*background-color: rgb(227,228,229);*/
+    background-color: rgb(242,242,242);
     padding-left: 20px;
     
 }
@@ -1113,13 +1116,32 @@ html,body{
     border-width: solid;
      border-color:rgb(200,200,200);
 
-.time_dropdown {
-    
 }
 
 #time_dropdown {
     float:right; 
     width:10%; 
     margin:6px 20px; 
-    height:35px;"
+    height:35px;
+}
+
+.textbox_back_color {
+    
+    color: rgb(244,244,244);
+}
+
+
+
+.recrd_color {
+    display: inline-block;
+    height: 20px;
+    width: 80px;
+    margin: 0px 5px;
+    border-radius: 1px;
+    opacity: 0.4;
+}
+
+
+.recrd_color:hover {
+    opacity: 1;
 }
