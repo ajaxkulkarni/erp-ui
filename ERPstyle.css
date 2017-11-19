@@ -1030,6 +1030,13 @@ html,body{
     float: right;
     margin-right: 15px;
     opacity: 1;
+    
+}
+
+.card_icons_updated{
+    float: right;
+    margin-right: 15px;
+    opacity: 1;
 }
 
 .fade_hover {
