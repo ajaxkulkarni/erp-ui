@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="ERPstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <link href="css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+    
+     <link href="css/tags.css" rel="stylesheet" type="text/css" />
+
+    <link href="css/loader.css" rel="stylesheet" type="text/css" />
+
+    <link rel='stylesheet' href='css/loading-bar.min.css' type='text/css' media='all' />
+
+    <link rel="stylesheet" href="css/ng-tags-input.css" />
+    
+    <link rel="stylesheet" href="ERPstyle.css">
+
+
+    <script type="text/javascript" src="js/angular.min.js"></script>
+
+    <script type="text/javascript" src="js/angular-route.js"></script>
+
+    <script type='text/javascript' src='js/loading-bar.min.js'></script>
+
+    <script src="js/ng-file-upload-shim.min.js"></script>
+    <script src="js/ng-file-upload.min.js"></script>
+
+    <script src="js/ngTextInput.js"></script>
+
+    <script type="text/javascript" src="js/ang/main.js"></script>
+
+    <script type="text/javascript" src="js/ang/home.js"></script>
+
+    <script type="text/javascript" src="js/ang/employee.js"></script>
+
+    <script type="text/javascript" src="js/ang/leaves.js"></script>
+
+    <script type="text/javascript" src="js/ang/salary.js"></script>
+
+    <script type="text/javascript" src="js/ang/project.js"></script>
+
+
+    <title>HR made easy</title>
+
+
+</head>
+
+<body  class="bckgrclr">
+
+    <nav  >
+
+
+
+        <ul class="lis1">
+            <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
+
+
+
+
+            <div class="dropdown lis2">
+                <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="imgs/n_userpro.svg" alt="logo" style: width="35px"></span>
+                </button>
+                <ul class="dropdown-menu ">
+                    <li><a href="#" ng-click="logout()">Logout</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#changePassword">Settings</a></li>
+                    <li><a href="#help">How To</a></li>
+                    <li><a href="#">Contact us</a></li>
+
+                    <li class="divider"></li>
+                    <li class="compnam"><span>{{user.company.name}}</span></li>
+
+                </ul>
+            </div>
+
+            <li class="empnam">{{user.name}}</li>
+
+
+            <!---<li><a href="#" class="logintx">Login</a></li>--->
+        </ul>
+        <div class="navba">
+            <a href="#home"><img id="logo" src="img/logonew.svg" alt="logo" style: width="110px"></a>
+        </div>
+
+    </nav>
+
+
+
+
+    <div class="container-fluid forfull">
+
+
+        <!--<div ng-include="'response.html'"></div>-->
+
+        <div ng-view>
+
+        </div>
+
+    </div>
+
+    <script src="js/angular-datepicker.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+</body>
+
+<!--<footer>
+    -<div class="navbar navbar-default foocls">
+  <div class="container">
+    <span class="navbar-text">
+      &#169 talnote corp.
+      </span>
+  </div>
+</div>-
+
+   
+    <div id="foo" >
+    
+    <h3><span class="footxt">for</span></h3>
+    <span><img src="imgs/logonew.svg" alt="back" class="foocomplogo"  height=60px;;></span>
+        
+    </div>
+</footer>-->
+
+<!---<footer class="footer1" >
+    <div class="navbar navbar-default foocls">
+  <div class="container">
+    <span class="navbar-text">
+      &#169 talnote corp.
+      </span>
+  </div>
+</div>
+    <div id="foo" >
+
+    <h3><span class="footxt">from</span></h3>
+    <span><img src="imgs/logonew.png" alt="back" class="foocomplogo"  height=60px;;></span>
+
+    </div>
+</footer>--->
+<footer class="footer navbar-fixed-bottom correc_foo">
+    <!---<div class="navbar navbar-default foocls"></div>--->
+    <div id="foob">
+
+        <a href="http://www.resoneuronance.com" target="_blank" class="lnk_no_syle"><span class="navbar-text foo_ext_mod">
+      &#169 hreasy, resoneuronance pvt ltd
+      </span></a>
+
+        <!--</div>--->
+
+
+
+
+        <!--<h3><span class="footxt"></span></h3>
+    <span><img src="imgs/logonew.png" alt="back" class="foocomplogo"  height=60px;;></span>--->
+
+    </div>
+</footer>
+
+
+
+</html>

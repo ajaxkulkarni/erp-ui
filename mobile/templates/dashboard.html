@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<body>  
+       <ul class="lis1">
+            <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
+
+
+
+
+            <div class="dropdown lis2">
+                <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="imgs/n_userpro.svg" alt="logo" style: width="35px"></span>
+                </button>
+                <ul class="dropdown-menu ">
+                    <li><a href="#" ng-click="logout()">Logout</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#changePassword">Settings</a></li>
+                    <li><a href="#help">How To</a></li>
+                    <li><a href="#">Contact us</a></li>
+
+                    <li class="divider"></li>
+                    <li class="compnam"><span>{{user.company.name}}</span></li>
+
+                </ul>
+            </div>
+
+            <li class="empnam">{{user.name}}</li>
+
+
+            <!---<li><a href="#" class="logintx">Login</a></li>--->
+        </ul>
+    
+    
+
+<div class="container">
+    
+    <div class="row tpband">
+        
+        </div>
+    
+    
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 ">
+            <h2 class="pghdgs jusadm">Admin Dashboard</h2>
+        </div>
+    </div>
+    
+
+    
+    <div class="row" >
+        
+    <div class="col-sm-6 col-sm-offset-3 ">
+    
+        <div class="col-sm-6 dashimgs">
+            <a href="#myProjects"><img src="imgs/n_Project.svg" alt="employee management"  height=40px  ></a>
+            <h3 class="txtdas"><span>My Projects</span></h3>
+        </div>
+        
+    </div>
+    </div> 
+    
+    <div class="col-sm-12 ">
+        <hr id="dash_line">
+    </div>
+  
+    
+    <div class="row" >
+    <div class="col-sm-6 col-sm-offset-3 ">
+       
+        <div class="col-sm-2 dashimgs">
+            <a href="#employees"><img src="imgs/n_empdata.svg" alt="employee management"  height=40px  ></a>
+            <h3 class="txtdas"><span>Employee<br> Data</span></h3>
+        </div>
+        <div class="col-sm-2 dashimgs">
+            <a href="#leaves"><img src="imgs/n_leaveman.svg" alt="employee management" height=40px  ></a>
+            <h3 class="txtdas"><span>Leave<br> Management</span></h3>
+        </div>
+        <div class="col-sm-2 dashimgs">
+            <a href="#salary"><img src="imgs/n_salarman.svg" alt="employee management" height=40px  ></a>
+            <h3 class="txtdas"><span>Salary<br> Management</span></h3>
+        </div>
+        <div class="col-sm-2 dashimgs" ng-if="user.loginType != 'Employee'">
+            <a href="#companyDetails"><img src="imgs/n_compinfo.svg" alt="employee management" height=40px  ></a>
+            <h3 class="txtdas"><span>Company<br> Information</span></h3>
+        </div>
+    </div>
+    </div>
+    
+</div>    
+
+        
+    
+</body>
+
+
+    
+</html>
