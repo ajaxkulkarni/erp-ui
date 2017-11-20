@@ -253,6 +253,12 @@ app.config(function ($routeProvider) {
         .when("/projectDetails/:projectId", {
             templateUrl: "v2_project_details.html",
             controller: "projectDetails"
+        }).when("/assignedRecords", {
+            templateUrl: "project_assigned.html",
+            controller: "projectDetails"
+        }).when("/archivedRecords", {
+            templateUrl: "project_archived.html",
+            controller: "projectDetails"
         })
         .when("/updateRecord", {
             templateUrl: "add_record.html",
