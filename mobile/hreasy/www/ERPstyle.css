@@ -873,13 +873,15 @@ html,body{
 
 .Proj_top_tab {
     height: 60px;
-    padding-top: 10px; !important
+    padding-top: 15px; !important
+    
     
 }
 
 #exl_icon {
     float: right;
-    margin-right: 20px;
+    margin: 20px;
+    
 }
 
 #closbtn2 {
