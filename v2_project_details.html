@@ -42,13 +42,19 @@
 
             <div class="row">
 
+                <span ng-if="user.currentProject.fields.length > 0 && user.currentProject.accessRights.recordAccess"><img src="imgs/Just_icons/add_recordicon.svg" alt="back" class="fade_hover" id="adbtn2" width=32px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
 
 
+                <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/Just_icons/add_columnicon.svg" alt="back" class="fade_hover" id="adbtn2" width="24px" title="Add Column" style="float:left;margin-top:1px;" ></span></a>
 
 
+                <span ng-click="downloadExcel()" style="cursor:pointer"><img src="imgs/Just_icons/excelicon.svg" alt="back" class="fade_hover" width=30px id="exl_icon"></span>
 
+                <a href="#projectMailSettings"><span ><img src="imgs/Just_icons/send-button.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
 
+                <a ng-if="user.currentProject.accessRights.projectAccess" href="#myProject"><span ><img src="imgs/Just_icons/settings-cogwheel-button.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
 
+                <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:right; width:130px; margin:4px 20px; height:34px; font-size:13px; " ng-change="getProject()">
                     <option value="MONTH">This month</option>
                     <option value="WEEK">This week</option>
                     <option value="ALL">All time</option>
