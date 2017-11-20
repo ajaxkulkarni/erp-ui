@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+
+<body>
+
+
+    <div class="container-fluid">
+
+        <div class="row tpband">
+            <div class="col-sm-12 ">
+                <a href="#salary"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <h2 class="pghdgs">Salary Info</h2>
+            </div>
+        </div>
+        
+        <div ng-include="'response.html'"></div>
+        
+        <div class="row">
+            <div class="col-sm-1 moliv ">
+
+                <div class=" form-group ">
+                    <select class="form-control" ng-model="year" ng-options="year for year in years">
+                       
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm-1 moliv  ">
+                <div class=" form-group  ">
+
+                    <select class="form-control" ng-model="month" ng-options="m.name for m in months">
+                        
+                    </select>
+                </div>
+
+            </div>
+            <div class="col-sm-1 moliv subsalinfo  ">
+                <div class=" form-group  ">
+                    <button type="button" class="btn btn-secondary btn-sm btn-block btndet salmit" ng-click="getAllEmployeeSalary()">Submit</button>
+                   
+                </div>
+
+            </div>
+            
+           <div class="col-sm" ng-if="user.loginType!='Employee'">
+               
+                
+                    <span style="cursor:pointer" ng-click="downloadBankStatement()" ><img src="imgs/n_pdf.svg" alt="back" class="expdficon fade_hover" width=50px data-toggle="tooltip" title="Export letter to bank as pdf" ></span>
+                
+             
+                
+                    <span style="cursor:pointer" ng-click="downloadMaster()"><img src="imgs/n_excel.svg" alt="back" width=50px class="expdficon fade_hover" data-toggle="tooltip" title="Export seleted data to excel" ></span>
+               
+
+            </div>
+            
+        </div>
+
+<div class="col-sm-12 makpg shdmld ">
+        <div class="table-responsive">
+            <table class="table distabl table-hover" style="font-size:15px">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="text-align:center">#</th>
+                        <th style="text-align:center">Emp ID</th>
+                        <th style="text-align:center">Name</th>
+                        
+                        <th style="text-align:center">Gross salary</th>
+                        <!--<th class="distabl">Total leaves</th>-->
+                        <th style="text-align:center">Net Paid</th>
+                        <th style="text-align:center">Account number</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)">
+                        <td><span ng-show="employee.selected"><span><img src="imgs/n_tick.svg" alt="back" id="closbtn" width=20px ></span></span></td>
+                        <td>{{$index + 1}}</td>
+                        
+                        <td>{{employee.regId}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.financial.salary}}</td>
+                        <!--<td>{{employee.withoutPayLeaves}}</td>-->
+                        <td>{{employee.financial.amountPayable ? employee.financial.amountPayable : "NA" }}</td>
+                        <td>{{employee.financial.accountNumber}}</td>
+                        
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="edit(employee)" ng-if="user.loginType!='Employee'">Add/Edit</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="viewDetails(employee)">Salary Slip</button>
+                        </td>
+                         
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+
+</body>
+
+</html>

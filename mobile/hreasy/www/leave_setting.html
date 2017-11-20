@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+
+<body>
+
+
+
+    <div class="container-fluid">
+
+        <div class="row tpband">
+            <div class="col-sm-12">
+                <a href="#leaves"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Leave settings</h2>
+            </div>
+        </div>
+
+        <div ng-include="'response.html'"></div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 makpg ">
+
+                <!--<div class=" form-group" ng-repeat="policy in leaveTypes">
+                    <label for="pwd">Maximum {{policy.name}} leaves per year</label>
+                    <input type="number" class="form-control" value="{{policy.count}}" ng-model="policy.count">
+                </div>-->
+                <br>
+
+                <!----------------->
+
+                <div ng-repeat="policy in leaveTypes">
+                    <div class="col-md-4">
+                        <label>{{policy.name}}</label>
+                    </div>
+
+
+                    <div class="col-md-4">
+                        <input type="number" class="form-control" ng-model="policy.count">
+                    </div>
+
+                    
+                    <div class="col-md-4">
+                        <select class="form-control" ng-model="policy.frequency">
+                            <option value="Yearly">Yearly</option>
+                            <option value="Monthly">Monthly</option>
+                        </select>
+                    </div>
+
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+
+                <!---------------------->
+
+
+                <div class="frbtnonpg">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="addLeavePolicy()">Save</button>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>

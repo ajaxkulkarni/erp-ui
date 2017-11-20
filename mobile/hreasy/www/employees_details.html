@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+
+<body>
+    <div class="container-fluid">
+
+    <div class="row">
+
+        <div class="row tpband">
+            <div class="col-sm-12">
+                <a href="#employees"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                
+            <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="pghdgs">View employee data</h2>
+            </div>
+
+        </div>
+        
+        
+        
+        <div class="col-sm-12 makpg Proj_top_tab">
+
+                    <div class="row">
+                        
+                        <span ng-click="addNew()" ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer"><img src="imgs/n_ademp.svg" alt="back" id="adbtn2" class="fade_hover" width=40px style="cursor:pointer"></span> 
+
+
+                        <!---<a href="#"><span><img src="imgs/n_Add_column.svg" alt="back" id="adbtn2" width="50px" title="Add Column" ></span></a>--->
+
+
+                     
+
+                        <!--<span ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer"><img src="imgs/n_add_settings.svg" alt="back" width=40px class="fade_hover" id="exl_icon"></span>-->
+
+
+
+
+                    </div>
+            </div>
+        
+        
+        
+
+        <div ng-include="'response.html'"></div>
+
+        <div class="col-sm-12 makpg shdmld ">
+            <div class="table-responsive">
+                <table class="table distabl table-hover" style="font-size:17px">
+                    <thead class="distabl">
+                        <tr>
+                            <th style="text-align:center">Sr. No</th>
+                            <th style="text-align:center">Employee ID</th>
+                            <th style="text-align:center">Name</th>
+                            <th style="text-align:center">Email</th>
+                            <th style="text-align:center">Designation</th>
+                            <th></th>
+                            <th style="min-width:200px"></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="emp in response.user.company.employees">
+                            <td>{{$index + 1}}</td>
+                            <td>{{emp.regId}}</td>
+                            <td>{{emp.name}}</td>
+                            <td>{{emp.email}}</td>
+                            <td>{{emp.designation}}</td>
+                            <td></td>
+                            <td>
+                                <!----<h4 ><span class= "blue_txt" style="cursor:pointer" ng-click="view(emp)">View</span> |
+                                <span class= "blue_txt" style="cursor:pointer" ng-click="edit(emp)">Edit</span> | <span class= "blue_txt" style="cursor:pointer"  data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete</span></h4> -->
+                                
+                                <span><a ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer" ng-click="delete(emp)"><img src="imgs/clear-button.svg" alt="back" class="card_icons" width=20px ></a>
+                                <a style="cursor:pointer" ng-if="user.loginType == 'Admin' || user.loginType == null" ng-click="edit(emp)"><img src="imgs/underline-button.svg" alt="back" class="card_icons" width=20px ></a>
+                                <a style="cursor:pointer" ng-click="view(emp)"><img src="imgs/visibility-button.svg" alt="back" class="card_icons" width=20px ></a>
+                                </span>
+                                
+                                
+                                
+                            </td>
+
+                            <!--<td>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="edit(emp)">Edit Profile</button>
+                            </td>
+
+                            <td>
+                                <button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="delete(emp)" data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete Profile</button>
+                            </td>-->
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog ">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div ng-include="'response.html"></div>
+                <div class="modal-body">
+                    
+                    <span><img src="imgs/n_err.svg" alt="back"width=80px;></span>
+                    
+                    <p>Are you sure you want to delete the employee profile<br>'{{employee.name}}' ?
+                        <br>All employee data will be erased as well.
+                        <br>
+                        <br>Its advisable to take a backup by saving profile as pdf first.</p>
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal" ng-click="deleteEmployee()">Delete profile</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<body>
+
+
+    <div class="container-fluid">
+
+        <div class="row tpband">
+            <div class="col-sm-12 ">
+                <a href="#leaves"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
+                    
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Add leaves</h2>
+            </div>
+        </div>
+
+        <div ng-include="'response.html'"></div>
+
+
+        <div class="row ">
+            <div class="col-sm-6 col-sm-offset-3 makpg">
+
+                <ng-form name="leaveForm">
+                    <div class=" form-group">
+                        <label for="pwd">Name</label>
+                        <!--<input type="emil id" class="form-control" >-->
+                        <select name="employee" ng-model="leave.user" ng-required="true" class="form-control" ng-options="emp.name for emp in employees" focus-me="{{invalidEmployee}}">
+                            <option value="">Select Employee</option>
+                            <!--<option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>-->
+                        </select>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.employee.$invalid">Please select an employee</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Leave from</label>
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" class="form-control" name="from" ng-model="leave.from" ng-required="true" ng-change="calculateDays()" focus-me="{{invalidFrom}}">
+                        </datepicker>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.from.$invalid">Please select from date</p>
+                    </div>
+                    <br>
+                    <div class=" form-group">
+                        <label for="usr">Leave to</label>
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input type="text" class="form-control" name="to" ng-model="leave.to" ng-required="true" ng-change="calculateDays()" focus-me="{{invalidTo}}">
+                        </datepicker>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.to.$invalid">Please select to date</p>
+                        <p style="color:red" ng-show="incorrectDate">To date cannot be less than From date</p>
+                    </div>
+                    <br>
+                    <div class=" form-group">
+                        <label for="usr">Number of days</label>
+                        <input type="number" class="form-control" ng-model="leave.noOfDays" name="days" ng-required="true" focus-me="{{invalidDays}}">
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.days.$invalid">Please select no of days</p>
+                        <p style="color:red" ng-show="incorrectDays">Please select valid no of days</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Type of leave</label>
+                        <!--<input type="text" class="form-control" ng-model="leave.type">-->
+                        <select name="type" ng-model="leave.type" ng-required="true" class="form-control" ng-options="type.name for type in leaveTypes" focus-me="{{invalidType}}">
+                            <option value="">Select Leave Type</option>
+                        </select>
+                        <p style="color:red" ng-show="showLeaveErrors && leaveForm.type.$invalid">Please select leave type</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Comment</label>
+                        <input type="text" class="form-control" ng-model="leave.reason" maxlength="40">
+                    </div>
+
+                    <div class="frbtnonpg">
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="applyLeave(leaveForm)">Submit</button>
+
+                    </div>
+
+                </ng-form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+
+    <div id="leaveWarningModal" class="modal fade" role="dialog">
+        <div class="modal-dialog ">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body failmodal">
+
+                    <span><img src="imgs/n_err.svg" alt="back"width=80px;></span>
+
+                    <p>This employee has exceeded the limit for {{leave.type.name}} leave. Applied leaves will be considered for without pay. Do you still want to apply the leave?</p>
+
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal" ng-click="applyLeave(leaveForm)">OK</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+
+
+
+</html>

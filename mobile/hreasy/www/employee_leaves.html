@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+
+<body>
+
+
+
+    <div class="container-fluid">
+
+
+        <div class="row tpband">
+            <div class="col-sm-12 ">
+                <a href="#viewLeaves"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 ">
+                <h2 class="pghdgs">Leave Details - {{employee.name}}</h2>
+            </div>
+        </div>
+
+        <div ng-include="'response.html'"></div>
+
+        <!--- <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 levcard" ng-repeat="leave in leaves">
+
+                <button type="button" class="btn btn-xs crs lcmod" ng-click="showCancel(leave)">
+                    <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                </button>
+
+                Modal 
+
+
+                <h4><span><strong>No of days :  </strong>{{leave.noOfDays}}</span></h4>
+                <h4><span><strong> Dates:  </strong>{{leave.fromString}} to {{leave.toString}}</span></h4>
+                <h4><span><strong> Type of leave:  </strong> {{leave.type.name}}</span></h4>
+                <h4><span><strong> Reason:  </strong> {{leave.reason}}</span></h4>
+
+            </div>
+        </div> --->
+
+        <div class="makpg toplev">
+
+            <div class="row">
+
+                <div class="col-md-12" ng-init="editBalance = 'false'">
+                    <div ng-repeat="bal in employee.leaveBalance">
+                        <h4 ng-show="editBalance == 'false'"><span>{{bal.name}} Balance : <strong>{{bal.count}}</strong> days</span></h4>
+
+                        <form class="form-inline" ng-show="editBalance == 'true'">
+                            <div class="form-group levtopb">
+                                <label for="inputdefault">{{bal.name}} Balance :</label>
+                                <input class="form-control levtopb" id="inputdefault " type="number" ng-model="bal.count">
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+                
+
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-show="editBalance == 'false'"  ng-click="editable('true')" ng-if="user.loginType != 'Employee'">Edit</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block cancel_btn_margin " ng-show="editBalance == 'true'"   ng-click="editable('false')">Cancel</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-show="editBalance == 'true'"  ng-click="updateLeaveBalance()">Save</button>
+                </div>
+
+
+            </div>
+        </div>
+<div class="col-sm-12 makpg shdmld ">
+        <div class="table-responsive ">
+            <table class="table distabl table-hover">
+                <thead>
+                    <tr>
+                        <th class="distabl">#</th>
+                        <th class="distabl">From</th>
+                        <th class="distabl">To</th>
+                        <th class="distabl">Type</th>
+                        <th class="distabl">Days</th>
+                        <th class="distabl">Reason</th>
+                        <th class="distabl"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="leave in leaves">
+                        <td>{{$index + 1}}</td>
+                        <td>{{leave.fromString}}</td>
+                        <td>{{leave.toString}}</td>
+                        <td>{{leave.type.name}}</td>
+                        <td>{{leave.noOfDays}}</td>
+                        <td>{{leave.reason}}</td>
+                        <td>
+                            <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="showCancel(leave)">Cancel</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete leave fom employee profile? Leave will not be considered in annual tally as well.</p>
+                    <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="cancelLeave()">Delete leave</button>
+                    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">OK</button>-->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+
+</html>

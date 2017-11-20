@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<style>
+       fieldset 
+	{
+		border: 1px solid #ddd !important;
+		margin: 0;
+		xmin-width: 0;
+		padding: 10px;       
+		position: relative;
+		border-radius:4px;
+		background-color:#f5f5f5;
+		padding-left:10px!important;
+	}	
+	
+		legend
+		{
+			font-size:14px;
+			font-weight:bold;
+			margin-bottom: 0px; 
+			width: 65%; 
+			border: 1px solid #ddd;
+			border-radius: 4px; 
+			padding: 5px 5px 5px 10px; 
+			background-color: #ffffff;
+		}
+    </style>
+
+<body>
+
+
+
+    <div class="container-fluid bckgrclr htpag">
+
+
+        <div ng-include="'response.html'"></div>
+
+
+
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="row tpband" >
+                    <div class="col-sm-12" >
+                       
+                                              
+                        <a href="#home"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                       
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="pghdgs">My Projects</h2>
+                    </div>
+
+                </div>
+
+                
+
+
+
+                <div class="col-sm-12 makpg Proj_top_tab">
+
+                    <div class="row">
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left" ng-click="addNew()" style="margin-top:0px;"><span>Add New Project</span></button>
+
+                        <!--<button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left">Add Column</button>-->
+
+
+                        <div class="col-sm">
+
+                            <a href=#><span ><img src="imgs/n_excel.svg" alt="back" width=40px id="exl_icon"></span></a>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--<div class="col-sm-12 makpg shdmld ">-->
+                   <!-- <div >
+                        <table class="table distabl table-hover " style="font-size:17px">
+                            <thead class="distabl">
+                                <tr>
+                                    <th class="distabl">#</th>
+                                    <th class="distabl">Project title</th>
+                                    <th class="distabl">Details</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="project in projects">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{project.title}}</td>
+                                    <td>{{project.description}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        -<button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectProject(project)">Dive in</button>-
+                                        
+                                        <a style="cursor:pointer" ng-click="selectProject(project)"><img src="imgs/forward-arrow.svg" alt="back" class="card_icons" width=25px></a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>-->
+<!--
+                   
+                      <ul  ng-repeat="project in projects" style="display: block" >
+        <li >{{project.title}}
+            <div ng-click="selectProject(project)">{{project.description}}</div>
+        </li>
+    </ul>
+-->
+                    
+                
+
+                
+<br/>
+<div class="panel panel-default">
+    	
+		
+			<div class="panel-body">
+            
+            <div class="row">
+            <fieldset class="col-md-6" ng-repeat="project in projects">    	
+					<legend> {{project.title}}</legend>
+					
+					<div class="panel panel-default" ng-click="selectProject(project)">
+						<div class="panel-body">
+							<p >{{project.description}}</p>
+						</div>
+					</div>
+					
+				</fieldset>	
+				</div>
+			
+			
+				
+				<div class="clearfix"></div>
+            </div>
+                
+</div>
+
+                
+
+                
+                
+                
+                
+                
+                
+                </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--</div>-->
+
+
+
+</body>
+
+
+</html>

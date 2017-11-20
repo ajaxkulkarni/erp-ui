@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+
+<body>
+
+
+    <div class="container-fluid">
+
+        <div class="row tpband">
+            <div class="col-sm-12 ">
+                <a href="#employeeSalarySlips"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
+                    
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Add Employee Salary</h2>
+            </div>
+        </div>
+
+        <div ng-include="'response.html'"></div>
+
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 makpg ">
+
+
+                <div class="form-group">
+                    <label for="pwd">Name</label>
+                    <p>{{employee.name}}</p>
+                    <!--<input type="emil id" class="form-control" >-->
+                    <!--<select name="employee" ng-model="employee" ng-required="true" class="form-control" ng-options="emp.name for emp in employees" focus-me="{{salaryError && employee == null}}">
+                        <option value="">Select Employee</option>
+                        <option value="{{emp.id}}" ng-repeat="emp in employees">{{emp.name}}</option>
+                    </select>
+                    <p style="color:red" ng-show="salaryError && employee == null">Please select an employee</p>-->
+                </div>
+                <div class="form-group">
+                    <label for="usr">Employee Gross Salary </label>
+                    <input id="basic" type="number" class="form-control set_sal" ng-model="salary" ng-change="getAmounts()" focus-me="{{salaryError && salary == null}}">
+                    <p style="color:red" ng-show="salaryError && salary == null">Please enter a valid value</p>
+                </div>
+
+                <div class="row ropad grrow lacmarg">
+
+                    <div class="form-group">
+                        <p ng-show="!employees || employees.length == 0">No Employee records found for your company.</p>
+                        <p ng-show="!user.company.basic">No salary structure is defined for your company. Update company salary structure to add benefits and deductions.</p>
+                    </div>
+
+
+
+                    <!--<div class="form-group" ng-show="user.company.basic">
+                        <label for="usr">Basic</label>
+                        <p ng-show="salary > 0">{{(user.company.basic.percentage/100)*(salary)}}</p>
+                    </div>-->
+
+                    <div class="row">
+                        <div class="levcard2 crcompt">
+                            
+                            <!--<button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
+                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                        </button>-->
+
+                            <div class=" form-group forpad">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="usr">Basic</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control set_sal" ng-model="user.company.basic.amount" ng-init="getAmount(user.company.basic)" focus-me="{{salaryError && !user.company.basic.amount}}" ng-change="getOthers()">
+                                    </div>
+                                    <!--<div class="col-md-3">
+                                        <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
+                                        <option value="percentage">%</option>
+                                        <option value="amount">Rs./-</option>
+                                    </select>
+                                    </div>-->
+                                </div>
+                                <p ng-show="salaryError && !user.company.basic.amount" style="color:red">Please enter a valid value</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+
+                    <div class="row" ng-repeat="salary in user.company.salaryInfo">
+                        <div class="levcard2 crcompt" ng-show="salary.type == 'add'">
+                            
+                            <!--<button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
+                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                        </button>-->
+
+                            <div class=" form-group forpad">
+                                
+                                <div class="row">
+                                    
+                                    <div class="col-md-4">
+                                        <label for="usr">{{salary.rule}}</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control set_sal" ng-model="salary.amount" ng-init="getAmount(salary)" focus-me="{{salary.error}}" ng-change="getTotal()">
+                                    </div>
+                                    <!--<div class="col-md-3">
+                                        <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
+                                        <option value="percentage">%</option>
+                                        <option value="amount">Rs./-</option>
+                                    </select>
+                                    </div>-->
+                                </div>
+                                <p ng-show="salary.error && salary.amount < 0" style="color:red">Please enter all valid values</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group" ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'add'">
+                        <label for="usr">{{salaryInfo.rule}}</label>
+                        <p ng-show="salary > 0">{{getAmount(salaryInfo)}}</p>
+                    </div>-->
+
+                    <div class="form-group ontmarg" ng-show="user.company.basic">
+                        <label for="usr">Other allowance</label>
+                        <p ng-show="salary > 0">{{getTotal()}}</p>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row ropad grrow lacmarg">
+                    <div class="row" ng-repeat="salary in user.company.salaryInfo">
+                        
+                        <div class="levcard2 crcompt" ng-show="salary.type == 'sub'">
+                            <!--<button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
+                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                        </button>-->
+                            
+                            <div class=" form-group forpad">
+                                
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label for="usr">{{salary.rule}}</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control set_sal" ng-model="salary.amount" ng-init="getAmount(salary)" focus-me="{{salary.error}}" ng-change="getTotal()">
+                                    </div>
+                                    <!--<div class="col-md-3">
+                                        <select class="form-control" ng-model="salary.amountType" focus-me="{{salary.error && !salary.amountType}}">
+                                        <option value="percentage">%</option>
+                                        <option value="amount">Rs./-</option>
+                                    </select>
+                                    </div>-->
+                                </div>
+                                <p ng-show="salary.error && salary.amount < 0" style="color:red">Please enter all valid values</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <h4 class="ropad grrow " ><span><strong>Net Payable salary : Rs {{amountPayable}}/- </strong></span></h4>
+                
+                </div>
+                <!--<div class="row ropad grrow lacmarg">
+
+                    <div class="form-group " ng-repeat="salaryInfo in user.company.salaryInfo" ng-show="salaryInfo.type == 'sub'">
+                        <label for="usr">{{salaryInfo.rule}}</label>
+                        <p ng-show="salary > 0">{{getAmount(salaryInfo)}}</p>
+                    </div>
+
+                </div>
+-->
+                <button type="button" class="btn btn-secondary btn-lg btn-block ontmbtu " ng-click="save()">Save</button>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+
+</html>
