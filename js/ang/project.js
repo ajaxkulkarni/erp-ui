@@ -18,7 +18,7 @@ angular.module("app").controller('projects', function ($scope, userService, $loc
 
     $scope.response = {};
     $scope.dataObj = {};
-    console.log("Projects loaded ..");
+    console.log("Projects loaded .." + localStorage.requestType);
 
 
     $scope.user = JSON.parse(localStorage.erpUser);
@@ -48,10 +48,32 @@ angular.module("app").controller('projects', function ($scope, userService, $loc
         window.location.href = "#myProject"
     }
 
-    $scope.selectProject = function (project) {
-        $scope.user.currentProject = project;
+    $scope.viewArchive = function () {
+        var assigned = {
+            id: 0
+        };
+        $scope.user.currentProject = assigned;
+        localStorage.requestType = "Archived";
         localStorage.erpUser = JSON.stringify($scope.user);
-        window.location.href = "#projectDetails";
+        window.location.href = "#archivedRecords";
+    }
+
+    $scope.selectProject = function (project) {
+        if (project == null) {
+            var assigned = {
+                id: 0
+            };
+            $scope.user.currentProject = assigned;
+            localStorage.requestType = "Assigned";
+            localStorage.erpUser = JSON.stringify($scope.user);
+            window.location.href = "#assignedRecords";
+        } else {
+            $scope.user.currentProject = project;
+            localStorage.erpUser = JSON.stringify($scope.user);
+            localStorage.requestType = "";
+            window.location.href = "#projectDetails";
+        }
+
     }
 
     $scope.getAllUserProjects();
@@ -277,7 +299,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.file = {};
     console.log("Project details loaded ..");
 
-    $scope.requestType = "MONTH";
+    $scope.timeRange = "MONTH";
 
     $scope.user = JSON.parse(localStorage.erpUser);
 
@@ -333,7 +355,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.getProject = function () {
 
         userService.showLoading($scope);
-        $scope.dataObj.requestType = $scope.requestType;
+        //alert($scope.timeRange);
+        $scope.dataObj.timeRange = $scope.timeRange;
+        $scope.dataObj.requestType = localStorage.requestType;
         $scope.dataObj.user = $scope.user;
         userService.callService($scope, "/getProject", "P").then(function (response) {
 
