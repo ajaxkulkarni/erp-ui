@@ -1041,6 +1041,11 @@ html,body{
     margin-right: 15px;
     opacity: 1;
     
+    padding-bottom: 2px;
+    border-bottom:thin solid grey;
+    float: right;
+    width:20px;
+    
 }
 
 .card_icons_updated{
@@ -1165,4 +1170,5 @@ html,body{
 .recrd_color:hover {
     opacity: 1;
 }
+
 
