@@ -303,6 +303,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
     $scope.user = JSON.parse(localStorage.erpUser);
 
+    $scope.rootUrl = projectRoot + "/getFile/";
+
     /*alert($routeParams.projectId);*/
 
     if ($routeParams.projectId != null) {
@@ -374,6 +376,25 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             localStorage.erpUser = JSON.stringify($scope.user);
 
         });
+    }
+    
+    $scope.setColor = function (color) {
+        console.log("Setting color .." + color);
+        $scope.user.currentRecord.color = color;
+    }
+
+    $scope.iconClass = function (rec, count, tab) {
+        var css = "";
+        if (count > 0) {
+            css = "card_icons_solid";
+        } else {
+            css = "card_icons";
+        }
+        if ($scope.user.currentRecord.id == rec.id && $scope.tab == tab) {
+            css = 'card_icons_selected';
+        }
+        return css;
+
     }
 
     /*$scope.getInitials = function (user, bgColor, fontColor) {

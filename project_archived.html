@@ -42,9 +42,9 @@
 
             <div class="row">
 
-            
 
-             
+
+
                 <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:right; width:330px; margin:4px 20px; height:34px;font-size:13px;" ng-change="getProject()">
                     <option value="MONTH">All Projects</option>
                     <option value="WEEK">Project1</option>
@@ -53,7 +53,7 @@
 
 
                 <!--<input id="searchText" type="text" class="txt_search" ng-model="searchText" placeholder="Search by keyword .." style="width:280px">-->
-                
+
                 <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:left; width:130px; margin:4px 20px; height:34px; font-size:13px; " ng-change="getProject()">
                     <option value="MONTH">This month</option>
                     <option value="WEEK">This week</option>
@@ -79,25 +79,8 @@
                     --><span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name}}</span>
                     <!--<span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>-->
                     <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
-                    
-                    <a ng-if="isFollowUp(rec)" style="cursor:pointer" ><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
-                    
-                    <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
-                        <label for="usr">{{user.currentRecord.titleField.name}} </label>
-                        <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
-                    </div>
 
-                    <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
-                        <label for="usr">Record Date</label>
-                        <datepicker date-format="yyyy-MM-dd">
-                            <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
-                        </datepicker>
-
-                    </div>-->
-
-                    <!---<img ng-if="rec.createdUser != null" ng-src="{{getInitials(rec.createdUser, '#B0C4DE', '#191970')}}" data-toggle="tooltip" title="Created by : {{rec.createdUser.name}}">
-
-                    <img ng-if="rec.assignedUser != null" ng-src="{{getInitials(rec.assignedUser, '#999', '#ccc')}}" data-toggle="tooltip" title="Assigned to : {{rec.assignedUser.name}}">---->
+                    <a ng-if="isFollowUp(rec)" style="cursor:pointer"><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
 
 
 
@@ -117,8 +100,8 @@
                 </div>
 
                 <div class="row" style="padding-right:10px; padding-left:10px;">
-                    
-                    
+
+
                     <div class="col-sm-{{field.type == 'LONGTEXT' ? '4' : '2'}} field-style" ng-repeat="field in rec.values">
                         <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
 
@@ -197,15 +180,15 @@
                             <input id="basic" type="text" class="form-control set_sal " ng-model="user.currentRecord.titleField.value">
 
                         </div>
-                        
-                        
+
+
                         <div class="form-group" style="margin-bottom:45px">
                             <label for="usr">Record Date (To track this record)</label>
                             <datepicker date-format="yyyy-MM-dd">
                                 <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDateString">
                             </datepicker>
                         </div>
-                        
+
                         <div class="form-group" style="margin-top:-19px">
                             <label for="usr">Follow up (By record date)&nbsp;&nbsp;</label>
                             <input type="checkbox" ng-model="user.currentRecord.followUp">
@@ -220,13 +203,13 @@
                             <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
 
                             <textarea class="form-control" ng-model="field.value" ng-if="field.type=='LONGTEXT'" maxlength="800"></textarea>
-                            
+
                             <select class="form-control forpad" ng-if="field.type=='MULTIPLE'" ng-model="field.value" class="form-control" ng-options="value for value in field.possibleValues">
                                 <option value="">Select option</option>
                         
                             </select>
                         </div>
-                       
+
 
                         <div class=" form-group">
                             <label for="pwd">Assign to (Optional) </label>
@@ -237,7 +220,7 @@
                             </select>
 
                         </div>
-                       
+
 
                         <div class=" form-group">
                             <label for="pwd">Record color (Optional) </label>
@@ -256,8 +239,8 @@
                                 <div  class=" recrd_color" style="background-color:#3CBA54;"></div>
                             </span>
                         </div>
-                        
-                      
+
+
 
 
                         <!--<h4 ng-if="user.currentRecord.id > 0"><span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Remove Record </span><span><br>Record will be added to archive folder</span></h4>-->
@@ -414,7 +397,6 @@
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
-
     </script>
 
 

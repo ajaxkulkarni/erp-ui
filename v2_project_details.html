@@ -86,33 +86,15 @@
                     
                     <a ng-if="isFollowUp(rec)" style="cursor:pointer" ><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
                     
-                    <!--<div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
-                        <label for="usr">{{user.currentRecord.titleField.name}} </label>
-                        <input id="basic" type="text" class="form-control set_sal" ng-model="user.currentRecord.titleField.value">
-                    </div>
-
-                    <div class="form-group col-sm-3" ng-if="user.currentRecord.id==rec.id">
-                        <label for="usr">Record Date</label>
-                        <datepicker date-format="yyyy-MM-dd">
-                            <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDate">
-                        </datepicker>
-
-                    </div>-->
-
-                    <!---<img ng-if="rec.createdUser != null" ng-src="{{getInitials(rec.createdUser, '#B0C4DE', '#191970')}}" data-toggle="tooltip" title="Created by : {{rec.createdUser.name}}">
-
-                    <img ng-if="rec.assignedUser != null" ng-src="{{getInitials(rec.assignedUser, '#999', '#ccc')}}" data-toggle="tooltip" title="Assigned to : {{rec.assignedUser.name}}">---->
-
-
 
                     <span>
                         <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/Archive-icon.svg" alt="back" class="card_icons" width=20px></a>
                         
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
                         
-                        <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ><img src="{{rec.fileCount > 0 ? 'imgs/attachment-clip.png' : 'imgs/attachment-clip.svg'}}" alt="back" class="{{user.currentRecord.id == rec.id && tab == 2? 'card_icons_selected': 'card_icons'}}" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ><img src="{{rec.fileCount > 0 ? 'imgs/attachment-clip.png' : 'imgs/attachment-clip.svg'}}" alt="back" ng-class="iconClass(rec, rec.fileCount, 2)" width=20px></a>
                         
-                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="{{rec.commentCount > 0 ? 'imgs/chat-bubble.png' : 'imgs/chat-bubble.svg'}}" alt="back" class="{{user.currentRecord.id == rec.id && tab == 3? 'card_icons_selected': 'card_icons'}}" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="{{rec.commentCount > 0 ? 'imgs/chat-bubble.png' : 'imgs/chat-bubble.svg'}}" alt="back" ng-class="iconClass(rec,rec.commentCount, 3)" width=20px></a>
                         <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(rec, 1)"><img src="imgs/underline-button.png" alt="back" class="{{user.currentRecord.id == rec.id && tab == 1? 'card_icons_selected': 'card_icons'}}" width=20px></a>
                     </span>
 
@@ -129,24 +111,7 @@
                             </div>
                         </div>
 
-                        <!--<div class="form-group" ng-if="user.currentRecord.id==rec.id">
-                            <label for="usr">{{field.name}} </label>
-                            <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
-                                <input type="text" class="form-control" maxlength="80" ng-model="field.value">
-                                <br>
-                            </datepicker>
-                            <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
-                        </div>-->
-
                     </div>
-
-
-                    <!--<p data-toggle="tooltip" title="Record Date" ng-if="user.currentRecord.id!=rec.id">{{rec.recordDateString}}</p>-->
-
-                    <!--<div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="cancel()">Cancel</button>
-                    </div>-->
 
 
                 </div>
@@ -172,24 +137,7 @@
 
                     </div>
                     <hr style="padding:0px;margin:0px;">
-                    <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
-                    <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
-                    <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Files</a></li>
-                    <li ng-class="{'active': tab == 3}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Comments</a></li>
-                    <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Change Log</a></li>
-                </ul>
-                <br>-->
-
-
-
-
-
-
-
-                    <!--<div class="frbtnonpg" style="border:solid;">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
-</div> -->
-
+                    
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:52vh;padding-top:0px;padding-bottom:0px; ">
 
                         <span><h5>Record created by {{user.currentRecord.createdUser.name}} on {{user.currentRecord.createdDate| date:'MMM dd'}}</h5></span>
@@ -243,19 +191,11 @@
 
                         <div class=" form-group">
                             <label for="pwd">Record color (Optional) </label>
-                            <!--<input type="emil id" class="form-control" >-->
-                            <!--<select name="color" class="form-control forpad" ng-model="user.currentRecord.color">
-                                <option value="#9B9B9B">No color</option>
-                                <option value="#DB3236">Red</option>
-                                <option value="#3CBA54">Green</option>
-                                <option value="#F4C20D">Yellow</option>
-                        
-                            </select>-->
                             <br>
                             <span>
-                                <div  class=" recrd_color" style="background-color:#DB3236;"></div>
-                                <div  class=" recrd_color" style="background-color:#F4C20D;"></div>
-                                <div  class=" recrd_color" style="background-color:#3CBA54;"></div>
+                                <div class="{{user.currentRecord.color == '#DB3236' ? 'recrd_color_solid' : 'recrd_color'}}" style="background-color:#DB3236;" ng-click="setColor('#DB3236')"></div>
+                                <div class="{{user.currentRecord.color == '#F4C20D' ? 'recrd_color_solid' : 'recrd_color'}}" style="background-color:#F4C20D;" ng-click="setColor('#F4C20D')"></div>
+                                <div class="{{user.currentRecord.color == '#3CBA54' ? 'recrd_color_solid' : 'recrd_color'}}" style="background-color:#3CBA54;" ng-click="setColor('#3CBA54')"></div>
                             </span>
                         </div>
                         

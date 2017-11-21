@@ -1024,10 +1024,15 @@ html,body{
 
 .card_icons {
     float: right;
-    
     margin-right: 15px;
     opacity: 0.2;
 
+}
+
+.card_icons_solid {
+    float: right;
+    margin-right: 15px;
+    opacity: 1;
 }
 
 .card_icons:hover {
@@ -1164,6 +1169,17 @@ html,body{
     margin: 0px 5px;
     border-radius: 1px;
     opacity: 0.4;
+    cursor: pointer;
+}
+
+.recrd_color_solid {
+    display: inline-block;
+    height: 20px;
+    width: 80px;
+    margin: 0px 5px;
+    border-radius: 1px;
+    opacity: 1;
+    cursor: pointer;
 }
 
 
