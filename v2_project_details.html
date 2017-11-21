@@ -45,7 +45,7 @@
                 <span ng-if="user.currentProject.fields.length > 0 && user.currentProject.accessRights.recordAccess"><img src="imgs/Just_icons/add_recordicon.svg" alt="back" class="fade_hover" id="adbtn2" width=32px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
 
 
-                <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/Just_icons/add_columnicon.svg" alt="back" class="fade_hover" id="adbtn2" width="24px" title="Add Column" style="float:left;margin-top:1px;" ></span></a>
+                <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/Just_icons/add_columnicon.svg" alt="back" class="fade_hover" id="adbtn2" width="32px" title="Add Column" style="float:left;margin-top:3px;" ></span></a>
 
 
                 <span ng-click="downloadExcel()" style="cursor:pointer"><img src="imgs/Just_icons/excelicon.svg" alt="back" class="fade_hover" width=30px id="exl_icon"></span>
@@ -105,7 +105,8 @@
 
 
                     <span>
-                        <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/trash1600.png" alt="back" class="card_icons" width=22px></a>
+                        <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/Archive-icon.svg" alt="back" class="card_icons" width=20px></a>
+                        
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 2)"><img src="{{rec.fileCount > 0 ? 'imgs/attachment-clip.png' : 'imgs/attachment-clip.svg'}}" alt="back" class="{{user.currentRecord.id == rec.id && tab == 2? 'card_icons_selected': 'card_icons'}}" width=20px></a>
                         
