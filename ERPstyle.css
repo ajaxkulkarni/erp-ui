@@ -1070,6 +1070,7 @@ html,body{
     display: block;
     margin-bottom: 15px;
     margin-left: 100px;
+    margin-right: 100px;
 }
 
 #card_date_postion {
@@ -1164,3 +1165,4 @@ html,body{
 .recrd_color:hover {
     opacity: 1;
 }
+
