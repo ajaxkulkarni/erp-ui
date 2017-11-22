@@ -246,6 +246,7 @@ h4{
     display: block;
     margin-bottom: 0px;
    z-index: 0;
+
 }
 .txtdas{
     margin-top: 10px;
@@ -1190,6 +1191,10 @@ html,body{
 .recrd_color:hover {
     opacity: 1;
 }
+
+
+
+
 
 
 
