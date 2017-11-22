@@ -61,6 +61,7 @@ h4{
     margin-bottom: 0px;
     box-shadow: 0 0 5px rgb(200,200,200); 
     background-color: white;
+    z-index: 1;
 }
 
 .lis1{
@@ -244,7 +245,7 @@ h4{
     padding-bottom: 20px;
     display: block;
     margin-bottom: 0px;
-   
+   z-index: 0;
 }
 .txtdas{
     margin-top: 10px;
@@ -650,7 +651,7 @@ html,body{
 
 .bckgrclr {
     /*background-color: rgb(227,228,229);!important*/
-    background-color: rgb(242,242,242);!important
+    background-color: rgb(245,245,245);!important
     padding: none;
     margin: 0px;
     z-index: -3;
@@ -665,7 +666,8 @@ html,body{
     padding-bottom: 5px;
     background-color: white;
     margin-bottom: 3px;
-    box-shadow: 0 0 5px rgb(200,200,200); 
+    /*box-shadow: 0 0 5px rgb(200,200,200);*/
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12)
     
     
 }
