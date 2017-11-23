@@ -78,8 +78,8 @@ h4{
     text-align: right;
     color: rgb(64,64,64);
     padding:5px 25px;
-    margin: auto;
-   
+    
+   margin-bottom: 0px;!important
     
 }
 
@@ -246,6 +246,7 @@ h4{
     display: block;
     margin-bottom: 0px;
    z-index: 0;
+    margin-top: 25px;
 
 }
 .txtdas{
@@ -355,6 +356,7 @@ h4{
 .btnsty {
   border: none;
   background: none;
+    margin-bottom: 0px;!important
 }
 
 dropdown-menu:hover{
@@ -627,7 +629,7 @@ html,body{
     text-decoration: none !important;
     float: right;
     text-align: right;
-    height: 70px;
+    height: 45px;
     width: 150px;
     
     color: rgb(130,130,130);
