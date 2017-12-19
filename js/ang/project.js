@@ -319,11 +319,19 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     }
 
     $scope.downloadExcel = function () {
+        
+        var project = {
+            id: $scope.user.currentProject.id,
+            title: $scope.user.currentProject.title,
+            fields: $scope.user.currentProject.fields,
+            records: $scope.filteredRecords
+        }
+        
         console.log("Calling .." + projectRoot + "/downloadProjectData");
         $http({
             url: projectRoot + "/downloadProjectData",
             method: "POST",
-            data: $scope.user.currentProject, //this is your json data string
+            data: project, //this is your json data string
             headers: {
                 'Content-type': 'application/json'
             },
@@ -345,6 +353,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
         }).error(function (data, status, headers, config) {
             //upload failed
+            console.log(data);
             console.log("Error!!!" + data);
         });
     }
@@ -353,6 +362,28 @@ angular.module("app").controller('projectDetails', function ($scope, userService
 
     $scope.mainDiv = 12;
 
+    $scope.projectNames = [];
+
+    function hasAdded(str) {
+        if(str == null) {
+            return true;
+        }
+        for (var j = 0; j < $scope.projectNames.length; j++) {
+            if ($scope.projectNames[j].match(str)) return true;
+        }
+        return false;
+    }
+
+    function addProjectNames() {
+        if ($scope.user == null || $scope.user.currentProject == null || $scope.user.currentProject.records == null) {
+            return;
+        }
+        $scope.user.currentProject.records.forEach(function (rec) {
+            if (!hasAdded(rec.projectName)) {
+                $scope.projectNames.push(rec.projectName);
+            }
+        });
+    }
 
     $scope.getProject = function () {
 
@@ -375,9 +406,11 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }*/
             localStorage.erpUser = JSON.stringify($scope.user);
 
+            addProjectNames();
+
         });
     }
-    
+
     $scope.setColor = function (color) {
         console.log("Setting color .." + color);
         $scope.user.currentRecord.color = color;
@@ -624,8 +657,9 @@ angular.module("app").controller('projectDetails', function ($scope, userService
                 user: JSON.stringify(user)
             }
         }).then(function (resp) {
+                console.log(resp.data);
                 userService.showResponse($scope, "File Uploaded successfully!");
-                $scope.user.currentRecord.files.push(response.user.currentRecord.file);
+                $scope.user.currentRecord.files.push(resp.data.user.currentRecord.file);
                 $scope.user.currentRecord.fileCount = $scope.user.currentRecord.files.length;
                 updateFileComments();
             },
@@ -678,6 +712,14 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         return true;
     };
 
+    $scope.filterProjects = function (record) {
+        console.log(record.projectName + " == " + $scope.selectedProject);
+        if (record.projectName != null && $scope.selectedProject != null && $scope.selectedProject.trim().length > 0 && $scope.selectedProject != record.projectName) {
+            return false;
+        }
+        return true;
+    }
+
     $scope.isFollowUp = function (rec) {
         if (!rec.followUp) {
             return false;
@@ -688,7 +730,6 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         var yyyy = today.getFullYear();
         var dateString = yyyy + "-" + mm + "-" + dd;
         if (dateString != rec.recordDateString) {
-            console.log("False!!" + dateString + " != " + rec.recordDateString);
             return false;
         }
         return true;
