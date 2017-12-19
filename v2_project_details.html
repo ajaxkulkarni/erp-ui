@@ -1,7 +1,5 @@
 <!doctype html>
-<html style="height:100%;">
 
-<head style="height:100%;">
 
 </head>
 
@@ -11,7 +9,7 @@
 
 
 
-    <div class="container-fluid htpag" style="height:100%;">
+    <div class="container-fluid" style="max-height:100%; ">
 
 
         <div ng-include="'response.html'"></div>
@@ -38,7 +36,8 @@
 
         </div>
 
-        <span>No of records - {{filteredRecords.length}} </span>
+        <span style="float:right; font-size:13px;margin-top:-19px;padding-botton:5px;opacity:0.5;">{{filteredRecords.length}} Records found</span>
+        
 
         <div class="col-sm-12 makpg Proj_top_tab">
 
