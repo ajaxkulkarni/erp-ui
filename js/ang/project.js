@@ -308,6 +308,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     /*alert($routeParams.projectId);*/
 
     if ($routeParams.projectId != null) {
+        localStorage.requestType = "";
         $scope.user.currentProject = {
             id: $routeParams.projectId
         }
@@ -589,16 +590,17 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         userService.callService($scope, "/updateComment", "P").then(function (response) {
             userService.initLoader($scope);
             $scope.response = response;
-            userService.showResponse($scope, "Comment added successfully!!");
+            //userService.showResponse($scope, "Comment added successfully!!");
             if ($scope.response == null || $scope.response.status != 200) {
                 return;
             }
 
-            $scope.user.currentRecord.comments.push(response.user.currentRecord.comment);
+            $scope.user.currentRecord.comments.unshift(response.user.currentRecord.comment);
             //$scope.$apply();
             $scope.user.currentRecord.commentCount = $scope.user.currentRecord.comments.length;
-            console.log("Comments length:" + $scope.user.currentRecord.comments.length + ":" + $scope.user.currentRecord.commentCount);
+            //console.log("Comments length:" + $scope.user.currentRecord.comments.length + ":" + $scope.user.currentRecord.commentCount);
             updateRecordComments();
+            $scope.user.currentRecord.comment.comment = "";
 
         });
     }
@@ -659,7 +661,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         }).then(function (resp) {
                 console.log(resp.data);
                 userService.showResponse($scope, "File Uploaded successfully!");
-                $scope.user.currentRecord.files.push(resp.data.user.currentRecord.file);
+                $scope.user.currentRecord.files.unshift(resp.data.user.currentRecord.file);
                 $scope.user.currentRecord.fileCount = $scope.user.currentRecord.files.length;
                 updateFileComments();
             },
