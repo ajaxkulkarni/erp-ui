@@ -515,7 +515,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
         $("#deleteRecord").modal('show');
 
     };
-
+    
+   
     $scope.deleteCurrentRecord = function () {
         $("#deleteRecord").modal('hide');
         userService.showLoading($scope);
@@ -534,7 +535,37 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             $scope.deleteRecord = null;
         });
     };
+    
+     $scope.showRestoreRecord = function (rec) {
+        console.log("Restoring record .." + rec);
+        $scope.restoreRecord = rec;
+        //$scope.user.currentRecord = $scope.deleteRecord;
+        $scope.restoreRecord.status = 'A';
+        $("#restoreRecord").modal('show');
 
+    };
+
+
+    $scope.restoreCurrentRecord = function () {
+        $("#restoreRecord").modal('hide');
+        userService.showLoading($scope);
+        $scope.dataObj.user = $scope.user;
+        $scope.dataObj.user.currentRecord = $scope.restoreRecord;
+        userService.callService($scope, "/restoreRecord", "P").then(function (response) {
+            userService.initLoader($scope);
+            $scope.response = response;
+            userService.showResponse($scope, "Record restored successfully!!");
+            if ($scope.response == null || $scope.response.status != 200) {
+                return;
+            }
+            var index = $scope.user.currentProject.records.indexOf($scope.restoreRecord);
+            $scope.user.currentProject.records.splice(index, 1);
+            $scope.cancel();
+            $scope.restoreRecord = null;
+        });
+    };
+
+    
     /*$scope.showDelete = function (file) {
         $scope.user.currentRecord.file = {
             id: file.id,

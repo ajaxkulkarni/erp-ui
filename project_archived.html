@@ -87,11 +87,11 @@
 
 
                     <span>
-                        <a ng-if="rec.id != null" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/trash1600.png" alt="back" class="card_icons" width=23px style="margin-top:-1px;"></a>
+                        <!--<a ng-if="rec.id != null" style="cursor:pointer" ng-click="showRestoreRecord(rec)"><img src="imgs/trash1600.png" alt="back" class="card_icons" width=23px style="margin-top:-1px;"></a>-->
                         
                         <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
                         
-                        <a  style="cursor:pointer" n><img src="imgs/restore_record.svg"  class="card_icons" width=20px></a>
+                        <a style="cursor:pointer" ng-click="showRestoreRecord(rec)" tooltip="Restore record"><img src="imgs/restore_record.svg"  class="card_icons" width=20px></a>
                         
                         <!--<a style="cursor:pointer" ng-click="selectRecord(rec, 2)"><img src="{{rec.fileCount > 0 ? 'imgs/attachment-clip.png' : 'imgs/attachment-clip.svg'}}" alt="back" class="{{user.currentRecord.id == rec.id && tab == 2? 'card_icons_selected': 'card_icons'}}" width=20px></a>
                         
@@ -362,9 +362,7 @@
     </div>
 
 
-
-
-    <div id="deleteRecord" class="modal fade" role="dialog">
+    <div id="restoreRecord" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
@@ -374,13 +372,13 @@
 
                 </div>
                 <div class="modal-body">
-                    <p style="font-size:17px;">Are you sure you want to remove this record <br>({{deleteRecord.titleField.name}})? <br> All the data related to this record will be archived.</p>
+                    <p style="font-size:15px;">Are you sure you want to restore this record <br>({{restoreRecord.titleField.value}})? <br> All the data related to this record will be restored back to the project.</p>
                     <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
                 </div>
                 <div class="modal-footer" style="border:none">
                     <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
 
-                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="deleteCurrentRecord()">Remove</button>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="restoreCurrentRecord()">Restore</button>
                     <!-- <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">OK</button>-->
 
                 </div>
@@ -388,9 +386,6 @@
 
         </div>
     </div>
-
-
-
 
 
 

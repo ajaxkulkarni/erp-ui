@@ -31,13 +31,13 @@
 
         <div class="row" style="">
             <div class="col-sm-12">
-                <h2 class="pghdgs" > {{user.currentProject.title}}</h2>
+                <h2 class="pghdgs"> {{user.currentProject.title}}</h2>
             </div>
 
         </div>
 
         <span style="float:right; font-size:13px;margin-top:-19px;padding-botton:5px;opacity:0.5;">{{filteredRecords.length}} Records found</span>
-        
+
 
         <div class="col-sm-12 makpg Proj_top_tab">
 
@@ -54,8 +54,8 @@
                 <a href="#projectMailSettings"><span ><img src="imgs/Just_icons/send-button.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
 
                 <a ng-if="user.currentProject.accessRights.projectAccess" href="#myProject"><span ><img src="imgs/Just_icons/settings-cogwheel-button.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
-                
-                
+
+
 
                 <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:right; width:130px; margin:4px 20px; height:34px; font-size:13px; " ng-change="getProject()">
                     <option value="MONTH">This month</option>
@@ -66,10 +66,10 @@
 
                 <!--<input id="searchText" type="text" class="txt_search" ng-model="searchText" placeholder="Search by keyword .." style="width:280px">-->
 
-                <tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false" >
+                <tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
                 </tags-input>
-                
-                
+
+
 
 
             </div>
@@ -86,9 +86,9 @@
                     --><span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name}}</span>
                     <!--<span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>-->
                     <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
-                    
-                    <a ng-if="isFollowUp(rec)" style="cursor:pointer" ><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
-                    
+
+                    <a ng-if="isFollowUp(rec)" style="cursor:pointer"><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
+
 
                     <span>
                         <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/Archive-icon.svg" alt="back" class="card_icons" width=20px></a>
@@ -104,8 +104,8 @@
                 </div>
 
                 <div class="row" style="padding-right:10px; padding-left:10px;">
-                    
-                    
+
+
                     <div class="col-sm-{{field.type == 'LONGTEXT' ? '4' : '2'}} field-style" ng-repeat="field in rec.values">
                         <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
 
@@ -140,7 +140,7 @@
 
                     </div>
                     <hr style="padding:0px;margin:0px;">
-                    
+
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:52vh;padding-top:0px;padding-bottom:0px; ">
 
                         <span><h5>Record created by {{user.currentRecord.createdUser.name}} on {{user.currentRecord.createdDate| date:'MMM dd'}}</h5></span>
@@ -150,15 +150,15 @@
                             <input id="basic" type="text" class="form-control set_sal " ng-model="user.currentRecord.titleField.value">
 
                         </div>
-                        
-                        
+
+
                         <div class="form-group" style="margin-bottom:45px">
                             <label for="usr">Record Date (To track this record)</label>
                             <datepicker date-format="yyyy-MM-dd">
                                 <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDateString">
                             </datepicker>
                         </div>
-                        
+
                         <div class="form-group" style="margin-top:-19px">
                             <label for="usr">Follow up (By record date)&nbsp;&nbsp;</label>
                             <input type="checkbox" ng-model="user.currentRecord.followUp">
@@ -173,13 +173,13 @@
                             <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
 
                             <textarea class="form-control" ng-model="field.value" ng-if="field.type=='LONGTEXT'" maxlength="800"></textarea>
-                            
+
                             <select class="form-control forpad" ng-if="field.type=='MULTIPLE'" ng-model="field.value" class="form-control" ng-options="value for value in field.possibleValues">
                                 <option value="">Select option</option>
                         
                             </select>
                         </div>
-                       
+
 
                         <div class=" form-group">
                             <label for="pwd">Assign to (Optional) </label>
@@ -190,7 +190,7 @@
                             </select>
 
                         </div>
-                       
+
 
                         <div class=" form-group">
                             <label for="pwd">Record color (Optional) </label>
@@ -201,8 +201,8 @@
                                 <div class="{{user.currentRecord.color == '#3CBA54' ? 'recrd_color_solid' : 'recrd_color'}}" style="background-color:#3CBA54;" ng-click="setColor('#3CBA54')"></div>
                             </span>
                         </div>
-                        
-                      
+
+
 
 
                         <!--<h4 ng-if="user.currentRecord.id > 0"><span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Remove Record </span><span><br>Record will be added to archive folder</span></h4>-->
@@ -334,7 +334,7 @@
 
                 </div>
                 <div class="modal-body">
-                    <p style="font-size:15px;">Are you sure you want to remove this record <br>({{deleteRecord.titleField.name}})? <br> All the data related to this record will be archived.</p>
+                    <p style="font-size:15px;">Are you sure you want to remove this record <br>({{deleteRecord.titleField.value}})? <br> All the data related to this record will be archived.</p>
                     <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
                 </div>
                 <div class="modal-footer" style="border:none">
@@ -348,8 +348,6 @@
 
         </div>
     </div>
-
-
 
 
 
