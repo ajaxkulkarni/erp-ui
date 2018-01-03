@@ -163,7 +163,7 @@ h4{
     float: right;
     margin-top: 5px;
     margin-bottom: 20px;
-    border-radius:3px;
+    border-radius:5px;
     font-size: 15px;
     
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
@@ -670,8 +670,8 @@ html,body{
     background-color: white;
     margin-bottom: 3px;
     /*box-shadow: 0 0 5px rgb(200,200,200);*/
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12)
-    
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+     border-radius: 5px;
     
 }
 
