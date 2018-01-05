@@ -1115,7 +1115,7 @@ html,body{
     border: solid;
     border-width: solid;
      border-color:rgb(200,200,200);
-
+}
 .time_dropdown {
     
 }
@@ -1124,5 +1124,7 @@ html,body{
     float:right; 
     width:10%; 
     margin:6px 20px; 
-    height:35px;"
+    height:35px;
 }
+
+

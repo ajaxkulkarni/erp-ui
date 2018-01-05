@@ -1201,3 +1201,17 @@ html,body{
 
 
 
+
+
+
+.mb_side_card {
+    margin: 5px;
+    min-height: 50px;
+}
+
+.mb_top_card_text {
+    margin-top:-12px;
+    margin-left: 8px;
+    color: rgb(0,140,255);
+    width: 85%;
+}
