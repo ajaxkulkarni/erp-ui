@@ -234,7 +234,7 @@ app.config(function ($routeProvider) {
             templateUrl: "help.html",
             controller: "help"
         })
-        .when("ls", {
+        .when("/myProjects", {
             templateUrl: "dashboard_projects.html",
             controller: "projects"
         })
