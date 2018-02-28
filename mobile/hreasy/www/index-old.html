@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="ERPstyle.css">
     <link href='http://fonts.googleapis.com/css?family=Nato<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="http://hreasy.in/js/angular.min.js"></script>
-    
-   <script type="text/javascript" src="http://hreasy.in/js/angular-route.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
 
-    <script type="text/javascript" src="http://hreasy.in/js/ang/main.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
 
-    <script type="text/javascript" src="http://hreasy.in/js/ang/subscribe.js"></script>
+    <script type="text/javascript" src="js/ang/main.js"></script>
+
+    <script type="text/javascript" src="js/ang/subscribe.js"></script>
 
 
 
@@ -44,7 +44,7 @@
                 <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
 
                 <div class="dropdown lis2">
-                    <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="http://hreasy.in/imgs/menu-alt-512.png" alt="logo" style: width="40px"></span>
+                    <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></span>
                     </button>
                     <ul class="dropdown-menu ">
                         <li><a href="#">Get in touch</a></li>
@@ -62,7 +62,7 @@
             <li><a href="login.html" ng-click="goToLogin()" class="logintx">Login</a></li>
         </ul>
         <div class="navba">
-            <img id="logo" src="http://hreasy.in/imgs/logonew.png" alt="logo" style: width="130px">
+            <img id="logo" src="imgs/logonew.svg" alt="logo" style: width="130px">
         </div>
 
     </nav>
@@ -72,29 +72,23 @@
     <div class="container">
 
 
-        <div class="row splashline">
-            
-            <img src="http://hreasy.in/imgs/space-desk-workspace-coworking.jpg" alt="team" width=1150>
-            
-        </div>
-            
-            <div class="col-sm-12  ">
-            
+        <div class="row  backg splashline">
+            <div class="col-sm-6 col-sm-offset-3 ">
 
-                <h1><span><strong id="spltxt">HR made easy</strong></span></h1>
+                <h1 id="spltxt"><strong>HR made easy</strong></h1>
 
-                <h3 id="splinfo"><span>Cloud based talent and leave management portal for <br>medium and small enterprises</span></h3>
+                <h3 id="splinfo"><span>Cloud based talent and leave management portal for mediume and small enterprises</span></h3>
             </div>
 
-        
+        </div>
 
 
-        <div class="row ">
+        <div class="row backg">
             <div class="col-sm-2 col-sm-offset-3 teamim ">
-                
+                <img src="imgs/team.png" alt="team" height=180px>
             </div>
             <div class="col-sm-4  teamtxt">
-                <h3><span><strong>Employee data management<br></strong>Keep track of employee data in a easy to access and search format</span></h3>
+                <h3><span><strong>Employee data management</br></strong>Keep track of employee data in a easy to access and search format</span></h3>
 
             </div>
 
@@ -104,7 +98,7 @@
                 <img src="imgs/calendar.png" alt="team" height=150px width=180px>
             </div>
             <div class="col-sm-4  teamtxt">
-                <h3><span><strong>Employee leave management<br></strong>Online leave appliction with leave tracking and report generation</span></h3>
+                <h3><span><strong>Employee leave management</br></strong>Online leave appliction with leave tracking and report generation</span></h3>
 
             </div>
 
@@ -121,21 +115,21 @@
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
                 <ng-form name="subscribeForm">
-                <div class="form-group fcont">
-                    <label for="usr">Name</label>
-                    <input type="text" class="form-control" name="user" id="usr" ng-model="user.name" ng-required="true">
-                    <p ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</p>
-                </div>
-                <div class=" form-group">
-                    <label for="pwd">Email id</label>
-                    <input type="email" class="form-control" name="email" ng-model="user.email" ng-required="true">
-                    <p ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</p>
-                </div>
-                <div class=" form-group">
-                    <label for="usr">Contact number</label>
-                    <input type="contact number" class="form-control" name="phone" ng-model="user.phone" ng-required="true">
-                    <p ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter valid phone number</p>
-                </div>
+                    <div class="form-group fcont">
+                        <label for="usr">Name</label>
+                        <input type="text" class="form-control" name="user" id="usr" ng-model="user.name" ng-required="true">
+                        <p ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="pwd">Email id</label>
+                        <input type="email" class="form-control" name="email" ng-model="user.email" ng-required="true">
+                        <p ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</p>
+                    </div>
+                    <div class=" form-group">
+                        <label for="usr">Contact number</label>
+                        <input type="contact number" class="form-control" name="phone" ng-model="user.phone" ng-required="true">
+                        <p ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter valid phone number</p>
+                    </div>
                     <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="subscribeUser(subscribeForm.$valid)">Get Free Trial</button>
                 </ng-form>
             </div>
@@ -148,7 +142,7 @@
 
 
 
-    <script src="http://hreasy.in/js/angular-datepicker.js"></script>
+    <script src="js/angular-datepicker.js"></script>
 
 
     <!-- Latest compiled and minified JavaScript -->
@@ -166,7 +160,7 @@
   </div>
 </div>--->
 
-    <div id="foo" ></div>
+    <div id="foo"></div>
 </footer>
 
 </html>

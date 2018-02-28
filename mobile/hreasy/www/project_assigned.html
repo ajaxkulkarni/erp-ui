@@ -1,5 +1,7 @@
 <!doctype html>
+<html style="height:100%;">
 
+<head style="height:100%;">
 
 </head>
 
@@ -9,12 +11,13 @@
 
 
 
-    <div class="container-fluid" style="max-height:100%; ">
+    <div class="container-fluid htpag" style="height:100%;">
 
 
         <div ng-include="'response.html'"></div>
-        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
         <a href="#myProjects"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
+
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
 
 
 
@@ -23,7 +26,7 @@
 
             <a href="#myProjects"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
 
-       
+            <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
 
 
         </div>-->
@@ -31,43 +34,49 @@
 
         <div class="row" style="">
             <div class="col-sm-12">
-                <h2 class="pghdgs"> {{user.currentProject.title}}</h2>
+                <h2 class="pghdgs" style="z-index:-1;"> My Records </h2>
             </div>
 
         </div>
 
-        <span style="float:right; font-size:13px;margin-top:-19px;padding-botton:5px;opacity:0.5;">{{filteredRecords.length}} Records found</span>
 
 
         <div class="col-sm-12 makpg Proj_top_tab">
 
             <div class="row">
 
-                <span ng-if="user.currentProject.fields.length > 0 && user.currentProject.accessRights.recordAccess"><img src="imgs/Just_icons/add_recordicon.svg" alt="back" class="fade_hover" id="adbtn2" width=32px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
+                <!--<span><img src="imgs/n_Add_task.svg" alt="back" class="fade_hover" id="adbtn2" width=40px ng-click="addNew()" title="Add Record" style="cursor:pointer; float:left;"></span>
 
 
-                <a href="#projectStructure" ng-if="user.currentProject.accessRights.projectAccess"><span><img src="imgs/Just_icons/add_columnicon.svg" alt="back" class="fade_hover" id="adbtn2" width="32px" title="Add Column" style="float:left;margin-top:3px;" ></span></a>
-
-
-                <span ng-click="downloadExcel()" style="cursor:pointer"><img src="http://hreasy.in/imgs/Just_icons/excelicon.svg" alt="back" class="fade_hover" width=30px id="exl_icon"></span>
-
-                <a href="#projectMailSettings"><span ><img src="imgs/Just_icons/send-button.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
-
-                <a ng-if="user.currentProject.accessRights.projectAccess" href="#myProject"><span ><img src="http://hreasy.in/imgs/Just_icons/settings-cogwheel-button.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
+                <a href="#projectStructure"><span><img src="imgs/n_Add_column.svg" alt="back" class="fade_hover" id="adbtn2" width="40px" title="Add Column" style="float:left;" ></span></a>-->
 
 
 
-                <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:right; width:130px; margin:4px 20px; height:34px; font-size:13px; " ng-change="getProject()">
-                    <option value="MONTH">This month</option>
-                    <option value="WEEK">This week</option>
-                    <option value="ALL">All time</option>
+                <!--<a href="#projectMailSettings"><span ><img src="imgs/send_mail.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>
+
+                <a href="#myProject"><span ><img src="imgs/n_add_settings.svg" class="fade_hover" alt="back" width=40px id="exl_icon"></span></a>-->
+
+                <select name="timeRange" class="form-control text-right" ng-model="selectedProject" style="float:right; width:200px; margin:4px 20px; height:34px;font-size:13px;">
+                    <!--<option value="MONTH">All Projects</option>
+                    <option value="WEEK">Project1</option>
+                    <option value="ALL">Project 2</option>-->
+                    <option value="">All Projects</option>
+                    <option value="{{name}}" ng-repeat="name in projectNames">{{name}}</option>
                 </select>
 
 
                 <!--<input id="searchText" type="text" class="txt_search" ng-model="searchText" placeholder="Search by keyword .." style="width:280px">-->
 
+                <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:left; width:130px; margin:4px 20px; height:34px; font-size:13px; " ng-change="getProject()">
+                    <option value="MONTH">This month</option>
+                    <option value="WEEK">This week</option>
+                    <option value="ALL">All time</option>
+                </select>
+
                 <tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
                 </tags-input>
+
+
 
 
 
@@ -76,12 +85,13 @@
         </div>
 
         <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:70vh">
-            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;border-color:{{rec.color != null ? rec.color : '#9B9B9B'}}" ng-repeat="rec in user.currentProject.records|filter:filterRecords as filteredRecords">
+
+            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;border-color:{{rec.color != null ? rec.color : '#9B9B9B'}}" ng-repeat="rec in user.currentProject.records|filter:filterRecords|filter:filterProjects">
 
                 <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
 
                     <span data-toggle="tooltip" title="Record ID" style="float:left">{{rec.id}}.&nbsp;</span>
-                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900; {{user.currentRecord.id == rec.id ? 'color:#4885ed' : ''}}">{{rec.titleField.value}}</span>
+                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900; {{user.currentRecord.id == rec.id ? 'color:#4885ed' : ''}}">{{rec.titleField.value}} | {{rec.projectName}}</span>
                     <!--<span data-toggle="tooltip" title="Created By: {{rec.createdUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.createdUser.name}}</span>
                     --><span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name}}</span>
                     <!--<span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>-->
@@ -90,15 +100,17 @@
                     <a ng-if="isFollowUp(rec)" style="cursor:pointer"><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
 
 
+
                     <span>
-                        <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="imgs/Archive-icon.svg" alt="back" class="card_icons" width=20px></a>
+                        <a ng-if="rec.id != null"  ng-if="rec.rights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="http://hreasy.in/imgs/Archive-icon.svg" alt="back" class="card_icons" width=20px></a>
                         
-                        <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="http://hreasy.in/imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
                         
-                        <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ><img src="{{rec.fileCount > 0 ? 'imgs/attachment-clip.png' : 'imgs/attachment-clip.svg'}}" alt="back" ng-class="iconClass(rec, rec.fileCount, 2)" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ><img src="{{rec.fileCount > 0 ? 'http://hreasy.in/imgs/attachment-clip.png' : 'http://hreasy.in/imgs/attachment-clip.svg'}}" alt="back" ng-class="iconClass(rec, rec.fileCount, 2)" width=20px></a>
                         
-                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="{{rec.commentCount > 0 ? 'imgs/chat-bubble.png' : 'imgs/chat-bubble.svg'}}" alt="back" ng-class="iconClass(rec,rec.commentCount, 3)" width=20px></a>
-                        <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(rec, 1)"><img src="imgs/underline-button.png" alt="back" class="{{user.currentRecord.id == rec.id && tab == 1? 'card_icons_selected': 'card_icons'}}" width=20px></a>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="{{rec.commentCount > 0 ? 'http://hreasy.in/imgs/chat-bubble.png' : 'http://hreasy.in/imgs/chat-bubble.svg'}}" alt="back" ng-class="iconClass(rec,rec.commentCount, 3)" width=20px></a>
+                        
+                        <a style="cursor:pointer" ng-if="rec.rights.recordAccess" ng-click="selectRecord(rec, 1)"><img src="http://hreasy.in/imgs/underline-button.png" alt="back" class="{{user.currentRecord.id == rec.id && tab == 1? 'card_icons_selected': 'card_icons'}}" width=20px></a>
                     </span>
 
                 </div>
@@ -114,7 +126,24 @@
                             </div>
                         </div>
 
+                        <!--<div class="form-group" ng-if="user.currentRecord.id==rec.id">
+                            <label for="usr">{{field.name}} </label>
+                            <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
+                                <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+                                <br>
+                            </datepicker>
+                            <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+                        </div>-->
+
                     </div>
+
+
+                    <!--<p data-toggle="tooltip" title="Record Date" ng-if="user.currentRecord.id!=rec.id">{{rec.recordDateString}}</p>-->
+
+                    <!--<div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="cancel()">Cancel</button>
+                    </div>-->
 
 
                 </div>
@@ -126,7 +155,7 @@
 
         <div class="col-sm-4 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px; height:70vh; padding-bottom: 0px;" ng-if="user.currentRecord.id != null">
             <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px;position:relative;padding-top:15px; ">
-                <span ><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                <span><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="http://hreasy.in/imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
 
 
                 <div class="tab-content" style="" ng-show="tab==1">
@@ -140,6 +169,23 @@
 
                     </div>
                     <hr style="padding:0px;margin:0px;">
+                    <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
+                    <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
+                    <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Files</a></li>
+                    <li ng-class="{'active': tab == 3}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Comments</a></li>
+                    <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Change Log</a></li>
+                </ul>
+                <br>-->
+
+
+
+
+
+
+
+                    <!--<div class="frbtnonpg" style="border:solid;">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
+</div> -->
 
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:52vh;padding-top:0px;padding-bottom:0px; ">
 
@@ -194,6 +240,7 @@
 
                         <div class=" form-group">
                             <label for="pwd">Record color (Optional) </label>
+                            
                             <br>
                             <span>
                                 <div class="{{user.currentRecord.color == '#DB3236' ? 'recrd_color_solid' : 'recrd_color'}}" style="background-color:#DB3236;" ng-click="setColor('#DB3236')"></div>
@@ -221,8 +268,8 @@
 
 
 
-                    <div class="row ropad" style="margin-bottom:-35px; margin-top:-5px;">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess">
+                    <div class="row ropad grrow" style="margin:5px; padding-bottom:0px;">
+                        <div class="form-group" ng-if="rec.rights.fileAccess">
                             <h4><span>Upload file and write a brief discription</span></h4>
 
                             <div id="upload_profile_picture_div">
@@ -231,7 +278,7 @@
                                     <strong style="cursor: pointer">Select File</strong> </div>
 
                             </div>
-                            <hr style="margin-top:3px;margin-bottom:3px; opacity:0.1;">
+                            <br>
 
                             <label for="usr">File Name</label>
                             <input type="text" class="form-control set_sal" ng-model="user.currentRecord.file.fileName">
@@ -241,8 +288,6 @@
                         </div>
 
                     </div>
-                    
-                    <hr>
 
 
 
@@ -265,7 +310,7 @@
                 <div class="tab-content" ng-show="tab==3">
 
                     <div class="row ropad">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess">
+                        <div class="form-group" ng-if="rec.rights.commentAccess">
 
                             <label for="comment">Add Comment:</label>
                             <textarea class="form-control" rows="3" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
@@ -278,7 +323,7 @@
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:36.5vh; ">
 
                         <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
-                            <h6><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h6>
+                            <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>
                             <h4><span>{{comment.comment}}</span></h4>
                         </div>
 
@@ -336,7 +381,7 @@
 
                 </div>
                 <div class="modal-body">
-                    <p style="font-size:15px;">Are you sure you want to remove this record <br>({{deleteRecord.titleField.value}})? <br> All the data related to this record will be archived.</p>
+                    <p style="font-size:17px;">Are you sure you want to remove this record <br>({{deleteRecord.titleField.value}})? <br> All the data related to this record will be archived.</p>
                     <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
                 </div>
                 <div class="modal-footer" style="border:none">
@@ -355,15 +400,16 @@
 
 
 
+
+
     <script>
         $(document).ready(function() {
             $('[data-toggle="tooltip"]').tooltip();
         });
-
     </script>
 
 
-    <script src="js/angular-datepicker.js"></script>
+    <script src="http://hreasy.in/js/angular-datepicker.js"></script>
 
 
 

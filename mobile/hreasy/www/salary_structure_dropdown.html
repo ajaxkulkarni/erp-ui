@@ -7,17 +7,20 @@
 
 
     <div class="container-fluid">
+        
+        <a href="#salary"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
 
-        <div class="row tpband">
+        <!--<div class="row tpband">
             <div class="col-sm-12 ">
                 <a href="#salary"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
                 
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 ">
+            <div class="col-sm-8 col-sm-offset-2 ">
                 <h2 class="pghdgs">Set salary structure</h2>
             </div>
         </div>
@@ -25,7 +28,7 @@
         <div ng-include="'response.html'"></div>
 
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 makpg">
+            <div class="col-sm-8 col-sm-offset-2 makpg">
                 
                 
                 <div class="row ropad">
@@ -51,7 +54,7 @@
                     </select>
                      <p ng-show="allowanceError && !allowance" style="color:red">Please select a value</p>
                 </div>
-                <button type="button" class="btn  btn-xs adbtun " ng-click="add('add')"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add allowance" ></span></button>
+                <button type="button" class="btn  btn-xs adbtun " ng-click="add('add')" style="box-shadow:none;"><span><img src="http://hreasy.in/imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add allowance" ></span></button>
                 
                     
                 </div>
@@ -64,8 +67,8 @@
                 <div class="row" ng-repeat="salary in user.company.salaryInfo">
                     <div class="levcard2 crcompt" ng-show="salary.type == 'add'">
 
-                        <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
-                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                        <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)" style="box-shadow:none;">
+                            <span><img src="http://hreasy.in/imgs/clear-button.png" alt="back" id="closbtn" width=15px  ></span>&nbsp;
                         </button>
 
                         <div class=" form-group forpad">
@@ -109,7 +112,7 @@
                     </select>
                     <p ng-show="deductionError && !deduction"  style="color:red">Please select a value</p>
                 </div>
-                <button type="button" class="btn  btn-xs adbtun" ng-click="add('sub')"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add deduction"></span></button>
+                <button type="button" class="btn  btn-xs adbtun" ng-click="add('sub')" style="box-shadow:none;"><span><img src="http://hreasy.in/imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add deduction" ></span></button>
                 
                 
             </div>
@@ -117,8 +120,8 @@
                 <div class="row" ng-repeat="salary in user.company.salaryInfo">
                     <div class="levcard2 crcompt" ng-show="salary.type == 'sub'">
 
-                        <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)">
-                            <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                        <button type="button" class="btn btn-xs crs crdown" ng-click="remove(salary)" style="box-shadow:none;">
+                            <span><img src="http://hreasy.in/imgs/clear-button.png" alt="back" id="closbtn" width=15px ></span>&nbsp;
                         </button>
 
                         <div class=" form-group forpad">

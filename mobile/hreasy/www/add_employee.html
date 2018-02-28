@@ -5,15 +5,19 @@
 <body>
 
     <div class="container-fluid">
+        
+        <img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick;cursor:pointer" data-toggle="modal" data-target="#backWarningModal">
+                
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
 
-        <div class="row tpband">
+        <!--<div class="row tpband">
             <div class="col-sm-12 ">
                 <img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick;cursor:pointer" data-toggle="modal" data-target="#backWarningModal">
                 
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
                 
             </div>
-        </div>
+        </div>-->
 
 
         <div class="row">
@@ -166,7 +170,7 @@
                                 <p ng-repeat="exp in employee.experiences">
                                     In {{exp.companyName}} as {{exp.designation}}<br> ( {{exp.fromYear}} to {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}})
                                     <button type="button" class="btn btn-xs crs crdown" ng-click="removeExperience(exp)">
-                                    <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                                    <span><img src="http://hreasy.in/imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                                 </button>
                                 </p>
 
@@ -193,14 +197,14 @@
                                         <input type="text" class="form-control locdat" maxlength="80" ng-model="to" placeholder="To date">
                                     </datepicker>
 
-                                    <span><img style="cursor:pointer" ng-click="addQualification()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px data-toggle="tooltip" title="Add education"></span>
+                                    <span><img style="cursor:pointer" ng-click="addQualification()" src="http://hreasy.in/imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px data-toggle="tooltip" title="Add education"></span>
                                 </div>
                             </div>
                             <br/>
                             <p ng-repeat="exp in employee.qualifications">
                                 {{exp.designation}} ({{exp.specialization}}) from {{exp.companyName}}<br>( {{exp.fromYear}} to {{exp.toYear !=0 ? exp.toYear: "Now"}})
                                 <button type="button" class="btn btn-xs crs crdown" ng-click="removeQualification(exp)">
-                                    <span><img src="imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
+                                    <span><img src="http://hreasy.in/imgs/clear-button.png" alt="back" id="closbtn" width=20px ></span>&nbsp;
                                 </button>
                             </p>
                         </div>

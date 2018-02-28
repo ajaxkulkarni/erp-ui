@@ -5,7 +5,7 @@
 <body>
 
 
-    <div class="container-fluid bckgrclr">
+    <div class="container-fluid ">
 
 
         <div ng-include="'response.html'"></div>
@@ -13,14 +13,17 @@
 
 
         <div class="container-fluid">
+            
+            <a href="{{backLink}}"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+            <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
 
-            <div class="row tpband">
+            <!--<div class="row tpband">
                 <div class="col-sm-12 ">
                     <a href="{{backLink}}"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
                     <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
 
                 </div>
-            </div>
+            </div>-->
 
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 ">
@@ -62,7 +65,7 @@
 
                         </div>
 
-                        <button type="button" class="btn  btn-xs adbtun " ng-click="add()"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add member" ></span></button>
+                        <button type="button" class="btn  btn-xs adbtun " ng-click="add()" style="box-shadow:none;"><span><img src="imgs/n_addbtn.svg" alt="back" id="closbtn" width=40px data-toggle="tooltip" title="Add member" ></span></button>
 
 
                     </div>

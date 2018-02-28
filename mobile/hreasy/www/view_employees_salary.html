@@ -5,14 +5,17 @@
 
 
     <div class="container-fluid">
+        
+        <a href="#salary"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
 
-        <div class="row tpband">
+        <!--<div class="row tpband">
             <div class="col-sm-12 ">
                 <a href="#salary"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
                 <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
 
             </div>
-        </div>
+        </div>-->
 
         <div class="row">
             <div class="col-sm-12 ">
@@ -52,11 +55,11 @@
            <div class="col-sm" ng-if="user.loginType!='Employee'">
                
                 
-                    <span style="cursor:pointer" ng-click="downloadBankStatement()" ><img src="imgs/n_pdf.svg" alt="back" class="expdficon fade_hover" width=50px data-toggle="tooltip" title="Export letter to bank as pdf" ></span>
+                    <span style="cursor:pointer" ng-click="downloadBankStatement()" ><img src="http://hreasy.in/imgs/Just_icons/pdficon.svg" alt="back" class="expdficon fade_hover" width=30px data-toggle="tooltip" title="Export letter to bank as pdf" ></span>
                 
              
                 
-                    <span style="cursor:pointer" ng-click="downloadMaster()"><img src="imgs/n_excel.svg" alt="back" width=50px class="expdficon fade_hover" data-toggle="tooltip" title="Export seleted data to excel" ></span>
+                    <span style="cursor:pointer" ng-click="downloadMaster()"><img src="http://hreasy.in/imgs/Just_icons/excelicon.svg" alt="back" width=40px class="expdficon fade_hover" data-toggle="tooltip" title="Export seleted data to excel" ></span>
                
 
             </div>
@@ -83,7 +86,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)">
-                        <td><span ng-show="employee.selected"><span><img src="imgs/n_tick.svg" alt="back" id="closbtn" width=20px ></span></span></td>
+                        <td><span ng-show="employee.selected"><span><img src="http://hreasy.in/imgs/n_tick.svg" alt="back" id="closbtn" width=20px ></span></span></td>
                         <td>{{$index + 1}}</td>
                         
                         <td>{{employee.regId}}</td>

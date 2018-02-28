@@ -14,21 +14,22 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="ERPstyle.css">
+    <link rel="stylesheet" href="http://hreasy.in/ERPstyle.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-    <link href="css/angular-datepicker.css" rel="stylesheet" type="text/css" />
     
-     <link href="css/tags.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
-    <link href="css/loader.css" rel="stylesheet" type="text/css" />
-     <link href="css/header_r.css" rel="stylesheet" type="text/css" />
+    <link href="http://hreasy.in/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+    
+     <link href="http://hreasy.in/css/tags.css" rel="stylesheet" type="text/css" />
 
-    <link rel='stylesheet' href='css/loading-bar.min.css' type='text/css' media='all' />
+    <link href="http://hreasy.in/css/loader.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" href="css/ng-tags-input.css" />
+    <link rel='stylesheet' href='http://hreasy.in/css/loading-bar.min.css' type='text/css' media='all' />
+
+    <link rel="stylesheet" href="http://hreasy.in/css/ng-tags-input.css" />
 
 
     <script type="text/javascript" src="http://hreasy.in/js/angular.min.js"></script>
@@ -36,7 +37,6 @@
     <script type="text/javascript" src="http://hreasy.in/js/angular-route.js"></script>
 
     <script type='text/javascript' src='http://hreasy.in/js/loading-bar.min.js'></script>
-   
 
     <script src="http://hreasy.in/js/ng-file-upload-shim.min.js"></script>
     <script src="http://hreasy.in/js/ng-file-upload.min.js"></script>
@@ -54,6 +54,28 @@
     <script type="text/javascript" src="http://hreasy.in/js/ang/salary.js"></script>
 
     <script type="text/javascript" src="http://hreasy.in/js/ang/project.js"></script>
+        
+        <style>
+    
+    
+    .mnavba {
+       
+    width: auto;
+    height: 45px;
+    margin-bottom: 0px;
+    box-shadow: 0 0 5px rgb(200,200,200);
+    background-color: white;
+    z-index: -1;
+
+    
+  
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+                </style>
+            
+    
 
 
     <title>HR made easy</title>
@@ -62,22 +84,19 @@
 </head>
 
 <body ng-app="app" class="bckgrclr">
-    
-    
 
-   
+    <nav ng-controller="profile" >
 
-   <nav ng-controller="profile"  class="navbar-fixed" style="position: fixed; width: 100%; height: 45px;z-index: 999; top: 0; background-color: white;">
-      <div class="navbar-header navbar-fixed">
+
 
         <ul class="lis1">
-            
+            <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
 
 
 
 
             <div class="dropdown lis2">
-                <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="imgs/menu.png" alt="logo" style: width="35px"></span>
+                <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown" style="position: fixed" ><span><img  src="http://hreasy.in/imgs/user.svg" alt="logo"  width="35px"></span>
                 </button>
                 <ul class="dropdown-menu ">
                     <li><a href="#" ng-click="logout()">Logout</a></li>
@@ -92,76 +111,21 @@
                 </ul>
             </div>
 
-            <li class="empnam">{{user.name}}</li>
+            <!--<li class="empnam">{{user.name}}</li>-->
 
 
-           
+            <!---<li><a href="#" class="logintx">Login</a></li>--->
         </ul>
-        <div class="navba navbar-fixed " >
-            <img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick">
+        <div class="mnavba">
+            <!--<a href="#home"><img id="logo" src="http://hreasy.in/imgs/logonew.svg" alt="logo" style: width="100px"></a>-->
         </div>
-          </div>
-          
+
     </nav>
 
-    
-    <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
 
 
 
-    <div >
+    <div class="container-fluid forfull">
 
 
         <!--<div ng-include="'response.html'"></div>-->
@@ -214,7 +178,19 @@
 
     </div>
 </footer>--->
+<!--
+<footer class="footer navbar-fixed-bottom correc_foo">
+    -<div class="navbar navbar-default foocls"></div>-
+    <div id="foob">
 
+        <a href="http://www.resoneuronance.com" target="_blank" class="lnk_no_syle"><span class="navbar-text foo_ext_mod">
+      &#169 hreasy, resoneuronance pvt ltd
+      </span></a>
+
+        
+    </div>
+</footer>
+-->
 
 
 

@@ -5,21 +5,32 @@
 
 
     <div class="container-fluid">
+    
+        <a href="#leaves"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px ></a>
+                    
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
 
-        <div class="row tpband">
+        <!--<div class="row tpband">
+            <div class="col-sm-12 ">
+                <a href="#leaves"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                    
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+                
+            </div>
+        </div>-->
+              
+       <div ng-include="'response.html'"></div>
           
-        </div>
 
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 "style="padding-top: 41px; align-items: center">
-                <h2 class="pghdgs" >Apply leaves</h2>
+            <div class="col-sm-6 col-sm-offset-3 ">
+                <h2 class="pghdgs">Add leaves</h2>
             </div>
         </div>
 
-        <div ng-include="'response.html'"></div>
 
 
-        <div >
+        <div class="row ">
             <div class="col-sm-6 col-sm-offset-3 makpg">
 
                 <ng-form name="leaveForm">
@@ -79,7 +90,7 @@
 
             </div>
         </div>
-    </div>
+    
 
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 
@@ -95,7 +106,7 @@
                 </div>
                 <div class="modal-body failmodal">
 
-                    <span><img src="imgs/n_err.svg" alt="back"width=80px;></span>
+                    <span><img src="http://hreasy.in/imgs/n_err.svg" alt="back"width=80px;></span>
 
                     <p>This employee has exceeded the limit for {{leave.type.name}} leave. Applied leaves will be considered for without pay. Do you still want to apply the leave?</p>
 
@@ -107,6 +118,7 @@
 
         </div>
 
+    </div>
     </div>
 
 
