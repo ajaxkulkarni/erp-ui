@@ -55,7 +55,7 @@
 
         <div class="col-sm-12 makpg shdmld ">
             <div class="table-responsive">
-                <table class="table distabl table-hover" style="font-size:17px">
+                <table class="table distabl table-hover" style="font-size:15px">
                     <thead class="distabl">
                         <tr>
                             <th style="text-align:center">No</th>
@@ -80,7 +80,7 @@
                                 <!----<h4 ><span class= "blue_txt" style="cursor:pointer" ng-click="view(emp)">View</span> |
                                 <span class= "blue_txt" style="cursor:pointer" ng-click="edit(emp)">Edit</span> | <span class= "blue_txt" style="cursor:pointer"  data-toggle="modal" data-target="#myModal" ng-if="user.loginType != 'Employee'">Delete</span></h4> -->
                                 
-                                <span><a ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer" ng-click="delete(emp)"><img src="imgs/clear-button.svg" alt="back" class="card_icons" width=20px ></a>
+                                <span><a ng-if="user.loginType == 'Admin' || user.loginType == null" style="cursor:pointer" ng-click="delete(emp)"><img src="imgs/clear-button.svg" alt="back" class="card_icons" width=20px style="margin-left:20px;" ></a>
                                 <a style="cursor:pointer" ng-click="edit(emp)"><img src="imgs/underline-button.svg" alt="back" class="card_icons" width=20px ></a>
                                 <a style="cursor:pointer" ng-click="view(emp)"><img src="imgs/visibility-button.svg" alt="back" class="card_icons" width=20px ></a>
                                 </span>
@@ -121,7 +121,7 @@
                     <span><img src="imgs/n_err.svg" alt="back"width=80px;></span>
                     <br>
                     <br>
-                    <p style="font-size:16px;">Are you sure you want to delete the employee profile<br>'{{employee.name}}' ?
+                    <p style="font-size:16px;margin-top:10px;">Are you sure you want to delete the employee profile<br>'{{employee.name}}' ?
                         <br>All employee data will be erased as well.
                         <br>
                         <br>Its advisable to take a backup by saving profile as pdf first.</p>

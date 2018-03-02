@@ -19,7 +19,7 @@
 
         <div class="row">
             <div class="col-sm-12 ">
-                <h2 class="pghdgs">Salary Info</h2>
+                <h2 class="pghdgs">Salary Details</h2>
             </div>
         </div>
         
@@ -68,7 +68,7 @@
 
 <div class="col-sm-12 makpg shdmld ">
         <div class="table-responsive">
-            <table class="table distabl table-hover" style="font-size:15px">
+            <table class="table distabl table-hover" style="font-size:17px">
                 <thead>
                     <tr>
                         <th></th>
@@ -84,7 +84,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="font-size:15px">
                     <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)">
                         <td><span ng-show="employee.selected"><span><img src="imgs/n_tick.svg" alt="back" id="closbtn" width=20px ></span></span></td>
                         <td>{{$index + 1}}</td>
