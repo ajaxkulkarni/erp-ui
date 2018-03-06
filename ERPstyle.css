@@ -238,7 +238,7 @@ h4{
 .dashimgs{
     text-align: center ;
     display: block;
-    width: auto;
+    width:inherit;
     align-content: center;
     
 }
