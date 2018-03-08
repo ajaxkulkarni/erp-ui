@@ -2,7 +2,7 @@ body{
    font-family: "Open Sans", sans-serif !important;
     font-size: 15px;
     color: rgb(80,80,80);
-    font-weight: 300;!important 
+    font-weight: 200;!important 
 }
 
 *{
@@ -395,7 +395,8 @@ dropdown-menu:hover{
 }
 
 .form-control {
-    margin-top: -5px;
+    margin-top: -7px;
+    margin-bottom: 25px;
     padding: inherit;
     height: 30px;
     font-size: 15px;
@@ -403,8 +404,17 @@ dropdown-menu:hover{
     border-color: rgb(200,200,200);
     border-width: 0.5px;
     box-shadow: none;
-    padding-left: 7px;
+    padding-left: 6px;
     padding-right: 5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+    background-color:rgba(0,0,0,0);
+}
+
+input.form-control,input.form-control:focus {
+    box-shadow: none; !important
 }
 
 .butte {

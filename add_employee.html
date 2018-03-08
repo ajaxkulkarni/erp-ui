@@ -166,7 +166,7 @@
                                         <span><img style="cursor:pointer" ng-click="addExperience()" src="imgs/n_addbtn.svg" alt="back" id="closbtn" class="btnlocmod" width=40px data-toggle="tooltip" title="Add experience"></span>
                                     </div>
                                 </div>
-                                <br/>
+                                
                                 <p ng-repeat="exp in employee.experiences">
                                     In {{exp.companyName}} as {{exp.designation}}<br> ( {{exp.fromYear}} to {{exp.toYear != null && exp.toYear != 'null' ? exp.toYear: "Now"}})
                                     <button type="button" class="btn btn-xs crs crdown" ng-click="removeExperience(exp)">
@@ -200,7 +200,7 @@
                                     <span><img style="cursor:pointer" ng-click="addQualification()" src="imgs/n_addbtn.png" alt="back" id="closbtn" class="btnlocmod" width=40px data-toggle="tooltip" title="Add education"></span>
                                 </div>
                             </div>
-                            <br/>
+                            
                             <p ng-repeat="exp in employee.qualifications">
                                 {{exp.designation}} ({{exp.specialization}}) from {{exp.companyName}}<br>( {{exp.fromYear}} to {{exp.toYear !=0 ? exp.toYear: "Now"}})
                                 <button type="button" class="btn btn-xs crs crdown" ng-click="removeQualification(exp)">
