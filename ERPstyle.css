@@ -1231,3 +1231,9 @@ html,body{
     color: rgb(0,140,255);
     width: 85%;
 }
+
+.Dashborard_img_shadow:hover {
+    -webkit-filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1));
+    filter:  drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1) ;
+    
+}
