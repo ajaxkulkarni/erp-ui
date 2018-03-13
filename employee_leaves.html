@@ -88,6 +88,8 @@
                         <th class="distabl">Days</th>
                         <th class="distabl">Reason</th>
                         <th class="distabl"></th>
+                        <th class="distabl"></th>
+
                     </tr>
                 </thead>
                 <tbody style="font-size:15px">
@@ -99,7 +101,11 @@
                         <td>{{leave.noOfDays}}</td>
                         <td>{{leave.reason}}</td>
                         <td>
+                        <button type="button" class="btn btn-secondary btn-sm btn-block btndet" >Accept</button>
+                        </td>
+                        <td>
                             <button type="button" class="btn btn-secondary btn-sm btn-block btndet" ng-click="showCancel(leave)">Cancel</button>
+                            
                         </td>
                     </tr>
 
