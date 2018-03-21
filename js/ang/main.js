@@ -247,13 +247,24 @@ app.config(function ($routeProvider) {
             controller: "projectStructure"
         })
         .when("/projectDetails", {
-            templateUrl: "v2_project_details.html",
+        templateUrl: "v2_project_details.html",
+            
             controller: "projectDetails"
         })
         .when("/projectDetails/:projectId", {
             templateUrl: "v2_project_details.html",
+        
             controller: "projectDetails"
-        }).when("/assignedRecords", {
+        }).when("/projectsMobile", {
+            //templateUrl: "dashboard_projects.html",
+         templateUrl: "mb_projects.html",
+            controller: "projects"
+        }).when("/projectDetailsMobile", {
+            //templateUrl: "v2_project_details.html",
+            templateUrl: "mb_project_details.html",
+            controller: "projectDetails"
+        })
+        .when("/assignedRecords", {
             templateUrl: "project_assigned.html",
             controller: "projectDetails"
         }).when("/archivedRecords", {
