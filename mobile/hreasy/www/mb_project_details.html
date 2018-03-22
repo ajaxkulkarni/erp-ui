@@ -155,7 +155,7 @@
                     </div>
                     <hr style="padding:0px;margin:0px;">
 
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:52vh;padding-top:0px;padding-bottom:0px; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:62vh;padding-top:0px;padding-bottom:0px; ">
 
                         <span><h5>Record created by {{user.currentRecord.createdUser.name}} on {{user.currentRecord.createdDate| date:'MMM dd'}}</h5></span>
                         <br>
@@ -262,7 +262,7 @@
 
 
 
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:30vh; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden;height:45vh; ">
 
                         <div ng-repeat="file in user.currentRecord.files">
                             <h5><span>By {{file.createdBy.name}} on 21/3/2017</span></h5>
@@ -291,7 +291,7 @@
 
 
                     </div>
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:36.5vh; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:46.5vh; ">
 
                         <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
                             <h6><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h6>
@@ -303,7 +303,7 @@
 
                 <div class="tab-content" ng-show="tab == 4">
                     <br>
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:60.5vh; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:70.5vh; ">
                         <div class="table-responsive">
                             <table class="table logtabl table-hover" style="font-size:12px;">
                                 <thead class="distabl">
