@@ -247,7 +247,7 @@ app.config(function ($routeProvider) {
             controller: "projectStructure"
         })
         .when("/projectDetails", {
-        templateUrl: "v2_project_details.html",
+        templateUrl: "mb_project_details.html",
             
             controller: "projectDetails"
         })
