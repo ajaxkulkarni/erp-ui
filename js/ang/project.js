@@ -17,7 +17,7 @@ function getTodaysDate() {
 var mobileDevice = false; 
 
 
-function isMobile () {
+/*function isMobile () {
     
     var mobileDevice = true; 
     
@@ -30,17 +30,17 @@ function isMobile () {
     return false;
     
     
-}
+}*/
 
 angular.module("app").controller('projects', function ($scope, userService, $location, Upload) {
 
     
-    if(isMobile() && !mobileDevice) {
+ /*   if(isMobile() && !mobileDevice) {
         window.location.href = "#projectsMobile";
         return;
         
     }
-    
+    */
     $scope.response = {};
     $scope.dataObj = {};
     console.log("Projects loaded .." + localStorage.requestType);
@@ -326,11 +326,11 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     console.log("Project details loaded ..");
     
     
-    if(isMobile() && !mobileDevice) {
+/*    if(isMobile() && !mobileDevice) {
         window.location.href = "#projectDetailsMobile";
         return;
         
-    }
+    }*/
     
 
     $scope.timeRange = "MONTH";
