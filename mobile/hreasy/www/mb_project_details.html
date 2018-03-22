@@ -45,15 +45,17 @@
                     <option value="WEEK">This week</option>
                     <option value="ALL">All time</option>
                 </select>
-              
+             
              
                 <div class="makpg mb_side_card" >
                     <tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
                 </tags-input>
+                    
+                 Rohit jadhav {{timeRange}}
                    
                      <div ng-repeat="rec in user.currentProject.records|filter:filterRecords as filteredRecords">
                         
-                    
+                   
                <div class="makpg mb_side_card">
                    
                     
@@ -127,7 +129,7 @@
                     
                     
                     
-                   <p style="margin-top:-8px;margin-left:23px; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : 'blue'}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : 'blue'}"> Attach file </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>
+                   <p style="margin-top:-8px;margin-left:23px; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> Attach file </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>
                    
                 </div>
                 
@@ -137,7 +139,7 @@
                     
                       <div class="col-sm-12 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px; height:70vh; padding-bottom: 0px;" ng-if="user.currentRecord.id != null">
             <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px;position:relative;padding-top:15px; ">
-                <span ><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+                <span ><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="http://hreasy.in/imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
 
 
                 <div class="tab-content" style="" ng-show="tab==1">

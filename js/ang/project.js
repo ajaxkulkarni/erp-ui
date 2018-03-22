@@ -336,6 +336,8 @@ angular.module("app").controller('projectDetails', function ($scope, userService
     $scope.timeRange = "MONTH";
 
     $scope.user = JSON.parse(localStorage.erpUser);
+    
+    $scope.user.timeRange = $scope.timeRange;
 
     $scope.rootUrl = projectRoot + "/getFile/";
 
@@ -423,14 +425,22 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }
         });
     }
+    
+    
 
     $scope.getProject = function () {
 
         userService.showLoading($scope);
-        //alert($scope.timeRange);
-        $scope.dataObj.timeRange = $scope.timeRange;
+        //alert($scope.user.timeRange + " -- " + $scope.timeRange);
+        var timeRange = $scope.user.timeRange;
+        /*if(timeRange == null) {
+            timeRange = $scope.user.timeRange;
+        }*/
+        
+        $scope.dataObj.timeRange = timeRange;
         $scope.dataObj.requestType = localStorage.requestType;
         $scope.dataObj.user = $scope.user;
+        console.log($scope.dataObj);
         userService.callService($scope, "/getProject", "P").then(function (response) {
 
             userService.initLoader($scope);
@@ -445,6 +455,7 @@ angular.module("app").controller('projectDetails', function ($scope, userService
             }*/
             localStorage.erpUser = JSON.stringify($scope.user);
 
+            console.log(response);
             addProjectNames();
 
         });
