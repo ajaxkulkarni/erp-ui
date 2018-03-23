@@ -6,7 +6,7 @@
     <a href="#myProjects"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
 
     
-    <div class="container-fluid bckgrclr htpag" >
+    <div class="container-fluid bckgrclr htpag" style="padding-left:10px; padding-right:10px;">
 
 
         <div ng-include="'response.html'"></div>
@@ -56,8 +56,8 @@
                <div class="makpg mb_side_card">
                    
                     
-                    <a style="cursor:pointer" ng-click="showdiv(rec)"><img src="http://hreasy.in/imgs/visibility-button.svg" alt="back" style="float:right;margin-top:-25px;margin-right:8px;opacity:0.2;" width=30px></a>
-                    <p style="width:85%;margin-top:-22px;margin-left:8px;">{{rec.id}}. {{rec.titleField.value}}</p>
+                    <!--<a style="cursor:pointer" ng-click="showdiv(rec)"><img src="http://hreasy.in/imgs/visibility-button.svg" alt="back" style="float:right;margin-top:-25px;margin-right:8px;opacity:0.2;" width=30px></a>-->
+                    <p style="width:100%;margin-top:-22px;margin-left:8px; margin-right:8px">{{rec.id}}. {{rec.titleField.value}}</p>
                     
                       <!--  <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.titleField.value}}</div>
                    <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.assignedUser.name}}</div>
@@ -84,7 +84,7 @@
                         
 
                     
-                        <p style="margin-top:-8px;margin-left:auto;text-align:center; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-click="selectRecord(rec, 1)"  > Edit </a> | <a style="cursor:pointer"  ng-style="{'color': rec.commentCount > 0 ? 'green' : 'blue'}" ng-click="selectRecord(rec, 3)"> Comment </a> | <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ng-style="{'color': rec.fileCount > 0 ? 'green' : 'blue'}"> Attach file </a>  | <a style="cursor:pointer"  ng-click="selectRecord(rec, 4)"> Log </a> </b></p>
+                        <p style="margin-top:-8px;margin-left:auto;text-align:center; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-click="selectRecord(rec, 1)"  > Edit </a> &nbsp; | &nbsp; <a style="cursor:pointer"  ng-style="{'color': rec.commentCount > 0 ? 'green' : 'blue'}" ng-click="selectRecord(rec, 3)"> Comment </a> &nbsp; | &nbsp; <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ng-style="{'color': rec.fileCount > 0 ? 'green' : 'blue'}"> Attach file </a>  &nbsp; |&nbsp; <a style="cursor:pointer"  ng-click="selectRecord(rec, 4)"> Log </a> </b></p>
                    
                 </div>
                 </div>
@@ -127,9 +127,10 @@
                     <p style="text-align:center;margin-top:-22px;margin-left:8px; margin-right:8px;">1. {{user.currentRecord.titleField.value}}</p>
                     
                     
+                                        
+
                     
-                    
-                   <p style="margin-top:-8px;margin-left:auto; text-align:center;; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> Attach file </a> | <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>
+                   <p style="margin-top:-8px;margin-left:auto; text-align:center;; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> Attach file </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>
                    
                 </div>
                 
@@ -147,13 +148,13 @@
 
 
 
-                    <div class="row " style="padding:0px;margin:0px;margin-top:-10px;">
+                    <div class="row " style="padding:0px;margin:0px;margin-top:-20px;">
 
-                        <button type="button" class="btn btn-secondary btn-lg btn-block" style="float:left;" ng-click="save()">Save Changes </button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" style="float:left; margin:0px;" ng-click="save()">Save Changes </button>
 
 
                     </div>
-                    <hr style="padding:0px;margin:0px;">
+                    <hr style="padding:0px;margin-top:10px; margin-bottom:0px;">
 
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:62vh;padding-top:0px;padding-bottom:0px; ">
 
@@ -237,7 +238,7 @@
 
 
 
-                    <div class="row ropad" style="margin-bottom:-35px; margin-top:-5px;">
+                    <div class="row ropad" style="margin-bottom:-35px; margin-top:-40px;">
                         <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess">
                             <h4><span>Upload file and write a brief discription</span></h4>
 
@@ -281,13 +282,14 @@
                 <div class="tab-content" ng-show="tab==3">
 
                     <div class="row ropad">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess">
+                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess" style="margin-top:-30px;">
 
                             <label for="comment">Add Comment:</label>
                             <textarea class="form-control" rows="2" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
-                            <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
+                            
 
                         </div>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()" style="margin:0px;">Add</button>
 
 
                     </div>
