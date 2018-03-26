@@ -6,7 +6,7 @@
     <a href="#myProjects"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
 
     
-    <div class="container-fluid bckgrclr htpag" style="padding-left:10px; padding-right:10px;">
+    <div class="container-fluid bckgrclr htpag" style="padding-left:10px; padding-right:10px; height:100%;">
 
 
         <div ng-include="'response.html'"></div>
@@ -28,16 +28,16 @@
               
 
 
-                <h3 style="margin-left:10px;"><b> {{user.currentProject.title}}</b></h3>
-                <div class="makpg mb_side_card">
+                <h2 style="margin-left:10px;">{{user.currentProject.title}}</h2>
+                <div class="makpg mb_side_card" style="box-shadow:none; background-color:rgb(245,245,245);">
                     
                       
                     
-                    <a href="#"><span ><img src="http://hreasy.in/imgs/Just_icons/add_recordicon.svg" class="fade_hover" alt="back" width=30px style="float:left;margin-top:-14px;margin-left:8px;" ng-click="addNew()"></span></a>
-                    <a href="#projectStructure"><span ><img src="http://hreasy.in/imgs/Just_icons/add_columnicon.svg" class="fade_hover" alt="back" width=30px style="float:left;margin-top:-16px;margin-left:12px;"></span></a>
+                    <a href="#"><span ><img src="http://hreasy.in/imgs/Just_icons/add_recordicon.svg" class="fade_hover" alt="back" width=30px style="float:left;margin-top:-14px;margin-left:10px;" ng-click="addNew()"></span></a>
+                    <a href="#projectStructure"><span ><img src="http://hreasy.in/imgs/Just_icons/add_columnicon.svg" class="fade_hover" alt="back" width=30px style="float:left;margin-top:-16px;margin-left:15px;"></span></a>
                     
               
-                <select name="timeRange" class="form-control text-right" ng-model="user.timeRange" style="float:right; width:130px; margin:-20px 10px 0px 5px; height:34px; font-size:10px; " ng-change="getProject()">
+                <select name="timeRange" class="form-control text-right" ng-model="user.timeRange" style="float:right; width:130px; margin:-15px 10px 0px 5px; height:34px; font-size:10px; " ng-change="getProject()">
                     <option value="MONTH">This month</option>
                     <option value="WEEK">This week</option>
                     <option value="ALL">All time</option>
@@ -49,15 +49,15 @@
                 </tags-input>
                     
                  Rohit jadhav {{timeRange}}-->
-                   
-                     <div ng-repeat="rec in user.currentProject.records|filter:filterRecords as filteredRecords">
+              <div style="padding:0px; margin:0px; overflow-y: scroll; overflow-x: hidden; height:78vh">
+                <div ng-repeat="rec in user.currentProject.records|filter:filterRecords as filteredRecords">
                         
                    
-               <div class="makpg mb_side_card">
+               <div class="makpg mb_side_card" style="padding-right:5px; padding-left:5px;">
                    
                     
                     <!--<a style="cursor:pointer" ng-click="showdiv(rec)"><img src="http://hreasy.in/imgs/visibility-button.svg" alt="back" style="float:right;margin-top:-25px;margin-right:8px;opacity:0.2;" width=30px></a>-->
-                    <p style="width:100%;margin-top:-22px;margin-left:8px; margin-right:8px">{{rec.id}}. {{rec.titleField.value}}</p>
+                    <p style="width:100%;margin-top:-22px;margin-left:5px; margin-right:5px">{{rec.id}}. {{rec.titleField.value}}</p>
                     
                       <!--  <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.titleField.value}}</div>
                    <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.assignedUser.name}}</div>
@@ -94,7 +94,7 @@
                        
                    
                 </div>
-                  
+              </div>  
             </div>
               
              <!--   <div class="makpg mb_side_card">
@@ -119,12 +119,12 @@
 
             <div class="col-sm-4 " ng-if="user.currentRecord.id != null" style="padding-left:0px; padding-right:0px; height:100%">
 
-                <h3 style="margin-left:10px;"><b>{{user.currentProject.title}}</b></h3>
+                <h3 style="margin-left:10px;">{{user.currentProject.title}}</h3>
                 
                 <div class="makpg mb_side_card" >
                     
                     
-                    <p style="text-align:center;margin-top:-22px;margin-left:8px; margin-right:8px;">1. {{user.currentRecord.titleField.value}}</p>
+                    <p style="text-align:center;margin-top:-22px;margin-left:8px; margin-right:8px;"><b>1. {{user.currentRecord.titleField.value}}</b></p>
                     
                     
                                         
@@ -156,7 +156,7 @@
                     </div>
                     <hr style="padding:0px;margin-top:10px; margin-bottom:0px;">
 
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:62vh;padding-top:0px;padding-bottom:0px; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:64vh;padding-top:0px;padding-bottom:0px; ">
 
                         <span><h5>Record created by {{user.currentRecord.createdUser.name}} on {{user.currentRecord.createdDate| date:'MMM dd'}}</h5></span>
                         <br>
@@ -305,7 +305,7 @@
 
                 <div class="tab-content" ng-show="tab == 4">
                     <br>
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:70.5vh; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:68vh; ">
                         <div class="table-responsive">
                             <table class="table logtabl table-hover" style="font-size:12px;">
                                 <thead class="distabl">
