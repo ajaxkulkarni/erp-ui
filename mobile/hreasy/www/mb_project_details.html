@@ -33,8 +33,9 @@
                     
                       
                     
-                    <a href="#"><span ><img src="http://hreasy.in/imgs/Just_icons/add_recordicon.svg" class="fade_hover" alt="back" width=30px style="float:left;margin-top:-14px;margin-left:10px;" ng-click="addNew()"></span></a>
-                    <a href="#projectStructure"><span ><img src="http://hreasy.in/imgs/Just_icons/add_columnicon.svg" class="fade_hover" alt="back" width=30px style="float:left;margin-top:-16px;margin-left:15px;"></span></a>
+                    <span ng-if="user.currentProject.fields.length > 0 && user.currentProject.accessRights.recordAccess"><img src="http://hreasy.in/imgs/Just_icons/add_recordicon.svg" class="fade_hover" alt="back" width=35px style="float:left;margin-top:-14px;margin-left:10px;" ng-click="addNew()"></span>
+                
+                    <a href="#projectStructure"><span ><img src="http://hreasy.in/imgs/Just_icons/add_columnicon.svg" class="fade_hover" alt="back" width=35px style="float:left;margin-top:-16px;margin-left:18px;"></span></a>
                     
               
                 <select name="timeRange" class="form-control text-right" ng-model="user.timeRange" style="float:right; width:130px; margin:-15px 10px 0px 5px; height:34px; font-size:10px; " ng-change="getProject()">
@@ -53,17 +54,17 @@
                 <div ng-repeat="rec in user.currentProject.records|filter:filterRecords as filteredRecords">
                         
                    
-               <div class="makpg mb_side_card" style="padding-right:5px; padding-left:5px;">
-                   
-                    
+               <div class="makpg mb_side_card" style="padding-right:5px; padding-left:5px; padding-bottom:40px;">
+                
+                   <div>
                     <!--<a style="cursor:pointer" ng-click="showdiv(rec)"><img src="http://hreasy.in/imgs/visibility-button.svg" alt="back" style="float:right;margin-top:-25px;margin-right:8px;opacity:0.2;" width=30px></a>-->
-                    <p style="width:100%;margin-top:-22px;margin-left:5px; margin-right:5px">{{rec.id}}. {{rec.titleField.value}}</p>
+                <p style="width:100%;margin-top:-20px;margin-left:5px; margin-right:5px; margin-bottom:0px;">{{rec.id}}. {{rec.titleField.value}}</p>
                     
                       <!--  <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.titleField.value}}</div>
                    <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.assignedUser.name}}</div>
                    <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.recordDate | date : "MMM dd"}}</div>-->
                    
-                <div >
+                
 
                 
                     <div  ng-repeat="field in rec.values" >
@@ -79,18 +80,24 @@
 
 
                 
-                   
-                  
+                
+                    
+                    
+                       <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="http://hreasy.in/imgs/Archive-icon.svg" alt="back" class="card_icons" width=25px style="margin-top:10px;"></a>
                         
-
-                    
-                        <p style="margin-top:-8px;margin-left:auto;text-align:center; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-click="selectRecord(rec, 1)"  > Edit </a> &nbsp; | &nbsp; <a style="cursor:pointer"  ng-style="{'color': rec.commentCount > 0 ? 'green' : 'blue'}" ng-click="selectRecord(rec, 3)"> Comment </a> &nbsp; | &nbsp; <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ng-style="{'color': rec.fileCount > 0 ? 'green' : 'blue'}"> Attach file </a>  &nbsp; |&nbsp; <a style="cursor:pointer"  ng-click="selectRecord(rec, 4)"> Log </a> </b></p>
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="http://hreasy.in/imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=24px style="margin-top:10px; margin-right:20px;"></a>
+                        
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 2)" ><img src="{{rec.fileCount > 0 ? 'http://hreasy.in/imgs/attachment-clip.png' : 'http://hreasy.in/imgs/attachment-clip.svg'}}" alt="back" ng-class="iconClass(rec, rec.fileCount, 2)" width=25px style="margin-top:10px;margin-right:20px;"></a>
+                        
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="{{rec.commentCount > 0 ? 'http://hreasy.in/imgs/chat-bubble.png' : 'http://hreasy.in/imgs/chat-bubble.svg'}}" alt="back" ng-class="iconClass(rec,rec.commentCount, 3)" width=25px style="margin-top:10px;margin-right:20px;"></a>
                    
-                </div>
-                </div>
-
-                    
+                        <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(rec, 1)"><img src="http://hreasy.in/imgs/underline-button.png" alt="back" class="{{user.currentRecord.id == rec.id && tab == 1? 'card_icons_selected': 'card_icons'}}" width=25px style="margin-top:10px;margin-right:20px;"></a>
                    
+            
+                
+
+                    </div> 
+            </div> 
                        
                    
                 </div>
@@ -119,12 +126,12 @@
 
             <div class="col-sm-4 " ng-if="user.currentRecord.id != null" style="padding-left:0px; padding-right:0px; height:100%">
 
-                <h3 style="margin-left:10px;">{{user.currentProject.title}}</h3>
+                <h3 style="margin-left:10px;text-align:center;">{{user.currentProject.title}}</h3>
                 
                 <div class="makpg mb_side_card" >
                     
                     
-                    <p style="text-align:center;margin-top:-22px;margin-left:8px; margin-right:8px;"><b>1. {{user.currentRecord.titleField.value}}</b></p>
+                <p style="text-align:center ;margin-top:-22px;margin-left:8px; margin-right:8px;"><b>1. {{user.currentRecord.titleField.value}}</b></p>
                     
                     
                                         
@@ -132,6 +139,7 @@
                     
                    <p style="margin-top:-8px;margin-left:auto; text-align:center;; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> Attach file </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>
                    
+                    
                 </div>
                 
                 
