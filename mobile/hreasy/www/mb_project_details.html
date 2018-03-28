@@ -58,7 +58,7 @@
                 
                    <div>
                     <!--<a style="cursor:pointer" ng-click="showdiv(rec)"><img src="http://hreasy.in/imgs/visibility-button.svg" alt="back" style="float:right;margin-top:-25px;margin-right:8px;opacity:0.2;" width=30px></a>-->
-                <p style="width:100%;margin-top:-20px;margin-left:5px; margin-right:5px; margin-bottom:0px;">{{rec.id}}. {{rec.titleField.value}}</p>
+                <p style="width:100%;margin-top:-20px;margin-left:5px; margin-right:5px; margin-bottom:0px;" ng-click="showdiv(rec)">{{rec.id}}. {{rec.titleField.value}}</p>
                     
                       <!--  <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.titleField.value}}</div>
                    <div style="margin:10px 10px; background-color: rgb(244,244,244); height:30px;border-radius:5px;">{{rec.assignedUser.name}}</div>
@@ -346,6 +346,7 @@
         </div> 
                 
                 
+    
               
                    
                 </div>
@@ -354,8 +355,46 @@
             
     
         </div>
+    <div id="deleteRecord" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:15px;">Are you sure you want to remove this record <br>({{deleteRecord.titleField.value}})? <br> All the data related to this record will be archived.</p>
+                    <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="deleteCurrentRecord()">Remove</button>
+                    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">OK</button>-->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </body>
+    
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+    </script>
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 
 
