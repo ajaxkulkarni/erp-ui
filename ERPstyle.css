@@ -251,6 +251,7 @@ h4{
     margin-bottom: 0px;
    z-index: 0;
     margin-top: 70px;
+    
 
 }
 .txtdas{
@@ -669,7 +670,11 @@ html,body{
 
 .bckgrclr {
     /*background-color: rgb(227,228,229);!important*/
-    background-color: rgb(245,245,245);!important
+    background-color: rgb(245,245,245);
+  
+   
+    background-image: url("imgs/blizzard.png");
+    
     padding: none;
     margin: 0px;
     z-index: -3;
