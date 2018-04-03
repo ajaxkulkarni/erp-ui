@@ -71,31 +71,34 @@
             <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
 
 
-            <a href="#home"><img src="imgs/notification-reddot.png" width="25px" style="margin-top:9px; opacity:1; margin-right:15px;"></a>
+            <a href="#home"><img src="imgs/notification-reddot_white.png" width="25px" style="margin-top:9px; opacity:1; margin-right:-30px;"></a>
 
             <div class="dropdown lis2">
                 <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"  ><span><img  src="imgs/user.png" alt="logo"  width="35px" style="opacity:0.8;"></span>
                 </button>
                 <ul class="dropdown-menu ">
-                    <li><a href="#" ng-click="logout()">Logout</a></li>
+                    <li>Hi, {{user.name}}</li>
+                    <li class="divider"></li>
+                    <li class="compnam"><span>{{user.company.name}}</span></li>
                     <li class="divider"></li>
                     <li><a href="#changePassword">Settings</a></li>
                     <li><a href="#help">How To</a></li>
                     <li><a href="#">Contact us</a></li>
 
                     <li class="divider"></li>
-                    <li class="compnam"><span>{{user.company.name}}</span></li>
+                    
+                    <li><a href="#" ng-click="logout()">Logout</a></li>
 
                 </ul>
             </div>
 
-            <li class="empnam">{{user.name}}</li>
+            <!--<li class="empnam">{{user.name}}</li>-->
 
 
             <!---<li><a href="#" class="logintx">Login</a></li>--->
         </ul>
         <div class="navba">
-            <a href="#home"><img id="logo" src="imgs/logotry_2.png" alt="logo" style: width="90px"></a>
+            <a href="#home"><img id="logo" src="imgs/logo_blue.png" alt="logo" style: width="80px"></a>
         </div>
 
     </nav>
