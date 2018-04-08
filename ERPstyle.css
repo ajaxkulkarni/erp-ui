@@ -398,11 +398,11 @@ dropdown-menu:hover{
 }
 
 .form-control {
-    margin-top: -7px;
-    margin-bottom: 25px;
+    margin-top:-4px;
+    margin-bottom: 10px;
     padding: inherit;
-    height: 30px;
-    font-size: 15px;
+    height: 35px;
+    font-size: 14px;
     color: rgb(80,80,80);
     border-color: rgb(200,200,200);
     border-width: 0.5px;
