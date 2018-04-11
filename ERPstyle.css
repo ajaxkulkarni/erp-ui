@@ -60,9 +60,11 @@ h4{
     height: 45px;
     margin-bottom: 0px;
     box-shadow: 0 0 5px rgb(200,200,200); 
-    background-color: white;
+    background-color: rgb(0,140,255);
+    
     z-index: 1;
     position: fixed;
+    
 }
 
 .lis1{
@@ -396,11 +398,11 @@ dropdown-menu:hover{
 }
 
 .form-control {
-    margin-top: -7px;
-    margin-bottom: 25px;
+    margin-top:-4px;
+    margin-bottom: 10px;
     padding: inherit;
-    height: 30px;
-    font-size: 15px;
+    height: 35px;
+    font-size: 14px;
     color: rgb(80,80,80);
     border-color: rgb(200,200,200);
     border-width: 0.5px;
@@ -670,10 +672,12 @@ html,body{
 
 .bckgrclr {
     /*background-color: rgb(227,228,229);!important*/
-    background-color: rgb(245,245,245);
+    /*background-color: rgb(245,245,245);*/
+    background-color: #f0f0f0;
+    
   
    
-    background-image: url("imgs/blizzard.png");
+    /*background-image: url("imgs/blizzard.png");*/
     
     padding: none;
     margin: 0px;

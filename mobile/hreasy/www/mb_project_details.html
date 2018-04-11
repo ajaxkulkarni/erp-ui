@@ -148,7 +148,7 @@
                     
                       <div class="col-sm-12 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px; padding-bottom: 0px;" ng-if="user.currentRecord.id != null">
                           
-            <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px; position:relative;padding-top:15px; height:auto; ">
+            <div class="makpg" style="margin:none; padding-left: 7px; padding-right:7px; position:relative;padding-top:15px; height:auto; ">
                 <span ><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="http://hreasy.in/imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
 
 
@@ -162,34 +162,33 @@
 
 
                     </div>
-                    <hr style="padding:0px;margin-top:10px; margin-bottom:0px;">
+                    <hr style="padding:0px;margin-top:7px; margin-bottom:0px;">
 
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:64vh;padding-top:0px;padding-bottom:0px; ">
 
                         <span><h5>Record created by {{user.currentRecord.createdUser.name}} on {{user.currentRecord.createdDate| date:'MMM dd'}}</h5></span>
-                        <br>
-                        <div class=" form-group">
+                        
+                        <div class=" form-group makpg" style="padding:10px; background-color: rgb(244,244,244); margin-bottom:7px;">
                             <label for="usr">{{user.currentRecord.titleField.name}} </label>
                             <input id="basic" type="text" class="form-control set_sal " ng-model="user.currentRecord.titleField.value" >
 
                         </div>
                         
-                        
 
-
-                        <div class="form-group" style="margin-top:25px;">
+                        <div class="form-group makpg" style="padding:7px;margin-bottam:2px; background-color: rgb(244,244,244);  margin-bottom:7px;">
                             <label for="usr">Record Date (To track this record)</label>
                             <datepicker date-format="yyyy-MM-dd">
                                 <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDateString" style="margin-bottom:0px; ">
                             </datepicker>
-                        </div>
+                        
 
-                        <div class="form-group" style="margin-top:10px;">
+                        <div class="form-group" style="margin-top:0px;">
                             <label for="usr">Follow up (By record date)&nbsp;&nbsp;</label>
                             <input type="checkbox" ng-model="user.currentRecord.followUp">
                         </div>
+                        </div>
 
-                        <div class="form-group" ng-repeat="field in user.currentRecord.values" style="margin-top:20px;">
+                        <div class="form-group makpg" ng-repeat="field in user.currentRecord.values" style="padding:7px;background-color: rgb(244,244,244);  margin-bottom:7px;">
                             <label for="comment">{{field.name}}</label>
                             <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
                                 <input type="text" class="form-control" maxlength="80" ng-model="field.value">
@@ -206,7 +205,7 @@
                         </div>
 
 
-                        <div class=" form-group">
+                        <div class=" form-group makpg" style="padding:7px; background-color: rgb(244,244,244);  margin-bottom:7px;">
                             <label for="pwd">Assign to (Optional) </label>
                             <!--<input type="emil id" class="form-control" >-->
                             <select name="assignee" class="form-control forpad" ng-model="user.currentRecord.assignedUser.id" class="form-control" ng-options="usr.id as usr.name for usr in user.currentProject.users">
@@ -217,7 +216,7 @@
                         </div>
 
 
-                        <div class=" form-group">
+                        <div class=" form-group makpg" style="padding:7px; background-color: rgb(244,244,244);  margin-bottom:7px;">
                             <label for="pwd">Record color (Optional) </label>
                             <br>
                             <span>
