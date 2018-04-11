@@ -280,10 +280,34 @@ app.config(function ($routeProvider) {
 
 
 
-app.run(function ($rootScope, $location) {
-    
-    
+app.run(function ($rootScope, $location,$window,$cordovaLocalNotification,$ionicPlatform) {
+   /* window.plugin                                    = {};
+window.plugin.notification                       = {};
+window.plugin.notification.local                 = {};
+window.plugin.notification.local.add             = function() {};
+window.plugin.notification.local.cancelAll       = function() {};
+window.plugin.notification.local.cancel          = function() {};
+window.plugin.notification.local.getScheduledIds = function() {};
+window.plugin.notification.local.isScheduled     = function() {};
+    */
     //console.log(FCMPlugin.getToken+" fcm token")
+    
+    /* if(device.platform === "iOS") {
+        window.plugin.notification.local.promptForPermission();
+    }
+    */
+/*$window.plugin.notification.local.onadd = function (id, state, json) {
+    var notification = {
+        id: id,
+        state: state,
+        json: json
+    };
+    $timeout(function () {
+        $rootScope.$broadcast("$cordovaLocalNotification:added", notification);
+    });
+};*/
+    
+    $ionicPlatform.ready(function(){
     
     if(typeof FCMPlugin != 'undefined' ){
     
@@ -326,6 +350,8 @@ FCMPlugin.onNotification(
    
     
     }
+    
+});
     
     
     
@@ -409,3 +435,36 @@ app.directive('focusMe', function ($timeout) {
         }
     };
 });*/
+
+
+app.controller("ExampleController", function($scope, $cordovaLocalNotification) {
+ 
+    $scope.add = function() {
+        var alarmTime = new Date();
+        alarmTime.setMinutes(alarmTime.getMinutes() + 1);
+        $cordovaLocalNotification.add({
+            id: "1234",
+            date: alarmTime,
+            message: "This is a message",
+            title: "This is a title",
+            autoCancel: true,
+            sound: null
+        }).then(function () {
+            console.log("The notification has been set");
+        });
+    };
+ 
+    $scope.isScheduled = function() {
+        $cordovaLocalNotification.isScheduled("1234").then(function(isScheduled) {
+            alert("Notification 1234 Scheduled: " + isScheduled);
+        });
+    }
+    
+    
+2
+3
+$scope.$on("$cordovaLocalNotification:added", function(id, state, json) {
+    alert("Added a notification");
+});
+ 
+});
