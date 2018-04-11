@@ -1,0 +1,423 @@
+<!doctype html>
+<html style="height:100%;">
+
+<head style="height:100%;">
+
+</head>
+
+
+<body>
+
+
+
+
+    <div class="container-fluid  htpag" style="height:100%;">
+
+
+        <div ng-include="'response.html'"></div>
+        <a href="#myProjects"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
+
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
+
+
+
+        <!--<div class="row tpband">
+
+
+            <a href="#myProjects"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick; "></a>
+
+            <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+
+
+        </div>-->
+
+
+        <div class="row" style="">
+            <div class="col-sm-12">
+                <h2 class="pghdgs" style="z-index:-1;"> Archived Records </h2>
+            </div>
+
+        </div>
+
+
+
+        <div class="col-sm-12 Proj_top_tab">
+
+            <div class="row">
+
+
+
+
+               <select name="timeRange" class="form-control text-right" ng-model="selectedProject" style="float:right; width:130px; margin:4px 20px; height:34px;font-size:13px;">
+                    <option value="">All Projects</option>
+                    <option value="{{name}}" ng-repeat="name in projectNames">{{name}}</option>
+                </select>
+
+
+                <!--<input id="searchText" type="text" class="txt_search" ng-model="searchText" placeholder="Search by keyword .." style="width:280px">-->
+
+                <select name="timeRange" class="form-control text-right" ng-model="timeRange" style="float:left; width:110px; margin:4px 20px; height:34px; font-size:13px; " ng-change="getProject()">
+                    <option value="MONTH">This month</option>
+                    <option value="WEEK">This week</option>
+                    <option value="ALL">All time</option>
+                </select>
+
+                <!--<tags-input class="bootstrap " ng-model="keywords" placeholder="Filter by keywords" replace-spaces-with-dashes="false">
+                </tags-input>-->
+
+
+
+            </div>
+        </div>
+
+        <div class="col-sm-{{mainDiv}} " style="padding-right:4px; padding-left:0px; overflow-y: scroll; overflow-x: hidden; height:70vh">
+            <div class="makpg card-border {{user.currentRecord.id == rec.id ? 'edge_color' : ''}}" style="padding-left:10px; padding-bottom:5px; padding-top:22px; padding-right:10px;border-color:{{rec.color != null ? rec.color : '#9B9B9B'}}" ng-repeat="rec in user.currentProject.records|filter:filterRecords|filter:filterProjects">
+
+                <div class="row" style="padding-left:20px; padding-right:10px; margin-top:-15px; border-color: black;">
+
+                    <span data-toggle="tooltip" title="Record ID" style="float:left">{{rec.id}}.&nbsp;</span>
+                    <span data-toggle="tooltip" title="{{rec.titleField.name}}" style="font-weight:900; {{user.currentRecord.id == rec.id ? 'color:#4885ed' : ''}}">{{rec.titleField.value}}</span>
+                    <!--<span data-toggle="tooltip" title="Created By: {{rec.createdUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.createdUser.name}}</span>
+                    --><span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">{{rec.assignedUser.name}}</span>
+                    <!--<span data-toggle="tooltip" title="Assigned To: {{rec.assignedUser.name}}" class="label label-default lbl_design lbl_Name_style" style="border-width:thin;">Ajinkya</span>-->
+                    <span data-toggle="tooltip" title="Record Date" class="label label-default lbl_design" style="background-color:rgb(210,210,210);">{{rec.recordDate | date : "MMM dd"}}</span>
+
+                    <a ng-if="isFollowUp(rec)" style="cursor:pointer"><img src="imgs/flag.svg" style="margin-left:10px; margin-top:-4px;" width=16px></a>
+
+
+
+                    <span>
+                        <!--<a ng-if="rec.id != null" style="cursor:pointer" ng-click="showRestoreRecord(rec)"><img src="imgs/trash1600.png" alt="back" class="card_icons" width=23px style="margin-top:-1px;"></a>-->
+                        
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 4)"><img src="imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=19px></a>
+                        
+                        <a style="cursor:pointer" ng-click="showRestoreRecord(rec)" tooltip="Restore record"><img src="imgs/restore_record.svg"  class="card_icons" width=20px></a>
+                        
+                        <!--<a style="cursor:pointer" ng-click="selectRecord(rec, 2)"><img src="{{rec.fileCount > 0 ? 'imgs/attachment-clip.png' : 'imgs/attachment-clip.svg'}}" alt="back" class="{{user.currentRecord.id == rec.id && tab == 2? 'card_icons_selected': 'card_icons'}}" width=20px></a>
+                        
+                        <a style="cursor:pointer" ng-click="selectRecord(rec, 3)"><img src="{{rec.commentCount > 0 ? 'imgs/chat-bubble.png' : 'imgs/chat-bubble.svg'}}" alt="back" class="{{user.currentRecord.id == rec.id && tab == 3? 'card_icons_selected': 'card_icons'}}" width=20px></a>
+                        <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(rec, 1)"><img src="imgs/underline-button.png" alt="back" class="{{user.currentRecord.id == rec.id && tab == 1? 'card_icons_selected': 'card_icons'}}" width=20px></a>-->
+                    </span>
+
+                </div>
+
+                <div class="row" style="padding-right:10px; padding-left:10px;">
+
+
+                    <div class="col-sm-{{field.type == 'LONGTEXT' ? '4' : '2'}} field-style" ng-repeat="field in rec.values">
+                        <div class="panel panel-default crd_design" data-toggle="tooltip" title="{{field.name}}">
+
+                            <div style="cursor:pointer">
+                                <h4 ng-click="field.maxLength = !field.maxLength" ng-class="fieldClass(field)" style="{{field.maxLength && field.type == 'LONGTEXT' ? 'white-space: pre-wrap' : ''}}">{{field.value}}</h4>
+                            </div>
+                        </div>
+
+                        <!--<div class="form-group" ng-if="user.currentRecord.id==rec.id">
+                            <label for="usr">{{field.name}} </label>
+                            <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
+                                <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+                                <br>
+                            </datepicker>
+                            <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+                        </div>-->
+
+                    </div>
+
+
+                    <!--<p data-toggle="tooltip" title="Record Date" ng-if="user.currentRecord.id!=rec.id">{{rec.recordDateString}}</p>-->
+
+                    <!--<div class="frbtnonpg" ng-if="user.currentRecord.id==rec.id">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="cancel()">Cancel</button>
+                    </div>-->
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-4 col-sm-offset-0" style=" padding-left: 5px; padding-right: 5px; height:70vh; padding-bottom: 0px;" ng-if="user.currentRecord.id != null">
+            <div class="makpg" style="margin:none; padding-left: 15px; padding-right:15px;position:relative;padding-top:15px; ">
+                <span><img ng-click="cancel()" tabindex="0" ng-esc="cancel()" src="imgs/clear-button.png" alt="back" id="clear_project_tab" width=20px ></span>&nbsp;
+
+
+                <div class="tab-content" style="" ng-show="tab==1">
+
+
+
+                    <div class="row " style="padding:0px;margin:0px;margin-top:-10px;">
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" style="float:left;" ng-click="save()">Save Changes </button>
+
+
+                    </div>
+                    <hr style="padding:0px;margin:0px;">
+                    <!--<ul class="nav nav-tabs adempnav" ng-init="tab=1">
+                    <li ng-class="{'active': tab == 1}"><a style="cursor:pointer" data-toggle="tab" ng-click="tab=1">Record Details</a></li>
+                    <li ng-class="{'active': tab == 2}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=2">Files</a></li>
+                    <li ng-class="{'active': tab == 3}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=3">Comments</a></li>
+                    <li ng-class="{'active': tab == 4}"><a data-toggle="tab" style="cursor:pointer" ng-click="tab=4">Change Log</a></li>
+                </ul>
+                <br>-->
+
+
+
+
+
+
+
+                    <!--<div class="frbtnonpg" style="border:solid;">
+                        <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="save()">Save Changes </button>
+</div> -->
+
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:52vh;padding-top:0px;padding-bottom:0px; ">
+
+                        <span><h5>Record created by {{user.currentRecord.createdUser.name}} on {{user.currentRecord.createdDate| date:'MMM dd'}}</h5></span>
+                        <br>
+                        <div class=" form-group">
+                            <label for="usr">{{user.currentRecord.titleField.name}} </label>
+                            <input id="basic" type="text" class="form-control set_sal " ng-model="user.currentRecord.titleField.value">
+
+                        </div>
+
+
+                        <div class="form-group" style="margin-bottom:45px">
+                            <label for="usr">Record Date (To track this record)</label>
+                            <datepicker date-format="yyyy-MM-dd">
+                                <input type="text" class="form-control" maxlength="80" ng-model="user.currentRecord.recordDateString">
+                            </datepicker>
+                        </div>
+
+                        <div class="form-group" style="margin-top:-19px">
+                            <label for="usr">Follow up (By record date)&nbsp;&nbsp;</label>
+                            <input type="checkbox" ng-model="user.currentRecord.followUp">
+                        </div>
+
+                        <div class="form-group" ng-repeat="field in user.currentRecord.values">
+                            <label for="comment">{{field.name}}</label>
+                            <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
+                                <input type="text" class="form-control" maxlength="80" ng-model="field.value">
+                                <br>
+                            </datepicker>
+                            <input type="text" class="form-control" maxlength="80" ng-model="field.value" ng-if="field.type=='TEXT'">
+
+                            <textarea class="form-control" ng-model="field.value" ng-if="field.type=='LONGTEXT'" maxlength="800"></textarea>
+
+                            <select class="form-control forpad" ng-if="field.type=='MULTIPLE'" ng-model="field.value" class="form-control" ng-options="value for value in field.possibleValues">
+                                <option value="">Select option</option>
+                        
+                            </select>
+                        </div>
+
+
+                        <div class=" form-group">
+                            <label for="pwd">Assign to (Optional) </label>
+                            <!--<input type="emil id" class="form-control" >-->
+                            <select name="assignee" class="form-control forpad" ng-model="user.currentRecord.assignedUser.id" class="form-control" ng-options="usr.id as usr.name for usr in user.currentProject.users">
+                                <option value="">Select member</option>
+                        
+                            </select>
+
+                        </div>
+
+
+                        <div class=" form-group">
+                            <label for="pwd">Record color (Optional) </label>
+                            <!--<input type="emil id" class="form-control" >-->
+                            <!--<select name="color" class="form-control forpad" ng-model="user.currentRecord.color">
+                                <option value="#9B9B9B">No color</option>
+                                <option value="#DB3236">Red</option>
+                                <option value="#3CBA54">Green</option>
+                                <option value="#F4C20D">Yellow</option>
+                        
+                            </select>-->
+                            <br>
+                            <span>
+                                <div  class=" recrd_color" style="background-color:#DB3236;"></div>
+                                <div  class=" recrd_color" style="background-color:#F4C20D;"></div>
+                                <div  class=" recrd_color" style="background-color:#3CBA54;"></div>
+                            </span>
+                        </div>
+
+
+
+
+                        <!--<h4 ng-if="user.currentRecord.id > 0"><span class="blue_txt" ng-click="showDelete(rec)" style="cursor:pointer">Remove Record </span><span><br>Record will be added to archive folder</span></h4>-->
+
+                    </div>
+
+
+
+
+                    <br>
+
+                </div>
+
+                <div class="tab-content" ng-show="tab==2">
+
+
+
+
+                    <div class="row ropad grrow" style="margin:5px; padding-bottom:0px;">
+                        <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess">
+                            <h4><span>Upload file and write a brief discription</span></h4>
+
+                            <div id="upload_profile_picture_div">
+                                {{user.currentRecord.file.name}}
+                                <div class="button blue_txt" ngf-select ng-model="user.currentRecord.file" name="file" ngf-max-size="20MB" style="border:1px">
+                                    <strong style="cursor: pointer">Select File</strong> </div>
+
+                            </div>
+                            <br>
+
+                            <label for="usr">File Name</label>
+                            <input type="text" class="form-control set_sal" ng-model="user.currentRecord.file.fileName">
+                            <!--<label for="usr">Description</label>
+                                <textarea class="form-control" rows="3" id="fileDescr" ng-model="fileDescription"></textarea>-->
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="upload()">Upload file </button>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:30vh; ">
+
+                        <div ng-repeat="file in user.currentRecord.files">
+                            <h5><span>By {{file.createdBy.name}} on 21/3/2017</span></h5>
+                            <h4><span><strong>File: </strong>{{file.fileName}}</span></h4>
+                            <h4><a href="{{rootUrl}}{{file.id}}" target="_blank"><span class="blue_txt">Download</span></a> | <span class="blue_txt" style="cursor:pointer" ng-click="deleteFile(file)"> Delete</span></h4>
+
+                            <hr style="margin: 5px 0" />
+                        </div>
+
+                        <br>
+
+                    </div>
+
+                </div>
+
+                <div class="tab-content" ng-show="tab==3">
+
+                    <div class="row ropad">
+                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess">
+
+                            <label for="comment">Add Comment:</label>
+                            <textarea class="form-control" rows="3" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
+                            <button type="button" class="btn btn-secondary btn-lg btn-block btn_left" ng-click="addComment()">Add</button>
+
+                        </div>
+
+
+                    </div>
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:36.5vh; ">
+
+                        <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
+                            <h5><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h5>
+                            <h4><span>{{comment.comment}}</span></h4>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="tab-content" ng-show="tab == 4">
+                    <br>
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:60.5vh; ">
+                        <div class="table-responsive">
+                            <table class="table logtabl table-hover" style="font-size:12px;">
+                                <thead class="distabl">
+                                    <tr>
+                                        <th class="distabl">Date</th>
+                                        <th class="distabl">By</th>
+                                        <th class="distabl">Details</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="log in user.currentRecord.logs">
+                                        <td>{{log.logDate}}</td>
+                                        <td>{{log.user.name}}</td>
+                                        <td>{{log.log}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+    <div id="restoreRecord" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="text-align: center;">
+                <div class="modal-header" style="border:none">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:15px;">Are you sure you want to restore this record <br>({{restoreRecord.titleField.value}})? <br> All the data related to this record will be restored back to the project.</p>
+                    <!--<p ng-show="updateLeaveResponse != null">{{response.responseText}}</p>-->
+                </div>
+                <div class="modal-footer" style="border:none">
+                    <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                    <button type="button" class="btn btn-secondary btn-lg btn-block " ng-click="restoreCurrentRecord()">Restore</button>
+                    <!-- <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">OK</button>-->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+
+    <script src="js/angular-datepicker.js"></script>
+
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+
+<footer>
+    <!---<div class="navbar navbar-default foocls">
+  <div class="container">
+    <span class="navbar-text">
+      &#169 talnote corp.
+      </span>
+  </div>
+</div> --->
+    <!--
+    <div id="foo" class="negmar"></div>-->
+</footer>
+
+
+</html>

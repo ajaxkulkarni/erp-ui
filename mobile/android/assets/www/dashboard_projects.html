@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+    
+   <!--     <head>
+    <style>
+        
+        
+
+#backbt {
+    position: absolute;
+    top: 0 px;
+    left: 12px;
+    z-index: -1;
+   
+    opacity: 0.7;
+}
+        
+        </style>
+    
+    </head>-->
+
+
+<body>
+
+
+
+    <div class="container-fluid ">
+
+
+        <div ng-include="'response.html'"></div>
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
+        
+        <a href="#home"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+
+
+
+        <div class="container-fluid" >
+
+            <div class="row">
+
+                <!--<div class="row tpband" >
+                    <div class="col-sm-12" >
+                       
+                        
+                        <a href="#home"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                        
+
+                    </div>
+                </div>-->
+
+
+                <div class="row" >
+                    <div class="col-sm-12">
+                        <h2 class="pghdgs" style="    margin-top: 57px;">My Projects</h2>
+                    </div>
+
+                </div>
+
+                
+
+
+
+                <div class="col-sm-12 makpg Proj_top_tab">
+
+                    <div >
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left " ng-click="addNew()" style="margin-top:0px;"><span>Add New Project</span></button>
+                        
+                         <!--<button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left" ng-click="viewArchive()" style="margin-top:0px;"><span>Archive</span></button>
+
+                        <button type="button" class="btn btn-secondary btn-lg btn-block btn_to_left">Add Column</button>-->
+
+
+                        <div class="col-sm">
+                            
+                            <a href=#><span ><img src="http://hreasy.in/imgs/Just_icons/excelicon.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
+
+                            <a href="#archivedRecords" ng-click="viewArchive()"><span ><img src="http://hreasy.in/imgs/Just_icons/Archive-icon.svg" class="fade_hover" alt="back" width=30px id="exl_icon"></span></a>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-sm-12 makpg shdmld ">
+                    <div class="table-responsive">
+                        <table class="table distabl table-hover " style="font-size:17px">
+                            <thead class="distabl">
+                                <tr>
+                                    <th class="distabl">#</th>
+                                    <th class="distabl">Project title</th>
+                                    <th class="distabl">Details</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr >
+                                    <td>--</td>
+                                    <td>My Tasks</td>
+                                    <td>All records assigned to you at one place</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <!---<button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectProject(project)">Dive in</button>--->
+                                        
+                                        <a style="cursor:pointer" ng-click="selectProject(null)"><img src="http://hreasy.in/imgs/forward-arrow.svg" alt="back" class="card_icons" width=25px></a>
+                                    </td>
+
+                                </tr>
+                                
+                                
+                                <tr ng-repeat="project in projects">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{project.title}}</td>
+                                    <td>{{project.description}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <!---<button type="button" class="btn btn-secondary btn-sm btn-block btnpdf" ng-click="selectProject(project)">Dive in</button>--->
+                                        
+                                        <a style="cursor:pointer" ng-click="selectProject(project)"><img src="http://hreasy.in/imgs/forward-arrow.svg" alt="back" class="card_icons" width=25px></a>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+</body>
+
+
+</html>

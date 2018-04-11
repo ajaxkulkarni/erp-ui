@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<body>
+
+
+    <div class="container-fluid">
+        
+        <a href="#employeeSalarySlips"><img src="http://hreasy.in/imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+        <a href="#help" target="_blank"><img src="http://hreasy.in/imgs/Just_icons/Question_chat.png" id="help_pos" width=44px></a>
+
+        <!--<div class="row tpband">
+            <div class="col-sm-12 ">
+                <a href="#employeeSalarySlips"><img src="imgs/back_icon_grey.svg" alt="back" id="backbtn" width=50px style="border:thick"></a>
+                <a href="#help" target="_blank"><img src="imgs/help_grey.svg" id="help_pos" width=44px></a>
+                
+            </div>
+        </div>-->
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 ">
+                <h2 class="pghdgs">Salary Details - {{emp.name}}</h2>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 levcard">
+
+
+                <h2><span><strong>{{emp.company.name}}</strong><h4><strong>Salary Slip</strong></h4></span></h2>
+                <h4><span><strong> Month & Year : </strong>{{month.name}} {{year}}</span></h4>
+                <hr size="30">
+
+               
+                <h4><span><strong>Name : </strong>{{emp.name}}</span></h4>
+                 <h4><span><strong>Employee ID : </strong>{{emp.regId}}</span></h4>
+                
+                <h4><span><strong> Designation:  </strong> {{emp.designation}}</span></h4>
+
+                <h4><span><strong>Account number : </strong>{{emp.financial.accountNumber}}</span></h4>
+                <h4><span><strong>PF a/c number : </strong>{{emp.financial.pfNumber}}</span></h4>
+                <h4><span><strong>Mode of Payment : </strong>Bank</span></h4>
+
+                <hr size="30">
+
+                <div class="table-responsive"  style="font-size:15px">
+                    <table class="table distabl2 table-hover"  style="font-size:15px">
+                        <thead>
+                            <tr >
+                                <th class="distabl2 fir_width" style="font-size:15px">#</th>
+                                <th class="distabl2" style="font-size:15px">Earnings</th>
+                                <th class="distabl2" style="font-size:15px">Gross (Rs)</th>
+                                <!--<th class="distabl">Payable</th>-->
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Basic Salary</td>
+                                <td>{{emp.financial.basic.amount}}</td>
+                                <!--<td>{{emp.financial.basic.amount}}</td>-->
+
+                            </tr>
+                            <tr ng-repeat="benefit in emp.financial.benefits">
+                                <td>2</td>
+                                <td>{{benefit.rule}}</td>
+                                <td>{{benefit.amount}}</td>
+                                <!--<td>{{benefit.amount}}</td>-->
+
+                            </tr>
+
+                            <tr>
+                                <td></td>
+
+                                <td><strong>Total Benefits</strong></td>
+                                <td><strong>{{emp.financial.totalBenefits}}</strong></td>
+                               <!-- <td><strong>210000</strong></td>-->
+                                <!--<td></td>-->
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr size="30">
+
+                    <table class="table distabl2 table-hover"  style="font-size:15px">
+                        <thead>
+                            <tr class="distabl2">
+                                <th class="distabl2 fir_width" style="font-size:15px">#</th>
+                                <th class="distabl2" style="font-size:15px">Deductions</th>
+                                <th></th>
+                                <th class="distabl2" style="font-size:15px">Amount (Rs) </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="deduction in emp.financial.deductions">
+                                <td>1</td>
+                                <td>{{deduction.rule}}</td>
+                                <td></td>
+                                <td>{{deduction.amount}}</td>
+
+
+                            </tr>
+                            <tr>
+                                <td></td>
+
+                                <td><strong>Total Deductions</strong></td>
+                                <td></td>
+                                <td><strong>{{emp.financial.totalDeductions}}</strong></td>
+                               <!-- <td><strong>210000</strong></td>-->
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+               <!-- <hr size="30">
+
+                <h4><span><strong>Previous Advance : </strong> -- </span></h4>
+                <h4><span><strong>Current Advance : </strong> -- </span></h4>
+                <h4><span><strong> Advance Balance : </strong> -- </span></h4>-->
+
+                <!--<hr size="30">
+
+                <h3 class="ropad grrow "><span><strong>Gross Salary : Rs {{emp.financial.salary}}/- </strong></span></h3>-->
+                <h3 class="ropad grrow " ><span><strong>Net Payable salary : Rs {{emp.financial.amountPayable}}/- </strong></span></h3>
+                <br>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2 ">
+                <a href="{{url}}/download/{{emp.company.id}}/{{emp.id}}/{{year}}/{{month.id}}" target="_blank"><button type="button" class="btn btn-secondary btn-lg btn-block " data-toggle="modal" data-target="#myModal">Print</button></a> 
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+
+
+</html>

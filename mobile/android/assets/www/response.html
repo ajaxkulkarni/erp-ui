@@ -1,0 +1,122 @@
+
+
+<!--<div class="row" ng-cloak>
+    <div class="col-sm-6 col-sm-offset-3 ">
+        <div class="alert alert-danger" ng-show="response.status != 200 && response.responseText.length > 0">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Oops!</strong> {{response.responseText}}
+        </div>
+        <div class="alert alert-success" ng-show="response.status == 200 && response.responseText.length > 0">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Great!</strong> {{response.responseText}}
+        </div>
+        <div class="alert alert-success" ng-show="showProgress">
+            Processing .. Please wait ..
+        </div>
+    </div>
+</div>-->
+
+
+<!-- Modal Success -->
+<div id="successModal" class="modal" role="dialog">
+    <div class="modal-dialog ">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="text-align: center;">
+            <div class="modal-header" style="border:none">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body accptmodal">
+                
+                <span><img src="http://hreasy.in/imgs/n_tick.svg" alt="back"width=80px;></span>
+                <br>
+                <br>
+                <p>{{successMsg}}</p>
+            </div>
+            <div class="modal-footer" style="border:none">
+                <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+                <a ng-click="close()">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" >OK</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="warningModal" class="modal" role="dialog">
+    <div class="modal-dialog ">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="text-align: center;">
+            <div class="modal-header" style="border:none">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body failmodal">
+                
+                <span><img src="http://hreasy.in/imgs/n_err.svg" alt="back"width=80px; style="margin-bottom:20px;"></span>
+                <br>
+                <br>
+                <p>{{errorText}}</p>
+            </div>
+            <div class="modal-footer" style="border:none">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal failure -->
+<div id="errorModal" class="modal fade" role="dialog">
+    <div class="modal-dialog ">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="text-align: center;">
+            <div class="modal-header" style="border:none">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body failmodal">
+                
+                <span><img src="http://hreasy.in/imgs/n_err.svg" alt="back" width=80px; style="margin-bottom:20px;"></span>
+                
+                <br>
+                <br>
+                
+                <p>{{response.responseText}}</p>
+            
+            
+            <br>
+            <div class="modal-footer" style="border:none">
+                <!--<button type="button" class="btn btn-secondary btn-lg btn-block btnmod_allign" data-dismiss="modal">No</button>-->
+
+                <button type="button" class="btn btn-secondary btn-lg btn-block " data-dismiss="modal">Check again</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- The Modal -->
+<!--<div id="myLoader" class="modal">
+    <div class="modal-content">-->
+        <div id="myLoader" class="loader-position" ng-show="showProgress">
+            <img src="http://hreasy.in/imgs/loading.gif"/>
+        </div>
+   <!-- </div>
+    <div id="caption"></div>
+</div>-->
+
+ 
+<script type="text/javascript">
+
+   $( document ).ready(function() {
+    console.log( "ready!" );
+       alert("Readyy!");
+   });
+</script>

@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="ERPstyle.css">
+    <link href='http://fonts.googleapis.com/css?family=Nato<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="http://hreasy.in/js/angular.min.js"></script>
+    
+   <script type="text/javascript" src="http://hreasy.in/js/angular-route.js"></script>
+
+    <script type="text/javascript" src="http://hreasy.in/js/ang/main.js"></script>
+
+    <script type="text/javascript" src="http://hreasy.in/js/ang/subscribe.js"></script>
+
+
+
+    <title>HR made easy</title>
+</head>
+
+<body ng-app="app" ng-controller="subscribe">
+
+
+    <nav>
+
+
+
+        <ul class="lis1">
+            <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
+
+            <ul class="lis1">
+                <!---<li><a href="#" class="lis2"><img  src="imgs/menu-alt-512.png" alt="logo" style: width="40px"></a></li>--->
+
+                <div class="dropdown lis2">
+                    <button class=" btnsty dropdown-toggle" type="button" data-toggle="dropdown"><span><img  src="http://hreasy.in/imgs/menu-alt-512.png" alt="logo" style: width="40px"></span>
+                    </button>
+                    <ul class="dropdown-menu ">
+                        <li><a href="#">Get in touch</a></li>
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">About us</a></li>
+                    </ul>
+                </div>
+
+
+
+
+
+            </ul>
+
+            <li><a href="login.html" ng-click="goToLogin()" class="logintx">Login</a></li>
+        </ul>
+        <div class="navba">
+            <img id="logo" src="http://hreasy.in/imgs/logonew.png" alt="logo" style: width="130px">
+        </div>
+
+    </nav>
+
+
+
+    <div class="container">
+
+
+        <div class="row splashline">
+            
+            <img src="http://hreasy.in/imgs/space-desk-workspace-coworking.jpg" alt="team" width=1150>
+            
+        </div>
+            
+            <div class="col-sm-12  ">
+            
+
+                <h1><span><strong id="spltxt">HR made easy</strong></span></h1>
+
+                <h3 id="splinfo"><span>Cloud based talent and leave management portal for <br>medium and small enterprises</span></h3>
+            </div>
+
+        
+
+
+        <div class="row ">
+            <div class="col-sm-2 col-sm-offset-3 teamim ">
+                
+            </div>
+            <div class="col-sm-4  teamtxt">
+                <h3><span><strong>Employee data management<br></strong>Keep track of employee data in a easy to access and search format</span></h3>
+
+            </div>
+
+        </div>
+        <div class="row backg">
+            <div class="col-sm-2 col-sm-offset-3 calim ">
+                <img src="imgs/calendar.png" alt="team" height=150px width=180px>
+            </div>
+            <div class="col-sm-4  teamtxt">
+                <h3><span><strong>Employee leave management<br></strong>Online leave appliction with leave tracking and report generation</span></h3>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 cominfo">
+                <h3><span><strong>Interested? Start your free trial !</strong> <br> Key in your company details and we will get in touch</span></h3>
+            </div>
+        </div>
+
+        <div ng-include="'response.html'"></div>
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <ng-form name="subscribeForm">
+                <div class="form-group fcont">
+                    <label for="usr">Name</label>
+                    <input type="text" class="form-control" name="user" id="usr" ng-model="user.name" ng-required="true">
+                    <p ng-show="subscribeShowErrors == true && subscribeForm.name.$invalid" style="color:red">Please Enter valid name</p>
+                </div>
+                <div class=" form-group">
+                    <label for="pwd">Email id</label>
+                    <input type="email" class="form-control" name="email" ng-model="user.email" ng-required="true">
+                    <p ng-show="subscribeShowErrors == true && subscribeForm.email.$invalid" style="color:red">Please Enter valid email</p>
+                </div>
+                <div class=" form-group">
+                    <label for="usr">Contact number</label>
+                    <input type="contact number" class="form-control" name="phone" ng-model="user.phone" ng-required="true">
+                    <p ng-show="subscribeShowErrors == true && subscribeForm.phone.$invalid" style="color:red">Please Enter valid phone number</p>
+                </div>
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" ng-click="subscribeUser(subscribeForm.$valid)">Get Free Trial</button>
+                </ng-form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="http://hreasy.in/js/angular-datepicker.js"></script>
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>
+
+<footer>
+    <!---<div class="navbar navbar-default foocls ">
+  <div class="container ">
+    <span class="navbar-text">
+      &#169 talnote corp.
+      </span>
+  </div>
+</div>--->
+
+    <div id="foo" ></div>
+</footer>
+
+</html>

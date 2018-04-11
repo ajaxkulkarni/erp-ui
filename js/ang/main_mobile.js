@@ -287,6 +287,8 @@ FCMPlugin.getToken(
     function (token) {
         alert('Token: ' + token);
         console.log('Token: ' + token);
+        localStorage.erpUserToken = token;
+        console.log("Token saved .. " + localStorage.erpUserToken);
     },
     function (err) {
         alert('error retrieving token: ' + token);

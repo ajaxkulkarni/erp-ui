@@ -1,5 +1,5 @@
 var app = angular.module("app", ["angular-loading-bar", "ngRoute", "720kb.datepicker", "ngFileUpload", "ngTagsInput",'ionic', 'ngCordova']);
-//['ionic', 'ngCordova', 'starter.controllers', 'starter.services']
+//['ionic', 'ngCordova, 'starter.controllers', 'starter.services']
 
 app.config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
@@ -278,7 +278,14 @@ app.config(function ($routeProvider) {
 
 
 
+
+
 app.run(function ($rootScope, $location) {
+    
+    
+    //console.log(FCMPlugin.getToken+" fcm token")
+    
+    if(typeof FCMPlugin != 'undefined' ){
     
     
     ////FCMPlugin.getToken( successCallback(token), errorCallback(err) );
@@ -293,6 +300,7 @@ FCMPlugin.getToken(
         console.log('error retrieving token: ' + err);
     }
 );
+    
 
 FCMPlugin.onNotification(
     function(data){
@@ -313,8 +321,9 @@ FCMPlugin.onNotification(
         console.log('Error registering onNotification callback: ' + err);
     }
 );
+   
     
-    
+    }
     
     
     

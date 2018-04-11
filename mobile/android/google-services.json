@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "38581271317",
+    "firebase_url": "https://hrasy-b7edc.firebaseio.com",
+    "project_id": "hrasy-b7edc",
+    "storage_bucket": "hrasy-b7edc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38581271317:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38581271317-ni9o4noi8oc1j4do09sccpokp31ijklh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.ionic.starter",
+            "certificate_hash": "4b5ec6957caa3deb041e6ba7a0b26a1281ae04f1"
+          }
+        },
+        {
+          "client_id": "38581271317-feotadatce25if8k8ivrvbsd78d97eb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7ki6Gj1873FOGpKxTVxLUdO3r6O--J9A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38581271317-feotadatce25if8k8ivrvbsd78d97eb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
