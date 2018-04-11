@@ -48,7 +48,7 @@ angular.module("app").controller('dashboard', function ($scope, userService, $lo
 
     $scope.response = {};
     $scope.dataObj = {};
-    console.log("Dashboard loaded ..");
+    console.log("Dashboard loaded .. Token loaded is - " + localStorage.erpUserToken);
     //userService.initLoader($scope);
     $scope.user = JSON.parse(localStorage.erpUser);
     
