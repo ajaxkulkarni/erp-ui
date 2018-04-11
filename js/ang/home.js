@@ -51,6 +51,25 @@ angular.module("app").controller('dashboard', function ($scope, userService, $lo
     console.log("Dashboard loaded ..");
     //userService.initLoader($scope);
     $scope.user = JSON.parse(localStorage.erpUser);
+    
+    //Save the FCM token if present
+    
+    if(localStorage.erpUserToken != null && localStorage.erpUserToken.length > 0) {
+        console.log("Saving the FCM token to server .." + localStorage.erpUserToken);
+        $scope.dataObj = {
+            user : {
+                email: $scope.user.email,
+                fcmToken: localStorage.erpUserToken
+            }
+        }
+        userService.callService($scope, "/updateFcmToken").then(function (response) {
+            if (response == null || response.status != 200) {
+                console.log("Error in saving FCM token ...");
+            } else {
+                console.log("FCM token saved successfully!");
+            }
+        });
+    }
 
 
 });
