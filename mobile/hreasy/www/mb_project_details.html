@@ -126,19 +126,29 @@
 
             <div class="col-sm-4 " ng-if="user.currentRecord.id != null" style="padding-left:0px; padding-right:0px; height:100%">
 
-                <h3 style="margin-left:10px;text-align:center;">{{user.currentProject.title}}</h3>
+                <h3 style="margin-left:10px;text-align:left;">{{user.currentProject.title}}</h3>
                 
-                <div class="makpg mb_side_card" >
+                <div class="makpg mb_side_card" style="height:57px;">
                     
                     
-                <p style="text-align:center ;margin-top:-22px;margin-left:8px; margin-right:8px;"><b>1. {{user.currentRecord.titleField.value}}</b></p>
+                <p style="text-align:left ;margin-top:-22px;margin-left:8px; margin-right:8px; margin-bottom:3px;"><b>1. {{user.currentRecord.titleField.value}}</b></p>
                     
                     
                                         
 
                     
-                   <p style="margin-top:-8px;margin-left:auto; text-align:center;; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> Attach file </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>
+                   <!--<p style="margin-top:-8px;margin-left:auto; text-align:center;; opacity:0.3; margin-bottom:0px;" ><b><a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"> Edit </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"> Comment </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> Attach file </a> &nbsp;|&nbsp; <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"> Log </a> </b></p>-->
                    
+                    <a ng-if="rec.id != null"  ng-if="user.currentProject.accessRights.recordAccess" style="cursor:pointer" ng-click="showDeleteRecord(rec)"><img src="http://hreasy.in/imgs/Archive-icon.svg" alt="back" class="card_icons" width=25px style=""></a>
+                    
+                    <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 4)"><img src="http://hreasy.in/imgs/bookmark-outline.svg" alt="back" class="{{user.currentRecord.id == rec.id && tab == 4? 'card_icons_selected': 'card_icons'}}" width=24px style=" margin-right:20px; float:right;"></a>
+                    
+                    <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 2)" ng-style="{'color': user.currentRecord.fileCount > 0 ? 'green' : ''}"> <img src="{{rec.fileCount > 0 ? 'http://hreasy.in/imgs/attachment-clip.png' : 'http://hreasy.in/imgs/attachment-clip.svg'}}" alt="back" ng-class="iconClass(rec, rec.fileCount, 2)" width=25px style="margin-right:20px; float:right;"></a>
+                    
+                    <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-style="{'color': user.currentRecord.commentCount > 0 ? 'green' : ''}" ng-click="selectRecord(user.currentRecord, 3)"><img src="{{rec.commentCount > 0 ? 'http://hreasy.in/imgs/chat-bubble.png' : 'http://hreasy.in/imgs/chat-bubble.svg'}}" alt="back" ng-class="iconClass(rec,rec.commentCount, 3)" width=25px style="margin-right:20px; float:right;"></a>
+                    
+                    <a style="cursor:pointer" ng-if="user.currentProject.accessRights.recordAccess" ng-click="selectRecord(user.currentRecord, 1)"><img src="http://hreasy.in/imgs/underline-button.png" alt="back" class="{{user.currentRecord.id == rec.id && tab == 1? 'card_icons_selected': 'card_icons'}}" width=25px style="margin-right:20px; float:right;"></a>
+                    
                     
                 </div>
                 
@@ -188,7 +198,7 @@
                         </div>
                         </div>
 
-                        <div class="form-group makpg" ng-repeat="field in user.currentRecord.values" style="padding:7px;background-color: rgb(244,244,244);  margin-bottom:7px;">
+                        <div class="form-group makpg" ng-repeat="field in user.currentRecord.values" style="padding:7px; padding-bottom:none; background-color: rgb(244,244,244);  margin-bottom:7px;">
                             <label for="comment">{{field.name}}</label>
                             <datepicker date-format="yyyy-MM-dd" ng-if="field.type == 'DATE'">
                                 <input type="text" class="form-control" maxlength="80" ng-model="field.value">

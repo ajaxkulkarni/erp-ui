@@ -267,8 +267,8 @@
 
                 <div class="tab-content" ng-show="tab==3">
 
-                    <div class="row ropad">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess">
+                    <div class="row ropad" style="padding-bottom:5px;">
+                        <div class="form-group" ng-if="user.currentProject.accessRights.commentAccess" >
 
                             <label for="comment">Add Comment:</label>
                             <textarea class="form-control" rows="2" id="comment" ng-model="user.currentRecord.comment.comment"></textarea>
@@ -278,7 +278,7 @@
 
 
                     </div>
-                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:36.5vh; ">
+                    <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:39vh; padding-top:0px;">
 
                         <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
                             <h6><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h6>
