@@ -1,6 +1,6 @@
 body{
    font-family: "Open Sans", sans-serif !important;
-    font-size: 14px;
+    font-size: 15px;
     color: rgb(80,80,80);
     font-weight: 200;!important 
 }
@@ -401,16 +401,16 @@ dropdown-menu:hover{
     margin-top:-4px;
     margin-bottom: 10px;
     padding: inherit;
-    height: 27px;
-    font-size: 14px;
+    height: 29px;
+    font-size: 15px;
     color: rgb(80,80,80);
     border-color: rgb(200,200,200);
     border-width: 0.5px;
     box-shadow: none;
-    padding-left: 3 px;
+    padding-left: 3px;
     padding-right: 5px;
     padding-bottom: 0px;
-    border-top: none;
+    border-top: 0px;
     border-left: none;
     border-right: none;
     border-radius: 0px;
@@ -675,6 +675,7 @@ html,body{
     /*background-color: rgb(227,228,229);!important*/
     /*background-color: rgb(245,245,245);*/
     background-color: #f0f0f0;
+    
     
   
    
