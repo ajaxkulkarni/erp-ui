@@ -224,8 +224,8 @@
 
 
 
-                    <div class="row ropad" style="margin-bottom:-35px; margin-top:-5px;">
-                        <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess">
+                    <div class="row ropad" style="margin-bottom:-35px; margin-top:-25px;">
+                        <div class="form-group" ng-if="user.currentProject.accessRights.fileAccess" >
                             <h4><span>Upload file and write a brief discription</span></h4>
 
                             <div id="upload_profile_picture_div">
@@ -245,18 +245,17 @@
 
                     </div>
                     
-                    <hr>
+                    <hr style="margin-bottom:0px;">
 
 
 
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:30vh; ">
 
-                        <div ng-repeat="file in user.currentRecord.files">
-                            <h5><span>By {{file.createdBy.name}} on 21/3/2017</span></h5>
-                            <h4><span><strong>File: </strong>{{file.fileName}}</span></h4>
-                            <h4><a href="{{rootUrl}}{{file.id}}" target="_blank"><span class="blue_txt">Download</span></a> | <span class="blue_txt" style="cursor:pointer" ng-click="deleteFile(file)"> Delete</span></h4>
+                        <div ng-repeat="file in user.currentRecord.files" style="background-color: rgb(244,244,244); padding:1px 5px; margin-bottom:5px; border-radius: 5px;">
+                            <h6><span>By {{file.createdBy.name}} on 21/3/2017</span></h6>
+                            <h5><span><strong>File: </strong>{{file.fileName}}</span></h5>
+                            <h6><a href="{{rootUrl}}{{file.id}}" target="_blank"><span class="blue_txt">Download</span></a> | <span class="blue_txt" style="cursor:pointer" ng-click="deleteFile(file)"> Delete</span></h6>
 
-                            <hr style="margin: 5px 0" />
                         </div>
 
                         <br>
@@ -281,7 +280,7 @@
                     <div class="row ropad" style="overflow-y: scroll; overflow-x: hidden; height:39vh; padding-top:0px;">
 
                         <div class="comment_box" ng-repeat="comment in user.currentRecord.comments">
-                            <h6><span>By {{comment.commentedBy.name}} on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h6>
+                            <h6><span>By <b>{{comment.commentedBy.name}}</b> on {{comment.dateString}}</span>&nbsp;|&nbsp;<span class="blue_txt" ng-click="removeComment(comment)" style="cursor:pointer">Remove</span></h6>
                             <h4><span>{{comment.comment}}</span></h4>
                         </div>
 
